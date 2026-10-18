@@ -9,7 +9,7 @@ export default {
       ] },
     { tag: 'how', title: 'What a ratio means',
       body: [
-        'A **4.69:1** gear means the input turns 4.69 times for every 1 turn of the output.',
+        'A **4.69:1** [[gear-ratio]] means the input turns 4.69 times for every 1 turn of the output.',
         'Output speed **÷ 4.69**, output torque **× 4.69** (minus a little friction). Power in ≈ power out.',
         'The [[final-drive]] is one more fixed reduction after the gearbox, in the differential.',
         '[[overall-ratio|Overall ratio]] = gear ratio × final drive. That’s the real lever between crank and wheels.',
@@ -25,7 +25,7 @@ export default {
     { tag: 'see', title: 'Play with the gearing', visualFirst: true,
       visual: { type: 'gearing', preset: 'bronco' },
       body: [
-        'The preset’s ratios are illustrative. Type in the real ones above (4.69 … 0.62, final 3.81) to check the math below.',
+        'The preset uses your real ratios (4.69 … 0.62), the 3.81 final drive and the 28.5 in stock tire. Only the redline is approximate.',
         'Change a ratio or tire size and watch speed per 1,000 rpm and wheel torque move in opposite directions.',
         'Bigger tires act like a taller (lower-number) gear: more speed per rev, less torque at the ground.',
       ] },
@@ -61,7 +61,7 @@ export default {
       why: 'The engine’s torque is the same; the gears multiply it. You pay for it with low road speed per rpm.',
       wrong: { 0: 'Engine torque depends on rpm and load, not which gear is selected.' } },
     { type: 'tap', q: 'On a transverse front-drive-based layout like yours, the final-drive gears live inside which part?', visual: { type: 'parts', drawing: 'car-top' }, answer: 'transmission',
-      why: 'A transverse transaxle has the final drive and front differential built into the transmission case. The PTU takes power off it to the rear.',
+      why: 'A transverse [[transaxle]] has the final drive and front differential built into the transmission case. The PTU takes power off it to the rear.',
       wrong: { ptu: 'The PTU turns drive 90° toward the rear driveshaft. The final-drive gears are in the transaxle it bolts to.', rdu: 'The RDU drives the rear wheels. The front final drive is in the transaxle.' } },
     { type: 'mc', q: 'You fit **taller tires** (bigger diameter). What happens to the gearing?', options: ['Shorter: more acceleration', 'Taller: more speed per rpm, less wheel force', 'Nothing changes', 'Only the speedometer changes'], answer: 1,
       why: 'Bigger tires travel farther per turn, acting like a lower numerical ratio. The speedometer also reads low unless recalibrated.' },

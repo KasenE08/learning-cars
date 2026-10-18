@@ -9,7 +9,6 @@ const S = {
   broncoNation: 'Bronco Nation G.O.A.T. mode articles (2021 and 2025 Bronco Sport)',
   sae: 'SAE Mobility Engineering / SAE Mobilus: “Dana’s twin-clutch axle boosts Ford Bronco Sport’s off-road cred”',
   blueOval: 'Blue Oval Trucks: “Ford’s Dana Twin-Clutch Axle AWD System”',
-  torqueNews: 'Torque News: “Most Ford Bronco Sport Badlands owners never use the rear locker”',
   expedition: 'Expedition Portal: “Bronco Sport is Compact but Mighty”',
 };
 

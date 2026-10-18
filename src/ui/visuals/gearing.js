@@ -4,8 +4,9 @@ import { slider, chips } from './controls.js';
 
 export const PRESETS = {
   generic: { label: 'Typical 6-speed manual', ratios: [3.36, 2.07, 1.43, 1.12, 0.92, 0.79], final: 3.9, tire: 26.0, redline: 6800 },
-  // Illustrative 8-speed automatic spread; the Bronco Sport's exact ratios are not loaded here.
-  bronco: { label: '8-speed automatic (illustrative)', ratios: [4.69, 2.98, 2.15, 1.77, 1.52, 1.28, 1.0, 0.85], final: 3.2, tire: 28.5, redline: 6500 },
+  // Bronco Sport 2.0 / 8F35 ratios and final drive per Ford's Bronco Sport spec sheet (facts bronco.gearRatios,
+  // bronco.finalDrive); 28.5 in = standard 225/65R17 tire. Redline is approximate.
+  bronco: { label: 'Bronco Sport 2.0 · 8F35', ratios: [4.69, 3.31, 3.01, 1.92, 1.45, 1.0, 0.75, 0.62], final: 3.81, tire: 28.5, redline: 6500 },
 };
 
 export const mphPer1000 = (overall, tireIn) => (1000 * Math.PI * tireIn * 60) / (overall * 63360);
@@ -14,7 +15,7 @@ export function mount(host, spec = {}) {
   let P = { ...PRESETS[spec.preset || 'generic'], ratios: [...PRESETS[spec.preset || 'generic'].ratios] };
   let speed = 65;
   const wrap = el(html`<figure class="vis" data-noswipe><svg viewBox="0 0 360 200" class="d" role="img" aria-label="Speed in each gear"></svg><div class="gr__tbl"></div><div class="ctl"></div>
-    <p class="vis__note">mph per 1,000 rpm = 1,000 × π × tire diameter (in) × 60 ÷ (overall ratio × 63,360). Overall ratio = gear × final drive.</p></figure>`);
+    <p class="vis__note">mph per 1,000 rpm = 1,000 × π × tire diameter (in) × 60 ÷ (overall ratio × 63,360). Overall ratio = gear × final drive. Bronco preset: Ford’s published ratios; redline ≈6,500 rpm is approximate.</p></figure>`);
   host.append(wrap);
   const svg = wrap.querySelector('svg');
   const tbl = wrap.querySelector('.gr__tbl');

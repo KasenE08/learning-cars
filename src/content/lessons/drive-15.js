@@ -25,7 +25,7 @@ export default {
       visual: { type: 'parts', drawing: 'rdu' },
       body: [
         'The pinion drives the ring gear and a **center drum**. There are **no spider gears**.',
-        'Left and right **clutch packs** connect that drum to each wheel. Each has its own actuator, so the computer can squeeze them **independently**.',
+        'Left and right **[[clutch-pack|clutch packs]]** connect that drum to each wheel. Each has its own actuator, so the computer can squeeze them **independently**.',
         'It’s built by **Dana** (per SAE engineering coverage and Blue Oval Trucks). It’s not GKN’s Twinster, the twin-clutch unit used on cars like the Focus RS.',
       ],
       facts: ['bronco.rdu', 'bronco.rduSupplier'] },

@@ -51,7 +51,7 @@ with Phase 4a; their specs below are final, so use them exactly as written.
   torque multiplication (up to ~2:1, illustrative), stall, lockup clutch toggle.
 - `dyno` `{ engine: 'bronco'|'ninja'|'rs457'|'compare' }`: torque + hp curves with an rpm cursor
   (hp = lb-ft × rpm ÷ 5252 shown live). Curve shapes are illustrative, anchored to published peak figures.
-- `gearing` `{ preset?: 'bronco'|'generic' }`: gear ratios × final drive × tire diameter → road speed per
+- `gearing` `{ preset?: 'bronco'|'generic' }` (bronco = real 8F35 ratios 4.69…0.62, final 3.81, 28.5 in tire): gear ratios × final drive × tire diameter → road speed per
   1,000 rpm, rpm at a chosen speed, and torque multiplication at the wheels; editable.
 - `suspension` `{ view: 'damper'|'types'|'align' }`: damper = bump animation (spring vs damper, too soft/too stiff);
   types = MacPherson / double wishbone / multi-link / solid axle side by side; align = camber, caster and toe sliders.

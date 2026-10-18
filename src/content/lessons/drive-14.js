@@ -4,7 +4,7 @@ export default {
     { tag: 'metaphor', title: 'Three kinds of teamwork',
       body: [
         '**Full-time AWD**: everyone always pulls, but each can walk at their own pace (a center diff).',
-        '**On-demand AWD**: the front wheels do the work; the rear wheels are subs on the bench, called in the instant they’re needed (a clutch coupling).',
+        '**On-demand [[awd]]**: the front wheels do the work; the rear wheels are subs on the bench, called in the instant they’re needed (a clutch coupling).',
         '**Part-time 4x4**: a three-legged race. Front and rear tied together: huge pulling power, terrible at corners.',
       ] },
     { tag: 'how', title: 'The front and rear need different speeds too',

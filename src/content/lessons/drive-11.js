@@ -33,11 +33,11 @@ export default {
         'A wheel on ice can only push back with a tiny torque before it spins. The diff gives the **other wheel the same tiny torque**.',
         'So the grippy wheel sits still while the icy one spins at **twice carrier speed**. All that engine power goes into one useless spin.',
         'Fix #1: **brake the spinning wheel**. Brake torque on that side counts as “resistance,” so the diff now sends that much torque to the grippy wheel too.',
-        'That’s what brake-based traction control does, using the ABS wheel-speed sensors. Some carmakers call it an **“electronic LSD.”** Cost: brake heat and wasted power.',
+        'That’s what brake-based [[traction-control]] does, using the ABS wheel-speed sensors. Some carmakers call it an **“electronic LSD.”** Cost: brake heat and wasted power.',
       ] },
     { tag: 'bronco', title: 'Your Bronco’s diffs',
       body: [
-        '**Front**: an open differential inside the transmission. On a sideways engine the final drive is a pair of regular gears, not a ring and pinion, because nothing has to turn 90°.',
+        '**Front**: an open differential inside the [[transaxle|transmission]]. On a sideways engine the final drive is a pair of regular gears, not a ring and pinion, because nothing has to turn 90°.',
         'Your front final drive is **3.81:1**.',
         '**Rear (Badlands)**: no diff gears at all. The twin-clutch [[rdu]] uses one clutch pack per wheel instead. Other Bronco Sport trims use a single clutch feeding an **open rear diff**.',
       ],
