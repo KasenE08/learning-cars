@@ -187,3 +187,5 @@ table.gr { width: 100%; border-collapse: collapse; font: 500 12px var(--font-mon
 .ci-flow.is-ctl { stroke: #7fb2e0; animation-duration: 1.4s; }
 .ci-spin { animation: cispin 0.4s linear infinite; transform-box: fill-box; transform-origin: center; }
 @keyframes cispin { to { transform: rotate(360deg); } }
+.vis { min-width: 0; max-width: 100%; }
+.gr__tbl { max-width: 100%; }

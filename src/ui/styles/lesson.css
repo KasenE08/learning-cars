@@ -113,3 +113,5 @@ a.gl { color: var(--ink); text-decoration: underline; text-decoration-color: var
 .grade small { font: 500 11px/1 var(--font-mono); color: var(--ink-3); }
 .grade--again b { color: var(--bad); } .grade--hard b { color: var(--yellow); } .grade--good b { color: var(--ok); } .grade--easy b { color: #7fb2e0; }
 .grade:active { transform: scale(0.97); }
+/* grid children must be allowed to shrink, or wide tables push the page sideways */
+.step > *, .step__vis, .step__vis > .vis { min-width: 0; max-width: 100%; }

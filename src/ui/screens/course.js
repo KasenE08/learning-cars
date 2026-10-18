@@ -4,7 +4,7 @@ import { meter } from '../components/meter.js';
 import { pageHead, trackTag, plannedTape, lessonRow } from '../components/parts.js';
 import { getProgress } from '../../core/store.js';
 import { nextUp, unitSummary } from '../../core/progress.js';
-import { units, path, tracks, unitById, unitsOfTrack, allLessons, BUILT_PHASE } from '../../core/course.js';
+import { units, path, tracks, unitById, unitsOfTrack, allLessons, unitBuilt } from '../../core/course.js';
 
 export const tab = 'course';
 
@@ -15,7 +15,7 @@ function unitBlock(p, u, n, openId, nextId) {
     <button class="unit__head" aria-expanded="${open}" data-toggle="${u.id}">
       <span class="unit__n mono">${n}</span>
       <span class="unit__main">
-        <span class="unit__meta">${trackTag(u.track)}${u.phase > BUILT_PHASE ? plannedTape(u.phase) : ''}</span>
+        <span class="unit__meta">${trackTag(u.track)}${unitBuilt(u) ? '' : plannedTape(u.phase)}</span>
         <span class="unit__title h3">${u.title}</span>
         <span class="unit__bar">${meter(s.done / s.total, { segs: u.lessons.length })}<span class="mono">${s.done}/${s.total}</span></span>
       </span>
