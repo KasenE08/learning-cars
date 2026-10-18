@@ -25,6 +25,7 @@ export default {
     { tag: 'see', title: 'Play with the gearing', visualFirst: true,
       visual: { type: 'gearing', preset: 'bronco' },
       body: [
+        'The preset’s ratios are illustrative. Type in the real ones above (4.69 … 0.62, final 3.81) to check the math below.',
         'Change a ratio or tire size and watch speed per 1,000 rpm and wheel torque move in opposite directions.',
         'Bigger tires act like a taller (lower-number) gear: more speed per rev, less torque at the ground.',
       ] },

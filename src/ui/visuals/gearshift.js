@@ -12,14 +12,13 @@ const SIDE = { 1: -1, 2: 1, 3: -1, 4: 1, 5: -1, R: 1 };        // which way it s
 export function mount(host, spec = {}) {
   let gear = spec.gear || 'N';
   const wrap = el(html`<figure class="vis" data-noswipe><svg viewBox="0 0 360 300" class="d" role="img" aria-label="Manual gearbox power path"></svg><div class="big-out"></div><div class="ctl"></div>
-    <p class="vis__note">Input-shaft gears are fixed; output-shaft gears spin freely on bearings until a synchro sleeve locks one to the shaft. Ratios are typical, not a specific car’s.</p></figure>`);
+    <p class="vis__note">Top shaft: input (from the clutch). Bottom shaft: output (to the differential). Input-shaft gears are fixed; output-shaft gears spin freely on bearings until a synchro sleeve locks one to the shaft. Ratios are typical, not a specific car’s.</p></figure>`);
   host.append(wrap);
   const svg = wrap.querySelector('svg');
   const out = wrap.querySelector('.big-out');
   const scale = D / 56; // teeth → px radius
   const draw = () => {
-    let s = `<rect x="20" y="${IN_Y - 4}" width="320" height="8" rx="3" class="${gear !== 'N' ? 'gs-hot' : 'gs-shaft'}"/><rect x="40" y="${OUT_Y - 4}" width="300" height="8" rx="3" class="${gear !== 'N' ? 'gs-hot' : 'gs-shaft'}"/>
-      <text x="22" y="${IN_Y - 12}" class="awd-sub">input (from clutch)</text><text x="338" y="${OUT_Y + 26}" text-anchor="end" class="awd-sub">output → differential</text>`;
+    let s = `<rect x="20" y="${IN_Y - 4}" width="320" height="8" rx="3" class="${gear !== 'N' ? 'gs-hot' : 'gs-shaft'}"/><rect x="40" y="${OUT_Y - 4}" width="300" height="8" rx="3" class="${gear !== 'N' ? 'gs-hot' : 'gs-shaft'}"/>`;
     for (const [g, [x, ti, to]] of Object.entries(GEARS)) {
       const ri = ti * scale, ro = to * scale, on = String(gear) === g;
       s += `<rect x="${x - 7}" y="${IN_Y - ri}" width="14" height="${2 * ri}" rx="2" class="${on ? 'gs-gear-on' : 'gs-gear'}"/>`;
