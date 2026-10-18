@@ -5,14 +5,14 @@ import { pageHead, trackTag } from '../components/parts.js';
 import { getProgress } from '../../core/store.js';
 import { nextUp, overallSummary } from '../../core/progress.js';
 import { unitById, lessonCode } from '../../core/course.js';
-import { dueCount } from '../../core/review.js';
+import { dueCount, retentionByLesson } from '../../core/review.js';
 
 export const tab = 'home';
 
 export function render(view) {
   const p = getProgress();
   const next = nextUp(p);
-  const all = overallSummary(p);
+  const all = overallSummary(p, retentionByLesson());
   const due = dueCount();
 
   view.append(el(html`<div class="screen home">

@@ -4,12 +4,14 @@ import { pageHead, trackTag } from '../components/parts.js';
 import { getProgress } from '../../core/store.js';
 import { overallSummary, unitSummary } from '../../core/progress.js';
 import { unitsOfTrack } from '../../core/course.js';
+import { retentionByLesson } from '../../core/review.js';
 
 export const tab = 'progress';
 
 export function render(view) {
   const p = getProgress();
-  const all = overallSummary(p);
+  const ret = retentionByLesson();
+  const all = overallSummary(p, ret);
   view.append(el(html`<div class="screen progress">
     ${pageHead('Readout', 'Progress', 'Lessons done and mastery. Mastery = finished + quiz score + how well you remember the cards.')}
     <div class="home__row">
@@ -20,7 +22,7 @@ export function render(view) {
       <header class="ptrack__head">${trackTag(t.track.id)}<h2 class="h3">${t.track.title}</h2><span class="mono muted">${t.done}/${t.total} · ${pct(t.mastery)}</span></header>
       <ul class="punits">
         ${unitsOfTrack(t.track.id).map((u) => {
-          const s = unitSummary(p, u);
+          const s = unitSummary(p, u, ret);
           return html`<li><span class="punits__t">${u.title}</span><span class="mono muted">${s.done}/${s.total}</span>${meter(s.mastery, { segs: u.lessons.length })}</li>`;
         })}
       </ul>

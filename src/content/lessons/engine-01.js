@@ -1,0 +1,68 @@
+// What an engine actually does
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Legs on pedals',
+      body: [
+        'On a bike, your leg pushes **straight down**. The pedal crank turns that push into **rotation**.',
+        'An engine does the same thing. Burning fuel pushes a **piston** straight down, and the **crankshaft** turns it into rotation.',
+        'A 4-cylinder is four legs pushing in turn, so the push never stops.',
+      ] },
+    { tag: 'see', title: 'The parts doing the pushing', visualFirst: true,
+      visual: { type: 'cylinder', mode: 'basic' },
+      body: [
+        'Fuel burns above the [[piston]]. The hot gas pressure shoves it down.',
+        'The [[connecting-rod]] is the shin; the [[crankshaft]] is the pedal crank.',
+        'Valves let air in and exhaust out. The spark plug lights it. You’ll learn each one next.',
+      ] },
+    { tag: 'how', title: 'The energy chain',
+      body: [
+        'Fuel’s **chemical** energy → **heat** → gas **pressure** → **force** on the piston → **torque** (twist) at the crank.',
+        'It’s an **internal combustion engine**: the burning happens inside the cylinder.',
+        'Only about **30–40% at best** of the fuel’s energy becomes useful work in a modern gas engine. Most of the rest leaves as heat in the exhaust and coolant.',
+      ] },
+    { tag: 'key', title: 'Air is the real limit',
+      body: [
+        'Gasoline burns completely at about **14.7 parts air to 1 part fuel, by mass** (the “stoichiometric” ratio).',
+        'Adding fuel is easy. Getting more **air** in is the hard part. More air per second = room for more fuel = more power.',
+        'That’s why turbochargers exist: they force extra air in. Your Bronco has one.',
+      ] },
+    { tag: 'how', title: 'The numbers you’ll see everywhere', visualFirst: true,
+      visual: { type: 'parts', drawing: 'engine-section' },
+      body: [
+        '[[rpm]]: how many times the crankshaft spins per minute.',
+        '**Torque**: the twisting force at the crank (lb-ft, or N·m in metric).',
+        '**Horsepower**: torque × rpm. `hp = lb-ft × rpm ÷ 5252`. Same idea as watts. Full lesson later.',
+        'Tap the parts above to see what each one does and where it lives.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco Sport’s engine',
+      body: [
+        'A **2.0 L turbocharged inline-4** that Ford calls **EcoBoost**: four cylinders in a row, a turbo forcing air in, and fuel injected straight into the cylinders.',
+        'It sits **sideways** (transverse) under the hood, like most front-drive-based cars, and drives an 8-speed automatic.',
+      ],
+      facts: ['bronco.engine', 'bronco.output', 'bronco.mounting'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What turns the pistons’ up-and-down motion into rotation?',
+      options: ['The camshaft', 'The crankshaft', 'The flywheel', 'The connecting rod alone'], answer: 1,
+      why: 'The crankshaft’s offset throws work like bike pedals: a straight push on them becomes a turning motion.',
+      wrong: { 0: 'The camshaft opens the valves. It doesn’t take power from the pistons.', 2: 'The flywheel smooths the rotation out, but the crank makes it.', 3: 'The rod only transmits the push. The crank throw is what turns it into rotation.' } },
+    { type: 'order', q: 'Put the energy chain in order, from fuel to wheels.',
+      items: ['Chemical energy in fuel', 'Heat', 'Gas pressure', 'Force on the piston', 'Torque at the crankshaft'],
+      why: 'Burning releases heat → hot gas expands (pressure) → pressure × piston area = force → force on the crank throw = torque.' },
+    { type: 'mc', q: 'At best, roughly how much of the fuel’s energy does a modern gas engine turn into useful work?',
+      options: ['About 10%', 'About 30–40%', 'About 75%', 'Over 90%'], answer: 1,
+      why: 'Best-case thermal efficiency for modern gas engines is around 35–40%. In normal driving it’s usually lower. The rest leaves as heat.' },
+    { type: 'mc', q: 'Why can’t you make more power just by adding more fuel?',
+      options: ['Fuel pumps are too small', 'There isn’t enough air to burn the extra fuel', 'More fuel always melts the pistons', 'The spark plug can only light a fixed amount'], answer: 1,
+      why: 'Fuel needs about 14.7× its mass in air to burn fully. Past that, extra fuel goes unburned. More power means getting more air in first.' },
+    { type: 'tap', q: 'Tap the **crankshaft**.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'crank',
+      why: 'The crankshaft sits at the bottom of the block. Its counterweights and throws spin as the rods push.' },
+  ],
+  cards: [
+    { id: 'crank', front: 'What does the crankshaft do?', back: 'Turns the pistons’ up-and-down motion into rotation (like bike pedals).' },
+    { id: 'chain', front: 'Engine energy chain, fuel → crank?', back: 'Chemical → heat → gas pressure → force on piston → torque at the crank.' },
+    { id: 'stoich', front: 'Stoichiometric air-fuel ratio for gasoline?', back: 'About **14.7 : 1** by mass (air : fuel).' },
+    { id: 'eff', front: 'Best-case efficiency of a modern gas engine?', back: 'Roughly 30–40%. Most fuel energy leaves as heat.' },
+    { id: 'bronco', front: 'Your Bronco Sport Badlands’ engine?', back: '2.0 L turbocharged inline-4 EcoBoost, mounted transversely. Rated 250 hp / 277 lb-ft.' },
+  ],
+};

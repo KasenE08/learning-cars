@@ -32,6 +32,6 @@ export const pathLessons = () => path.flatMap((id) => unitMap.get(id).lessons);
 /** Short code shown on lesson plates, e.g. "T1·ENGINE·02". */
 export const lessonCode = (l) => `${trackById(l.track).code}·${l.unit.toUpperCase()}·${pad2(l.n)}`;
 
-/** Lessons whose content exists in this build (the rest show as planned). */
-export const BUILT_PHASE = 1;
+/** The latest build phase shipped. Units with a later phase show their phase tag. */
+export const BUILT_PHASE = 2;
 export const isAvailable = (l) => l.phase <= BUILT_PHASE;

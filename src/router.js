@@ -10,6 +10,7 @@ const routes = [
   { re: /^\/glossary(?:\/([\w-]+))?$/, name: 'glossary', keys: ['term'] },
   { re: /^\/progress$/, name: 'progress' },
   { re: /^\/settings$/, name: 'settings' },
+  { re: /^\/vis\/([a-z]+)$/, name: 'vis', keys: ['type'] },
 ];
 
 export function parse(hash) {

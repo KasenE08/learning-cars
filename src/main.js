@@ -9,6 +9,8 @@ import '@fontsource/jetbrains-mono/latin-600';
 import './ui/styles/tokens.css';
 import './ui/styles/base.css';
 import './ui/styles/app.css';
+import './ui/styles/visuals.css';
+import './ui/styles/lesson.css';
 
 import { start } from './router.js';
 import { registerServiceWorker } from './core/sw.js';
@@ -24,8 +26,9 @@ import * as review from './ui/screens/review.js';
 import * as glossary from './ui/screens/glossary.js';
 import * as progress from './ui/screens/progress.js';
 import * as settings from './ui/screens/settings.js';
+import * as vis from './ui/screens/vis.js';
 
-const screens = { home, course, lesson, lab, review, glossary, progress, settings };
+const screens = { home, course, lesson, lab, review, glossary, progress, settings, vis };
 
 async function boot() {
   await store.load();
