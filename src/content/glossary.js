@@ -1,7 +1,7 @@
 // Glossary. Each entry: id, term, aka (other names), def (one or two tight sentences), lessons (ids).
 // Grows with every content phase; lessons link here with [[term-id]].
 
-export const glossary = [
+const base = [
   { id: 'four-stroke', term: 'Four-stroke cycle', aka: ['Otto cycle'], lessons: ['engine-02'],
     def: 'Intake → compression → power → exhaust. Each cylinder fires once every 2 crank revolutions (720°).' },
   { id: 'tdc', term: 'TDC', aka: ['Top dead center'], lessons: ['engine-02', 'engine-09'],
@@ -123,3 +123,7 @@ export const glossary = [
   { id: 'can-bus', term: 'CAN bus', aka: ['Controller Area Network'], lessons: ['can-01'],
     def: 'A two-wire network that lets a car’s computers broadcast short messages to each other. Each message has an ID and up to 8 data bytes (64 in CAN FD).' },
 ];
+
+// Extra terms live in src/content/glossary/<unit-group>.js (default export: array), merged here.
+const extra = Object.values(import.meta.glob('./glossary/*.js', { eager: true })).flatMap((m) => m.default);
+export const glossary = [...base, ...extra];

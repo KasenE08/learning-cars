@@ -10,8 +10,15 @@ import * as carTop from './drawings/car-top.js';
 import * as carSide from './drawings/car-side.js';
 import * as motoSide from './drawings/moto-side.js';
 import * as rdu from './drawings/rdu.js';
+import * as intake from './drawings/intake.js';
+import * as fuel from './drawings/fuel.js';
+import * as exhaust from './drawings/exhaust.js';
+import * as cooling from './drawings/cooling.js';
+import * as oil from './drawings/oil.js';
+import * as charging from './drawings/charging.js';
+import * as brakes from './drawings/brakes.js';
 
-export const drawings = { piston, head, 'engine-section': engineSection, 'car-top': carTop, 'car-side': carSide, 'moto-side': motoSide, rdu };
+export const drawings = { piston, head, 'engine-section': engineSection, 'car-top': carTop, 'car-side': carSide, 'moto-side': motoSide, rdu, intake, fuel, exhaust, cooling, oil, charging, brakes };
 
 export function mount(host, spec = {}) {
   const d = drawings[spec.drawing];
@@ -24,7 +31,8 @@ export function mount(host, spec = {}) {
   const drawSvg = () => `<svg viewBox="${d.viewBox}" class="d" role="img" aria-label="Tappable diagram">${d.svg(id, { labels })}</svg>`;
   wrap.innerHTML = drawSvg();
   const info = el(html`<div class="part-info" aria-live="polite"><p class="part-info__hint">${quiz ? 'Tap a part to select it.' : 'Tap any part.'}</p></div>`);
-  if (!quiz) {
+  if (!quiz && d.labelsBuiltIn) wrap.append(info);
+  if (!quiz && !d.labelsBuiltIn) {
     const tog = el(html`<button class="pchip ${labels ? 'is-on' : ''}" type="button" style="margin-top:8px">Labels</button>`);
     tog.addEventListener('click', () => {
       labels = !labels;

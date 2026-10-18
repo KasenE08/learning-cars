@@ -1,0 +1,67 @@
+// Aero: drag & downforce
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Hand out the window',
+      body: [
+        'Stick your flat hand out of a moving car’s window. At 20 mph it barely pushes; at 60 mph it shoves your arm back hard.',
+        'Tilt it and it **lifts** or **dives**. That’s drag and lift/downforce in one hand.',
+        'Air feels thin, but at highway speed pushing it aside becomes the biggest single load on the engine.',
+      ] },
+    { tag: 'math', title: 'The drag equation',
+      body: [
+        '`Drag = ½ × ρ × Cd × A × v²`',
+        'ρ (rho) = air density (≈1.225 kg/m³ at sea level). v = speed.',
+        '[[drag-coefficient|Cd]] = how slippery the **shape** is. [[frontal-area|A]] = how big the hole you punch in the air is.',
+        'Cd × A (“CdA”) is what really matters: a slippery but huge vehicle can still be draggy.',
+      ] },
+    { tag: 'see', title: 'Slide the speed', visualFirst: true,
+      visual: { type: 'aero' },
+      body: [
+        'Double the speed → drag force **×4** (v²).',
+        'Power needed = drag × speed, so power goes up with **v³**: double the speed → **×8** the power.',
+        'That’s why going from 70 to 80 mph costs real mpg, and why top speed takes so much power.',
+      ] },
+    { tag: 'math', title: 'Worked example',
+      body: [
+        'Boxy SUV, illustrative: Cd 0.40, A 2.8 m². At **70 mph (31.3 m/s)**: ½ × 1.225 × 0.40 × 2.8 × 31.3² ≈ **670 N (150 lbf)** of drag.',
+        'Power = 670 N × 31.3 m/s ≈ **21 kW (28 hp)** just to push through the air.',
+        'At 35 mph that’s ⅛ as much (≈3.5 hp). At 100 mph it’s ≈ **82 hp**.',
+        'Rolling resistance and drivetrain losses come on top.',
+      ] },
+    { tag: 'bronco', title: 'Why SUVs are draggy',
+      body: [
+        'Your Bronco is 74.3 in wide × 71.4 in tall: a 3.4 m² rectangle. Real frontal area is a bit less (rounded corners, gap under the body).',
+        'Tall, wide and square: big frontal area **and** a blunt shape. Off-road tires, high ground clearance and an upright windshield all add drag.',
+        'Rough Cd ranges: sleek modern sedans ~0.25–0.30, SUVs and trucks often ~0.35–0.45+.',
+        'Ford doesn’t advertise the Bronco Sport’s Cd, and I couldn’t find an official figure. The example above is illustrative, not your truck’s spec.',
+        'You feel it in fuel use: at 80 mph the air needs about **1.5×** the power it does at 70 ((80 ÷ 70)³ ≈ 1.49).',
+      ],
+      facts: ['bronco.mpg', 'bronco.dimensions'] },
+    { tag: 'how', title: 'Lift and downforce',
+      body: [
+        'A car body is shaped a bit like a wing, so at speed most cars make some **lift**: the tires get lighter and grip drops.',
+        '[[downforce]] is lift flipped: wings, splitters and diffusers push the car **down**, adding grip without adding weight.',
+        'The catch: downforce costs drag. Race cars trade top speed for cornering grip.',
+        'Bikes: a tucked rider has tiny frontal area but a messy shape. Some superbikes and MotoGP bikes add winglets for downforce, mainly to fight wheelies.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'You go from 50 mph to **100 mph**. The power needed to beat air drag becomes…', options: ['2×', '4×', '8×', '16×'], answer: 2,
+      why: 'Drag force rises with v² (×4) and power = force × speed (another ×2). Together: v³ = **×8**.',
+      wrong: { 1: 'That’s the drag force. Power also multiplies by speed, so ×8.' } },
+    { type: 'num', q: 'A car has **Cd 0.30** and **A 2.2 m²**. What is its CdA in m²?', answer: 0.66, tol: 0.005, unit: 'm²',
+      why: '0.30 × 2.2 = **0.66 m²**. A boxy SUV at Cd 0.40 × 2.8 m² is 1.12 m²: almost twice the drag at the same speed.' },
+    { type: 'mc', q: 'What does a rear wing that makes downforce cost you?', options: ['Nothing', 'Extra drag (lower top speed, more fuel)', 'Less grip', 'Engine power'], answer: 1,
+      why: 'Turning air downward takes energy. Downforce adds grip in corners but adds drag on the straights.' },
+    { type: 'order', q: 'Order these from **least** to **most** aero drag at 70 mph (illustrative CdA).',
+      items: ['Tucked rider on a sport bike', 'Sleek sedan', 'Boxy compact SUV', 'Full-size pickup'],
+      why: 'Drag scales with Cd × frontal area. Bikes have tiny A; sedans are slippery and low; SUVs and pickups are tall, wide and blunt.' },
+  ],
+  cards: [
+    { id: 'drag', front: 'The drag equation?', back: 'Drag = ½ × ρ × Cd × A × v².' },
+    { id: 'v3', front: 'Double the speed: drag force and drag power?', back: 'Force ×4 (v²). Power ×8 (v³).' },
+    { id: 'cda', front: 'Cd vs CdA?', back: 'Cd = shape only. CdA = shape × frontal area: the number that sets drag.' },
+    { id: 'df', front: 'What is downforce and its cost?', back: 'Aero force pushing the car down for more grip. Costs extra drag.' },
+    { id: 'suv', front: 'Why are SUVs draggy?', back: 'Big frontal area plus a blunt, tall shape. High Cd × big A.' },
+  ],
+};

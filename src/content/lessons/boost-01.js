@@ -1,0 +1,66 @@
+// Why boost works
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Packing a fixed-size backpack',
+      body: [
+        'Your backpack (the cylinder) never gets bigger. But if you **squash** the clothes first, more fit in.',
+        '[[boost]] does that to air: a compressor squeezes it, so each cylinder swallows more air mass per stroke.',
+        'More air lets the engine burn more fuel, and burning more fuel is what makes more power.',
+      ] },
+    { tag: 'how', title: 'Power is limited by air, not fuel',
+      body: [
+        'Fuel only burns with oxygen. Gas engines run near a fixed air-fuel ratio ([[stoichiometric]] at cruise), so the air you trap sets how much fuel you can burn.',
+        'A non-turbo engine fills only from outside air pressure pushing in. It can never pack the cylinder **above** atmospheric.',
+        'Forced induction (a [[turbocharger]] or [[supercharger]]) pushes air in above atmospheric. Roughly: **double the air mass ≈ double the fuel ≈ nearly double the power**, minus losses.',
+      ] },
+    { tag: 'see', title: 'Follow the air', visualFirst: true,
+      visual: { type: 'parts', drawing: 'intake' },
+      body: [
+        'Tap the parts in order: filter → MAF → **compressor** → **intercooler** → throttle → manifold.',
+        'Everything after the compressor is under boost. The MAP sensor in the manifold measures that pressure.',
+      ] },
+    { tag: 'math', title: 'Gauge vs absolute pressure',
+      body: [
+        'At sea level the atmosphere pushes about **14.7 psi (1.013 bar)**: that’s 1 atm.',
+        'A boost gauge shows [[gauge-pressure]]: outside air = 0. Idle with the throttle nearly shut reads **vacuum** (below 0).',
+        '[[absolute-pressure]] = gauge + atmosphere. 14.7 psi of boost = 29.4 psi absolute.',
+        '[[pressure-ratio]] = absolute out ÷ absolute in: `29.4 ÷ 14.7 = 2.0`. 1 bar ≈ 14.5 psi, so “1 bar of boost” is a ratio of about 2.0 too.',
+        'In Denver (about 12.1 psi of air) the same 2.0 ratio is only ~12 psi on the gauge. Turbos can spin faster to make up for altitude; non-turbo engines just lose power.',
+      ] },
+    { tag: 'why', title: 'The catch: squeezing makes heat',
+      visual: { type: 'compression', swept: 500, cr: 9.5 },
+      body: [
+        'Same as the bike pump: compress air and it gets hot. That’s [[charge-heating]].',
+        'Example: a ratio of 2.0 from 77 °F (25 °C) air comes out around **240 °F (115 °C)** from a typical compressor. Hot air is thinner, so you get **~1.5×** the air mass, not 2×.',
+        'Hot, high-pressure charge also invites [[knock]]. That’s why turbo engines run lower [[compression-ratio]]s (slide it here) and why the [[intercooler]] exists.',
+      ] },
+    { tag: 'bronco', title: 'Your 2.0 EcoBoost',
+      body: [
+        'The Bronco’s 2.0 L is turbocharged: [[ecoboost]] = turbo + [[direct-injection]].',
+        '250 hp from 2.0 L is **125 hp per liter**, a number that’s hard to reach without boost on an engine tuned for daily driving.',
+        'Ford doesn’t publish a boost figure. Owners logging the same 2.0 in a Maverick report peaks around **16 psi (≈1.1 bar)**. **Not confirmed** for your Bronco; treat it as a ballpark.',
+        'At 16 psi gauge the pressure ratio is about `(16 + 14.7) ÷ 14.7 ≈ 2.1`.',
+      ],
+      facts: ['bronco.engine', 'bronco.output', 'bronco.peakBoost'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'At sea level, a boost gauge reads **14.7 psi**. What is the pressure ratio?', answer: 2, tol: 0.05,
+      hint: 'Convert to absolute first: add 14.7.', why: '(14.7 + 14.7) ÷ 14.7 = **2.0**. Gauge pressure ignores the atmosphere that’s already there.' },
+    { type: 'num', q: 'Boost gauge reads **10 psi** at sea level. What’s the **absolute** manifold pressure?', answer: 24.7, tol: 0.2, unit: 'psi',
+      why: 'Absolute = gauge + atmosphere = 10 + 14.7 = **24.7 psi**.' },
+    { type: 'mc', q: 'Why does more air mass mean more power?', options: ['Air itself burns', 'More air lets the engine burn more fuel at the right air-fuel ratio', 'Pressure pushes the piston down by itself', 'Air cools the engine so it revs higher'], answer: 1,
+      why: 'Fuel needs oxygen to burn. The engine keeps fuel matched to the air it traps, so more air = more fuel burned = more energy released.',
+      wrong: { 2: 'Boost pressure does help on the intake stroke, but the big gain is the extra fuel the extra air lets you burn.' } },
+    { type: 'mc', q: 'Why doesn’t a pressure ratio of 2.0 give you twice the air mass?', options: ['The gauge is wrong', 'Compressing the air heats it, and hot air is less dense', 'Half the air leaks out the exhaust', 'The throttle blocks half of it'], answer: 1,
+      why: 'Charge heating thins the air. That’s the job of the intercooler: cool it back down to recover density.' },
+    { type: 'mc', q: 'What does a boost gauge read at idle with the throttle almost closed?', options: ['About 14.7 psi', 'Zero, exactly', 'Vacuum (below zero)', 'Maximum boost'], answer: 2,
+      why: 'At idle the nearly closed throttle starves the manifold, so it sits below atmospheric: negative gauge pressure, i.e. vacuum.' },
+  ],
+  cards: [
+    { id: 'atm', front: 'Atmospheric pressure at sea level?', back: '≈ **14.7 psi (1.013 bar)** = 1 atm.' },
+    { id: 'gauge-abs', front: 'Gauge vs absolute pressure?', back: 'Gauge treats outside air as 0 (boost gauges). Absolute = gauge + atmosphere.' },
+    { id: 'pr', front: 'Pressure ratio formula?', back: 'Absolute outlet ÷ absolute inlet. 14.7 psi boost at sea level → 2.0.' },
+    { id: 'air-power', front: 'Why does boost make power?', back: 'More air mass per cycle lets the engine burn more fuel.' },
+    { id: 'heat', front: 'Main downside of compressing intake air?', back: 'It heats up: less dense and more knock-prone. Hence intercoolers and lower compression ratios.' },
+  ],
+};

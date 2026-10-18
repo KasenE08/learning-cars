@@ -1,0 +1,73 @@
+// The clutch
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Two spinning records',
+      body: [
+        'Hold a record against a spinning turntable. Press lightly and it **slips**, spinning a bit slower. Press hard and the two **lock** together.',
+        'A [[clutch]] is exactly that: a disc pressed against the spinning [[flywheel]], from “not touching” through “slipping” to “locked.”',
+        'Slipping is the magic part: it lets a car go from 0 mph to moving without stalling the engine.',
+      ] },
+    { tag: 'see', title: 'Take one apart', visualFirst: true,
+      visual: { type: 'exploded', assembly: 'clutch' },
+      body: [
+        '**Flywheel**: bolted to the crank. One friction face.',
+        '**[[clutch-disc|Clutch disc]]**: friction facings on both sides, splined to the gearbox **input shaft**. Springs in the hub soak up engine pulses.',
+        '**[[pressure-plate|Pressure plate]]**: bolted to the flywheel, spins with it, and squeezes the disc against it.',
+        '**[[diaphragm-spring|Diaphragm spring]]** inside the pressure plate makes the clamp force. The **[[release-bearing]]** pushes on its fingers to let go.',
+      ] },
+    { tag: 'how', title: 'Pedal to plate',
+      body: [
+        '**Pedal up**: the diaphragm spring clamps the disc. Engine and gearbox turn as one.',
+        '**Pedal down**: the release bearing presses the spring’s fingers; like an oil-can lid, the outer rim lifts off. Disc spins free.',
+        'Most modern cars push the bearing **[[clutch-hydraulics|hydraulically]]**: a master cylinder at the pedal, a slave cylinder at the gearbox (often a concentric slave built into the bearing).',
+        'The [[bite-point]] is where the disc first starts to grab. Everything between there and fully up is controlled slip.',
+      ] },
+    { tag: 'see', title: 'Feel the slip', visualFirst: true,
+      visual: { type: 'clutchengage' },
+      body: [
+        'Ease the pedal slider up. Watch engine rpm and gearbox input rpm come together as slip drops to 0%.',
+        'Now dump it at low rpm: clamp force arrives faster than the engine can supply torque, and it **stalls**.',
+        'The heat bar is the cost of slip: that energy goes straight into the facings.',
+      ] },
+    { tag: 'math', title: 'How much torque can it hold?',
+      body: [
+        '`T = μ × F × r × n`: friction coefficient × clamp force × mean facing radius × number of friction faces.',
+        'Single plate = **2 faces** (flywheel side + pressure-plate side).',
+        'Example: μ 0.3, 8,000 N (1,800 lbf) clamp, 0.1 m radius → 0.3 × 8,000 × 0.1 × 2 = **480 N·m (354 lb-ft)**.',
+        'More torque → stronger spring (heavier pedal), bigger disc, grippier material, or **more plates** (racing twin-plates, and every bike).',
+      ] },
+    { tag: 'why', title: 'Wear, slip and the dual-mass flywheel',
+      body: [
+        'Facings wear thinner with every launch. A worn clutch **slips under load**: revs climb, speed doesn’t. Then you smell it.',
+        'Riding the pedal, slow launches on hills and towing all add heat and wear. Overheated facings **glaze** and grab badly.',
+        'A [[dual-mass-flywheel]] splits the flywheel in two with big arc springs between them. It isolates engine pulses from the gearbox (less rattle), but adds cost and can wear out too.',
+      ] },
+    { tag: 'bikes', title: 'Bikes do it wet, with lots of plates',
+      body: [
+        'Your shortlist bikes use a **wet multi-plate** clutch: a stack of small plates running in engine oil. Many faces make up for the small diameter.',
+        'The Ninja 500 adds an **assist & slipper** clutch: lighter lever, and it slips on purpose when downshifts would lock the rear. Full story in Track 2.',
+      ],
+      facts: ['ninja.clutch'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Order the clutch parts from the **engine side** to the **gearbox side**.', items: ['Flywheel', 'Clutch disc', 'Pressure plate (with diaphragm spring)', 'Release bearing'],
+      why: 'The disc is sandwiched between flywheel and pressure plate. The release bearing sits on the gearbox side, pressing the diaphragm spring’s fingers.' },
+    { type: 'mc', q: 'With the pedal **released** (up), the clutch is…', options: ['Disengaged: disc spins free', 'Engaged: the diaphragm spring clamps the disc', 'Half slipping all the time', 'Locked by hydraulic pressure'], answer: 1,
+      why: 'The spring clamps by default. Pressing the pedal is what takes clamp force away.',
+      wrong: { 3: 'Hydraulics only move the release bearing to **release** the clutch; the spring does the clamping.' } },
+    { type: 'num', q: 'Single-plate clutch: μ = 0.3, clamp force 10,000 N, mean radius 0.1 m. Torque capacity in N·m?', answer: 600, tol: 0, unit: 'N·m',
+      hint: 'A single plate has two friction faces.', why: '0.3 × 10,000 × 0.1 × **2 faces** = **600 N·m** (≈443 lb-ft).' },
+    { type: 'tap', q: 'Tap the clutch on this bike.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'clutch',
+      why: 'On these bikes the wet clutch sits on the right side of the engine, under a round cover. It links the crank to the gearbox and runs in engine oil.',
+      wrong: { gearbox: 'The gearbox sits behind the clutch inside the same cases; the clutch is what connects the two.' } },
+    { type: 'mc', q: 'Revs climb in a high gear under full throttle, but speed barely rises. Most likely?', options: ['Dual-mass flywheel is too heavy', 'The clutch is worn and slipping', 'The diaphragm spring is too strong', 'The release bearing is too quiet'], answer: 1,
+      why: 'Worn facings (or oil on them) can’t hold full torque. High gear + full throttle is the biggest torque the clutch sees, so it slips there first.' },
+  ],
+  cards: [
+    { id: 'stack', front: 'Clutch stack, engine to gearbox?', back: 'Flywheel → disc → pressure plate (diaphragm spring) → release bearing.' },
+    { id: 'default', front: 'Is a car clutch engaged or released by default?', back: 'Engaged. The diaphragm spring clamps; the pedal releases.' },
+    { id: 'capacity', front: 'Clutch torque capacity formula?', back: 'T = μ × F × r × n (single plate: n = 2 faces).' },
+    { id: 'slip', front: 'Symptom of a worn clutch?', back: 'Slips under load: rpm rises without matching speed, often with a burning smell.' },
+    { id: 'dmf', front: 'Dual-mass flywheel?', back: 'Two flywheel halves joined by arc springs. Filters engine pulses from the gearbox; costs more and wears.' },
+  ],
+};

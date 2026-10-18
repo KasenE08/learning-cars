@@ -1,0 +1,77 @@
+// Alternator & charging
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'The paycheck',
+      body: [
+        'The battery is a **savings account**. The [[alternator]] is your **paycheck**: while the engine runs, it pays for everything electrical and tops the savings back up.',
+        'Nothing is free: every amp it makes is paid for in fuel, through the belt on the crank.',
+      ] },
+    { tag: 'see', title: 'Where it sits in the system', visualFirst: true,
+      visual: { type: 'parts', drawing: 'charging' },
+      body: [
+        'Tap the **alternator** and the **belt**: the crank pulley spins it, usually 2–3× faster than the engine.',
+        'Its output feeds the battery and every load. The **PCM** tells it how hard to work.',
+      ] },
+    { tag: 'how', title: 'Spinning magnet, three coils',
+      body: [
+        'Faraday: a **changing magnetic field** through a coil induces a voltage.',
+        'The **rotor** is an electromagnet. A small **field current** reaches it through brushes and slip rings. The **stator** around it has three sets of windings.',
+        'As the rotor spins, each winding sees the field sweep past: **three-phase AC**, rising in frequency and voltage with rpm.',
+      ] },
+    { tag: 'how', title: 'Rectifier: AC to DC',
+      body: [
+        'A car needs DC. A [[rectifier]] of **six diodes** (a three-phase full-wave bridge) lets current flow only one way, flipping each phase’s negative half up.',
+        'The output is bumpy DC (ripple); the battery smooths it like a big capacitor.',
+        'A dead diode means less output and more ripple, sometimes heard as a whine that rises with rpm in the speakers.',
+      ] },
+    { tag: 'how', title: 'Regulator: holding the voltage',
+      body: [
+        'Output depends on **rotor speed × field strength**. Speed is set by the engine, so the [[voltage-regulator]] controls the **field current** instead.',
+        'It switches the field on and off rapidly (like [[pwm]]) to hold roughly **13.5–14.7 V**, slightly higher when cold because cold batteries need more push to charge.',
+        'Ohm’s-law view: a few amps of field current control 100+ A of output. A small current controlling a big one, a theme you’ll see again with relays and transistors.',
+      ] },
+    { tag: 'how', title: 'Smart charging',
+      body: [
+        'In [[smart-charging]], the [[ecu|PCM]] decides the target voltage, using a [[battery-monitor-sensor]] on the negative post that measures current, voltage and temperature.',
+        '**Accelerating:** charge less, so more crank power goes to the wheels. **Coasting or braking:** charge hard, using momentum you were going to waste anyway.',
+        'To make room for that “free” charge, the battery is often held below 100 %. It saves a little fuel and works the battery harder.',
+      ] },
+    { tag: 'math', title: 'What the alternator costs',
+      body: [
+        'Electrical output: `14 V × 100 A = 1,400 W`.',
+        'Alternators are only ~**50–70 % efficient**. At 60 %: `1,400 / 0.6 ≈ 2,300 W` from the crank, about **3 hp**.',
+        'The missing ~900 W becomes heat, which is why alternators have fans and why their output drops when they’re hot.',
+      ] },
+    { tag: 'bronco', title: 'Start-stop and your battery',
+      body: [
+        'Your Bronco Sport has [[start-stop]]. At every stop the engine shuts off and the battery alone runs the fan, lights, screens and modules, then has to crank the engine again.',
+        'Start-stop systems generally won’t stop the engine if the battery is low, the engine is cold or the cabin needs a lot of heating/cooling.',
+        'NHTSA’s recall documents note that the deceleration-charging strategy also put extra load on the battery. Smart charging and start-stop both lean on it.',
+      ],
+      facts: ['bronco.startStop', 'bronco.battery', 'bronco.batteryRecall'] },
+  ],
+  quiz: [
+    { type: 'tap', q: 'Tap the **alternator**.', visual: { type: 'parts', drawing: 'charging' }, answer: 'alternator',
+      why: 'The belt-driven alternator turns crank power into electrical power for the battery and all loads.',
+      wrong: { starter: 'That’s the starter: it uses power to crank the engine instead of making it.', battery: 'The battery stores energy; it doesn’t make it.' } },
+    { type: 'order', q: 'Order the energy’s path from the engine to the battery.',
+      items: ['Crankshaft pulley', 'Belt', 'Spinning rotor field', 'Stator makes three-phase AC', 'Rectifier makes DC', 'Battery and loads'],
+      why: 'Mechanical → magnetic → AC in the stator → diodes turn it into DC → the system.' },
+    { type: 'mc', q: 'How does the regulator control the alternator’s output voltage?',
+      options: ['By changing engine rpm', 'By varying the rotor’s field current', 'By slipping the belt', 'By switching diodes off'], answer: 1,
+      why: 'Output ∝ speed × field strength. The engine sets the speed, so the regulator varies the field current.' },
+    { type: 'num', q: 'An alternator delivers **14 V at 100 A** and is **60 %** efficient. How many **watts** does it take from the crank?',
+      answer: 2333, tol: 20, unit: 'W', hint: 'Electrical power ÷ efficiency',
+      why: '`14 × 100 = 1,400 W` out; `1,400 / 0.6 ≈ 2,333 W` in (~3 hp). The rest becomes heat.' },
+    { type: 'mc', q: 'With smart charging, when does the alternator charge **hardest**?',
+      options: ['Hard acceleration', 'Coasting and braking', 'Only at idle', 'Only when the engine is cold'], answer: 1,
+      why: 'Coasting energy would otherwise be wasted, so the PCM raises the charge voltage then and lowers it under acceleration.' },
+  ],
+  cards: [
+    { id: 'parts', front: 'Alternator: rotor vs stator?', back: 'Rotor: spinning electromagnet (field current via brushes/slip rings). Stator: fixed three-phase windings where AC is induced.' },
+    { id: 'rect', front: 'What does the rectifier do?', back: 'Six diodes (three-phase bridge) turn the stator’s AC into DC.' },
+    { id: 'reg', front: 'How is alternator voltage regulated?', back: 'By switching the rotor’s field current to hold ~13.5–14.7 V.' },
+    { id: 'smart', front: 'What is smart charging?', back: 'The PCM sets alternator voltage from battery-sensor data: charge less when accelerating, more when coasting/braking.' },
+    { id: 'cost', front: 'Rough crank cost of 1.4 kW of electrical load?', back: '~2.3 kW (~3 hp) at ~60 % alternator efficiency.' },
+  ],
+};

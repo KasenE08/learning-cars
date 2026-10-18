@@ -1,0 +1,73 @@
+// Singles, twins & odd layouts
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A drummer’s rhythm',
+      body: [
+        'A **single** is a drummer hitting once per bar, then waiting. A **twin** hits twice per bar.',
+        'Twins can hit **evenly** (boom … boom …) or **syncopated** (boom-boom … boom-boom …). The spacing comes from the [[crank-angle]].',
+        'Same drum kit, very different groove. That’s why two twins can feel and sound nothing alike.',
+      ] },
+    { tag: 'see', title: 'The single: one big thump', visualFirst: true,
+      visual: { type: 'layout', layout: 'single' },
+      body: [
+        'One power stroke every **720°**, then a long coast. A heavy [[flywheel]] carries it through the gap.',
+        'Nothing cancels the piston’s up/down force. Counterweights trade some of it for side-to-side shake; most modern singles add a [[balance-shaft]].',
+        'Simple, light, narrow, punchy low down: dirt bikes and small street bikes (“thumpers”).',
+      ] },
+    { tag: 'see', title: '180° parallel twin', visualFirst: true,
+      visual: { type: 'layout', layout: 'twin180' },
+      body: [
+        '[[parallel-twin]] with a **180° crank**: one piston up while the other is down.',
+        'Firing gaps: **180°, then 540°**. Uneven, but the up/down primary forces cancel.',
+        'Leftovers: the pistons are side by side, so the engine rocks (a [[rocking-couple]]), and the secondary forces add up like an inline-4’s. A balance shaft tames it.',
+        '~~The old 360° twin (both pistons up together) fires evenly every 360° but shakes like a big single.~~',
+      ] },
+    { tag: 'see', title: '270° parallel twin', visualFirst: true,
+      visual: { type: 'layout', layout: 'twin270' },
+      body: [
+        'Crankpins **270°** apart (often called 90° from the other direction). Firing gaps: **270°, then 450°**.',
+        'That’s exactly the rhythm of a **90° V-twin**, in a narrower engine with one head.',
+        'It still rocks, so it uses a balance shaft. Riders describe a punchier, more “V-twin” feel; how much that helps traction is debated.',
+        'Examples: Yamaha MT-07, Triumph Bonneville twins, Aprilia RS 660 and RS 457.',
+      ] },
+    { tag: 'bikes', title: 'Your two bikes',
+      body: [
+        '**Ninja 500**: 180° parallel twin with a balancer shaft. Smooth, revvy, a higher-pitched buzz.',
+        '**RS 457**: 270° parallel twin with a balance shaft. A lumpier, V-twin-like beat.',
+        'Same layout, same size class, different crank: that alone changes how they sound and feel. Full sound breakdown in the Exhaust unit.',
+      ],
+      facts: ['ninja.engine', 'ninja.crankAngle', 'rs457.engine', 'rs457.crankAngle'] },
+    { tag: 'see', title: 'The V-twin', visualFirst: true,
+      visual: { type: 'layout', layout: 'vtwin' },
+      body: [
+        'A [[v-twin]]: two cylinders in a V on one crankpin. At **90°** (Ducati’s “L-twin”), counterweights can cancel the primary forces completely. Firing gaps: 270° / 450°.',
+        'Harley’s **45°** V-twin fires at about 315° / 405°: the famous lopey “potato-potato.”',
+        'Downside: a 90° V is long front to back, which is awkward in a bike frame. One reason makers copy its rhythm with 270° parallel twins.',
+      ] },
+    { tag: 'how', title: 'The odd ones',
+      body: [
+        '**[[vr6]]**: a V so narrow (about 10–15°) that both banks share **one head**. Short and compact.',
+        '**[[w-engine]]**: two narrow-angle banks joined on one crank, like two VR engines side by side. VW’s W12 and Bugatti’s W16.',
+        '**[[rotary-engine]]** (Wankel): **not a piston engine at all.** A triangular rotor spins in an oval-ish housing; no pistons going up and down, no valves. Mazda RX-7 and RX-8.',
+      ] },
+  ],
+  quiz: [
+    { type: 'num', q: 'A 270° twin’s first firing gap is 270°. What is the second gap, in crank degrees?', answer: 450, tol: 0, unit: '°',
+      why: 'Both cylinders fire once per 720° cycle: 720° − 270° = **450°**. Same rhythm as a 90° V-twin.' },
+    { type: 'mc', q: 'Which of your two bikes has the 270° crank?', options: ['Ninja 500', 'RS 457', 'Both', 'Neither'], answer: 1,
+      why: 'The RS 457 uses a 270° crank. The Ninja 500 uses a 180° crank. Both are parallel twins with a balance shaft.' },
+    { type: 'order', q: 'Order from the **longest** gap between power strokes to the shortest (even-firing versions).', items: ['Single', 'Inline-3', 'Inline-4', 'Inline-6', 'V8'],
+      why: '720° ÷ cylinders: single 720°, I3 240°, I4 180°, I6 120°, V8 90°.' },
+    { type: 'mc', q: 'Why isn’t a Wankel rotary a piston layout?', options: ['It has pistons, just more of them', 'A triangular rotor spins in a housing; nothing moves up and down', 'It only has one cylinder', 'It runs on a 2-stroke cycle'], answer: 1,
+      why: 'A rotary replaces pistons, rods and valves with a spinning rotor. It still does intake, compression, power and exhaust, just in different parts of the housing.' },
+    { type: 'mc', q: 'What does a 270° parallel twin imitate?', options: ['A single', 'A 90° V-twin’s firing rhythm', 'An inline-4', 'A flat-plane V8'], answer: 1,
+      why: 'Its 270° / 450° firing gaps match a 90° V-twin, in a narrower engine with one cylinder head.' },
+  ],
+  cards: [
+    { id: 'single', front: 'Single-cylinder firing interval and its problem?', back: 'Every 720°. Primary shake nothing cancels → counterweights + balance shaft.' },
+    { id: 't180', front: '180° parallel twin firing gaps?', back: '180°, then 540°. Primary forces cancel; rocking couple + secondary remain.' },
+    { id: 't270', front: '270° parallel twin firing gaps?', back: '270°, then 450°: the rhythm of a 90° V-twin.' },
+    { id: 'bikes', front: 'Ninja 500 vs RS 457 crank?', back: 'Ninja 500: 180°. RS 457: 270°. Both use a balance shaft.' },
+    { id: 'rotary', front: 'Is a rotary a piston layout?', back: 'No. A triangular rotor spins in a housing; no pistons or valves.' },
+  ],
+};

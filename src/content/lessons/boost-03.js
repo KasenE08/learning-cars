@@ -1,0 +1,67 @@
+// Spool, lag & sizing
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A heavy merry-go-round',
+      body: [
+        'Pushing a playground merry-go-round: it takes a moment to get it spinning fast. That delay is **lag**.',
+        'And if only one kid is pushing, it never gets fast at all. You need enough pushers first: that’s the **boost threshold**.',
+        'The exhaust is the pusher. Low rpm or a light throttle = not much exhaust = not much push.',
+      ] },
+    { tag: 'see', title: 'Feel the delay', visualFirst: true,
+      visual: { type: 'turbo' },
+      body: [
+        'Set rpm low and snap the throttle open: shaft speed and boost barely move.',
+        'Now try it at higher rpm: boost arrives, but still **trails** the throttle by a moment.',
+      ] },
+    { tag: 'how', title: 'Threshold vs lag (not the same thing)',
+      body: [
+        '[[boost-threshold]]: the lowest rpm where the turbo **can** make real boost at full throttle. Below it, there isn’t enough exhaust flow, no matter how long you wait.',
+        '[[turbo-lag]]: the **delay** after you floor it above the threshold. The rotor has inertia and has to [[spool]] up, and the pipes and intercooler have to fill.',
+        'Both get worse with a bigger, heavier turbo and better with a smaller one.',
+      ] },
+    { tag: 'how', title: 'Small turbo vs big turbo',
+      body: [
+        '**Small**: light wheels, tight turbine housing (small [[a-r-ratio]]) that speeds the gas up. Low threshold, little lag, strong low-end torque.',
+        'But a small turbo **chokes** at high rpm: it can’t flow enough air, its compressor runs hot and inefficient, and the turbine backs up exhaust pressure.',
+        '**Big**: flows a lot of air for big top-end power, but needs lots of exhaust to wake up: higher threshold, more lag.',
+        'Every turbo choice is that trade. Factory daily drivers pick small-ish turbos for response.',
+      ] },
+    { tag: 'how', title: 'Tricks to cheat the trade-off',
+      body: [
+        '[[twin-scroll]]: the turbine housing is split in two. On an inline-4 firing 1-3-4-2 ([[firing-order]]), cylinders **1+4** feed one scroll and **2+3** the other, so exhaust pulses don’t collide. Quicker spool.',
+        '[[twin-turbo]] (parallel): two smaller turbos, usually one per bank of a V engine, like Ford’s 2.7 and 3.5 EcoBoost V6s.',
+        '[[sequential-turbo|Sequential]]: a small turbo works alone down low, a big one joins up top. The Mk4 Toyota Supra’s 2JZ-GTE is the famous example.',
+        '[[vgt]]: movable vanes make one turbo act small or big. Common on diesels; rare on gas engines because exhaust is much hotter. Porsche’s 2006 997 911 Turbo was the first gasoline car to use it.',
+        '~~Also exist: electrically assisted turbos (a motor on the shaft) and compound turbos (two in series, mostly diesel trucks).~~',
+      ] },
+    { tag: 'bronco', title: 'Your torque curve shows the sizing',
+      visualFirst: true,
+      visual: { type: 'dyno', engine: 'bronco' },
+      body: [
+        'Ford rates peak torque at **277 lb-ft (376 N·m) @ 3,000 rpm**; some sources list 275 lb-ft. Move the cursor across the curve.',
+        'Turbo engines tend to make a broad, flat torque “plateau” once boost arrives (the shape here is illustrative).',
+        'A smallish **twin-scroll** turbo is how a 2.0 gets that torque low in the rev range.',
+      ],
+      facts: ['bronco.output', 'bronco.turboType'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'At 1,200 rpm you floor it and wait 5 seconds, but boost never builds. That’s…', options: ['Turbo lag', 'Below the boost threshold', 'Compressor surge', 'Wastegate creep'], answer: 1,
+      why: 'Waiting longer doesn’t help, so it isn’t lag. The engine simply isn’t making enough exhaust flow to drive the turbo: you’re below the threshold.',
+      wrong: { 0: 'Lag is a delay. Here boost never comes at all, which points to the threshold.' } },
+    { type: 'mc', q: 'Swapping to a much **bigger** turbo usually gives…', options: ['Less lag and more top-end', 'More top-end power but more lag and a higher threshold', 'Same power, quicker spool', 'Lower boost everywhere'], answer: 1,
+      why: 'Big turbos flow more air for top-end power, but their heavier wheels and bigger housings need more exhaust to spin up.' },
+    { type: 'order', q: 'You floor it above the threshold. Put what happens in order.', items: ['Throttle opens', 'Exhaust flow rises', 'Turbine and shaft speed up', 'Manifold pressure builds to target', 'Wastegate starts to open'],
+      why: 'More air in → more exhaust out → turbine spools → boost builds → the wastegate opens to hold boost at target (next lesson).' },
+    { type: 'mc', q: 'On a 1-3-4-2 inline-4, why pair cylinders **1+4** and **2+3** in a twin-scroll housing?', options: ['They’re next to each other', 'Each pair fires 360° apart, so pulses in one scroll don’t step on each other', 'They make the most power', 'It halves the boost'], answer: 1,
+      why: 'Cylinders 1 and 4 fire a full revolution apart (same for 2 and 3). Keeping each pair in its own scroll stops one cylinder’s pulse from fighting another’s, so more pulse energy reaches the turbine.' },
+    { type: 'mc', q: 'Why are variable-geometry turbos rare on gasoline engines?', options: ['They don’t work with spark plugs', 'Gas engine exhaust is much hotter, which is hard on the movable vanes', 'They’re illegal', 'Gas engines don’t need boost'], answer: 1,
+      why: 'Gasoline exhaust runs far hotter than diesel exhaust. Movable vanes that survive that heat are expensive, so VGT is mostly a diesel thing, with exceptions like Porsche’s 911 Turbo.' },
+  ],
+  cards: [
+    { id: 'thresh-lag', front: 'Boost threshold vs turbo lag?', back: 'Threshold: lowest rpm that can make boost. Lag: delay before boost arrives above that rpm.' },
+    { id: 'size', front: 'Small vs big turbo?', back: 'Small: quick spool, chokes up top. Big: more top-end, more lag.' },
+    { id: 'twinscroll', front: 'What does twin-scroll do?', back: 'Splits the turbine inlet so exhaust pulses from paired cylinders don’t interfere → quicker spool.' },
+    { id: 'seq', front: 'Parallel twin-turbo vs sequential?', back: 'Parallel: two equal turbos at once (often one per bank). Sequential: small one first, big one joins at higher rpm.' },
+    { id: 'vgt', front: 'Where are VGTs common?', back: 'Diesels. Rare on gas engines (exhaust too hot); Porsche’s 911 Turbo is the classic exception.' },
+  ],
+};

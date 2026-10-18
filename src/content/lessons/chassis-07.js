@@ -1,0 +1,72 @@
+// ABS, traction & stability control
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A hockey puck can’t turn',
+      body: [
+        'A sliding hockey puck goes wherever it was already heading. Turning it is impossible.',
+        'A **locked** tire is a puck: it slides, and steering does nothing. A **rolling** tire can still grip sideways and steer.',
+        'Old advice was “pump the brakes on ice.” ABS does that for you, at each wheel separately, many times a second.',
+      ] },
+    { tag: 'why', title: 'Why a locked wheel is bad',
+      body: [
+        'A tire grips hardest with a little [[slip-ratio|slip]], turning a bit slower than the road passes under it. Fully locked, it slides and grip drops.',
+        'Worse, a sliding tire has no grip left for steering. The car plows straight on.',
+        'So the main job of [[abs]] is **steering control while braking hard**. On pavement it usually stops shorter too; on loose gravel or deep snow it can stop longer, since a locked tire builds a wedge of material.',
+      ] },
+    { tag: 'how', title: 'How ABS works',
+      body: [
+        'A [[wheel-speed-sensor]] at each wheel reads a toothed or magnetic ring spinning with the hub.',
+        'If one wheel slows much faster than the car can (it’s about to lock), the ABS module tells the **hydraulic modulator** to **hold**, then **release**, then **reapply** pressure to that wheel.',
+        'A small pump returns the released fluid. The cycle repeats many times a second.',
+        'That’s the **pulsing pedal and buzzing** you feel in a hard stop. Normal: keep pressing firmly and steer.',
+      ] },
+    { tag: 'how', title: 'Traction control: the opposite problem',
+      body: [
+        '[[traction-control]] uses the same wheel sensors to catch a wheel spinning **under power** instead of locking under braking.',
+        '**Brake the spinning wheel**: through an open differential, that sends torque across to the wheel that has grip.',
+        '**Cut engine torque**: close the throttle, pull spark timing, or cut fuel until the tire hooks up.',
+      ] },
+    { tag: 'see', title: 'One wheel on ice', visualFirst: true,
+      visual: { type: 'awd', mode: 'slippery', scene: 'ice' },
+      body: [
+        'Watch the wheel on ice start to spin, then get braked. The torque it was wasting goes to the wheels with grip.',
+        'Illustrative: the real system blends this with the AWD clutches.',
+      ] },
+    { tag: 'how', title: 'Stability control: what you want vs what the car does',
+      body: [
+        '[[esc]] compares **what you asked for** (steering angle sensor) with **what the car is doing** ([[yaw-rate]] sensor + lateral g + wheel speeds).',
+        '[[understeer|Understeer]] (plowing wide): brake the **inside rear** to help the car rotate into the turn.',
+        '[[oversteer|Oversteer]] (tail sliding out): brake the **outside front** to straighten it up.',
+        'It can also cut engine torque. ESC has been required on new US cars and light trucks since the 2012 model year.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco',
+      body: [
+        '4-wheel discs with **ABS**, plus ESC (Ford’s name is AdvanceTrac; one dealer listing adds Roll Stability Control, not confirmed).',
+        'The G.O.A.T. modes retune the 4x4 system and throttle for each surface. Exactly how each mode changes traction control isn’t spelled out by Ford, so it isn’t covered here.',
+        'The Badlands rear drive unit can clamp each rear wheel’s clutch separately, so it can send drive to the gripping side with clutches instead of only braking.',
+      ],
+      facts: ['bronco.brakes', 'bronco.stability', 'bronco.goat', 'bronco.rdu'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What’s the **main** benefit of ABS?', options: ['It always stops shorter', 'You can still steer while braking hard', 'Brake pads last longer', 'It makes the pedal softer'], answer: 1,
+      why: 'Rolling tires can steer; locked ones can’t. ABS usually stops shorter on pavement but can stop longer on loose gravel or deep snow.',
+      wrong: { 0: 'Not always: on loose gravel or deep snow a locked tire can stop shorter.' } },
+    { type: 'order', q: 'Put one ABS cycle in order.', items: ['Wheel sensor sees a wheel slowing too fast', 'Module commands the modulator', 'Valve releases pressure to that wheel', 'Wheel spins back up', 'Pressure is reapplied'],
+      why: 'Sense → decide → release → recover → reapply, repeated many times a second.' },
+    { type: 'mc', q: 'The tail is sliding out in a turn (**oversteer**). What does ESC brake?', options: ['Inside rear', 'Outside front', 'Both rears', 'Nothing; it only cuts the throttle'], answer: 1,
+      why: 'Braking the outside front pulls the nose outward and straightens the car. Understeer is the opposite: brake the inside rear.',
+      wrong: { 0: 'That’s the fix for understeer (plowing wide).' } },
+    { type: 'tap', q: 'Tap the part that tells ABS a wheel is about to **lock**.', visual: { type: 'parts', drawing: 'brakes' }, answer: 'wheel-sensor',
+      why: 'Each wheel speed sensor reports how fast its wheel turns. A sudden drop means it’s about to lock.',
+      wrong: { abs: 'That’s the module and modulator that acts on the signal, not the sensor.' } },
+    { type: 'mc', q: 'Which sensor tells stability control what the **driver wants**?', options: ['Yaw rate sensor', 'Steering angle sensor', 'Oxygen sensor', 'Wheel speed sensor'], answer: 1,
+      why: 'Steering angle = intended path. Yaw rate and lateral g = what the car is actually doing. ESC acts on the difference.' },
+  ],
+  cards: [
+    { id: 'abs', front: 'Main job of ABS?', back: 'Keep wheels from locking so you can still steer while braking hard.' },
+    { id: 'pulse', front: 'Why does the pedal pulse during ABS?', back: 'The modulator is holding, releasing and reapplying pressure many times a second. Normal: keep pressing.' },
+    { id: 'tc', front: 'Two ways traction control stops wheelspin?', back: 'Brake the spinning wheel and cut engine torque (throttle, spark, fuel).' },
+    { id: 'esc', front: 'What does ESC compare?', back: 'Steering angle (intent) vs yaw rate and lateral g (what the car does).' },
+    { id: 'us-os', front: 'ESC: brake which wheel for understeer / oversteer?', back: 'Understeer: inside rear. Oversteer: outside front.' },
+  ],
+};

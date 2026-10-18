@@ -1,0 +1,71 @@
+// Brake hydraulics
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Two syringes and a tube',
+      body: [
+        'Connect a skinny syringe to a fat one with a tube full of water. Push the skinny one **a long way** with light force.',
+        'The fat one moves **a short way** with a lot of force. Same pressure, bigger area, bigger push.',
+        'Your brakes are exactly that: a skinny piston at the pedal, fat pistons at the wheels.',
+      ] },
+    { tag: 'see', title: 'Pedal to pad', visualFirst: true,
+      visual: { type: 'parts', drawing: 'brakes' },
+      body: [
+        'Tap along the path: pedal → booster → master cylinder → lines → ABS unit → caliper → pads squeeze the rotor.',
+        'A wheel sensor at each corner reports wheel speed (that’s for ABS, two lessons from now).',
+      ] },
+    { tag: 'how', title: 'Pascal’s law',
+      body: [
+        '[[pascals-law]]: pressure in a sealed fluid is the **same everywhere** in it.',
+        '`pressure = force ÷ area`, so `force = pressure × area`. A bigger piston at the other end gets a bigger force.',
+        'Liquid barely compresses, so pedal movement goes straight to the calipers. **Air** does compress: a bubble in the lines makes a **spongy** pedal.',
+      ] },
+    { tag: 'how', title: 'Lever, booster, master cylinder',
+      body: [
+        'The **pedal is a lever**: your foot moves a long way, the pushrod moves a short way with several times the force.',
+        'The [[brake-booster]] multiplies it again. A vacuum booster uses engine vacuum on a big diaphragm; some cars use a vacuum pump or an electric booster instead.',
+        'The [[master-cylinder]] turns that push into pressure. It’s **tandem**: two pistons feeding two separate circuits, so one leak can’t take out every wheel.',
+      ] },
+    { tag: 'math', title: 'Piston area does the work',
+      body: [
+        'Say the booster pushes **400 lb** into a master cylinder piston of **0.5 in²**: 400 ÷ 0.5 = **800 psi (55 bar)** in the lines.',
+        'A caliper piston of **4 in²** feels 800 × 4 = **3,200 lb** of clamp force.',
+        'The price: the caliper piston moves 1/8 as far as the master piston. Pads only need to move a fraction of a millimeter, so that’s fine.',
+        'Front calipers get bigger pistons, because weight shifts forward under braking and the fronts do most of the stopping.',
+      ] },
+    { tag: 'how', title: 'Brake fluid: why it gets old',
+      body: [
+        'Normal [[brake-fluid]] (DOT 3, 4 and 5.1) is glycol-based and [[hygroscopic]]: it slowly soaks up moisture from the air through hoses and seals.',
+        'Water lowers the boiling point. Hard braking heats the fluid; if it boils, vapor bubbles form, and gas compresses: the pedal sinks (**vapor lock**).',
+        'Minimum boiling points (dry / wet with 3.7% water): DOT 3 **401 / 284 °F (205 / 140 °C)**; DOT 4 **446 / 311 °F (230 / 155 °C)**; DOT 5.1 **500 / 356 °F (260 / 180 °C)**.',
+        '**DOT 5** is silicone: doesn’t absorb water, but doesn’t mix with the others and isn’t used in most modern cars.',
+      ],
+      note: 'That moisture creep is why brake fluid is replaced on a time schedule, not a mileage one.' },
+    { tag: 'bronco', title: 'Your Bronco',
+      body: [
+        '**Disc brakes at all four wheels, with ABS.** Same hydraulic idea at every corner.',
+        'The exact fluid spec and circuit layout (front/rear vs diagonal split) aren’t confirmed in the sources checked; the owner’s manual and reservoir cap name the fluid.',
+      ],
+      facts: ['bronco.brakes'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'The booster pushes **250 lb** into a **0.5 in²** master cylinder piston. The caliper piston is **3 in²**. Clamp force at the caliper?', answer: 1500, tol: 0, unit: 'lb',
+      hint: 'First find line pressure (force ÷ area).',
+      why: '250 ÷ 0.5 = **500 psi**. 500 psi × 3 in² = **1,500 lb**.' },
+    { type: 'order', q: 'Put the brake path in order, from your foot to the rotor.', items: ['Pedal', 'Booster', 'Master cylinder', 'Brake lines', 'Caliper', 'Pads'],
+      why: 'The pedal lever pushes the booster, which pushes the master cylinder; pressure travels down the lines to the caliper, which squeezes the pads on the rotor. (The ABS unit sits in the lines.)' },
+    { type: 'mc', q: 'A brake pedal feels **spongy**. The classic cause?', options: ['Too much brake fluid', 'Air (or vapor) in the lines', 'New pads', 'High tire pressure'], answer: 1,
+      why: 'Liquid barely compresses, gas does. Any bubble squashes before the pistons move, so the pedal feels soft.' },
+    { type: 'mc', q: 'Why does old brake fluid boil sooner?', options: ['It evaporates', 'It has absorbed water, which lowers its boiling point', 'It gets thicker', 'It reacts with the pads'], answer: 1,
+      why: 'Glycol fluids are hygroscopic. Water creeps in over time and drags the boiling point down, e.g. DOT 4 from 446 °F dry to 311 °F wet.' },
+    { type: 'tap', q: 'Tap the part that turns your push into **hydraulic pressure**.', visual: { type: 'parts', drawing: 'brakes' }, answer: 'master',
+      why: 'The master cylinder’s pistons pressurize the fluid. The booster only multiplies the push going into it.',
+      wrong: { booster: 'The booster multiplies force, but it’s the master cylinder that makes the pressure.' } },
+  ],
+  cards: [
+    { id: 'pascal', front: 'Pascal’s law in brakes?', back: 'Pressure is equal everywhere in the fluid, so force = pressure × piston area. Big caliper piston = big force.' },
+    { id: 'master', front: 'Why is the master cylinder “tandem”?', back: 'Two pistons, two separate circuits: one leak can’t take out every wheel.' },
+    { id: 'booster', front: 'What does the brake booster do?', back: 'Multiplies pedal force, usually using engine vacuum on a big diaphragm.' },
+    { id: 'hygro', front: 'Why does brake fluid need replacing over time?', back: 'It’s hygroscopic: absorbs water, which lowers its boiling point. Boiling → vapor → soft pedal.' },
+    { id: 'dot', front: 'DOT 4 boiling points (dry / wet)?', back: 'At least 446 °F (230 °C) dry and 311 °F (155 °C) wet.' },
+  ],
+};

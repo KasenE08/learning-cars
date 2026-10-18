@@ -1,0 +1,72 @@
+// How to read a spec sheet
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A nutrition label for cars',
+      body: [
+        'A spec sheet is like a food label: every number is real, but you need to know the **serving size** and the **fine print**.',
+        '“250 hp*” means nothing until you read what the asterisk says.',
+      ] },
+    { tag: 'how', title: 'Power and engine lines',
+      body: [
+        'US ratings are [[sae-net]] (SAE J1349): measured at the crank with the accessories the engine needs to run and the production intake and exhaust fitted. Before 1972, US makers quoted bigger “gross” numbers with none of that.',
+        'Footnotes often say the rating was achieved on **premium fuel**. On regular, the computer pulls spark timing to avoid [[knock]] and makes a bit less.',
+        'Real example (full-size Bronco 2.3 L, not your Sport): **275 hp on regular, 300 hp on premium**.',
+        'Your manual reportedly says 87 is the minimum and premium is “recommended for best overall performance.” Not confirmed from Ford’s own document.',
+      ],
+      facts: ['bronco.bigBroncoFuel', 'bronco.fuel'] },
+    { tag: 'see', title: 'Bore, stroke, displacement', visualFirst: true,
+      visual: { type: 'displacement', preset: 'bronco' },
+      body: [
+        'Spec sheets list bore × stroke and displacement. Now you can check one against the other.',
+        '87.5 × 83.1 mm × 4 cylinders = 1,999 cc. If a sheet’s numbers don’t multiply out, one of them is a typo.',
+      ] },
+    { tag: 'how', title: 'Weights and ratings',
+      body: [
+        '[[curb-weight|Curb weight]]: empty car with all fluids and a full (or near-full) tank, no people or cargo.',
+        '[[gvwr|GVWR]]: the most the loaded vehicle may weigh. [[payload]] = GVWR − actual curb weight: **people + cargo + tongue weight** all count.',
+        'Towing: max trailer weight, plus a max [[tongue-weight]] (usually ~10% of the trailer) pushing down on the hitch.',
+        'The door-jamb sticker for **your** vehicle beats any brochure, because options change the weight.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco, by the numbers',
+      body: [
+        'Curb weight **≈3,710 lb**. Towing **2,200 lb** with the Class II package, **220 lb** tongue weight.',
+        'Payload: listings say **≈890** or **≈1,000 lb**. They disagree, so trust your door sticker.',
+        'EPA **21 city / 26 highway / 23 combined** mpg. Combined weights city 55% and highway 45%.',
+        'Five adults at 170 lb = 850 lb: close to the payload limit before you add any gear.',
+      ],
+      facts: ['bronco.curbWeight', 'bronco.towing', 'bronco.payload', 'bronco.mpg'] },
+    { tag: 'how', title: 'Dimensions that matter',
+      body: [
+        '[[wheelbase]]: front axle to rear axle. Longer = calmer at speed; shorter = tighter turns and better breakover off-road.',
+        '[[track-width]]: left wheel center to right. Wider = more stable in corners.',
+        '[[approach-angle|Approach, breakover, departure]]: the steepest slope you can climb onto, crest, or drive off without scraping the front, belly or rear.',
+        'Bronco: **105.1 in** wheelbase, **63.4 / 62.8 in** track, **8.8 in** ground clearance, **30.4° / 20.4° / 33.1°** angles (with the all-terrain tires).',
+      ],
+      facts: ['bronco.dimensions', 'bronco.clearance'] },
+    { tag: 'key', title: 'Reading fine print like a pro',
+      body: [
+        'Check **where** power is measured (crank vs wheel), **which fuel**, and **which standard** (SAE net, kW, PS).',
+        'Check **which weight** (curb vs dry vs kerb). Bike makers often quote dry weight because it’s smaller.',
+        'Check the **trim and model year**: the same name can have different engines and ratings.',
+        'When two sources disagree, it’s usually rounding, a different trim, or a different year. Say so instead of picking one.',
+      ] },
+  ],
+  quiz: [
+    { type: 'num', q: 'A truck has a **GVWR of 6,000 lb** and weighs **4,800 lb** on the scale. What is its payload?', answer: 1200, tol: 0, unit: 'lb',
+      why: 'Payload = GVWR − actual weight = 6,000 − 4,800 = **1,200 lb**, and that includes passengers and tongue weight.' },
+    { type: 'mc', q: 'A footnote says “ratings achieved with premium fuel.” On regular 87 you should expect…', options: ['Exactly the same power', 'Slightly less power as the computer retards timing', 'Engine damage', 'More power'], answer: 1,
+      why: 'Lower octane = more knock risk, so the knock sensor and computer pull spark advance. The engine is designed for it; it just makes a bit less.',
+      wrong: { 2: 'If the manual allows 87 as the minimum, the engine protects itself by retarding timing.' } },
+    { type: 'mc', q: 'Which angle limits driving **off** a ledge without scraping the rear bumper?', options: ['Approach angle', 'Breakover angle', 'Departure angle', 'Caster angle'], answer: 2,
+      why: 'Departure angle is measured at the rear: from the rear tire’s contact patch to the lowest point behind it. Your Badlands: 33.1°.' },
+    { type: 'order', q: 'Order these weights for the same bike from **lightest** to **heaviest**.', items: ['Dry weight', 'Curb (kerb) weight', 'Curb weight + rider'],
+      why: 'Dry leaves out fuel, oil and coolant. Curb includes them (Kawasaki: near-full tank). The rider goes on top. Ninja 500: 157 → 171 kg → ~248 kg.' },
+  ],
+  cards: [
+    { id: 'saenet', front: 'SAE net horsepower?', back: 'Crank power with running accessories and production intake/exhaust fitted (SAE J1349). US standard since 1972.' },
+    { id: 'payload', front: 'Payload formula?', back: 'GVWR − actual curb weight. People, cargo and tongue weight all count.' },
+    { id: 'tongue', front: 'Typical tongue weight?', back: 'About 10% of the trailer weight. Bronco: 220 lb max for 2,200 lb.' },
+    { id: 'angles', front: 'Approach / breakover / departure?', back: 'Steepest slope onto, over, and off of without scraping front, belly, rear.' },
+    { id: 'mpg', front: 'Bronco Sport Badlands EPA mpg?', back: '21 city / 26 highway / 23 combined.' },
+  ],
+};

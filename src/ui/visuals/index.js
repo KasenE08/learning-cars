@@ -9,6 +9,19 @@ const loaders = {
   compression: () => import('./compression.js'),
   exploded: () => import('./exploded.js'),
   awd: () => import('./awd.js'),
+  layout: () => import('./layout.js'),
+  diffturn: () => import('./diffturn.js'),
+  turbo: () => import('./turbo.js'),
+  clutchengage: () => import('./clutchengage.js'),
+  gearshift: () => import('./gearshift.js'),
+  planetary: () => import('./planetary.js'),
+  torqueconv: () => import('./torqueconv.js'),
+  dyno: () => import('./dyno.js'),
+  gearing: () => import('./gearing.js'),
+  suspension: () => import('./suspension.js'),
+  tire: () => import('./tire.js'),
+  circuit: () => import('./circuit.js'),
+  aero: () => import('./aero.js'),
 };
 
 export const visualTypes = Object.keys(loaders);

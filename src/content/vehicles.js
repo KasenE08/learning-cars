@@ -63,6 +63,9 @@ export const facts = {
   'rs457.electronics': { value: 'Ride-by-wire, 3 ride modes, 3-level traction control (can be switched off). Quickshifter optional', status: 'confirmed', sources: ['RideApart launch report', S.apriliaDealer] },
 };
 
+// Extra facts live in src/content/facts/<unit-group>.js (default export: { id: fact }), merged here.
+for (const m of Object.values(import.meta.glob('./facts/*.js', { eager: true }))) Object.assign(facts, m.default);
+
 export const fact = (id) => {
   const f = facts[id];
   if (!f) throw new Error(`Unknown fact ${id}`);

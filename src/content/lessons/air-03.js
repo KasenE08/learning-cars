@@ -1,0 +1,60 @@
+// Measuring air: MAF & MAP
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Counting a stadium crowd',
+      body: [
+        'Option 1: a **turnstile** at the gate counts every person going in. That’s a **MAF** sensor: it measures the air directly.',
+        'Option 2: look at how full the stands are, know the seat count and how well people usually fill it, and estimate. That’s **speed-density**: it calculates the air from pressure.',
+      ] },
+    { tag: 'why', title: 'Why the PCM needs air mass',
+      body: [
+        'Fuel is metered to match air. Get the air number wrong and every fuel and spark decision is wrong too.',
+        'It needs **mass** (grams), not volume. Cold or pressurized air packs more grams into the same liters.',
+      ] },
+    { tag: 'see', title: 'Where the sensors sit', visualFirst: true,
+      visual: { type: 'parts', drawing: 'intake' },
+      body: ['Tap the **MAF** (right after the filter) and the **MAP** sensor (on the manifold, after the throttle).'] },
+    { tag: 'how', title: 'Hot-wire MAF',
+      body: [
+        'A thin heated wire (or film) sits in the airstream, held at a fixed temperature above the incoming air.',
+        'More air flowing past cools it faster, so it takes more current to keep it hot. That current = **air mass flow** in grams per second (g/s).',
+        'Measures mass directly, so it handles altitude and temperature on its own. An [[iat|IAT sensor]] is usually built in.',
+        'Weak spots: oil or dirt on the element, and **unmetered air**: a leak after the MAF lets in air it never saw, so the engine runs lean.',
+      ] },
+    { tag: 'how', title: 'Speed-density: MAP + IAT + rpm + VE',
+      body: [
+        '[[map-sensor|MAP sensor]]: absolute pressure in the manifold (vacuum or boost). Plus [[iat|air temperature]] and rpm.',
+        'Gas law: air per cycle ∝ `pressure × displacement × VE ÷ temperature`.',
+        '**[[volumetric-efficiency|VE]] table**: a calibrated map (rpm × load) of how well the cylinders really fill, e.g. 85% vs 100%. Cam timing changes it, so VVT engines need big tables.',
+        'Pros: nothing in the airstream. Cons: change cams or the turbo and the VE table must be retuned. That’s why [[speed-density]] is popular with tuners and race ECUs.',
+        'Many modern engines use **both**: one as the main reading, the other as a cross-check. Turbo engines need pressure sensors anyway to control boost.',
+      ] },
+    { tag: 'math', title: 'How much air is that?',
+      body: [
+        'A 4-stroke fills its displacement once every 2 revs. A 2.0 L at 3,000 rpm, 100% VE, sea level: 2.0 L × 1,500 = **3,000 L/min**.',
+        'Air ≈ 1.2 g per liter → 3,600 g/min ÷ 60 = **60 g/s**.',
+        'Double the absolute manifold pressure (about 1 bar / 14.5 psi of boost) and, at the same temperature, you roughly double the mass.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What does a hot-wire MAF actually measure?', options: ['Air pressure in the manifold', 'The current needed to keep a heated wire hot in the airflow, which tracks air mass', 'Throttle angle', 'Exhaust oxygen'], answer: 1,
+      why: 'More air mass flowing past carries away more heat; the current to hold the wire’s temperature is the signal.' },
+    { type: 'num', q: 'A **2.0 L** engine at **6,000 rpm**, 100% VE, air at 1.2 g/L. Air flow in **g/s**?', answer: 120, tol: 2, unit: 'g/s',
+      hint: 'It fills 2.0 L once every 2 revolutions.',
+      why: '6,000 ÷ 2 = 3,000 fills/min × 2.0 L = 6,000 L/min × 1.2 g/L = 7,200 g/min ÷ 60 = **120 g/s**.' },
+    { type: 'mc', q: 'A cracked intake hose **after** the MAF lets air in. What happens?', options: ['Runs rich', 'Runs lean: the PCM fuels for less air than the engine is getting', 'Nothing: the MAP sensor ignores it', 'Boost goes up'], answer: 1,
+      why: 'That air is unmetered. The PCM adds fuel only for the air the MAF counted, so the mixture goes lean.' },
+    { type: 'tap', q: 'Tap the sensor that reads **manifold pressure**.', visual: { type: 'parts', drawing: 'intake' }, answer: 'map',
+      why: 'The MAP sensor sits on the manifold after the throttle, where it sees vacuum or boost.',
+      wrong: { maf: 'That’s the MAF: it measures air mass flow, near the filter.' } },
+    { type: 'mc', q: 'Speed-density needs which inputs?', options: ['MAF + throttle angle', 'MAP + intake air temperature + rpm + a VE table', 'O2 sensor only', 'Fuel pressure + rpm'], answer: 1,
+      why: 'Pressure, temperature and rpm give the air’s density and how often cylinders fill; the VE table says how fully they actually fill.' },
+  ],
+  cards: [
+    { id: 'maf', front: 'How does a hot-wire MAF work?', back: 'Heated wire in the airflow; current needed to keep it hot = air mass flow (g/s).' },
+    { id: 'sd', front: 'Speed-density inputs?', back: 'MAP + IAT + rpm + VE table.' },
+    { id: 've', front: 'What is volumetric efficiency (VE)?', back: 'How fully the cylinders actually fill vs their displacement, in %.' },
+    { id: 'unmetered', front: 'Leak after the MAF → rich or lean?', back: 'Lean. Unmetered air gets no matching fuel.' },
+    { id: 'mass', front: 'Why mass, not volume?', back: 'Cold or pressurized air holds more grams per liter, and fuel must match the grams.' },
+  ],
+};

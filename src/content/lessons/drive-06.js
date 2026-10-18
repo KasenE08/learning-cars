@@ -1,0 +1,71 @@
+// Torque converters
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Two fans, face to face',
+      body: [
+        'Point a plugged-in fan at an unplugged one. The breeze makes the second fan spin, with **no physical connection** between them.',
+        'Hold the second fan still and the first keeps running happily. That’s how an automatic car sits at a red light in Drive.',
+        'A [[torque-converter]] is that idea sealed in a donut full of oil, plus a clever third part that **multiplies** torque.',
+      ] },
+    { tag: 'how', title: 'Three wheels in the donut',
+      body: [
+        '**[[impeller]]** (pump): part of the converter housing, bolted to the flexplate, so it spins at engine speed. Its vanes fling oil outward.',
+        '**[[converter-turbine|Turbine]]**: splined to the transmission input shaft. The oil hits its vanes and turns it.',
+        '**[[stator]]**: a small vaned wheel in the middle on a **one-way clutch**. It redirects oil leaving the turbine back toward the impeller.',
+        'Without the stator you have a plain [[fluid-coupling]]: smooth, but torque out can only equal torque in.',
+      ] },
+    { tag: 'see', title: 'Drive the converter', visualFirst: true,
+      visual: { type: 'torqueconv' },
+      body: [
+        'Car stopped, rpm rising: the turbine is held still, the stator is **locked**, and multiplication is at its peak.',
+        'Add vehicle speed: turbine speed catches up, multiplication fades toward 1:1, and the stator starts to **freewheel**.',
+        'Then flip the **lockup clutch** on and watch slip drop to zero.',
+      ] },
+    { tag: 'how', title: 'Where the extra torque comes from',
+      body: [
+        'Oil leaving the turbine is heading the **wrong way** to help the impeller. The locked stator bends it around so it **pushes the impeller along**.',
+        'That reused energy shows up as extra turbine torque: roughly **2:1 at most** on typical cars, only at low turbine speed.',
+        'It’s not free power: the turbine turns **slower** than the engine. Torque up, speed down, like a gear that changes itself.',
+        'Near equal speeds (the **coupling point**) oil hits the stator from behind, its one-way clutch lets it spin, and the converter acts as a coupling.',
+      ] },
+    { tag: 'key', title: 'Stall speed',
+      body: [
+        '[[stall-speed|Stall speed]]: the highest engine rpm the converter allows at full throttle when the turbine is held still (brakes on, in gear).',
+        'A **looser** converter (higher stall) lets the engine rev into its torque band before the car moves: quicker launches, more slip and heat.',
+        'A **tighter** one (lower stall) feels more direct and wastes less, but launches from lower rpm.',
+        'Street cars usually stall in the low thousands of rpm; drag-race converters go much higher.',
+      ] },
+    { tag: 'why', title: 'The lockup clutch',
+      body: [
+        'Fluid always slips a little. Slip = wasted fuel + heat in the transmission fluid.',
+        'A [[lockup-clutch]] (torque converter clutch, TCC) inside the converter clamps the turbine to the housing: **engine and gearbox locked 1:1**.',
+        'Modern transmissions lock up early and often, and can hold a **controlled slip** to soak up vibration. Shudder when it does this badly is a known failure mode.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco has one',
+      body: [
+        'The **8F35** uses a conventional torque converter with a lockup clutch. That’s why your Bronco **creeps** forward when you lift off the brake.',
+        'Ford has a service bulletin for converter **shudder** below about 60 mph on 8F35s, Bronco Sport included. A real-world example of that lockup-slip control.',
+        'The converter bolts to the engine’s **flexplate**, and its own mass smooths engine pulses (lesson engine-06).',
+      ],
+      facts: ['bronco.transModel', 'bronco.tcShudder'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Follow the oil’s loop through the converter, starting at the engine-driven part.', items: ['Impeller', 'Turbine', 'Stator', 'Back to the impeller'],
+      why: 'The impeller flings oil into the turbine; oil leaving the turbine passes through the stator, which redirects it back into the impeller.' },
+    { type: 'mc', q: 'Which part makes a torque converter **multiply** torque instead of just coupling?', options: ['Impeller', 'Turbine', 'Stator', 'Flexplate'], answer: 2,
+      why: 'The locked stator redirects returning oil so it helps the impeller. Remove it and you have a fluid coupling: torque out = torque in.' },
+    { type: 'mc', q: 'At highway cruise with the lockup clutch **applied**, the converter’s slip is…', options: ['About 50%', 'About 10%', 'Zero (or a tiny controlled amount)', 'At its maximum'], answer: 2,
+      why: 'Lockup mechanically clamps the turbine to the housing, so engine and input shaft turn together. Some units hold a small controlled slip for smoothness.' },
+    { type: 'num', q: 'Engine makes **200 lb-ft** and the converter is multiplying **1.8:1**. Torque at the turbine, in lb-ft?', answer: 360, tol: 0, unit: 'lb-ft',
+      why: '200 × 1.8 = **360 lb-ft**, but only while the turbine spins much slower than the engine, i.e. pulling away.' },
+    { type: 'mc', q: 'A higher-stall (“looser”) converter mainly gives…', options: ['Better fuel economy', 'Harder launches from higher rpm', 'Lower transmission temperatures', 'A higher top speed'], answer: 1,
+      why: 'Higher stall lets the engine reach its torque band before the car moves. The trade-off is more slip and heat.' },
+  ],
+  cards: [
+    { id: 'parts', front: 'Torque converter’s three main parts?', back: 'Impeller (engine-driven), turbine (to the gearbox), stator (on a one-way clutch, redirects oil).' },
+    { id: 'mult', front: 'Where does converter torque multiplication come from?', back: 'The locked stator turns returning oil to push the impeller along. Max ~2:1, only at low turbine speed.' },
+    { id: 'coupling', front: 'Coupling point?', back: 'Turbine nears impeller speed; the stator freewheels and the converter acts as a 1:1 fluid coupling.' },
+    { id: 'stall', front: 'Stall speed?', back: 'Max engine rpm at full throttle with the turbine held still. Higher stall = harder launches, more heat.' },
+    { id: 'lockup', front: 'Lockup clutch (TCC)?', back: 'Clamps turbine to housing for 1:1 with no slip: saves fuel and heat.' },
+  ],
+};
