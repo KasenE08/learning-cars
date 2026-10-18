@@ -1,0 +1,61 @@
+// The intake path
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'An air pump with a nose',
+      body: [
+        'An engine is an **air pump** that happens to burn fuel. Adding fuel is easy; getting air in is the hard part. Air limits power.',
+        'The intake is its nose and windpipe: a snorkel to grab air, a filter like nose hairs, a valve like your throat, and branches to each lung (cylinder).',
+      ] },
+    { tag: 'see', title: 'Follow the air', visualFirst: true,
+      visual: { type: 'parts', drawing: 'intake' },
+      body: ['Tap each part from the snorkel to the runners. This drawing is a **turbo** intake; a non-turbo car skips the compressor and intercooler.'] },
+    { tag: 'how', title: 'Station by station',
+      body: [
+        '**Snorkel / inlet**: pulls air from a cool spot (behind the grille or fender), not hot under-hood air.',
+        '**Airbox + [[air-filter|filter]]**: traps dust. Grit in a cylinder acts like sandpaper on the rings.',
+        '**[[maf|MAF sensor]]**: right after the filter, measures the air coming in (lesson 3).',
+        '**[[throttle-body|Throttle]]**: a butterfly valve that sets how much air gets in = how much power you’re asking for.',
+        '**[[intake-manifold|Manifold]] + [[intake-runner|runners]]**: a plenum that splits air evenly into one runner per cylinder, ending at the intake ports.',
+      ] },
+    { tag: 'how', title: 'Turbo cars add two stops',
+      body: [
+        'After the filter and MAF, air enters the turbo’s **compressor**, which packs it above atmospheric pressure ([[boost]]).',
+        'Squeezing heats air (bike pump again), and hot air is less dense and more knock-prone. So it passes through an **[[intercooler]]**: a radiator for intake air.',
+        'Order: filter → MAF → compressor → intercooler → throttle → manifold → runners.',
+        'Everything after the compressor is pressurized, so a leak there **blows boost out** instead of sucking air in.',
+      ],
+      note: 'Full turbo details are in the Forced Induction unit.' },
+    { tag: 'why', title: 'Why cold air and runner length matter',
+      body: [
+        'Colder air is denser: more oxygen per breath, more fuel can burn, more power. Roughly **1% denser for every 3 °C (5 °F)** cooler.',
+        'Runner length tunes pressure waves bouncing in the intake. Long runners help low-rpm torque, short ones help high-rpm power.',
+        'With the throttle mostly closed, a non-turbo manifold sits below atmospheric pressure: [[manifold-vacuum]].',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco’s path', visualFirst: true,
+      visual: { type: 'parts', drawing: 'car-top' },
+      body: [
+        'Turbocharged 2.0 L, so it follows the turbo path: airbox → turbo compressor → intercooler → throttle → manifold. Tap the **airbox**, **turbo** and **intercooler**.',
+        'It’s direct-injected, so its intake carries **air only**. No fuel ever touches the manifold or the intake valves (that matters in lesson 6).',
+      ],
+      facts: ['bronco.engine', 'bronco.injection'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Put a **turbo** engine’s intake in order, from outside air to cylinder.',
+      items: ['Air filter', 'MAF sensor', 'Turbo compressor', 'Intercooler', 'Throttle', 'Intake manifold & runners'],
+      why: 'Filter first (clean air), MAF next (measure it), compressor (pack it), intercooler (cool it after squeezing), throttle (meter it), then the manifold splits it to each cylinder.' },
+    { type: 'tap', q: 'Tap the part that cools air **after** it’s been compressed.', visual: { type: 'parts', drawing: 'intake' }, answer: 'intercooler',
+      why: 'The intercooler sits between the compressor and the throttle. Compressing air heats it; cooling it makes it denser and less knock-prone.',
+      wrong: { compressor: 'The compressor is what heats the air (by squeezing it). The cooler comes right after.', filter: 'The filter cleans air; it doesn’t cool it.' } },
+    { type: 'mc', q: 'Why does colder intake air make more power?', options: ['It burns slower', 'It’s denser, so more oxygen fits in each cylinder fill', 'It lowers the compression ratio', 'It makes the fuel lighter'], answer: 1,
+      why: 'Same cylinder volume, denser air = more oxygen mass, so more fuel can be burned each cycle.' },
+    { type: 'tap', q: 'On the Bronco X-ray, tap the **airbox**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'airbox',
+      why: 'The airbox holds the air filter at the very start of the intake path, before the turbo.',
+      wrong: { turbo: 'The turbo comes after the airbox; it compresses the filtered air.', intercooler: 'The intercooler comes after the turbo.' } },
+  ],
+  cards: [
+    { id: 'path-na', front: 'Non-turbo intake path?', back: 'Filter → MAF → throttle → manifold → runners → intake ports.' },
+    { id: 'path-turbo', front: 'What does a turbo intake add, and where?', back: 'Compressor + intercooler, between the MAF and the throttle.' },
+    { id: 'cold', front: 'Why does cold air help power?', back: 'Denser air = more oxygen per fill = more fuel can burn. ~1% per 3 °C (5 °F).' },
+    { id: 'runners', front: 'Long vs short intake runners?', back: 'Long: low-rpm torque. Short: high-rpm power (pressure-wave tuning).' },
+  ],
+};

@@ -1,0 +1,72 @@
+// Driveshafts, U-joints & CV joints
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Turning a screwdriver around a corner',
+      body: [
+        'Try turning a screwdriver while your wrist is bent: it works, but the motion gets lumpy.',
+        'Every shaft that has to spin **and** bend has the same problem. A [[u-joint]] is the simple, slightly lumpy wrist.',
+        'A [[cv-joint]] is the fancy wrist that stays perfectly smooth at any angle.',
+      ] },
+    { tag: 'how', title: 'Driveshafts and halfshafts',
+      body: [
+        'The [[driveshaft]] (propshaft) is a long tube carrying power **front-to-back**: on RWD cars, 4x4s and AWD cars.',
+        'It sits **before** the final drive, so it spins fast with low torque. That’s why it can be a light hollow tube.',
+        'Suspension moves the axle, so the shaft needs a **slip joint** (splines) to change length and joints to change angle.',
+        '[[halfshaft|Halfshafts]] are the short shafts from a differential out to each wheel.',
+      ] },
+    { tag: 'how', title: 'The U-joint and its wobble',
+      body: [
+        'A U-joint (Cardan or Hooke joint) is **two yokes linked by a cross**, with needle-bearing caps on its four ends.',
+        'At an angle it doesn’t turn evenly: the output **speeds up and slows down twice per revolution**. Bigger angle, bigger wobble.',
+        'Fix: use **two U-joints** with **equal working angles** and the yokes **in phase** (lined up). The second joint’s wobble cancels the first.',
+        'Wrong phasing or unequal angles (a common side effect of lifting a truck) shows up as **vibration** that grows with speed.',
+      ] },
+    { tag: 'math', title: 'How big is the wobble?',
+      body: [
+        'Through one U-joint at angle θ, output speed swings between `input × cos θ` and `input ÷ cos θ`.',
+        'At **10°**: cos = 0.985, so about **±1.5%**. Barely noticeable.',
+        'At **30°**: cos = 0.866, so **−13% to +15%**, twice every turn. That shakes things apart.',
+        'This is why U-joints suit small angles (driveshafts) and CV joints get the big ones (steering wheels).',
+      ] },
+    { tag: 'how', title: 'CV joints: smooth at any angle',
+      body: [
+        '**Rzeppa (ball) joint**: six balls ride in grooves between an inner race and an outer bell. A cage keeps the balls on the plane that splits the angle in half, so speed stays **constant**. Used at the wheel end, where steering angles are big.',
+        '**Tripod joint**: three rollers on a spider slide inside a three-lobed housing (the “tulip”). It can **plunge** in and out, so it’s used at the inboard end.',
+        'A rubber [[cv-boot]] holds the grease in and the dirt out. A torn boot lets grit in, and a worn outer joint **clicks in tight turns**.',
+      ] },
+    { tag: 'see', title: 'Find the shafts on your Bronco', visualFirst: true,
+      visual: { type: 'parts', drawing: 'car-top' },
+      body: [
+        'Tap **Driveshaft**: it runs from the PTU at the transmission back to the RDU.',
+        'Tap **Halfshafts**: two up front and two in back, each with joints at both ends.',
+      ] },
+    { tag: 'bronco', title: 'Four halfshafts and one driveshaft',
+      body: [
+        'Front: the transmission drives two front halfshafts, which have to bend for **steering and suspension**.',
+        'Middle: the [[ptu]] turns drive 90° into the driveshaft that feeds the rear.',
+        'Rear: the independent rear suspension means each rear wheel needs its own jointed halfshaft from the [[rdu]].',
+        'Ford doesn’t publish which joint types sit on the Bronco Sport’s driveshaft, so that detail isn’t confirmed here.',
+      ],
+      facts: ['bronco.ptu', 'bronco.rdu', 'bronco.suspension'] },
+  ],
+  quiz: [
+    { type: 'tap', q: 'Tap the **driveshaft**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'driveshaft',
+      why: 'The driveshaft is the long shaft running front-to-back from the PTU to the rear drive unit.',
+      wrong: { axles: 'Those are the halfshafts: short shafts from a differential out to each wheel.' } },
+    { type: 'num', q: 'A single U-joint runs at **20°**. At its slowest point, the output turns at what **percent** of input speed?', answer: 94, tol: 0.3, unit: '%',
+      hint: 'Slowest = input × cos θ.', why: 'cos 20° ≈ 0.940, so the output dips to about **94%** of input speed (and peaks near 106%) twice per turn.' },
+    { type: 'mc', q: 'How do you cancel a U-joint’s speed wobble?', options: ['Use a longer shaft', 'Two U-joints with equal angles and the yokes in phase', 'Add more grease', 'Run the shaft slower'], answer: 1,
+      why: 'The second joint speeds up exactly where the first slows down, but only if their angles match and their yokes are lined up.' },
+    { type: 'mc', q: 'Why do front-drive cars use CV joints at the wheel end?', options: ['They’re cheaper than U-joints', 'Steering angles are big, and CV joints stay smooth at any angle', 'They don’t need grease', 'They make the car lighter'], answer: 1,
+      why: 'Wheels steer through large angles while driving. A U-joint would shake badly there; a Rzeppa CV joint keeps speed constant.' },
+    { type: 'mc', q: 'A clicking noise in tight turns usually points to…', options: ['A worn outer CV joint (often after a torn boot)', 'A loose driveshaft tube', 'Low engine oil', 'A bad U-joint in the steering column'], answer: 0,
+      why: 'Once the boot tears, grit gets in and the outer joint wears. It clicks most when the angle is biggest: full lock.' },
+  ],
+  cards: [
+    { id: 'drive-half', front: 'Driveshaft vs halfshaft?', back: 'Driveshaft: long, front-to-back. Halfshaft: short, from a differential out to one wheel.' },
+    { id: 'ujoint', front: 'What’s wrong with a single U-joint at an angle?', back: 'Output speed speeds up and slows down twice per revolution: vibration.' },
+    { id: 'phasing', front: 'U-joint phasing rule?', back: 'Pair them: equal working angles, yokes in phase, so the wobbles cancel.' },
+    { id: 'cvtypes', front: 'Rzeppa vs tripod CV joint?', back: 'Rzeppa (balls + cage): outboard, big angles. Tripod (3 rollers): inboard, plunges in and out.' },
+    { id: 'boot', front: 'What does a CV boot do?', back: 'Keeps grease in and dirt out. Torn boot → worn joint → clicking in turns.' },
+  ],
+};

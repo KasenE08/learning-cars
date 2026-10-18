@@ -1,0 +1,70 @@
+// Engine teardown & inspection
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Doctor before surgeon',
+      body: [
+        'A good doctor runs tests **before** opening you up. The scan tells the surgeon where to look.',
+        'Engine rebuilds work the same way: **diagnose first**, tear down second, then inspect every part like evidence.',
+        'This unit is theory: what builders check and why. Real procedures and specs come from the engine’s service manual.',
+      ] },
+    { tag: 'how', title: 'Test 1: compression',
+      body: [
+        'A [[compression-test]] screws a gauge into each spark-plug hole and cranks the engine. Each cylinder shows a peak pressure.',
+        'What matters is **consistency**: cylinders should read close to each other. One low cylinder is the clue.',
+        '**Wet test**: add a little oil to the low cylinder and retest. Pressure jumps up → the oil sealed worn **rings**. No change → look at **valves** or the [[head-gasket]].',
+      ] },
+    { tag: 'how', title: 'Test 2: leak-down, and oil analysis',
+      body: [
+        'A [[leak-down-test]] fills a cylinder at TDC with shop air and shows **% leakage**. Then you listen for where it escapes:',
+        'Hiss at the **intake** → intake valve. At the **tailpipe** → exhaust valve. At the **oil filler** → rings ([[blow-by]]). **Bubbles in the coolant** → head gasket or crack.',
+        '[[oil-analysis]]: a lab measures metals in a used-oil sample (parts per million). Rising aluminum, copper/lead or silicon point to pistons, bearings or dirt getting in. It shows trends, not exact parts.',
+      ] },
+    { tag: 'see', title: 'Teardown order', visualFirst: true,
+      visual: { type: 'exploded', assembly: 'engine' },
+      body: [
+        'Top end first: valve cover → cams → head → head gasket. Then the bottom end: oil pan → pistons + rods out the top → crank → bare block.',
+        'Reassembly is the reverse. Accessories, intake, exhaust and timing drive come off before any of this.',
+      ] },
+    { tag: 'how', title: 'Keep everything organized',
+      body: [
+        'Parts that wore in together stay together: each piston with its rod and cap, each bearing shell labeled by position, valves in order.',
+        'Rod caps and main caps are machined **with** their rod or block. Never swap them.',
+        'Bag and label bolts by location, and take photos at every step. A rebuild can sit for weeks.',
+      ] },
+    { tag: 'how', title: 'Inspect: read the evidence',
+      body: [
+        '**Cracks**: magnetic-particle ([[magnaflux]]) or dye-penetrant tests reveal cracks too fine to see.',
+        '**Warpage**: head and block decks checked flat with a straightedge.',
+        '**Scoring**: vertical scratches in bores or on piston skirts (debris, overheating, lack of oil).',
+        '**Bearing wear patterns**: even wear in the middle is normal. Wear on one edge suggests a bent rod or tapered journal; embedded grit means dirty oil; a wiped, smeared shell means oil starvation.',
+      ] },
+    { tag: 'bronco', title: 'Your EcoBoost on the bench',
+      body: [
+        'Timing **chain**, DOHC, 16 valves: the cams must be locked at their timing positions before anything comes apart, so the valve timing can be put back exactly.',
+        'Ford’s service manual (not a forum post) is the source for its procedures, special tools and specs.',
+        'Turbo engines add checks: turbo oil feed and return lines, and turbo shaft play.',
+      ],
+      facts: ['bronco.timingDrive', 'bronco.valvetrain'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Cylinder 3 reads low on a compression test. You add oil and it **jumps up**. Most likely cause?',
+      options: ['Burnt exhaust valve', 'Worn piston rings', 'Blown head gasket', 'Bad spark plug'], answer: 1,
+      why: 'Oil temporarily seals worn rings, so pressure rises. A valve or gasket leak isn’t helped by oil.',
+      wrong: { 0: 'Oil doesn’t seal a valve seat. The reading would stay low.' } },
+    { type: 'order', q: 'Put this engine teardown in order.', items: ['Valve cover', 'Camshafts', 'Cylinder head', 'Head gasket', 'Oil pan', 'Pistons + rods', 'Crankshaft'],
+      why: 'Top end first (cover → cams → head → gasket), then the bottom end (pan → pistons/rods out the top → crank). Reassembly is the reverse.' },
+    { type: 'mc', q: 'During a leak-down test you hear air hissing from the **oil filler**. Where is it leaking?',
+      options: ['Intake valve', 'Exhaust valve', 'Past the piston rings', 'Head gasket into coolant'], answer: 2,
+      why: 'Air escaping past the rings goes into the crankcase, which vents through the oil filler. Intake → intake valve; tailpipe → exhaust valve; bubbles in coolant → gasket/crack.' },
+    { type: 'tap', q: 'Tap the part whose shells show **wear patterns** that tell you about oil supply and rod alignment.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'crank',
+      why: 'The main and rod bearings ride on the crank’s journals. Their shells’ wear patterns are some of the best evidence in a teardown.',
+      wrong: { rod: 'Close! The rod’s big end holds bearing shells too, but they ride on the crank’s journals. Tap the crank.' } },
+  ],
+  cards: [
+    { id: 'wet', front: 'Wet compression test: pressure jumps. Meaning?', back: 'Worn rings (the oil sealed them). No change → valves or head gasket.' },
+    { id: 'leakdown', front: 'Leak-down: where you hear it → what leaks?', back: 'Intake → intake valve. Tailpipe → exhaust valve. Oil filler → rings. Coolant bubbles → gasket/crack.' },
+    { id: 'oil', front: 'What does oil analysis tell you?', back: 'Wear metals and contaminants in ppm. Trends point to pistons, bearings or dirt; not exact parts.' },
+    { id: 'caps', front: 'Why never swap rod or main caps?', back: 'They’re machined together with their rod/block. A swapped cap won’t be round.' },
+    { id: 'bearing', front: 'Bearing worn on one edge suggests?', back: 'A bent rod or tapered journal. Wiped/smeared = oil starvation. Embedded grit = dirty oil.' },
+  ],
+};

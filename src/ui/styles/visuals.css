@@ -157,3 +157,35 @@
 .d .awd-lost { font-size: 11px; fill: var(--bad); }
 .awd__text { display: block; font: 400 14px/1.45 var(--font-body); color: var(--ink-2); margin-top: 10px; }
 .vis--awd .ctl .kicker { margin-top: 4px; }
+/* schematics */
+.sx-pipe { fill: none; stroke: #1f2328; stroke-linecap: round; stroke-linejoin: round; }
+.sx-flow { fill: none; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 5 9; animation: flow 0.7s linear infinite; }
+.sx-flow.is-slow { animation-duration: 1.6s; }
+.sx-node { fill: #1d2126; stroke: #8994a1; stroke-width: 1.4; }
+.sx-tank { fill: rgba(255, 194, 26, 0.06); }
+.sx-deco { fill: none; stroke: #3a424c; stroke-width: 1.2; }
+.sx-valve { stroke: #ff6b1a; stroke-width: 3; }
+.sx-belt { fill: none; stroke: #6d7782; stroke-width: 4; stroke-linecap: round; }
+.sx-pad { fill: #7d6a52; stroke: #c9ad94; }
+.d .sx-lbl { font: 600 10px var(--font-mono); fill: var(--ink); letter-spacing: 0.04em; pointer-events: none; }
+.d .sx-sub { font-size: 9px; fill: var(--ink-3); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .sx-flow { animation: none; } }
+.chipline { display: inline-flex; gap: 3px; }
+.chipline i { font-style: normal; width: 22px; height: 22px; display: grid; place-items: center; border-radius: 3px; background: var(--steel-2); border: 1px solid var(--line); font-size: 11px; color: var(--ink-3); }
+.chipline i.is-on { background: rgba(255, 107, 26, 0.2); border-color: var(--orange); color: var(--orange); }
+.lay__note { flex-basis: 100%; font: 400 13px/1.45 var(--font-body); color: var(--ink-2); margin-top: 4px; }
+.gr__tbl { overflow-x: auto; margin-top: 8px; }
+table.gr { width: 100%; border-collapse: collapse; font: 500 12px var(--font-mono); }
+.gr th { text-align: left; color: var(--ink-3); font-weight: 600; padding: 6px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.gr td { padding: 6px; border-bottom: 1px solid #1c2026; color: var(--ink-2); white-space: nowrap; }
+.gr tr.is-over td { color: var(--ink-4); }
+.tire__dl { display: grid; grid-template-columns: 52px 1fr; gap: 6px 10px; margin-top: 10px; font-size: 14px; }
+.tire__dl dt { font: 600 14px var(--font-mono); color: var(--orange); }
+.tire__dl dd { color: var(--ink-2); }
+.ci-w { fill: none; stroke: #262b31; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.ci-flow { fill: none; stroke: #ffe08a; stroke-width: 2.5; stroke-dasharray: 4 8; animation: flow 0.6s linear infinite; stroke-linecap: round; }
+.ci-flow.is-ctl { stroke: #7fb2e0; animation-duration: 1.4s; }
+.ci-spin { animation: cispin 0.4s linear infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes cispin { to { transform: rotate(360deg); } }
+.vis { min-width: 0; max-width: 100%; }
+.gr__tbl { max-width: 100%; }

@@ -6,13 +6,29 @@ import { facts } from '../src/content/vehicles.js';
 import { grade } from '../src/core/quiz.js';
 
 const TAGS = ['metaphor', 'how', 'see', 'math', 'bronco', 'bikes', 'key', 'why'];
-const VISUALS = ['cylinder', 'parts', 'displacement', 'crank', 'valvetrain', 'timing', 'compression'];
+const VISUALS = ['cylinder', 'parts', 'displacement', 'crank', 'valvetrain', 'timing', 'compression', 'exploded', 'awd',
+  'layout', 'diffturn', 'turbo', 'clutchengage', 'gearshift', 'planetary', 'torqueconv', 'dyno', 'gearing', 'suspension', 'tire', 'circuit', 'aero'];
 const terms = new Set(glossary.map((g) => g.id));
 const files = readdirSync('src/content/lessons').filter((f) => f.endsWith('.js'));
 
 // parts drawings are plain modules; load their part ids
+// Drawings and their part ids. Schematics planned in docs/VISUALS.md are listed until their files exist.
+const PLANNED = {
+  intake: ['snorkel', 'filter', 'maf', 'compressor', 'intercooler', 'throttle', 'map', 'manifold', 'runners'],
+  fuel: ['tank', 'pump', 'lp-line', 'hp-pump', 'rail', 'injectors', 'pressure-sensor', 'evap'],
+  exhaust: ['manifold', 'turbine', 'wastegate', 'o2-up', 'cat', 'o2-down', 'resonator', 'muffler', 'tailpipe'],
+  cooling: ['pump', 'jacket', 'thermostat', 'radiator', 'fan', 'heater-core', 'reservoir', 'bypass', 'temp-sensor'],
+  oil: ['sump', 'pickup', 'pump', 'filter', 'gallery', 'mains', 'rods', 'cams', 'turbo-feed', 'piston-jets', 'pressure-sensor'],
+  charging: ['alternator', 'belt', 'battery', 'starter', 'fuse-box', 'ground', 'loads', 'pcm'],
+  brakes: ['pedal', 'booster', 'master', 'lines', 'abs', 'caliper', 'rotor', 'pads', 'wheel-sensor'],
+};
 const drawings = {};
-for (const d of ['piston', 'head', 'engine-section']) drawings[d] = Object.keys((await import(`../src/ui/visuals/drawings/${d}.js`)).parts);
+for (const f of readdirSync('src/ui/visuals/drawings')) {
+  const d = f.replace('.js', '');
+  const mod = await import(`../src/ui/visuals/drawings/${f}`);
+  if (mod.parts) drawings[d] = Object.keys(mod.parts); // helpers (schematic.js) have no parts
+}
+for (const [d, ids] of Object.entries(PLANNED)) if (!drawings[d]) drawings[d] = ids;
 
 const textsOf = (lesson) => [
   ...lesson.steps.flatMap((s) => [s.title, ...(s.body || []), s.note || '']),

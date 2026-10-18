@@ -39,6 +39,10 @@ src/
   ui/visuals/drawings/        tappable SVG drawings (car top/side, bike, head, piston, RDU, …)
   ui/visuals/assemblies/      exploded-view assemblies (parts, offsets, teardown order)
   content/explorer.js         drill-down tree for the Lab explorer (#/explore/<node>)
+  content/glossary/*.js       glossary terms per unit group (merged into glossary.js)
+  content/facts/*.js          sourced vehicle facts per unit group (merged into vehicles.js)
+docs/CONTENT_GUIDE.md         how lessons are written (rules, format, quiz types)
+docs/VISUALS.md               every visual type and its spec, for lesson authors
   core/                       db (IndexedDB), store, progress + mastery, backup, review, sw
   ui/components/              shell (rail / tab bar), sheet, meter, parts
   ui/screens/                 home, course, lesson, lab, review, glossary, progress, settings
@@ -51,7 +55,7 @@ scripts/                      screenshots, icon renderer
 1. ✅ Setup: Vite, PWA, deploy, design system, navigation, storage, backup
 2. ✅ Lesson engine, quizzes, FSRS flashcards, Engine Fundamentals (11 lessons)
 3. ✅ Interactive full-car / motorcycle diagrams, exploded views
-4. Rest of Tracks 1–3
+4. Rest of Tracks 1–3 (✅ 4a: all of Track 1 · 4b: Tracks 2 and 3)
 5. Track 4 + Pyodide coding exercises
 6. Simulated CAN bus + reverse-engineering challenges
 7. Real-car connection (laptop only, read-only)

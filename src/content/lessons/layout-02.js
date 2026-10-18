@@ -1,0 +1,68 @@
+// V engines
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Fold the row in half',
+      body: [
+        'Take a long inline engine, cut the row in half, and lean the two halves against each other like an **open book**.',
+        'That’s a [[v-engine]]: two **banks** of cylinders sharing **one crankshaft**. Same cylinder count, roughly half the length.',
+        'The angle between the banks is the [[bank-angle]].',
+      ] },
+    { tag: 'how', title: 'Anatomy of a V',
+      body: [
+        'Two banks, each with its **own head** (and its own cams on overhead-cam engines).',
+        'Rods from opposite banks usually sit **side by side on the same crankpin**, which is how the V stays short.',
+        'Even-firing rule of thumb with shared crankpins: **bank angle = 720° ÷ cylinders**. V8 → 90°, V12 → 60°.',
+        'A V6 by that rule wants 120°. Most V6s are 60° or 90° instead, so they **split (offset) the crankpins** to keep firing even.',
+      ] },
+    { tag: 'see', title: 'V6: compact, not perfect', visualFirst: true,
+      visual: { type: 'layout', layout: 'v6' },
+      body: [
+        'Six cylinders, power stroke every **120°** when it’s built to fire evenly. Check the readout.',
+        'Each bank is basically an inline-3, which rocks. So a V6 isn’t naturally smooth like an inline-6: it relies on crank counterweights, and some add a balance shaft.',
+        'Why build them anyway? A V6 is short enough to sit **sideways** in front-drive cars. An I6 isn’t.',
+      ] },
+    { tag: 'see', title: 'Cross-plane V8: the American sound', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8' },
+      body: [
+        '[[cross-plane]] crank: looking down the crank, the four throws sit at **90° steps**, forming a “+” cross.',
+        'With heavy counterweights it’s **very smooth**. Overall firing is even (every 90°)…',
+        '…but within **each bank** the pulses are uneven: two cylinders on the same side fire only 90° apart, then there’s a longer gap. That uneven rhythm per pipe is the classic **burble**.',
+      ] },
+    { tag: 'see', title: 'Flat-plane V8: two inline-4s on one crank', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8flat' },
+      body: [
+        '[[flat-plane]] crank: throws at **180°**, all in one plane. It’s like two inline-4s sharing a crank.',
+        'Each bank fires evenly every 180°, alternating sides: clean, even exhaust pulses that help the engine breathe at high rpm, and a high-pitched **scream**.',
+        'Lighter crank, revs quicker. The catch: it inherits the inline-4’s **secondary shake**.',
+        'Seen in Ferrari V8s, the Shelby GT350’s 5.2 L and the C8 Corvette Z06.',
+      ] },
+    { tag: 'how', title: 'Packaging trade-offs',
+      body: [
+        '**Shorter** than an inline with the same cylinders, and usually lower. Fits lengthwise or sideways.',
+        '**Wider**, with two heads, more cams and more parts, so more cost and more to service.',
+        'Exhaust has to come off **both sides**: two manifolds that may join later. More on how that shapes the sound in the Exhaust unit.',
+      ] },
+  ],
+  quiz: [
+    { type: 'num', q: 'Using the rule of thumb (shared crankpins), what bank angle gives a **V10** even firing?', answer: 72, tol: 0, unit: '°',
+      why: '720° ÷ 10 cylinders = **72°**. Engines that use a different angle offset their crankpins to compensate.' },
+    { type: 'mc', q: 'What makes a cross-plane V8 **burble**?', options: ['It fires unevenly overall', 'Each bank’s pulses are unevenly spaced, even though overall firing is even', 'The flat crank', 'Its secondary shake'], answer: 1,
+      why: 'Overall it fires every 90°, but two cylinders on the same bank fire close together, then there’s a gap. Each bank’s pipe gets an uneven beat.',
+      wrong: { 0: 'Overall the firing is even: every 90°. The unevenness is per bank.', 2: 'The flat-plane crank is the other V8, the one that screams.' } },
+    { type: 'mc', q: 'Main downside of a flat-plane V8 compared with a cross-plane?', options: ['It can’t rev high', 'It has the inline-4’s secondary shake', 'It needs four heads', 'It can only be mounted sideways'], answer: 1,
+      why: 'A flat-plane V8 is two inline-4s on one crank, so the secondary forces don’t cancel. In exchange: a lighter crank and even exhaust pulses per bank.' },
+    { type: 'tap', q: 'Flat-plane vs cross-plane is decided by the shape of one part. Tap it.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'crank',
+      why: 'It’s the crankshaft: where its throws point (all in one plane, or at 90° steps) sets how the pistons are timed.',
+      wrong: { camshaft: 'The cams follow the crank’s timing; they don’t set the crank type.', rod: 'Rods just link pistons to the crank throws.' } },
+    { type: 'mc', q: 'Why do so many front-drive cars use a V6 instead of an inline-6?', options: ['V6s are always more powerful', 'A V6 is short enough to mount sideways', 'V6s are smoother', 'Inline-6s can’t use turbos'], answer: 1,
+      why: 'Packaging. Folding six cylinders into a V halves the length, so it fits transversely. An inline-6 is actually smoother.',
+      wrong: { 2: 'The opposite: an inline-6 is naturally balanced; a V6 needs help.' } },
+  ],
+  cards: [
+    { id: 'v', front: 'What is a V engine?', back: 'Two banks of cylinders at an angle, sharing one crankshaft.' },
+    { id: 'rule', front: 'Even-firing bank angle rule of thumb?', back: '720° ÷ cylinders (shared crankpins). V8 = 90°, V12 = 60°.' },
+    { id: 'cross', front: 'Cross-plane V8: crank and sound?', back: 'Throws at 90° steps (a “+”). Very smooth; uneven pulses per bank → burble.' },
+    { id: 'flat', front: 'Flat-plane V8: crank and sound?', back: 'Throws at 180° (two I4s on one crank). Even pulses per bank → scream; secondary shake.' },
+    { id: 'v-trade', front: 'V vs inline packaging?', back: 'V: shorter but wider, two heads, more parts. Inline: long, simple.' },
+  ],
+};

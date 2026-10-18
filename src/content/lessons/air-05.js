@@ -1,0 +1,66 @@
+// Fuel delivery: tank to injector
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A city water system',
+      body: [
+        'Reservoir (**tank**) → pumping station (**in-tank pump**) → water main (**low-pressure line**).',
+        'A skyscraper needs a **booster pump** for the top floors: that’s the high-pressure pump on a direct-injection engine.',
+        'Each floor’s pipe (**rail**) feeds faucets (**injectors**) that open for precisely timed instants.',
+      ] },
+    { tag: 'see', title: 'Follow the fuel', visualFirst: true,
+      visual: { type: 'parts', drawing: 'fuel' },
+      body: ['Tap each part from the tank to the injectors, then the EVAP line that handles vapor.'] },
+    { tag: 'how', title: 'Low-pressure side',
+      body: [
+        '**[[fuel-pump|In-tank pump]]**: electric, submerged in fuel, which cools and quiets it. It primes briefly at key-on.',
+        'Pushes fuel through a filter and the **low-pressure line** at a few bar: tens of psi (roughly 40–80 psi, 3–5.5 bar, depending on the system).',
+        'Most modern cars are **returnless**: no line carries spare fuel back; the PCM varies pump speed to hold the pressure it wants.',
+        '[[evap|EVAP]]: tank vapor is caught in a charcoal canister, then sucked into the intake and burned instead of vented.',
+      ] },
+    { tag: 'how', title: 'High-pressure side (direct injection)',
+      body: [
+        '**[[hpfp|High-pressure pump]]**: a single piston on the cylinder head, pushed by an extra **cam lobe**. No engine rotation = no high pressure.',
+        'A PCM-controlled valve on the pump decides how much fuel each stroke compresses, to hit a target pressure.',
+        '**[[fuel-rail|Rail]]**: a thick steel tube feeding the injectors, with a **pressure sensor** reporting back.',
+        'DI rail pressure: roughly **500–3,000 psi (35–200 bar)** depending on load. Port injection runs around 40–60 psi: DI is up to ~50× higher.',
+      ] },
+    { tag: 'how', title: 'The injector',
+      body: [
+        'A [[fuel-injector|fuel injector]] is an electric valve. The PCM energizes it, a solenoid (or piezo stack) lifts a needle, fuel sprays through tiny holes.',
+        'Pressure is held roughly steady, so fuel amount is set mainly by **how long it’s open**: [[pulse-width]], in milliseconds.',
+        'Short at idle (around a millisecond or two), much longer at full load. DI injectors can fire several times per cycle.',
+      ] },
+    { tag: 'math', title: 'Injector duty cycle',
+      body: [
+        'One cycle = 2 revs. At 6,000 rpm: 100 rev/s → one cycle every **20 ms**.',
+        'Injector open 15 ms per cycle → duty = 15 ÷ 20 = **75%**.',
+        'Near 100% the injector can’t flow more: out of fuel capacity. DI is even tighter, since it must inject during a limited window of the stroke. Tuners hit this wall first.',
+      ] },
+    { tag: 'bronco', title: 'Your 2.0’s fuel system',
+      body: [
+        'Full DI chain: in-tank pump → low-pressure line → **cam-driven high-pressure pump** → rail → 4 injectors in the cylinders.',
+        'Rail pressure is a closed loop of its own: sensor → PCM → pump valve. A generic code like **P0087** means “fuel rail pressure too low.”',
+        '~~Which cam drives the pump, and Ford’s exact rail pressure range, aren’t confirmed here.~~',
+      ],
+      facts: ['bronco.injection', 'bronco.hpfp'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Put a direct-injection fuel system in order.', items: ['Tank', 'In-tank pump', 'Low-pressure line', 'High-pressure pump', 'Fuel rail', 'Injectors'],
+      why: 'The in-tank pump lifts fuel to the engine at a few bar; the cam-driven pump raises it to DI pressure; the rail holds it for the injectors.' },
+    { type: 'tap', q: 'Tap the **high-pressure pump**.', visual: { type: 'parts', drawing: 'fuel' }, answer: 'hp-pump',
+      why: 'It sits on the engine, driven by a cam lobe, between the low-pressure line and the rail.',
+      wrong: { pump: 'That’s the in-tank (low-pressure) pump.', rail: 'The rail stores the pressurized fuel; it doesn’t create the pressure.' } },
+    { type: 'num', q: 'At **4,800 rpm** an injector is open **10 ms** per cycle. Duty cycle in %?', answer: 40, tol: 0.5, unit: '%',
+      hint: 'One cycle = 2 revolutions.',
+      why: '4,800 ÷ 60 = 80 rev/s → 40 cycles/s → 25 ms per cycle. 10 ÷ 25 = **40%**.' },
+    { type: 'mc', q: 'With rail pressure held steady, what mainly sets how much fuel an injector delivers?', options: ['Spark timing', 'How long it stays open (pulse width)', 'Tank level', 'Coolant temperature only'], answer: 1,
+      why: 'Fixed pressure + fixed nozzle = fixed flow rate. Time open is the knob the PCM turns.' },
+  ],
+  cards: [
+    { id: 'lp', front: 'Low-pressure side of a DI system?', back: 'In-tank electric pump → filter → line, at a few bar (tens of psi).' },
+    { id: 'hp', front: 'What drives a DI high-pressure pump?', back: 'An extra lobe on a camshaft. One piston, PCM-controlled metering valve.' },
+    { id: 'press', front: 'DI vs port rail pressure (order of magnitude)?', back: 'DI ~500–3,000 psi (35–200 bar). Port ~40–60 psi.' },
+    { id: 'pw', front: 'What is injector pulse width?', back: 'How long it’s held open per cycle, in ms. Sets fuel amount.' },
+    { id: 'evap', front: 'What does the EVAP system do?', back: 'Traps tank vapor in a charcoal canister and burns it in the engine.' },
+  ],
+};

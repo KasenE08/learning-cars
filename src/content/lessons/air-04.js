@@ -1,0 +1,70 @@
+// Air-fuel ratio
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A campfire recipe',
+      body: [
+        'Pile on too much wood for the air it gets: smoky, sooty, wasteful. That’s **rich**.',
+        'Blast it with air and too little wood: it burns hot and thin, then sputters. That’s **lean**.',
+        'Chemistry has one exact recipe where every bit of fuel meets just enough oxygen. Engines aim at it, or move off it on purpose.',
+      ] },
+    { tag: 'how', title: '14.7:1 and lambda',
+      body: [
+        '[[afr|Air-fuel ratio]] = mass of air ÷ mass of fuel. For gasoline the chemically exact ([[stoichiometric]]) ratio is about **14.7:1**.',
+        'Lower number = **rich** (extra fuel). Higher number = **lean** (extra air). See [[rich-lean]].',
+        '[[lambda]] (λ) = actual AFR ÷ stoich AFR. **λ 1 = stoich**, below 1 rich, above 1 lean.',
+        'Lambda works for any blend: E10’s stoich is about 14.1:1, but it’s still λ 1.',
+      ] },
+    { tag: 'math', title: 'Quick conversions',
+      body: [
+        '12.5:1 ÷ 14.7 = **λ 0.85** (rich).',
+        '60 g/s of air at stoich needs 60 ÷ 14.7 ≈ **4.1 g/s** of fuel.',
+        'Same air at λ 0.85 needs 60 ÷ 12.5 = **4.8 g/s**: about 18% more fuel.',
+      ] },
+    { tag: 'why', title: 'What each mixture is for',
+      body: [
+        '**Stoich (λ 1)**: idle and cruise. The [[three-way-cat|three-way catalytic converter]] only cleans all three pollutants (HC, CO, NOx) in a narrow window around λ 1.',
+        '**Rich at [[wot]]**: best power is a bit rich (around 12.5–13:1), and extra fuel cools the charge and the exhaust and resists knock. Turbo engines under boost often run richer still (roughly 11–12:1) to protect pistons and the turbo.',
+        '**Lean (λ > 1)**: saves fuel in theory but burns hotter and makes more NOx. Too lean misfires or melts parts.',
+      ] },
+    { tag: 'see', title: 'How the PCM checks its work', visualFirst: true,
+      visual: { type: 'parts', drawing: 'exhaust' },
+      body: [
+        'Tap the **upstream [[o2-sensor|O2 sensor]]** (before the cat). It measures leftover oxygen in the exhaust: lots of O2 = lean, almost none = rich.',
+        'The **downstream** sensor (after the cat) mainly checks that the converter is working.',
+      ] },
+    { tag: 'how', title: 'Closed loop vs open loop',
+      body: [
+        '**[[closed-loop|Closed loop]]**: PCM sets fuel from the air reading, checks the O2 sensor, corrects, repeats many times per second. Idle and cruise.',
+        '**Open loop**: PCM follows its stored tables and ignores feedback. Cold start (sensor not warm yet, engine needs extra fuel) and wide-open throttle (target is rich on purpose).',
+        '~~Cars with wideband sensors can stay closed loop even at a rich target.~~',
+      ] },
+    { tag: 'key', title: 'Fuel trims: the PCM’s corrections',
+      body: [
+        '**Short-term [[fuel-trim]] (STFT)**: the instant correction, jumping around by a few %.',
+        '**Long-term (LTFT)**: the learned average correction, saved so short-term can stay near zero.',
+        '**Positive % = adding fuel** (it sensed lean, e.g. a vacuum leak). **Negative = pulling fuel** (it sensed rich, e.g. a leaking injector).',
+        'Big, sustained trims are one of the best clues a scan tool shows. You’ll read them live in the OBD-II unit (Track 4).',
+      ] },
+  ],
+  quiz: [
+    { type: 'num', q: 'An engine runs at **12.5:1**. What is lambda? (2 decimals)', answer: 0.85, tol: 0.01, unit: 'λ',
+      why: 'λ = 12.5 ÷ 14.7 = **0.85**. Below 1, so it’s rich.' },
+    { type: 'order', q: 'Order from **richest** to **leanest**.', items: ['11.5:1', '12.5:1', '14.7:1', '16:1'],
+      why: 'Lower AFR = less air per gram of fuel = richer. 14.7:1 is stoich; 16:1 is lean.' },
+    { type: 'mc', q: 'Why do engines run **rich** at wide-open throttle?', options: ['To keep the catalytic converter happy', 'Extra fuel cools the charge and resists knock; best power is a bit rich anyway', 'Because the O2 sensor turns off', 'To lower fuel pressure'], answer: 1,
+      why: 'At full load, heat and knock are the danger. Spare fuel absorbs heat as it evaporates. The cat prefers stoich, which is why cruise stays at λ 1.',
+      wrong: { 0: 'The cat works best at stoich, not rich. WOT trades cat efficiency for engine protection.' } },
+    { type: 'mc', q: 'Long-term fuel trim reads **+20%** at idle. What is the PCM seeing?', options: ['Rich: it’s pulling fuel', 'Lean: it’s adding fuel, e.g. unmetered air from a vacuum leak', 'Perfect stoich', 'A misfire on cylinder 1'], answer: 1,
+      why: 'Positive trim = adding fuel because the O2 sensor keeps seeing extra oxygen. A leak after the MAF is a classic cause.' },
+    { type: 'tap', q: 'Tap the sensor the PCM uses for **closed-loop** fuel control.', visual: { type: 'parts', drawing: 'exhaust' }, answer: 'o2-up',
+      why: 'The upstream O2 sensor, before the cat, reads the engine’s actual mixture.',
+      wrong: { 'o2-down': 'The downstream sensor mostly monitors the catalytic converter.' } },
+  ],
+  cards: [
+    { id: 'stoich', front: 'Stoichiometric AFR for gasoline?', back: 'About 14.7:1 by mass (λ 1).' },
+    { id: 'lambda', front: 'What is lambda?', back: 'Actual AFR ÷ stoich AFR. < 1 rich, > 1 lean.' },
+    { id: 'wot', front: 'Why rich at WOT?', back: 'Extra fuel cools the charge and resists knock; best power is slightly rich.' },
+    { id: 'loops', front: 'Closed loop vs open loop?', back: 'Closed: corrects using the O2 sensor (idle, cruise). Open: follows tables (cold start, WOT).' },
+    { id: 'trim', front: 'Positive fuel trim means?', back: 'PCM is adding fuel because it sees lean (e.g., vacuum leak).' },
+  ],
+};

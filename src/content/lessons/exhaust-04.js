@@ -1,0 +1,72 @@
+// Why exhausts sound the way they do
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Tempo, rhythm and the drum',
+      body: [
+        'An exhaust note is a drum track. **Tempo** = how fast the hits come (rpm × cylinders).',
+        '**Rhythm** = how evenly the hits are spaced in each pipe (layout and crank).',
+        '**The drum** = the pipes, collector, turbo and mufflers that shape and filter every hit.',
+      ] },
+    { tag: 'how', title: 'Three ingredients',
+      body: [
+        '**Pitch** comes from the [[firing-frequency]]: `rpm ÷ 60 × cylinders ÷ 2`. More cylinders or more rpm = higher note.',
+        '**Character** comes from pulse spacing: even pulses sound smooth (a buzz or a wail); uneven pulses sound lumpy (a burble or lope).',
+        '**Tone** is filtering: header lengths, how the banks join, the turbo, the mufflers. Same engine, different exhaust, very different sound.',
+      ] },
+    { tag: 'see', title: 'Cross-plane V8 burble', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8' },
+      body: [
+        'Overall the [[cross-plane]] V8 fires every 90°, but **each bank** gets uneven pulses: two of its cylinders fire 90° apart, then there’s a longer wait.',
+        'Each bank’s pipe hears that off-beat rhythm: the classic muscle-car **burble** at idle.',
+        'Joining the two banks with a crossover pipe blends the pulses: an H-pipe is generally described as deeper, an X-pipe as smoother and raspier.',
+      ] },
+    { tag: 'see', title: 'Flat-plane V8 scream', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8flat' },
+      body: [
+        'A [[flat-plane]] V8 alternates banks, so each bank fires **evenly every 180°**, like two inline-4s.',
+        'Even pulses + high rpm = a smooth, high-pitched **wail**, the Ferrari and Shelby GT350 sound.',
+        'Same cylinder count and firing frequency as a cross-plane V8; only the rhythm per pipe changed.',
+      ] },
+    { tag: 'see', title: '270° twin: a V-twin in disguise', visualFirst: true,
+      visual: { type: 'layout', layout: 'twin270', pick: true },
+      body: [
+        'Gaps of **270° / 450°**: the same off-beat as a 90° V-twin, so a 270° parallel twin sounds lumpy and “V-twin-like.”',
+        'Switch to the **180° twin**: gaps of 180° / 540° give a different, often buzzier, sound.',
+        'Try the inline-4 and the single too, and watch the rhythm of the firing flashes.',
+      ] },
+    { tag: 'bikes', title: 'Your two bikes, by ear',
+      body: [
+        '**Ninja 500** (180° crank): smoother, revvier, higher-pitched twin sound.',
+        '**RS 457** (270° crank): the lumpier, V-twin-style beat.',
+        'Most modern road bikes carry a cat inside the exhaust, so the same tampering rules apply to bike exhaust swaps that remove it.',
+      ],
+      facts: ['ninja.crankAngle', 'rs457.crankAngle'] },
+    { tag: 'bronco', title: 'Why your Bronco is quiet',
+      body: [
+        'Your inline-4 fires evenly every 180°: a smooth, steady buzz, not a burble.',
+        'The **turbo sits in the exhaust path**. The turbine takes energy out of each pulse and smears pulses together, so turbo engines are naturally quieter than non-turbo ones.',
+        'An aftermarket cat-back can change the tone, but no muffler makes an even-firing I4 sound like a cross-plane V8. And deleting the cat is illegal on a road vehicle in the US.',
+      ],
+      facts: ['bronco.engine', 'bronco.firingOrder'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'A V8 at **6,000 rpm**: firing frequency in Hz?', answer: 400, tol: 0, unit: 'Hz',
+      hint: 'Hz = rpm ÷ 60 × cylinders ÷ 2', why: '6,000 ÷ 60 = 100 rev/s × 8 ÷ 2 = **400 Hz**.' },
+    { type: 'order', q: 'At the same **3,000 rpm**, order from lowest to highest firing frequency.', items: ['Single', 'Parallel twin', 'Inline-4', 'V8'],
+      why: '3,000 ÷ 60 = 50 rev/s. × cylinders ÷ 2: single 25 Hz, twin 50 Hz, I4 100 Hz, V8 200 Hz.' },
+    { type: 'mc', q: 'A flat-plane and a cross-plane V8 at the same rpm have the same firing frequency. Why do they sound so different?', options: ['Different displacement', 'Pulse spacing in each bank’s pipe: even (flat-plane) vs uneven (cross-plane)', 'The flat-plane has more cylinders', 'Cross-planes always have turbos'], answer: 1,
+      why: 'Pitch is the same; rhythm isn’t. A flat-plane gives each bank evenly spaced pulses (wail); a cross-plane gives each bank an off-beat (burble).' },
+    { type: 'mc', q: 'Why does the RS 457 sound “V-twin-like”?', options: ['It is a V-twin', 'Its 270° crank gives the same 270° / 450° firing gaps as a 90° V-twin', 'It has a louder muffler', 'It fires both cylinders at once'], answer: 1,
+      why: 'It’s a parallel twin, but the 270° crank copies a 90° V-twin’s firing rhythm. The Ninja 500’s 180° crank gives 180° / 540° instead.',
+      wrong: { 0: 'It’s a parallel twin. Only the firing rhythm matches a V-twin.' } },
+    { type: 'mc', q: 'Why are turbocharged cars usually quieter?', options: ['They have more mufflers by law', 'The turbine takes energy out of the exhaust pulses and smooths them', 'They rev lower', 'They have fewer cylinders'], answer: 1,
+      why: 'Every pulse has to spin the turbine first. That takes energy from the pulses and blends them, so less sound reaches the tailpipe.' },
+  ],
+  cards: [
+    { id: 'pitch', front: 'What sets an exhaust note’s pitch?', back: 'Firing frequency: rpm ÷ 60 × cylinders ÷ 2.' },
+    { id: 'rhythm', front: 'What makes a note lumpy vs smooth?', back: 'Pulse spacing in each pipe: uneven = burble/lope, even = buzz/wail.' },
+    { id: 'v8s', front: 'Cross-plane vs flat-plane V8 sound?', back: 'Cross-plane: uneven pulses per bank → burble. Flat-plane: even per bank → scream.' },
+    { id: 'twins', front: '180° vs 270° twin sound?', back: '180°: smoother, buzzier. 270°: V-twin-like lope (270° / 450°).' },
+    { id: 'turbo', front: 'Why are turbo engines quieter?', back: 'The turbine absorbs and smooths the exhaust pulses.' },
+  ],
+};

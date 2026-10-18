@@ -1,0 +1,70 @@
+// Steering: rack & electric assist
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A gear on a toothed ruler',
+      body: [
+        'Picture a small gear sitting on a ruler with teeth cut into it. Spin the gear and the ruler slides sideways.',
+        'That’s [[rack-and-pinion]] steering: the gear (pinion) is on your steering shaft, the ruler (rack) pushes the front wheels left and right.',
+        'Electric assist is a helper standing next to you who pushes harder the harder **you** push.',
+      ] },
+    { tag: 'how', title: 'Wheel to tire, step by step',
+      body: [
+        'Steering wheel → **column** (with U-joints to get around the engine bay) → **pinion** → **rack** slides sideways.',
+        'Each end of the rack has a [[tie-rod]] (inner + outer end) that pushes or pulls the steering arm on the wheel’s knuckle, swinging the wheel around its pivot.',
+        'Tie-rod length sets **toe**. That’s the adjustment an alignment shop turns.',
+        'The steering arms are angled so the **inside** wheel turns a bit sharper than the outside one in a turn, since it follows a tighter circle ([[ackermann]] geometry).',
+      ] },
+    { tag: 'see', title: 'Where it lives', visualFirst: true,
+      visual: { type: 'parts', drawing: 'car-top' },
+      body: [
+        'Tap **steering** and the front suspension. The rack sits low, across the car, roughly in line with the front wheels.',
+      ] },
+    { tag: 'math', title: 'Steering ratio',
+      body: [
+        '[[steering-ratio]] = degrees you turn the steering wheel ÷ degrees the road wheels turn.',
+        'At **15:1**, turning the wheel 90° steers the tires 90 ÷ 15 = **6°**.',
+        '**Quicker** ratio (lower number): less arm-twirling, more darty. **Slower**: calmer, more turns lock-to-lock.',
+        'Some racks are **variable-ratio**: slow near center for highway calm, quicker near full lock for parking.',
+      ] },
+    { tag: 'how', title: 'Electric power steering (EPAS)',
+      body: [
+        'A [[torque-sensor]] in the column measures how hard you’re twisting (a thin torsion bar that twists a tiny amount).',
+        'A control module reads that plus vehicle speed and tells an electric motor how much to help. Lots of help when parking, less at highway speed.',
+        '**Column-mounted** motor: sits under the dash; cheaper, fine for lighter cars. **Rack-mounted**: motor drives the rack directly (often by belt and ball screw); handles bigger loads, better feel.',
+        'Older **hydraulic** steering used an engine-driven pump running all the time. [[epas|EPAS]] uses power only when you steer, which saves fuel.',
+      ] },
+    { tag: 'why', title: 'A motor that can steer by itself',
+      body: [
+        'If a motor can help you steer, software can steer **a little** too: lane-keeping nudges, parking assist, and correcting for crowned roads or crosswinds.',
+        'Those commands travel over the car’s network ([[can-bus]]), so makers deliberately limit how much torque the system can add, and the driver can always overpower it.',
+        'That’s a big reason security researchers care about steering modules: more on this in the cybersecurity track.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco Sport',
+      body: [
+        'Rack-and-pinion with **electric, speed-sensing assist** (EPAS).',
+        'Whether its motor sits on the column or the rack isn’t confirmed here. Ford doesn’t list its steering ratio in the sources checked.',
+        'If yours has Ford’s Lane-Keeping System (check your window sticker), the EPAS motor is what makes the nudge.',
+      ],
+      facts: ['bronco.steering'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Put the steering path in order, from your hands to the tire.', items: ['Steering wheel', 'Column', 'Pinion', 'Rack', 'Tie rod', 'Knuckle & wheel'],
+      why: 'The column turns the pinion, the pinion slides the rack, the rack pushes the tie rods, and the tie rods swing the knuckles.' },
+    { type: 'num', q: 'Steering ratio **16:1**. You turn the steering wheel **480°**. How many degrees do the front tires turn?', answer: 30, tol: 0, unit: '°',
+      why: '480 ÷ 16 = **30°**.' },
+    { type: 'mc', q: 'How does EPAS know how much to help?', options: ['A pressure sensor in the tires', 'A torque sensor in the column measures how hard you twist', 'It always gives the same help', 'A camera watches your hands'], answer: 1,
+      why: 'The torque sensor measures driver effort; the module combines it with vehicle speed to command the motor.' },
+    { type: 'tap', q: 'Tap the **steering** system.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'steering',
+      why: 'The steering rack runs across the car between the front wheels.',
+      wrong: { 'susp-front': 'Close: the tie rods connect to it, but this is the front suspension.' } },
+    { type: 'mc', q: 'Why can a car with EPAS have lane-keeping assist?', options: ['EPAS includes a camera', 'The assist motor can add a small steering torque on command from software', 'EPAS locks the wheel straight', 'It uses the brakes to steer'], answer: 1,
+      why: 'Once a motor can push on the steering, a lane-keeping module can request a small, limited torque. The driver can always overpower it.' },
+  ],
+  cards: [
+    { id: 'rack', front: 'How does rack-and-pinion steering work?', back: 'A pinion gear on the steering shaft slides a toothed rack sideways; tie rods push the wheels.' },
+    { id: 'tierod', front: 'What do tie rods connect, and what do they adjust?', back: 'Rack ends to the steering arms on the knuckles. Their length sets toe.' },
+    { id: 'ratio', front: 'Steering ratio 15:1 means?', back: '15° of steering wheel turns the tires 1°.' },
+    { id: 'epas', front: 'EPAS: column vs rack-mounted motor?', back: 'Column: cheaper, lighter cars. Rack: drives the rack directly, more force and better feel.' },
+    { id: 'torque', front: 'What does the EPAS torque sensor measure?', back: 'How hard the driver is twisting the wheel (twist of a small torsion bar).' },
+  ],
+};

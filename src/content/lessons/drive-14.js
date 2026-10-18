@@ -1,0 +1,76 @@
+// AWD vs 4x4: couplings & transfer cases
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Three kinds of teamwork',
+      body: [
+        '**Full-time AWD**: everyone always pulls, but each can walk at their own pace (a center diff).',
+        '**On-demand [[awd]]**: the front wheels do the work; the rear wheels are subs on the bench, called in the instant they’re needed (a clutch coupling).',
+        '**Part-time 4x4**: a three-legged race. Front and rear tied together: huge pulling power, terrible at corners.',
+      ] },
+    { tag: 'how', title: 'The front and rear need different speeds too',
+      body: [
+        'In a turn, the **front wheels sweep a bigger arc** than the rears, so the front driveshaft wants to turn a little faster.',
+        'Same problem as left vs right wheels, one level up. Something has to allow the difference: a **[[center-differential]]**, a **slipping clutch**, or slipping tires.',
+      ] },
+    { tag: 'how', title: 'Full-time AWD: a center diff',
+      body: [
+        'A third differential sits between the front and rear axles. All four wheels are always driven.',
+        'An open center diff has the same one-slipping-wheel weakness, so it’s usually limited: viscous, Torsen, or clutch-type (all from the LSD lesson).',
+        'Examples: Audi quattro (Torsen-style center diffs on many models) and Subaru’s manual-transmission AWD.',
+      ] },
+    { tag: 'see', title: 'On-demand AWD: a clutch coupling', visualFirst: true,
+      visual: { type: 'exploded', assembly: 'wetclutch' },
+      body: [
+        'Most crossovers are **front-drive based**. A [[ptu]] sends drive back through a driveshaft to an electronically controlled **wet multi-plate clutch**: an [[awd-coupling]] (Haldex is the famous name).',
+        'Clutch loose = front-drive. Clutch squeezed = rear gets torque. Partly squeezed = it slips and shares.',
+        'Early couplings reacted only **after** the front slipped. Modern ones **preload**: they clamp ahead of time on launches, cold starts or wheel-speed hints.',
+      ] },
+    { tag: 'how', title: 'Part-time 4x4: the transfer case',
+      body: [
+        'Trucks and body-on-frame SUVs are **rear-drive based**. A [[transfer-case]] behind the transmission feeds a front driveshaft too.',
+        '**2H**: rear only. **4H**: front and rear driveshafts **locked together**. **4L**: locked, plus a [[low-range]] reduction gear. **N**: neutral (for flat towing).',
+        'Low range (typically about 2.5:1 to 4:1) slows the wheels and multiplies torque: slow, controlled crawling with less heat in the clutch or torque converter.',
+      ] },
+    { tag: 'why', title: 'Why “part-time”: driveline bind',
+      body: [
+        'In 4H the front and rear driveshafts must turn at the **same speed**. In a turn they can’t.',
+        'On dirt, the tires slip a little and release the strain. On **dry pavement** they can’t: [[driveline-bind]]. The drivetrain winds up like a spring, tires hop and scrub, and it can be hard to shift out of 4WD.',
+        'So part-time 4x4 stays in 2H on pavement. Some transfer cases add an **auto/4A** setting with a clutch that slips, which makes it safe on pavement.',
+      ] },
+    { tag: 'math', title: 'Crawl ratio',
+      body: [
+        '[[crawl-ratio]] = **1st gear × low range × final drive**. It’s how many engine turns per wheel turn in the lowest gear.',
+        'Your Bronco Sport: no low range, so **4.69 × 3.81 ≈ 17.9:1**.',
+        'Same gearbox with a 2.72:1 low range would be 17.9 × 2.72 ≈ **48.6:1**. Purpose-built 4x4s with low range go much lower still.',
+      ],
+      facts: ['bronco.gearRatios', 'bronco.finalDrive', 'bronco.crawlRatio'] },
+    { tag: 'bronco', title: 'Your “4x4” is on-demand AWD, upgraded', visualFirst: true,
+      visual: { type: 'awd', mode: 'normal', scene: 'cruise' },
+      body: [
+        'Ford calls it **4x4**, but the layout is the on-demand kind: PTU → driveshaft → clutch-type rear unit. **No transfer case, no low range.**',
+        'Badlands upgrades it: **two** clutches (one per rear wheel), a **4x4 Lock** button and a **rear diff lock** instead of low range.',
+        'Because the rear can always slip its clutches, there’s no 4H-style bind in normal driving.',
+      ],
+      facts: ['bronco.4x4', 'bronco.ptu', 'bronco.noLowRange'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Why shouldn’t a part-time 4x4 drive in 4H on dry pavement?', options: ['It uses too much fuel', 'Front and rear are locked together, but in turns they need different speeds, so the driveline binds', 'The transfer case overheats from speed', 'The front diff locks'], answer: 1,
+      why: 'Locked front and rear driveshafts can’t make up the speed difference in turns. On loose ground tires slip it away; on dry pavement the strain builds up: bind, hop and parts damage.' },
+    { type: 'num', q: '1st gear is **4.0:1**, low range is **2.72:1** and the final drive is **4.10:1**. What’s the crawl ratio (x:1)?', answer: 44.6, tol: 0.1, unit: ':1',
+      hint: 'Multiply all three.', why: '4.0 × 2.72 × 4.10 = **44.6:1**. The engine turns 44.6 times for each turn of the wheels.' },
+    { type: 'order', q: 'Order what happens when an on-demand AWD car’s front wheels slip.', items: ['Front wheels start to spin faster than the rears', 'Wheel-speed sensors report the difference', 'The AWD module commands the coupling', 'The clutch pack clamps', 'The rear wheels get torque'],
+      why: 'Sense → decide → clamp → drive. Modern systems also preload the clutch before slip when they expect it (hard launches, low grip).' },
+    { type: 'tap', q: 'Tap the part that makes your Bronco Sport front-drive-based AWD instead of a transfer-case 4x4: the **right-angle box that sends drive rearward**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'ptu',
+      why: 'The power transfer unit bolts to the sideways transmission and turns drive 90° into the driveshaft. A truck would use a transfer case behind a lengthwise gearbox instead.',
+      wrong: { transmission: 'The transmission feeds the PTU, but it’s the PTU that turns drive toward the rear.', rdu: 'The RDU is at the rear end of the driveshaft. It receives drive; the PTU sends it.' } },
+    { type: 'mc', q: 'Does the Bronco Sport Badlands have low range?', options: ['Yes, a 2-speed transfer case', 'No: no transfer case or low range; it uses 4x4 Lock and a rear diff lock instead', 'Only in Rock Crawl mode', 'Only with the manual transmission'], answer: 1,
+      why: 'It’s an AWD-based system (PTU + clutch-type rear unit). Rock Crawl changes calibrations and engages the locks, but doesn’t add gears.' },
+  ],
+  cards: [
+    { id: 'types', front: 'Three main 4-wheel-drive types?', back: 'Full-time AWD (center diff), on-demand AWD (clutch coupling), part-time 4x4 (transfer case, front/rear locked).' },
+    { id: 'coupling', front: 'What is an on-demand AWD coupling?', back: 'An electronically squeezed wet multi-plate clutch that sends torque to the second axle when needed (Haldex-style).' },
+    { id: 'tcase', front: 'Transfer case modes?', back: '2H rear only · 4H front+rear locked · 4L locked + low-range reduction · N neutral.' },
+    { id: 'bind', front: 'Driveline bind?', back: 'Front and rear locked together on grippy pavement: they can’t differ in turns, so the drivetrain winds up.' },
+    { id: 'crawl', front: 'Crawl ratio formula?', back: '1st gear × low range × final drive. Bronco Sport: 4.69 × 3.81 ≈ 17.9:1 (no low range).' },
+  ],
+};

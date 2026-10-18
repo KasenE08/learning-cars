@@ -1,0 +1,66 @@
+// Drive layouts: FWD, RWD, AWD, 4x4
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Bike gears, but for a car',
+      body: [
+        'On a bicycle your legs only push well at a certain cadence. **Gears** let that same cadence work from a standstill up to top speed.',
+        'An engine is the same: it makes useful [[torque]] only in a band of [[rpm]], and it can’t run at 0 rpm at all.',
+        'The [[drivetrain]] is everything between the crank and the tires that fixes that mismatch.',
+      ] },
+    { tag: 'how', title: 'Three jobs of a drivetrain',
+      body: [
+        '**Multiply torque**: a low [[gear-ratio]] trades speed for twist, so a 277 lb-ft engine can push a 3,000+ lb SUV from rest.',
+        '**Match speeds**: a typical engine runs from a ~700 rpm idle to a 6,000–7,000 rpm redline; the wheels go from 0 to only about 1,000 rpm even at 90 mph. Gears bridge the gap.',
+        '**Disconnect**: a clutch or torque converter lets the engine idle while the car sits still.',
+        'Plus: deliver power to the right wheels and let them turn at different speeds in a corner (the differential, later in this unit).',
+      ] },
+    { tag: 'see', title: 'Follow the power in your Bronco', visualFirst: true,
+      visual: { type: 'parts', drawing: 'car-top' },
+      body: [
+        'Tap the **engine**, then the **transmission**, **PTU**, **driveshaft**, **RDU** and **axles**. That’s the whole path.',
+        'Engine → gearbox → front axles is the primary path. The PTU and driveshaft add the rear wheels.',
+      ] },
+    { tag: 'how', title: 'Transverse vs longitudinal',
+      body: [
+        '**[[transverse|Transverse]]**: engine sideways, crank parallel to the axles. The gearbox and front differential share one case, a [[transaxle]]. Short, compact, cheap.',
+        '**[[longitudinal|Longitudinal]]**: crank points front-to-back, gearbox right behind it, a driveshaft to the rear axle. Room for long engines (inline-6, V8).',
+        'Longitudinal drive to the rear needs a **90° turn** at the axle. That’s the ring and pinion, covered in the differential lessons.',
+      ] },
+    { tag: 'key', title: 'The four layouts',
+      body: [
+        '**[[fwd]]**: front wheels steer **and** drive. Roomy cabin, good snow traction (engine weight on the drive wheels). Cons: [[torque-steer]], [[understeer]] when pushed, less grip on hard launches as weight shifts back.',
+        '**[[rwd]]**: steering and driving split between the axles. Better balance and launch traction (weight shifts onto the rear). Cons: driveshaft tunnel, worse on ice.',
+        '**[[awd]]**: all four wheels driven on the road, full-time or on demand. Grip in all weather; costs weight, money and some fuel.',
+        '**[[four-wheel-drive|4x4]]**: built for off-road, traditionally with a transfer case, low range and front/rear locked together. Deep dive in “AWD vs 4x4.”',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco: transverse, front-biased, four driven wheels',
+      visual: { type: 'awd', mode: 'normal', scene: 'cruise' },
+      body: [
+        'The 2.0 sits **sideways** with the 8-speed bolted to its side. That’s a front-drive layout at heart.',
+        'A **PTU** (power transfer unit) on the transmission turns drive 90° into a driveshaft, and the Badlands’ twin-clutch rear drive unit sends it to the rear wheels.',
+        'Ford markets it as **4x4**; the hardware is the kind usually called **AWD**. Lesson 15 sorts out exactly what it can and can’t do.',
+      ],
+      facts: ['bronco.mounting', 'bronco.trans', 'bronco.ptu', 'bronco.4x4'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Which is **not** one of the drivetrain’s core jobs?', options: ['Multiply torque', 'Let the engine idle while the car is stopped', 'Match engine speed to wheel speed', 'Raise the engine’s peak horsepower'], answer: 3,
+      why: 'Gears can trade speed for torque, but they can’t create power. Peak horsepower is set by the engine; the drivetrain only loses a little of it to friction.' },
+    { type: 'tap', q: 'Tap the part that turns drive 90° from the transmission toward the rear wheels.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'ptu',
+      why: 'The **PTU** (power transfer unit) is a right-angle gearbox on the transmission that feeds the driveshaft.',
+      wrong: { rdu: 'The RDU is at the other end: it takes the driveshaft’s spin and sends it to the rear wheels.', driveshaft: 'The driveshaft just carries the spin; the PTU is what turns it 90° first.' } },
+    { type: 'mc', q: 'Why do FWD cars usually have good traction in snow?', options: ['Front tires are wider', 'The engine’s weight sits on the driven wheels', 'FWD cars have more horsepower', 'The front differential locks automatically'], answer: 1,
+      why: 'More weight on the driven tires = more grip. A transverse engine sits right over the front wheels.',
+      wrong: { 3: 'A normal FWD car has an open front differential; nothing locks.' } },
+    { type: 'mc', q: 'In a **transverse** layout, the crankshaft points…', options: ['Front to back', 'Side to side, parallel to the axles', 'Straight up', 'Diagonally'], answer: 1,
+      why: 'Transverse = across the car. The crank already turns the same way the wheels do, so no 90° gear turn is needed for the front wheels.' },
+    { type: 'mc', q: 'A hard launch shifts weight **rearward**. Which layout benefits?', options: ['FWD', 'RWD', 'Neither', 'Only 4x4 with low range'], answer: 1,
+      why: 'Weight moving back loads the rear tires, which helps RWD and unloads the fronts of an FWD car. That’s why drag cars are rear-driven.' },
+  ],
+  cards: [
+    { id: 'jobs', front: 'The drivetrain’s three core jobs?', back: 'Multiply torque, match engine speed to wheel speed, and disconnect so the engine can idle at a stop.' },
+    { id: 'trans-long', front: 'Transverse vs longitudinal?', back: 'Transverse: crank across the car, compact transaxle (FWD-based). Longitudinal: crank front-to-back, driveshaft to the rear.' },
+    { id: 'fwd', front: 'FWD pros and cons?', back: 'Pros: compact, roomy, cheap, good snow traction. Cons: torque steer, understeer, weaker hard launches.' },
+    { id: 'rwd', front: 'RWD pros and cons?', back: 'Pros: balance, steering feel, launch traction. Cons: driveshaft tunnel, worse on slippery roads.' },
+    { id: 'bronco', front: 'Bronco Sport layout?', back: 'Transverse 2.0 + 8-speed; PTU and driveshaft feed a twin-clutch rear drive unit. Front-drive-based, four wheels driven.' },
+  ],
+};

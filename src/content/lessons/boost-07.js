@@ -1,0 +1,65 @@
+// Superchargers
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Waterwheel vs hand crank',
+      body: [
+        'A turbo is a **waterwheel** in the exhaust stream: the energy is nearly free, but it only spins once the river is flowing.',
+        'A [[supercharger]] is a fan you **hand-crank**, geared to the engine: it spins the instant the engine does, but your arm (the crankshaft) pays for every turn.',
+        'Both pack extra air in. They just pay for it differently.',
+      ] },
+    { tag: 'how', title: 'Driven by the crank',
+      body: [
+        'A belt (sometimes gears) from the crankshaft spins the blower, so its speed is locked to engine rpm by the **pulley ratio**.',
+        'No waiting for exhaust: boost responds **instantly** and predictably. No turbo lag.',
+        'The cost is [[parasitic-loss]]: it takes crank power to compress air, and more boost takes more power. Some have a bypass valve so the blower idles when you don’t need boost.',
+      ] },
+    { tag: 'how', title: 'Three kinds of blower',
+      body: [
+        '[[roots-blower|Roots]]: two meshing lobed rotors carry pockets of air around the case. They don’t squeeze it inside; pressure builds in the manifold. Strong low-rpm boost, but heats the air more. Ford’s 2020+ Shelby GT500 V8 uses an Eaton Roots-type.',
+        '[[twin-screw]]: two interlocking screws squeeze the air **as it travels** along them. More efficient, cooler air than a Roots. Dodge’s Hellcat V8 uses one.',
+        'Roots and twin-screw are [[positive-displacement]]: a fixed volume of air per turn, so boost comes in almost from idle.',
+        '[[centrifugal-supercharger|Centrifugal]]: a belt-driven impeller, basically a turbo’s compressor with a step-up gearbox. Boost climbs steeply with rpm: soft down low, strong up top.',
+      ] },
+    { tag: 'see', title: 'Same compressor spot, different drive', visualFirst: true,
+      visual: { type: 'parts', drawing: 'intake' },
+      body: [
+        'Tap **compressor**. On a supercharged car a belt-driven blower does that job instead of a turbo.',
+        'Superchargers still heat the air, so many still feed an **intercooler** (often air-to-water, built into the blower housing on top of the engine).',
+      ] },
+    { tag: 'math', title: 'Pulley ratio',
+      body: [
+        'Blower speed = engine rpm × (crank pulley diameter ÷ blower pulley diameter).',
+        'Example: 7.5 in crank pulley, 3.0 in blower pulley → ratio **2.5**. At 6,000 rpm the blower spins `6,000 × 2.5 = 15,000 rpm`.',
+        'Smaller blower pulley = faster blower = more boost, and more parasitic loss. Centrifugals gear up much further inside, to tens of thousands of rpm.',
+      ] },
+    { tag: 'why', title: 'Turbo or supercharger?',
+      body: [
+        '**Supercharger**: instant, linear response; simple plumbing; the classic whine. Costs crank power all the time it’s making boost.',
+        '**Turbo**: recycles exhaust energy, so it’s more **efficient**; small and quiet. But it has lag, runs hot, and adds exhaust back-pressure.',
+        'That efficiency is why most modern gas engines, including your [[ecoboost]], use turbos: a small turbo engine can replace a bigger non-turbo one.',
+        '[[twincharging]] uses both: a supercharger for low-end response, a turbo for the top. VW’s 1.4 TSI and Volvo’s T6 Drive-E did it.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Key difference between a **Roots** and a **twin-screw** supercharger?', options: ['Roots is belt-driven, twin-screw is exhaust-driven', 'Twin-screw compresses the air inside the unit; Roots just moves it and pressure builds in the manifold', 'Roots makes no boost at low rpm', 'Twin-screw is a type of turbo'], answer: 1,
+      why: 'Both are positive-displacement and belt-driven. The twin-screw’s rotors squeeze air internally, which is more efficient and heats it less.',
+      wrong: { 2: 'Roots blowers are known for strong boost from very low rpm.' } },
+    { type: 'mc', q: 'Which supercharger gives the **weakest** low-rpm boost?', options: ['Roots', 'Twin-screw', 'Centrifugal', 'They’re all identical'], answer: 2,
+      why: 'A centrifugal impeller’s boost rises steeply with speed, so it’s soft at low rpm and strong near redline, much like a turbo compressor.' },
+    { type: 'num', q: 'Crank pulley **8 in**, blower pulley **3.2 in**. Engine at **5,000 rpm**. Blower rpm?', answer: 12500, tol: 0, unit: 'rpm',
+      hint: 'Ratio = crank ÷ blower pulley.', why: '8 ÷ 3.2 = 2.5. 5,000 × 2.5 = **12,500 rpm**.' },
+    { type: 'mc', q: 'Why do most new gas engines use turbos rather than superchargers?', options: ['Turbos have no lag', 'Turbos reuse exhaust energy, so they cost less crank power and fuel', 'Superchargers can’t make boost', 'Turbos don’t heat the air'], answer: 1,
+      why: 'A supercharger’s power comes straight off the crank (parasitic loss). A turbo harvests energy that would leave as hot exhaust anyway, which helps fuel economy.',
+      wrong: { 0: 'Turbos do have lag. Superchargers are the instant-response option.' } },
+    { type: 'tap', q: 'On a supercharged car, which box in this drawing does the blower replace?', visual: { type: 'parts', drawing: 'intake' }, answer: 'compressor',
+      why: 'A supercharger is a compressor too; it’s just driven by a belt instead of a turbine.',
+      wrong: { intercooler: 'Supercharged cars often keep an intercooler; it cools the air after the blower.' } },
+  ],
+  cards: [
+    { id: 'drive', front: 'How is a supercharger driven?', back: 'Mechanically from the crank (usually a belt). Speed locked to rpm by the pulley ratio.' },
+    { id: 'types', front: 'Three supercharger types?', back: 'Roots (moves air), twin-screw (compresses internally), centrifugal (impeller, boost rises with rpm).' },
+    { id: 'pd', front: 'Which superchargers are positive displacement?', back: 'Roots and twin-screw: fixed air volume per turn, boost from near idle.' },
+    { id: 'vs', front: 'Supercharger vs turbo in one line?', back: 'Super: instant, costs crank power. Turbo: efficient (uses exhaust), but lags.' },
+    { id: 'pulley', front: 'Blower speed formula?', back: 'Engine rpm × (crank pulley ÷ blower pulley).' },
+  ],
+};

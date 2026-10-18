@@ -1,0 +1,70 @@
+// Springs & dampers
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A pogo stick and a door closer',
+      body: [
+        'A **spring** is a pogo stick: squash it and it gives the energy straight back, again and again.',
+        'A **damper** is the hydraulic closer on a heavy door: it doesn’t hold the door open, it just stops it slamming.',
+        'Springs alone, and the car bounces down the road like a pogo stick. Add dampers and each bump becomes one smooth bob.',
+      ] },
+    { tag: 'how', title: 'Sprung vs unsprung mass',
+      body: [
+        '[[sprung-mass|Sprung mass]]: everything the springs hold up. Body, engine, seats, you.',
+        '**Unsprung mass**: everything **below** the springs that moves with the road: wheel, tire, brake rotor and caliper, hub, knuckle, part of each arm and axle.',
+        'Light unsprung mass can follow bumps quickly, so the tire stays pressed on the road. Heavy unsprung mass gets kicked up and bounces off the bump.',
+        'Think tennis ball vs bowling ball rolling over gravel. That’s why heavy wheels hurt ride and grip.',
+      ] },
+    { tag: 'math', title: 'Spring rate',
+      body: [
+        '[[spring-rate]] = force needed per inch of squash. A **200 lb/in (35 N/mm)** spring needs 200 lb for 1 in, 400 lb for 2 in.',
+        '**Linear** springs keep the same rate all the way. **Progressive** springs get stiffer as they compress: soft over small bumps, firm near the end.',
+        'Stiffer springs: less body roll and nose-dive, but a harsher ride and less grip on rough ground.',
+      ],
+      note: 'The rate felt at the wheel is lower than the spring’s own rate, because the spring usually sits partway along the arm (the motion ratio).' },
+    { tag: 'see', title: 'Bump test', visualFirst: true,
+      visual: { type: 'suspension', view: 'damper' },
+      body: [
+        'Hit the bump. Watch the spring store the energy and the damper bleed it off.',
+        'Too soft: the body keeps bobbing. Too stiff: every jolt goes straight into the cabin.',
+      ] },
+    { tag: 'how', title: 'How a damper works',
+      body: [
+        'A [[damper]] is a piston moving through oil. The oil is forced through small holes and valves, which turns motion into **heat**.',
+        'Damper force depends on **how fast** the wheel moves. Spring force depends on **how far** it moved. That’s why the two make a team.',
+        '[[compression-rebound|Compression]] (bump) damping slows the wheel going up. **Rebound** damping slows the spring pushing it back down. Rebound is usually firmer, because it controls the energy the spring stored.',
+        'Dampers don’t hold the car up. Worn-out dampers leave ride height almost the same but make the car float and bounce.',
+      ] },
+    { tag: 'how', title: 'Anti-roll bars',
+      body: [
+        'An [[anti-roll-bar]] is a U-shaped steel bar linking the left and right wheels, twisting like a torsion spring in the middle.',
+        'In a turn the outer wheel goes up and the inner wheel drops. The bar gets twisted and pushes back: **less body roll**.',
+        'Both wheels hit a bump together? The bar just rotates without twisting and does nothing. It only fights **roll**.',
+        'Off-road tradeoff: a stiff bar also fights **articulation** (one wheel up, the other down), so some off-roaders can disconnect theirs.',
+      ] },
+    { tag: 'bronco', title: 'Badlands: hydraulic rebound stops',
+      body: [
+        'Your Badlands has its own front strut tuning plus **hydraulic rebound stops** inside the front struts.',
+        'A [[bump-stop|rebound stop]] catches the wheel at the end of its **downward** travel, like dropping off a ledge or cresting a whoop. A hydraulic one slows the wheel with oil just before full extension instead of hitting a hard rubber or metal stop.',
+        'Result: no harsh “clunk” when the suspension tops out off-road. Ford doesn’t publish spring rates, so no numbers here.',
+      ],
+      facts: ['bronco.suspension'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'A **250 lb/in** spring is squashed **1.6 in** by a bump. How much force is it pushing back with?', answer: 400, tol: 0, unit: 'lb',
+      why: 'Force = rate × distance = 250 × 1.6 = **400 lb**.' },
+    { type: 'mc', q: 'Which of these is **unsprung** mass?', options: ['The engine', 'The driver’s seat', 'A brake caliper', 'The roof'], answer: 2,
+      why: 'Brake calipers bolt to the knuckle and move up and down with the wheel, below the springs. The other three ride on the springs.' },
+    { type: 'mc', q: 'What does a damper’s force mainly depend on?', options: ['How far the wheel has moved', 'How fast the wheel is moving', 'The weight of the car', 'Tire pressure'], answer: 1,
+      why: 'Dampers push oil through holes: faster movement means more resistance. Distance is the spring’s job.',
+      wrong: { 0: 'That’s the spring: force = rate × distance.' } },
+    { type: 'mc', q: 'When does an anti-roll bar do **nothing**?', options: ['In a hard corner', 'When one wheel hits a bump', 'When both wheels hit the same bump together', 'Never; it always works'], answer: 2,
+      why: 'If both sides move together the bar rotates without twisting. It only resists one side moving relative to the other (roll).' },
+  ],
+  cards: [
+    { id: 'sprung', front: 'Sprung vs unsprung mass?', back: 'Sprung: everything the springs hold up. Unsprung: wheel, tire, brakes, hub and part of the arms, moving with the road.' },
+    { id: 'rate', front: 'What is spring rate?', back: 'Force per unit of compression, e.g. 200 lb/in (35 N/mm).' },
+    { id: 'damper', front: 'Spring vs damper: what does each react to?', back: 'Spring: how far it’s compressed. Damper: how fast it’s moving (turns motion into heat).' },
+    { id: 'rebound', front: 'Compression vs rebound damping?', back: 'Compression slows the wheel moving up; rebound slows the spring pushing it back down. Rebound is usually firmer.' },
+    { id: 'arb', front: 'What does an anti-roll bar resist?', back: 'Only roll: one side moving relative to the other. Both wheels bumping together, it does nothing.' },
+  ],
+};

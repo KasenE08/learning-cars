@@ -1,0 +1,70 @@
+// Intercoolers
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'An ice bath for the air',
+      body: [
+        'You just pumped a bike tire and the pump is hot. Before that hot air goes into the engine, dunk it in an **ice bath**.',
+        'Cooler air is **denser**: the same pressure holds more air mass, and it’s less likely to knock.',
+        'The [[intercooler]] is that ice bath: a radiator for the intake air, sitting between the compressor and the throttle.',
+      ] },
+    { tag: 'see', title: 'Where it sits', visualFirst: true,
+      visual: { type: 'parts', drawing: 'intake' },
+      body: [
+        'Tap **compressor**, then **intercooler**, then **throttle**. Everything from compressor to manifold is under boost.',
+        'Factory manuals often call it a **charge air cooler (CAC)**. Same thing.',
+      ] },
+    { tag: 'why', title: 'What cooling buys you',
+      body: [
+        'From lesson 1: a pressure ratio of 2.0 from 77 °F (25 °C) air comes out around **240 °F (115 °C)** and gives only ~**1.5×** the air mass.',
+        'Cool it to 120 °F (49 °C) and you’re at ~**1.85×**. Density math: `2.0 × (298 K ÷ 322 K) ≈ 1.85`.',
+        'Cooler charge also means less [[knock]], so the ECU can run more spark advance or more boost safely.',
+      ] },
+    { tag: 'how', title: 'Air-to-air vs air-to-water',
+      body: [
+        '**Air-to-air**: boost air flows through a finned core; outside air blowing through cools it. Usually a **front-mount** behind the bumper; Subaru’s WRX uses a **top-mount** fed by its hood scoop. Simple, no pump.',
+        'Downside: long pipes to reach the nose = more volume to fill (a little lag), and it needs the car moving for airflow.',
+        '[[air-to-water]]: the core is cooled by its own coolant loop with a pump and a small front radiator. Compact; can sit right on the intake manifold for short pipes and quick response.',
+        'Downside: more parts, more weight, and the water loop can soak up heat too.',
+      ] },
+    { tag: 'how', title: 'Nothing is free',
+      body: [
+        '[[pressure-drop]]: forcing air through the fins costs pressure, typically a psi or so on a decent core (illustrative). The turbo spins a bit harder to make up the difference.',
+        'The ECU targets pressure **after** the cooler (in the manifold), so the compressor actually runs a bit above what your boost gauge shows.',
+        '[[heat-soak]]: in traffic or after back-to-back hard pulls, the core itself gets hot and stops cooling. Intake air temps climb, the ECU pulls timing, and power drops.',
+        'Bigger core: more cooling and more heat capacity, but more volume and often more pressure drop.',
+      ] },
+    { tag: 'math', title: 'How good is it?',
+      body: [
+        '[[intercooler-efficiency]] = `(T_in − T_out) ÷ (T_in − T_ambient)`.',
+        'Example: 250 °F in, 110 °F out, 80 °F outside: `(250 − 110) ÷ (250 − 80) = 140 ÷ 170 ≈ 82%`.',
+        '100% would mean the air leaves at outside temperature. Real air-to-air cores can’t get there; good ones get close-ish at speed.',
+      ] },
+    { tag: 'bronco', title: 'Yours',
+      visual: { type: 'parts', drawing: 'car-top' },
+      body: [
+        'Tap **intercooler**: it sits low in the nose, ahead of the radiator in this drawing.',
+        'Owners describe pulling the front bumper to reach it, so it’s front-mounted. That it’s **air-to-air** is likely but **not confirmed** by a Ford spec.',
+      ],
+      facts: ['bronco.intercooler'] },
+  ],
+  quiz: [
+    { type: 'tap', q: 'Tap the intercooler.', visual: { type: 'parts', drawing: 'intake' }, answer: 'intercooler',
+      why: 'It sits between the compressor and the throttle, cooling the air the turbo just heated.',
+      wrong: { compressor: 'That’s the turbo’s compressor, which heats the air. The intercooler comes right after it.', filter: 'The filter is before the turbo, at outside pressure.' } },
+    { type: 'num', q: 'Air enters the intercooler at **300 °F** and leaves at **120 °F**. Outside air is **80 °F**. Effectiveness, in %?', answer: 81.8, tol: 1, unit: '%',
+      hint: '(in − out) ÷ (in − ambient).', why: '(300 − 120) ÷ (300 − 80) = 180 ÷ 220 ≈ **82%**.' },
+    { type: 'mc', q: 'Main advantage of an **air-to-water** intercooler?', options: ['No moving parts', 'Compact, so it can sit close to the engine with short pipes', 'Never heat-soaks', 'Raises boost by itself'], answer: 1,
+      why: 'A water-cooled core can be small and mounted near or in the intake manifold, cutting pipe volume. It needs a pump and its own radiator, and it can still heat-soak.' },
+    { type: 'mc', q: 'After 20 minutes in traffic you floor it and the car feels flat. Most likely intercooler reason?', options: ['Pressure drop', 'Heat soak: the core is hot, so intake air is hot and the ECU pulls timing', 'Too much airflow', 'The intercooler is frozen'], answer: 1,
+      why: 'Without airflow the core warms up and can’t cool the charge. Hot intake air → knock risk → the ECU retards timing → less power.' },
+    { type: 'mc', q: 'Why does intercooler **pressure drop** matter?', options: ['It lowers fuel pressure', 'The turbo has to work harder (spin faster, heat the air more) to hit the same manifold pressure', 'It makes the boost gauge read high', 'It doesn’t matter at all'], answer: 1,
+      why: 'Every psi lost in the core has to be made up by the compressor, which costs exhaust energy and adds heat.' },
+  ],
+  cards: [
+    { id: 'why-ic', front: 'Why intercool?', back: 'Cooler charge = denser (more air mass) and less knock-prone.' },
+    { id: 'a2a-a2w', front: 'Air-to-air vs air-to-water?', back: 'A2A: simple, needs airflow, long pipes. A2W: compact, short pipes, needs a pump + radiator.' },
+    { id: 'soak', front: 'Intercooler heat soak?', back: 'Core gets hot (traffic, repeated pulls) and stops cooling → hot intake air → timing pulled.' },
+    { id: 'eff', front: 'Intercooler effectiveness formula?', back: '(T_in − T_out) ÷ (T_in − T_ambient).' },
+    { id: 'drop', front: 'Cost of a bigger intercooler?', back: 'More volume to fill (lag) and often more pressure drop.' },
+  ],
+};

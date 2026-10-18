@@ -1,0 +1,73 @@
+// Wheels & tires: reading a sidewall
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A spec sheet molded in rubber',
+      body: [
+        'Every tire wears its own spec sheet on the sidewall: size, strength, speed limit, birthday.',
+        'And everything the car does (accelerate, brake, steer) goes through **four patches of rubber**, each roughly the size of your hand.',
+        'All the suspension, steering and brake tech in this unit exists to keep those patches working.',
+      ] },
+    { tag: 'see', title: 'Decode a sidewall', visualFirst: true,
+      visual: { type: 'tire', code: '235/65R17 104T' },
+      body: [
+        'Type a size and see each field explained, plus the tire’s overall diameter.',
+        'Try your Bronco’s standard **225/65R17** and its optional **235/65R17**.',
+      ] },
+    { tag: 'how', title: '235/65R17 104T, field by field',
+      body: [
+        '**235** = section width in mm. **65** = [[aspect-ratio]]: sidewall height is 65% of the width.',
+        '**R** = [[radial-tire|radial]] construction (cords run straight across from bead to bead; nearly every modern tire). **17** = rim diameter in inches.',
+        '**104** = [[load-index]]: 900 kg (1,984 lb) per tire. **T** = [[speed-rating]]: rated to 118 mph (190 km/h).',
+        'A **P** in front means passenger; **LT** means light truck (stiffer, built for heavy loads).',
+      ] },
+    { tag: 'math', title: 'How tall is it?',
+      body: [
+        'Sidewall = 235 × 0.65 = **152.75 mm**. There’s one above and one below the rim.',
+        'Diameter = 2 × 152.75 + 17 × 25.4 = 305.5 + 431.8 = **737.3 mm (29.0 in)**.',
+        'A taller tire covers more ground per turn, so the speedometer reads **low** and the gearing gets slightly “taller.”',
+      ] },
+    { tag: 'how', title: 'Birthday and tread',
+      body: [
+        'The [[dot-date-code|DOT code]] ends in four digits: week + year. **2324** = 23rd week of 2024.',
+        'Rubber ages even unused. Carmakers and tire makers usually put the limit somewhere between 6 and 10 years; sources vary.',
+        '[[utqg]] grades: **treadwear** (relative: 600 should outlast 300), **traction** (AA, A, B, C) and **temperature** (A, B, C).',
+        'Tread depth is measured in 32nds of an inch. **2/32 in** is the legal minimum in most US states; wear bars molded in the grooves show it.',
+      ] },
+    { tag: 'how', title: 'All-terrain vs all-season',
+      body: [
+        '**All-season**: tighter tread, quieter, longer-lasting, better wet-road braking. Most cars come on these.',
+        '[[all-terrain-tire|All-terrain]]: bigger blocks and gaps that bite into dirt and gravel and clear mud, plus tougher sidewalls against rocks.',
+        'Costs: more road noise, slightly worse fuel economy, and often weaker wet-pavement grip.',
+        '**M+S** = mud and snow tread design. The **mountain-snowflake** symbol means it passed a severe-snow traction test; some all-terrains have it.',
+      ] },
+    { tag: 'bronco', title: 'Your Badlands’ tires',
+      body: [
+        'Standard: **225/65R17 all-terrain**, 28.5 in (724 mm) tall. Optional: **235/65R17 all-terrain**, 29 in (737 mm).',
+        'Check the math: 2 × (225 × 0.65) + 431.8 = **724.3 mm**. Matches Ford’s 28.5 in.',
+        'The factory brand, load index and speed rating aren’t confirmed here: read them off your own sidewall. The driver-door placard gives the size and pressures.',
+        'Ford quotes the 8.8 in ground clearance with the **available** all-terrain tires.',
+      ],
+      facts: ['bronco.tires', 'bronco.clearance'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'Your standard **225/65R17**: overall diameter in **inches**? (25.4 mm per inch)', answer: 28.5, tol: 0.1, unit: 'in',
+      hint: 'Two sidewalls (width × aspect) plus the rim.',
+      why: '2 × (225 × 0.65) = 292.5 mm. Rim: 17 × 25.4 = 431.8 mm. Total 724.3 mm ÷ 25.4 = **28.5 in**.' },
+    { type: 'order', q: 'Put the fields of **235/65R17 104T** in printed order.', items: ['Width (235)', 'Aspect ratio (65)', 'Construction (R)', 'Rim diameter (17)', 'Load index (104)', 'Speed rating (T)'],
+      why: 'Width / aspect, construction, rim size, then the service description: load index and speed rating.' },
+    { type: 'mc', q: 'In 235/**65**R17, what does 65 mean?', options: ['Sidewall height is 65 mm', 'Sidewall height is 65% of the tread width', 'Max pressure is 65 psi', 'Rated for 65 mph'], answer: 1,
+      why: 'It’s the aspect ratio: 65% of 235 mm = 152.75 mm of sidewall.',
+      wrong: { 0: 'It’s a percentage of the width, not a length.' } },
+    { type: 'mc', q: 'A tire’s DOT code ends in **4223**. When was it made?', options: ['April 2023', '42nd week of 2023', 'Week 23 of 2042', 'Batch 4,223'], answer: 1,
+      why: 'The last four digits are week then year: week 42 of 2023, around mid-October.' },
+    { type: 'mc', q: 'You fit taller tires. What does the speedometer do?', options: ['Reads higher than your real speed', 'Reads lower than your real speed', 'Nothing changes', 'Stops working'], answer: 1,
+      why: 'A taller tire travels farther per revolution, but the car still counts revolutions. You’re going faster than it shows.' },
+  ],
+  cards: [
+    { id: 'code', front: 'Decode 235/65R17 104T.', back: '235 mm wide, sidewall 65% of width, radial, 17 in rim, load index 104 (900 kg), T = 118 mph.' },
+    { id: 'diam', front: 'Tire diameter formula?', back: '2 × (width × aspect) + rim × 25.4, all in mm.' },
+    { id: 'dot', front: 'How do you read a tire’s age?', back: 'Last four digits of the DOT code: week + year (2324 = week 23, 2024).' },
+    { id: 'at-as', front: 'All-terrain vs all-season?', back: 'AT: open, blocky tread and tough sidewalls for dirt and rocks; noisier. AS: quieter, longer-lasting, better on wet pavement.' },
+    { id: 'bs-tire', front: 'Badlands standard tire size?', back: '225/65R17 all-terrain, about 28.5 in tall (235/65R17 AT optional).' },
+  ],
+};

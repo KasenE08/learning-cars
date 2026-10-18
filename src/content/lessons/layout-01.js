@@ -1,0 +1,65 @@
+// Inline engines
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Single file, one roof',
+      body: [
+        'Picture cylinders standing in **single file**, like lockers down a hallway, all under **one roof** (one cylinder head).',
+        'That’s an [[inline-engine]]: every piston moves in the same plane and pushes on one straight crankshaft.',
+        'One head, one cam setup, one exhaust manifold. Simple and cheap, but the engine gets **longer** with every cylinder you add.',
+      ] },
+    { tag: 'see', title: 'Inline-4: the default engine', visualFirst: true,
+      visual: { type: 'layout', layout: 'i4' },
+      body: [
+        'Four cylinders, a [[flat-plane]] crank: pistons 1 & 4 move together, 2 & 3 move together, opposite each other.',
+        '720° ÷ 4 = a power stroke every **180°**: an even [[firing-interval]].',
+        'Most cars on the road use one. It’s short enough to fit almost anywhere.',
+      ] },
+    { tag: 'how', title: 'The inline-4’s one flaw',
+      body: [
+        'From Firing Order & Balance: the big up/down **primary** forces cancel (two pistons up, two down).',
+        'The **secondary** forces don’t: pistons move faster in the top half of the stroke, and in an I4 all four add up into a buzz at **2× crank speed** ([[primary-secondary]]).',
+        'Bigger I4s (roughly 2.0 L and up) often add [[balance-shaft|balance shafts]] to cancel it.',
+      ] },
+    { tag: 'see', title: 'Inline-6: the smooth one', visualFirst: true,
+      visual: { type: 'layout', layout: 'i6' },
+      body: [
+        'Six cylinders, crank throws 120° apart, a power stroke every **120°**. Power strokes overlap, so there’s never a “gap” in the push.',
+        'The crank is mirror-symmetric (1 & 6, 2 & 5, 3 & 4 move together), so primary forces, secondary forces **and** the end-to-end rocking ([[rocking-couple]]) all cancel.',
+        'That’s why BMW and Toyota (the 2JZ) built legends on straight-sixes. No balance shafts needed.',
+      ] },
+    { tag: 'how', title: 'Inline-3 and the packaging trade',
+      body: [
+        '**Inline-3**: power stroke every **240°**. Forces cancel, but with an odd number of cylinders the engine rocks end to end, so most use a balance shaft.',
+        '**Pros of inline**: one head, fewer cams and parts, cheap to build and service, easy exhaust routing.',
+        '**Cons**: length and height. An I6 is long, so it’s nearly always mounted lengthwise ([[longitudinal]]) in rear-drive cars.',
+      ] },
+    { tag: 'bronco', title: 'Your Bronco: a sideways inline-4',
+      body: [
+        'Your 2.0 EcoBoost is an inline-4 mounted **[[transverse]]**: the row of cylinders runs side to side, across the car.',
+        'An I4 is short enough to fit between the front wheels with the 8-speed bolted to its end. An I6 would be too long for that.',
+        'Firing order **1-3-4-2**, one power pulse every 180°: that steady rhythm is why a 4-cylinder sounds like a smooth buzz.',
+      ],
+      facts: ['bronco.engine', 'bronco.mounting', 'bronco.trans', 'bronco.firingOrder'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'An inline-6 fires evenly. How many crank degrees between power strokes?', answer: 120, tol: 0, unit: '°',
+      why: '720° per cycle ÷ 6 cylinders = **120°**. Power strokes overlap, which is part of why I6s feel so smooth.' },
+    { type: 'order', q: 'Order these inline engines from the **longest** gap between power strokes to the shortest.', items: ['Inline-3', 'Inline-4', 'Inline-6'],
+      why: '720° ÷ cylinders: I3 = 240°, I4 = 180°, I6 = 120°. More cylinders = more frequent, overlapping pulses.' },
+    { type: 'mc', q: 'Which shaking does an inline-4 **not** cancel on its own?', options: ['Primary forces', 'Secondary forces at 2× crank speed', 'Firing pulses', 'None, it’s perfectly balanced'], answer: 1,
+      why: 'Pairs moving opposite cancel the primary forces, but the uneven piston speed (secondary) adds up across all four cylinders. Hence balance shafts.',
+      wrong: { 0: 'Primary forces do cancel: pistons 1 & 4 go up while 2 & 3 go down.', 3: 'That’s the inline-6, not the inline-4.' } },
+    { type: 'mc', q: 'Why are inline-6s rare in transverse (sideways) front-drive cars?', options: ['They’re too tall', 'They’re too long to fit between the front wheels with a gearbox on the end', 'They can’t be turbocharged', 'They vibrate too much'], answer: 1,
+      why: 'Six cylinders in a row make a long engine. Sideways, there’s no room for it plus the transmission between the front wheels.' },
+    { type: 'tap', q: 'Your inline-4 sits sideways, so the transmission bolts to the end of the engine. Tap the **transmission**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'transmission',
+      why: 'In a transverse layout the gearbox lines up with the crankshaft, beside the engine, across the car.',
+      wrong: { engine: 'That’s the engine itself; the gearbox is attached to its end.', ptu: 'That’s the PTU, which turns drive 90° toward the rear. It hangs off the transmission.' } },
+  ],
+  cards: [
+    { id: 'inline', front: 'What makes an engine “inline”?', back: 'All cylinders in one straight row, one head, one crank.' },
+    { id: 'i4-interval', front: 'Inline-4 firing interval?', back: 'Every 180° (720° ÷ 4).' },
+    { id: 'i6-balance', front: 'What does an inline-6 cancel?', back: 'Primary forces, secondary forces and the rocking couple. All of it.' },
+    { id: 'i3', front: 'Inline-3 firing interval and its quirk?', back: 'Every 240°; it rocks end to end, so it usually needs a balance shaft.' },
+    { id: 'trade', front: 'Main downside of inline engines?', back: 'Length (and height). Long I6s are usually mounted lengthwise.' },
+  ],
+};
