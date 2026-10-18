@@ -170,6 +170,8 @@ a.plate:active { transform: scale(0.99); }
 .vehicle svg { width: 34px; height: 34px; color: var(--orange); flex: none; }
 .vehicle b { display: block; font-weight: 600; }
 .vehicle small { color: var(--ink-3); font-size: 13px; }
+.vehicle > span { flex: 1; }
+.vehicle > svg:last-child { width: 16px; height: 16px; color: var(--ink-3); }
 
 @media (min-width: 700px) {
   .track-grid { grid-template-columns: repeat(4, 1fr); }
@@ -297,3 +299,20 @@ a.plate:active { transform: scale(0.99); }
 .update-toast small { color: var(--ink-3); font-size: 13px; }
 .update-toast__x { width: 32px; height: 32px; color: var(--ink-3); }
 @media (min-width: 900px) { .update-toast { bottom: 20px; left: calc(var(--rail-w) + 20px); } }
+
+/* ================= explorer ================= */
+.crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-top: 6px; }
+.crumbs a { display: inline-flex; align-items: center; gap: 3px; color: var(--ink-2); }
+.crumbs a:hover { color: var(--orange); }
+.crumbs svg { width: 12px; height: 12px; }
+.crumbs b { color: var(--orange); font-weight: 600; }
+.explore__views { margin-bottom: 10px; }
+.explore .facts { margin-top: 10px; }
+.explore .vis .d { max-height: 70vh; }
+.tool__top svg { width: 18px; height: 18px; color: var(--orange); }
+.xgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.xlink { display: flex; align-items: center; justify-content: space-between; padding: 16px; }
+.xlink .h3 { font-size: 19px; }
+.xlink svg { width: 16px; height: 16px; color: var(--orange); }
+@media (min-width: 700px) { .xgrid { grid-template-columns: repeat(3, 1fr); } }
+.explore__host, .explore .section { max-width: 760px; }

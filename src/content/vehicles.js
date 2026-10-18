@@ -37,15 +37,30 @@ export const facts = {
   'bronco.trans': { value: '8-speed automatic', status: 'confirmed', sources: [S.edmunds, S.dealer] },
   'bronco.4x4': { value: 'Advanced 4x4 with twin-clutch rear drive unit and rear differential lock (Badlands only)', status: 'confirmed', sources: [S.edmunds, S.wiki] },
 
+  'bronco.ptu': { value: 'Power transfer unit (PTU) on the transmission turns drive 90° into a driveshaft to the rear', status: 'confirmed', sources: ['Bronco Sport owner forums (PTU/RDU service threads)', 'Ford support: Bronco Sport 4x4 capability'] },
+  'bronco.rdu': { value: 'Badlands: twin-clutch rear drive unit. Two clutch packs, one per rear wheel, each controlled by the computer (torque vectoring)', status: 'confirmed', sources: ['Ford support: Bronco Sport 4x4 capability', 'Torque News', S.wiki],
+    note: 'Other trims: a single clutch feeding an open rear differential.' },
+  'bronco.rearLock': { value: 'Rear Differential Lock button: clamps both RDU clutches hard so both rear wheels get drive. Works only in a set speed range', status: 'conflicting', sources: ['Ford support (“similar to a traditional mechanical locker”)', 'Torque News (“you don’t actually mechanically lock anything”)'],
+    note: 'Not a mechanical locker: the clutches can still slip a little in tight turns.' },
+  'bronco.goat': { value: '7 G.O.A.T. modes: Normal, Eco, Sport, Slippery, Sand + Badlands-only Mud/Ruts and Rock Crawl', status: 'confirmed', sources: ['Ford.com 2024 Bronco Sport performance page'] },
+  'bronco.suspension': { value: 'Front MacPherson struts; independent rear. Badlands: front hydraulic rebound stops', status: 'confirmed', sources: ['The Truth About Cars Badlands review', 'Ford.com off-roading page'],
+    note: 'Rear layout is described as “double lateral link with semi-trailing arms” in one review and “short and long arm” in a spec sheet.' },
+  'bronco.brakes': { value: '4-wheel disc brakes with ABS', status: 'confirmed', sources: ['Auto123 2024 Badlands spec sheet'] },
+  'bronco.clearance': { value: '8.8 in ground clearance; 30.4° approach, 20.4° breakover, 33.1° departure (with available all-terrain tires)', status: 'confirmed', sources: ['Ford.com 2024 Bronco Sport off-roading page'] },
+
   // ---------- Kawasaki Ninja 500 ----------
   'ninja.engine': { value: '451 cc liquid-cooled DOHC 8-valve parallel twin', status: 'confirmed', sources: [S.kawiAU, S.cycleworld, S.math] },
   'ninja.boreStroke': { value: '70.0 mm × 58.6 mm', status: 'confirmed', sources: [S.kawiAU, S.math] },
   'ninja.compression': { value: '11.3:1', status: 'confirmed', sources: [S.kawiAU] },
+  'ninja.chassis': { value: 'Steel trellis frame · 41 mm telescopic fork · bottom-link Uni-Trak rear shock · 310 mm front disc, dual-piston caliper', status: 'confirmed', sources: [S.kawiAU] },
+  'ninja.clutch': { value: 'Wet multi-plate assist & slipper clutch, chain final drive', status: 'confirmed', sources: ['Kawasaki India spec page', S.kawiAU] },
 
   // ---------- Aprilia RS 457 ----------
   'rs457.engine': { value: '457 cc liquid-cooled parallel twin', status: 'confirmed', sources: [S.apriliaDealer, S.math] },
   'rs457.boreStroke': { value: '69.0 mm × 61.1 mm', status: 'confirmed', sources: [S.apriliaDealer, S.math] },
   'rs457.compression': { value: '10.5:1', status: 'unconfirmed', sources: [S.apriliaDealer] },
+  'rs457.chassis': { value: 'Dual-beam aluminum frame (engine is a stressed member) · 41 mm upside-down fork · 320 mm front disc, radial 4-piston caliper', status: 'confirmed', sources: [S.apriliaDealer, '1000PS', 'RideApart'] },
+  'rs457.electronics': { value: 'Ride-by-wire, 3 ride modes, 3-level traction control (can be switched off). Quickshifter optional', status: 'confirmed', sources: ['RideApart launch report', S.apriliaDealer] },
 };
 
 export const fact = (id) => {

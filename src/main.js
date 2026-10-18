@@ -27,8 +27,9 @@ import * as glossary from './ui/screens/glossary.js';
 import * as progress from './ui/screens/progress.js';
 import * as settings from './ui/screens/settings.js';
 import * as vis from './ui/screens/vis.js';
+import * as explore from './ui/screens/explore.js';
 
-const screens = { home, course, lesson, lab, review, glossary, progress, settings, vis };
+const screens = { home, course, lesson, lab, review, glossary, progress, settings, vis, explore };
 
 async function boot() {
   await store.load();

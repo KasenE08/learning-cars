@@ -1,0 +1,36 @@
+// Turbocharger, side section along the shaft. Cold side (compressor) left, hot side (turbine) right.
+const cold = '#7fb2e0', hot = '#ff8a45';
+export default {
+  title: 'Turbocharger',
+  box: [40, 10, 330, 260],
+  boxOut: [-115, -70, 590, 340],
+  note: 'Generic journal-bearing turbo. The shaft can spin well over 100,000 rpm, riding on an oil film like an engine bearing.',
+  info: {
+    'comp-housing': { name: 'Compressor housing', short: 'Compressor housing', does: 'Cold side. Its spiral (“volute”) collects air flung out by the wheel and slows it down, turning speed into pressure: boost.' },
+    'comp-wheel': { name: 'Compressor wheel', short: 'Compressor wheel', does: 'Aluminum impeller. Sucks air in at the center and flings it outward at very high speed.' },
+    nut: { name: 'Compressor nut', short: 'Nut', does: 'Holds the compressor wheel on the shaft.' },
+    chra: { name: 'Center housing (CHRA)', short: 'Center housing', does: 'Holds the bearings. Engine oil comes in the top and drains out the bottom; many turbos also have coolant passages here.' },
+    bearings: { name: 'Bearings + seals', short: 'Bearings', does: 'Floating journal bearings (or ball bearings) carry the shaft on oil. Piston-ring-style seals keep oil out of the air and exhaust.' },
+    shaft: { name: 'Shaft + turbine wheel', short: 'Turbine wheel', does: 'Hot side. Exhaust gas spins this heat-resistant wheel, which is welded to the shaft that drives the compressor.' },
+    'turb-housing': { name: 'Turbine housing', short: 'Turbine housing', does: 'Cast iron/steel spiral that aims exhaust at the turbine wheel. Houses the wastegate valve.' },
+    wastegate: { name: 'Wastegate actuator', short: 'Wastegate', does: 'Opens a flap that lets some exhaust bypass the turbine, capping boost. On many modern cars the ECU controls it.' },
+  },
+  parts: [
+    { id: 'wastegate', step: 1, dx: 0, dy: -70, label: [150, 18],
+      art: `<rect x="110" y="26" width="58" height="26" rx="8" class="hl" fill="#262b31" stroke="#a9b3bd"/><path d="M168,40 L292,40 L300,64" class="hl" fill="none" stroke="#a9b3bd" stroke-width="2.5"/>` },
+    { id: 'comp-housing', step: 2, dx: -90, dy: 0, label: [90, 250],
+      art: `<path class="hl" d="M150,66 Q86,56 76,104 L60,104 L60,196 L76,196 Q86,244 150,234 L160,234 L160,66 Z" fill="rgba(127,178,224,0.10)" stroke="${cold}" stroke-width="1.6"/><path d="M60,120 h28 M60,180 h28" stroke="${cold}" stroke-width="1"/>` },
+    { id: 'turb-housing', step: 3, dx: 100, dy: 0, label: [300, 250],
+      art: `<path class="hl" d="M236,60 L246,60 Q330,52 336,110 L360,110 L360,190 L336,190 Q330,248 246,240 L236,240 Z" fill="rgba(255,138,69,0.10)" stroke="${hot}" stroke-width="1.6"/><path d="M290,64 l14,0 l0,20" stroke="${hot}" stroke-width="2" fill="none"/>` },
+    { id: 'nut', step: 4, dx: -110, dy: 0,
+      art: `<rect x="120" y="143" width="10" height="14" rx="2" class="hl" fill="#c9d1d9"/>` },
+    { id: 'comp-wheel', step: 4, dx: -60, dy: 0, label: [150, 98],
+      art: `<path class="hl" d="M132,132 L132,168 L160,198 L160,102 Z" fill="#9aa5b1" stroke="#dfe5ea"/><path d="M136,136 L158,110 M136,150 L158,130 M136,164 L158,150 M136,168 L158,176 M140,172 L158,192" stroke="#5b6470" stroke-width="1.2"/>` },
+    { id: 'shaft', step: 5, dx: 110, dy: 0, label: [254, 98],
+      art: `<rect x="128" y="146" width="112" height="8" class="hl" fill="#c9d1d9"/><path class="hl" d="M236,104 L236,196 L266,172 L266,128 Z" fill="#c86a2a" stroke="${hot}"/><path d="M240,112 L262,132 M240,130 L262,144 M240,170 L262,156 M240,188 L262,168" stroke="#5a2a0a" stroke-width="1.4"/>` },
+    { id: 'chra', step: 6, dx: 0, dy: 0, label: [198, 222],
+      art: `<path class="hl" d="M162,112 L234,112 L234,188 L162,188 Z" fill="#3a424c" stroke="#8994a1" stroke-width="1.4"/><rect x="188" y="96" width="20" height="16" class="hl" fill="#3a424c" stroke="#b8860b"/><rect x="186" y="188" width="24" height="12" class="hl" fill="#3a424c" stroke="#b8860b"/><path d="M198,96 v-10" stroke="#b8860b" stroke-width="3"/>` },
+    { id: 'bearings', step: 6, dx: 0, dy: -110, label: [198, 120],
+      art: `<rect x="172" y="140" width="14" height="20" rx="2" class="hl" fill="#c9a24a" stroke="#e6c46a"/><rect x="210" y="140" width="14" height="20" rx="2" class="hl" fill="#c9a24a" stroke="#e6c46a"/>` },
+  ],
+};

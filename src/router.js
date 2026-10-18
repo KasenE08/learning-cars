@@ -11,6 +11,7 @@ const routes = [
   { re: /^\/progress$/, name: 'progress' },
   { re: /^\/settings$/, name: 'settings' },
   { re: /^\/vis\/([a-z]+)$/, name: 'vis', keys: ['type'] },
+  { re: /^\/explore(?:\/([\w-]+))?$/, name: 'explore', keys: ['node'] },
 ];
 
 export function parse(hash) {

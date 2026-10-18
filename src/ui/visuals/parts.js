@@ -6,8 +6,12 @@ import { uid } from './svg.js';
 import * as piston from './drawings/piston.js';
 import * as head from './drawings/head.js';
 import * as engineSection from './drawings/engine-section.js';
+import * as carTop from './drawings/car-top.js';
+import * as carSide from './drawings/car-side.js';
+import * as motoSide from './drawings/moto-side.js';
+import * as rdu from './drawings/rdu.js';
 
-export const drawings = { piston, head, 'engine-section': engineSection };
+export const drawings = { piston, head, 'engine-section': engineSection, 'car-top': carTop, 'car-side': carSide, 'moto-side': motoSide, rdu };
 
 export function mount(host, spec = {}) {
   const d = drawings[spec.drawing];
@@ -42,7 +46,9 @@ export function mount(host, spec = {}) {
     svgEl().querySelectorAll('[data-part]').forEach((g) => g.classList.toggle('is-sel', g.dataset.part === part));
     if (!quiz && part) {
       const p = d.parts[part];
-      info.innerHTML = String(html`<span class="part-info__name">${p.name}</span><dl><dt>Does</dt><dd>${p.does}</dd><dt>Connects</dt><dd>${p.connects}</dd><dt>Lives</dt><dd>${p.where}</dd></dl>`);
+      const drill = spec.drills?.[part];
+      info.innerHTML = String(html`<span class="part-info__name">${p.name}</span><dl><dt>Does</dt><dd>${p.does}</dd><dt>Connects</dt><dd>${p.connects}</dd><dt>Lives</dt><dd>${p.where}</dd></dl>
+        ${drill || p.lesson ? html`<div class="part-info__go">${drill ? html`<a class="btn btn--primary" href="#/explore/${drill}">Drill in ›</a>` : ''}${p.lesson ? html`<a class="btn btn--ghost" href="#/lesson/${p.lesson}">Lesson ›</a>` : ''}</div>` : ''}`);
     }
     spec.onPick?.(part);
   }

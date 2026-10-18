@@ -118,3 +118,42 @@
 .d .is-power .cyl-n { fill: var(--orange); }
 .d .stk--intake { fill: #7fb2e0; } .d .stk--compression { fill: #a8c8e8; } .d .stk--power { fill: var(--orange); } .d .stk--exhaust { fill: #b39a84; }
 .d-label text, .d .geo-t { paint-order: stroke; stroke: #0c0e10; stroke-width: 3px; stroke-linejoin: round; }
+.part-info__go { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.part-info__go .btn { min-height: 38px; font-size: 12px; }
+.xv__stage { width: 100%; aspect-ratio: var(--ar, 1); max-height: min(62vh, 560px); margin: 0 auto; display: grid; }
+.xv__stage .d { width: 100%; height: 100%; max-height: none; }
+.xp { cursor: pointer; }
+.xp .hl { transition: fill 0.15s, stroke 0.15s; }
+.d.has-sel .xp:not(.is-sel) { opacity: 0.45; }
+.xp.is-sel .hl { stroke: var(--orange) !important; stroke-width: 2.5 !important; }
+.d .xp__lbl { font-size: var(--fs, 12px); opacity: var(--lbl, 0); fill: var(--ink); paint-order: stroke; stroke: #0c0e10; stroke-width: 3px; pointer-events: none; }
+.xp.is-sel .xp__lbl { fill: var(--orange); }
+.vis--exploded .ctl { grid-template-columns: 1fr; }
+.vis--exploded .ctl .ctl__row { grid-template-columns: 1fr 52px; }
+.vis--exploded .ctl .ctl__row > span { display: none; }
+.part-info__does { color: var(--ink-2); font-size: 14px; }
+.xv__steps { list-style: none; display: grid; gap: 2px; margin-top: 10px; }
+.xv__steps-h { padding: 4px 0 6px; }
+.xv__steps button { width: 100%; display: flex; gap: 10px; align-items: center; padding: 7px 8px; border-radius: 3px; font-size: 14px; color: var(--ink-2); }
+.xv__steps button .mono { width: 20px; height: 20px; display: grid; place-items: center; border-radius: 3px; background: var(--steel-3); font-size: 11px; }
+.xv__steps button:hover, .xv__steps button.is-on { background: var(--steel-2); color: var(--ink); }
+.xv__steps button.is-on .mono { background: var(--orange); color: var(--orange-ink); }
+.awd-bg { fill: none; stroke: #22272d; stroke-width: 8; stroke-linecap: round; }
+.awd-flow { fill: none; stroke: var(--orange); stroke-linecap: round; stroke-dasharray: 6 8; animation: flow 0.6s linear infinite; transition: stroke-width 0.3s; }
+.awd-box { fill: #1d2126; stroke: #8994a1; stroke-width: 1.4; }
+.awd-ptu { fill: #ffc21a; }
+.awd-clutch { fill: #ffc21a; transition: opacity 0.3s; }
+.d .awd-lbl { font: 600 11px var(--font-mono); fill: var(--ink); }
+.d .awd-sub { font-size: 10px; fill: var(--ink-3); }
+.awd-tire { fill: #14171a; stroke: #8994a1; stroke-width: 2; }
+.awd-tire.is-ice { fill: #1f3a52; stroke: #7fb2e0; }
+.awd-tire.is-air { stroke-dasharray: 4 4; opacity: 0.6; }
+.is-slip .awd-tire { animation: spin 0.25s linear infinite; }
+@keyframes spin { 50% { stroke: var(--bad); } }
+.awd-brake { fill: var(--bad); opacity: 0.85; }
+.d .awd-bt { font: 700 10px var(--font-mono); fill: #fff; }
+.d .awd-pct { font: 600 15px var(--font-mono); fill: var(--orange); }
+.d .awd-slip { font: 700 10px var(--font-mono); fill: var(--bad); }
+.d .awd-lost { font-size: 11px; fill: var(--bad); }
+.awd__text { display: block; font: 400 14px/1.45 var(--font-body); color: var(--ink-2); margin-top: 10px; }
+.vis--awd .ctl .kicker { margin-top: 4px; }

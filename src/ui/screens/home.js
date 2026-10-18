@@ -51,10 +51,10 @@ export function render(view) {
     </section>
 
     <section class="section">
-      <h2 class="h4">Reference vehicles</h2>
+      <h2 class="h4">Take it apart</h2>
       <div class="vehicles">
-        <div class="plate vehicle">${icons.car}<span><b>2024 Ford Bronco Sport Badlands</b><small>Yours. Used across every track.</small></span></div>
-        <div class="plate vehicle">${icons.bike}<span><b>Kawasaki Ninja 500 · Aprilia RS 457</b><small>The two bikes you’re choosing between.</small></span></div>
+        <a class="plate vehicle" href="#/explore/car">${icons.car}<span><b>2024 Ford Bronco Sport Badlands</b><small>X-ray it: engine, 4x4 system, exploded views.</small></span>${icons.chevron}</a>
+        <a class="plate vehicle" href="#/explore/moto">${icons.bike}<span><b>Kawasaki Ninja 500 · Aprilia RS 457</b><small>X-ray a sport twin: engine, clutch, chassis.</small></span>${icons.chevron}</a>
       </div>
     </section>
   </div>`));

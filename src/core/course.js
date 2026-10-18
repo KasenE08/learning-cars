@@ -33,5 +33,5 @@ export const pathLessons = () => path.flatMap((id) => unitMap.get(id).lessons);
 export const lessonCode = (l) => `${trackById(l.track).code}·${l.unit.toUpperCase()}·${pad2(l.n)}`;
 
 /** The latest build phase shipped. Units with a later phase show their phase tag. */
-export const BUILT_PHASE = 2;
+export const BUILT_PHASE = 3;
 export const isAvailable = (l) => l.phase <= BUILT_PHASE;

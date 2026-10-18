@@ -7,6 +7,8 @@ const loaders = {
   valvetrain: () => import('./valvetrain.js'),
   timing: () => import('./timing.js'),
   compression: () => import('./compression.js'),
+  exploded: () => import('./exploded.js'),
+  awd: () => import('./awd.js'),
 };
 
 export const visualTypes = Object.keys(loaders);

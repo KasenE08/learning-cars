@@ -11,7 +11,7 @@ const LAPTOP = { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 1 };
 
 const SHOTS = [
   ['home', '#/', true], ['home-new', '#/', false], ['course', '#/course', true], ['course-tracks', '#/course/tracks', true],
-  ['lesson', '#/lesson/engine-02', true], ['lesson-planned', '#/lesson/boost-02', true], ['vis-crank', '#/vis/crank', false], ['vis-head', '#/vis/parts?' + encodeURIComponent('{"drawing":"head"}'), false], ['lab', '#/lab', false], ['review', '#/review', false],
+  ['lesson', '#/lesson/engine-02', true], ['lesson-planned', '#/lesson/boost-02', true], ['explore-car', '#/explore/car', false], ['explore-awd', '#/explore/drivetrain', false], ['explore-x', '#/explore/engine?v=2', false], ['vis-head', '#/vis/parts?' + encodeURIComponent('{"drawing":"head"}'), false], ['lab', '#/lab', false], ['review', '#/review', false],
   ['glossary', '#/glossary', false], ['glossary-term', '#/glossary/stroke', false], ['progress', '#/progress', true], ['settings', '#/settings', false],
 ];
 
