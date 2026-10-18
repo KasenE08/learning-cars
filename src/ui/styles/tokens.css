@@ -1,0 +1,55 @@
+/* Design system: "Shop floor". Dark steel + concrete, safety orange for action,
+   caution yellow for highlights and warnings, signal green only for "done". */
+:root {
+  color-scheme: dark;
+
+  /* concrete & steel */
+  --bg: #0b0c0e;
+  --steel-0: #111316;
+  --steel-1: #16191d;
+  --steel-2: #1d2126;
+  --steel-3: #262b31;
+  --steel-4: #333941;
+  --line: #2a2f36;
+  --line-2: #3a4049;
+
+  /* ink */
+  --ink: #ebe8e2;
+  --ink-2: #b4b0a8;
+  --ink-3: #7d7a74;
+  --ink-4: #4b4945;
+
+  /* signal */
+  --orange: #ff6b1a;
+  --orange-2: #ff8a45;
+  --orange-ink: #1a0c03;
+  --yellow: #ffc21a;
+  --yellow-ink: #1b1402;
+  --ok: #4fd27f;
+  --bad: #ff4d3d;
+
+  /* type */
+  --font-display: 'Big Shoulders Stencil Display', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* geometry: machined, not bubbly */
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 12px;
+
+  /* safe areas */
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+
+  --tabbar-h: 60px;
+  --topbar-h: 52px;
+  --rail-w: 232px;
+  --gutter: 16px;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  --hazard: repeating-linear-gradient(-45deg, var(--yellow) 0 6px, #15130c 6px 12px);
+  --screw: radial-gradient(circle, #59606a 0 1.6px, #0d0f12 2.2px, transparent 2.8px);
+}
