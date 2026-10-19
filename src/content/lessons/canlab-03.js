@@ -46,7 +46,7 @@ export default {
       body: [
         'On a real Bronco Sport the method is identical; only the data source and the mess change. Background traffic is heavier and never perfectly repeats.',
         'And remember where you’d even see this: openpilot taps the main bus at the windshield camera, while the OBD port sits behind the [[gateway]], so a port capture may look nothing like the bench.',
-        '**Read-only, your car only.** Listen, never transmit, especially never on a moving vehicle. The app’s Phase 7 real-car link will only ever read.',
+        '**Read-only, your car only.** Listen, never transmit, especially never on a moving vehicle. The app’s real-car link (Lab → Connect a car) only ever reads.',
       ],
       facts: ['bronco.obdGateway'] },
   ],

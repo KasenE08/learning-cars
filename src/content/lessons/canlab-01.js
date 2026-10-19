@@ -45,7 +45,7 @@ export default {
       body: [
         'openpilot lists the Bronco Sport 2021–24 as supported and reads these layouts on the main bus at the **windshield camera**, not at the OBD port.',
         'Your OBD port sits behind the gateway: Ford’s program 22N15 confirms it for 2020–23 Bronco Sports; for 2024 it’s **likely but not confirmed**. Plugging in there probably won’t show this traffic.',
-        '**Read-only:** the bench never sends anything to a real car, and the app’s real-car link (Phase 7) will only ever listen.',
+        '**Read-only:** the bench never sends anything to a real car, and the app’s real-car link (Lab → Connect a car) only ever listens.',
       ],
       facts: ['bronco.openpilotListing', 'bronco.obdGateway'] },
   ],
