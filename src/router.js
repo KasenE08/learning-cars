@@ -8,6 +8,7 @@ const routes = [
   { re: /^\/lab$/, name: 'lab' },
   { re: /^\/lab\/python$/, name: 'python' },
   { re: /^\/lab\/can$/, name: 'canbench' },
+  { re: /^\/lab\/connect$/, name: 'connect' },
   { re: /^\/review$/, name: 'review' },
   { re: /^\/glossary(?:\/([\w-]+))?$/, name: 'glossary', keys: ['term'] },
   { re: /^\/progress$/, name: 'progress' },

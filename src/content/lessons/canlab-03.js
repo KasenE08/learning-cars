@@ -1,0 +1,73 @@
+// A reverse-engineering session
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A scientist, not a guesser',
+      body: [
+        'A scientist doesn’t stare at the whole experiment and “feel” the answer. They change **one** variable, measure, and keep a notebook.',
+        'A good bench session is the same loop, done out loud: baseline, one action, compare, confirm, write it down.',
+        'The enemy isn’t the car. It’s **fooling yourself**: seeing a pattern that was really just the bus being busy.',
+      ] },
+    { tag: 'how', title: 'The loop on the bench',
+      body: [
+        '**1. Baseline.** Record a few seconds doing nothing. Name it (“idle”). This is what “normal” looks like.',
+        '**2. One action.** Record again; do exactly one thing at a known time (wipers to Low, say). Name it.',
+        '**3. Compare.** Diff the two: the bench’s Compare shows which (ID, byte) changed in the action but not the baseline.',
+        '**4. Confirm.** Filter the live view to that ID and watch, or plot the bits over time. Does it track *you*?',
+        '**5. Write it down.** ID, byte, bit(s), values. A finding you didn’t record is a finding you’ll redo next week.',
+      ] },
+    { tag: 'see', title: 'Run the loop yourself', visualFirst: true,
+      visual: { type: 'canbench', controls: ['parkbrake', 'wipers'], view: 'table' },
+      body: [
+        '**Simulated.** Try the parking brake, or the wipers. Watch the Table view: which single row changes, and how often.',
+        'A **switch** you flip changes a byte once and then holds. A **lamp** that flashes changes on a timer. Both can be real findings; they mean different things.',
+        'This is the move the challenges ask for, on controls that aren’t part of them, so you can practice the loop first.',
+      ] },
+    { tag: 'how', title: 'Don’t fool yourself',
+      body: [
+        'Plenty of bytes change **even in the baseline**: [[rolling-counter|counters]] tick every frame, [[checksum|checksums]] change with them, noisy sensors wander. A proper diff drops these because they moved in *both* captures.',
+        '**Correlation ≠ your signal.** Pressing the gas revs the engine, so rpm and manifold pressure move too. They follow you but lag and have a different shape (a [[correlated-signal]]).',
+        '**Switch vs lamp.** One module reports what the driver *asked for* (the switch); another reports what the car is *doing* (the lamp). Expect two different IDs for one action.',
+        '**Beat coincidence:** do the action several times, at times you wrote down. A real signal lines up with **every** repeat; a coincidence won’t.',
+      ] },
+    { tag: 'see', title: 'What a clean diff looks like', visualFirst: true,
+      visual: { type: 'capdiff', base: 'idle', action: 'doors' },
+      body: [
+        '**Simulated** idle vs a door opening and closing. Orange = bytes that changed in the action but not the baseline; the number is how many times.',
+        'The simulator replays identical noise in both captures, so counters and checksums cancel and the diff is perfectly clean. A **real** diff is messier: fans, A/C and charging all wiggle. Repeat the action to cut through it.',
+      ] },
+    { tag: 'key', title: 'Take it to the challenges',
+      body: [
+        'The 11 challenges on the full bench are this loop, graded. Start easy and build up:',
+        '[Find the turn-signal switch](#/lab/can?c=turn-id) · [Switch vs lamp](#/lab/can?c=lamp) · [Brake pedal: two places](#/lab/can?c=brake) · [Vehicle speed](#/lab/can?c=speed).',
+        'Harder ones reward the method: [Engine rpm](#/lab/can?c=rpm) (not on a byte boundary), [Steering angle](#/lab/can?c=steer) (an offset, not a sign bit), [Counter and checksum](#/lab/can?c=counter).',
+        'Rule for the challenges: leave **Names** and **Decode** off while you hunt. They read the DBC, so they’re the answer key. Earn the answer, then check it.',
+      ] },
+    { tag: 'bronco', title: 'The same loop on a real truck',
+      body: [
+        'On a real Bronco Sport the method is identical; only the data source and the mess change. Background traffic is heavier and never perfectly repeats.',
+        'And remember where you’d even see this: openpilot taps the main bus at the windshield camera, while the OBD port sits behind the [[gateway]], so a port capture may look nothing like the bench.',
+        '**Read-only, your car only.** Listen, never transmit, especially never on a moving vehicle. The app’s Phase 7 real-car link will only ever read.',
+      ],
+      facts: ['bronco.obdGateway'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Put one bench session in order.',
+      items: ['Record a baseline doing nothing', 'Record one action at a known time', 'Compare the two captures', 'Confirm the suspect tracks you (watch or plot)', 'Write down ID, byte, bits and values'],
+      why: 'Baseline defines normal, the action makes a difference, the diff filters chatter, confirmation rules out coincidence, and the note is the real output.' },
+    { type: 'mc', q: 'Your diff of idle vs “pressed the gas” lights up the pedal byte **and** two bytes that ramp and settle. What are those two likely?',
+      options: ['More pedal signals', 'Correlated signals like rpm and manifold pressure', 'Checksums', 'The baseline leaking in'], answer: 1,
+      why: 'Revving moves rpm and boost too. They follow your action but lag and have a different shape, so they’re correlated, not the pedal itself.',
+      wrong: { 2: 'A checksum changes every frame even at idle, so a clean diff drops it.', 3: 'A proper diff removes anything that also moved in the baseline.' } },
+    { type: 'mc', q: 'Why do counters and checksums not show up in a good baseline-vs-action diff?',
+      options: ['They’re encrypted', 'They change in both captures, so the diff cancels them', 'They’re never on the bus at idle', 'The tool hides them'], answer: 1,
+      why: 'They tick every frame regardless of what you do, so they move in the baseline too and the diff keeps only what changed *only* in the action.' },
+    { type: 'num', q: 'You press a button 3 times and a byte changes 3 times at matching moments, but a second byte changes 11 times unrelated to you. How many of those two bytes are your signal?', answer: 1, tol: 0,
+      why: 'Only the one that lines up with **every** press is your signal. The other is background chatter; repeating the action is what tells them apart.' },
+  ],
+  cards: [
+    { id: 'loop', front: 'The five-step bench session?', back: 'Baseline → one action → compare → confirm (watch/plot) → write it down.' },
+    { id: 'fool', front: 'Biggest risk in a session?', back: 'Fooling yourself: mistaking counters, checksums or correlated signals for your byte.' },
+    { id: 'confirm', front: 'How do you beat coincidence?', back: 'Repeat the action at known times; keep only bytes that line up with every repeat.' },
+    { id: 'answerkey', front: 'Why keep Names/Decode off during challenges?', back: 'They read the DBC, so they hand you the answer. Find it first, then check.' },
+  ],
+};

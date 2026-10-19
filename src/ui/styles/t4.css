@@ -255,3 +255,46 @@
 .ch__hints { display: grid; gap: 6px; }
 .ch__hints:empty, .ch__fb:empty { display: none; }
 .ch__pn { display: flex; justify-content: space-between; margin-top: 10px; }
+
+/* ---------- Connect a car (Phase 7) ---------- */
+.cx__ro { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-color: rgba(79, 210, 127, 0.4); }
+.cx__robadge { flex: none; display: inline-flex; align-items: center; gap: 5px; font: 700 11px var(--font-mono); letter-spacing: 0.1em; color: var(--ok); border: 1px solid rgba(79, 210, 127, 0.5); border-radius: 3px; padding: 4px 8px; }
+.cx__robadge svg { width: 13px; height: 13px; }
+.cx__robadge.sm { padding: 3px 6px; font-size: 10px; }
+.cx__ro p { margin: 0; color: var(--ink-2); font-size: 14px; }
+.cx__pts { margin: 0; padding-left: 18px; display: grid; gap: 8px; color: var(--ink-2); }
+.cx__pts b { color: var(--ink); }
+.cx__start { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 16px 0; }
+.cx__start .btn svg { width: 16px; height: 16px; }
+.cx__warn { flex: 1 1 100%; display: flex; gap: 8px; align-items: flex-start; color: var(--yellow); font-size: 14px; margin: 0; }
+.cx__warn svg { width: 16px; height: 16px; flex: none; margin-top: 2px; }
+.cx__hw { border: 1px solid var(--line); border-radius: var(--r-md); background: var(--steel-1); padding: 10px 14px; }
+.cx__hw summary { cursor: pointer; font-weight: 600; }
+.cx__hw ul { padding-left: 18px; }
+.cx__hw li { margin: 4px 0; }
+.cx__connecting { padding: 24px 0; text-align: center; display: grid; gap: 8px; }
+.cx__bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+.cx__live { font: 700 11px var(--font-mono); letter-spacing: 0.08em; color: var(--ok); }
+.cx__meta { margin-left: auto; font-size: 11px; }
+.cx__bar .ex__small { margin-left: 8px; }
+.cx__demo-note { font-size: 13px; color: var(--ink-3); margin: 0 0 10px; }
+.cx__tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+.cx__tile { padding: 12px; border-radius: var(--r-md); background: var(--steel-1); border: 1px solid var(--line); display: grid; gap: 4px; }
+.cx__tn { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.cx__tv { font-size: 22px; color: var(--ink); }
+.cx__row2 { display: grid; gap: 12px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .cx__row2 { grid-template-columns: 1fr 1fr; } }
+.cx__info, .cx__codes, .cx__ready { padding: 12px 14px; }
+.cx__kv { display: flex; justify-content: space-between; gap: 10px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.cx__kv b { overflow-wrap: anywhere; text-align: right; }
+.cx__mil { font-weight: 600; margin: 8px 0; color: var(--ok); }
+.cx__mil.on { color: var(--bad); }
+.cx__dtcs { display: flex; flex-wrap: wrap; gap: 6px; }
+.cx__dtc { font: 700 13px var(--font-mono); padding: 5px 9px; border-radius: 4px; background: rgba(255, 77, 61, 0.12); border: 1px solid rgba(255, 77, 61, 0.4); color: #ff8a80; text-decoration: none; }
+.cx__mons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.cx__mon-chip { font: 600 11px var(--font-mono); padding: 4px 8px; border-radius: 3px; }
+.cx__mon-chip.is-ok { color: var(--ok); background: rgba(79, 210, 127, 0.12); }
+.cx__mon-chip.is-wait { color: var(--ink-3); background: var(--steel-2); }
+.cx__mon { margin-top: 14px; }
+.cx__mon summary { cursor: pointer; font-size: 13px; color: var(--ink-3); }
+.cx__mon pre { margin: 8px 0 0; max-height: 220px; overflow: auto; background: #050607; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px; font: 12px/1.5 var(--font-mono); color: #9fd3a8; white-space: pre-wrap; }
