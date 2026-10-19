@@ -17,8 +17,9 @@ import * as cooling from './drawings/cooling.js';
 import * as oil from './drawings/oil.js';
 import * as charging from './drawings/charging.js';
 import * as brakes from './drawings/brakes.js';
+import * as ecu from './drawings/ecu.js';
 
-export const drawings = { piston, head, 'engine-section': engineSection, 'car-top': carTop, 'car-side': carSide, 'moto-side': motoSide, rdu, intake, fuel, exhaust, cooling, oil, charging, brakes };
+export const drawings = { piston, head, 'engine-section': engineSection, 'car-top': carTop, 'car-side': carSide, 'moto-side': motoSide, rdu, intake, fuel, exhaust, cooling, oil, charging, brakes, ecu };
 
 export function mount(host, spec = {}) {
   const d = drawings[spec.drawing];

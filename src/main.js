@@ -11,6 +11,8 @@ import './ui/styles/base.css';
 import './ui/styles/app.css';
 import './ui/styles/visuals.css';
 import './ui/styles/lesson.css';
+import './ui/styles/code.css';
+import './ui/styles/t4.css';
 
 import { start } from './router.js';
 import { registerServiceWorker } from './core/sw.js';
@@ -22,6 +24,7 @@ import * as home from './ui/screens/home.js';
 import * as course from './ui/screens/course.js';
 import * as lesson from './ui/screens/lesson.js';
 import * as lab from './ui/screens/lab.js';
+import * as python from './ui/screens/python.js';
 import * as review from './ui/screens/review.js';
 import * as glossary from './ui/screens/glossary.js';
 import * as progress from './ui/screens/progress.js';
@@ -29,7 +32,7 @@ import * as settings from './ui/screens/settings.js';
 import * as vis from './ui/screens/vis.js';
 import * as explore from './ui/screens/explore.js';
 
-const screens = { home, course, lesson, lab, review, glossary, progress, settings, vis, explore };
+const screens = { home, course, lesson, lab, python, review, glossary, progress, settings, vis, explore };
 
 async function boot() {
   await store.load();

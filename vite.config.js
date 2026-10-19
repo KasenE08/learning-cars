@@ -30,11 +30,20 @@ export default defineConfig({
         ],
       },
       workbox: {
-        // App shell, fonts and lesson content are precached. Big extras (Pyodide, later) use runtime caching.
+        // App shell, fonts and lesson content are precached.
         globPatterns: ['**/*.{js,css,html,svg,png,woff2,json}'],
+        // Pyodide (~13 MB) is not precached: it downloads the first time an exercise runs,
+        // then lives in its own cache so Python works offline.
+        globIgnores: ['**/pyodide/**'],
+        runtimeCaching: [{
+          urlPattern: new RegExp(`${BASE}pyodide/`), // a RegExp, because functions can't be serialized into the SW
+          handler: 'CacheFirst',
+          options: { cacheName: `pyodide-${pkg.dependencies.pyodide}`, cacheableResponse: { statuses: [200] } },
+        }],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: `${BASE}index.html`,
         cleanupOutdatedCaches: true,
+        clientsClaim: true, // first install controls the page right away, so Pyodide gets cached on the first run
       },
     }),
   ],

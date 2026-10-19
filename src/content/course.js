@@ -98,6 +98,9 @@ export const units = [
     L('Why CAN exists', 4), L('The physical layer', 6), L('Anatomy of a frame', 7), L('IDs & arbitration', 6), L('Bit timing & bus speeds', 6),
     L('Errors & fault confinement', 6), L('CAN FD'), L('Multiple buses in one car'), L('How Ford organizes its networks', 6), L('ISO-TP & UDS diagnostics', 7),
   ] },
+  { id: 'python', track: 'tech', title: 'Python for Car Data', phase: 5, lessons: [
+    L('Python in five minutes', 6), L('Lists, loops & functions', 7), L('Text, hex & bytes', 7), L('Bits: shifts & masks', 7),
+  ] },
   { id: 'decode', track: 'tech', title: 'Decoding Signals', phase: 5, lessons: [
     L('Scaling & offsets'), L('Bit packing', 6), L('Endianness', 6), L('Signed values'), L('Counters & checksums', 6), L('DBC files', 6),
   ] },
@@ -117,5 +120,5 @@ export const units = [
 export const path = [
   'engine', 'layout', 'scenes', 'air', 'boost', 'exhaust', 'cool', 'mengine',
   'network', 'elec', 'obd', 'drive', 'mdrive', 'motorsport', 'chassis', 'mchassis',
-  'melec', 'perf', 'mods', 'can', 'decode', 're', 'icons', 'tune', 'security', 'buying', 'rebuild',
+  'melec', 'perf', 'mods', 'can', 'python', 'decode', 're', 'icons', 'tune', 'security', 'buying', 'rebuild',
 ];

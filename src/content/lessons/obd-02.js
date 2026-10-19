@@ -1,0 +1,66 @@
+// The port & pinout
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A power strip with labeled holes',
+      body: [
+        'The OBD-II port is like a 16-hole power strip where each hole has a fixed job, written in a standard.',
+        'Some holes are always wired (power, ground). Others are only wired if the car speaks that protocol. A few are left to the carmaker.',
+        'A scan tool just needs to know which holes to listen on.',
+      ] },
+    { tag: 'see', title: 'The 16 pins', visualFirst: true,
+      visual: { type: 'obdport' },
+      body: [
+        'The [[j1962]] connector: two rows of 8, D-shaped so it only fits one way. Pin 1 is top-left looking into the socket.',
+        'Tap the pins, then use the chips to filter by protocol.',
+      ] },
+    { tag: 'how', title: 'The pins every car has',
+      body: [
+        '**Pin 16:** battery +12 V, normally live even with the key off. Scan tools power themselves from it.',
+        '**Pin 4:** chassis ground. **Pin 5:** signal ground (a cleaner reference for the data lines).',
+        'Then the data pins for whatever protocol the car uses (next step). Pins not assigned by the standard are left to the carmaker.',
+      ] },
+    { tag: 'see', title: 'Data pins by protocol', visualFirst: true,
+      visual: { type: 'obdport', highlight: 'can' },
+      body: [
+        '**6 and 14:** CAN high and CAN low. Every 2008+ US car uses these for OBD.',
+        '**2 and 10:** [[j1850]] bus + and − (older Fords and GMs).',
+        '**7 and 15:** [[k-line|K-line and L-line]] (ISO 9141-2 / KWP2000, older Chrysler, European and Asian cars).',
+        'Ford has long used the spare pins **3 and 11** for a second CAN bus; tools like FORScan switch to them. ~~Per owner and tool-maker sources, not Ford docs.~~',
+      ] },
+    { tag: 'why', title: 'An always-powered door into the car',
+      body: [
+        'Pin 16 stays live so a tool works with the engine off. It also means anything left plugged in can slowly drain the battery.',
+        'Insurance, fleet and “smart car” dongles live here permanently. Each one is a small computer on your car’s network, often with a radio. Treat that as a security question (Security unit).',
+        'The standards place the port in the cabin near the driver, usually under the dash on the driver’s side, so inspectors and techs can find it.',
+      ] },
+    { tag: 'bronco', title: 'Behind your Bronco Sport’s port',
+      body: [
+        'Standard: OBD over CAN on **pins 6 and 14**, power on 16, grounds on 4 and 5.',
+        'On 2021–23 Bronco Sports (per Ford’s bulletin), the connector is a [[sdlc|Smart Data Link Connector]]: the gateway module itself. The pins reach the gateway, not the raw internal buses. For 2024, likely the same, **not confirmed**.',
+        'So what you can read there is whatever the gateway answers: standard OBD data for sure, and Ford’s own diagnostics with the right tools.',
+      ],
+      facts: ['bronco.obdProtocol', 'bronco.obdGateway'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'Which pin number is **CAN high** on the OBD-II port?', answer: 6, tol: 0,
+      why: 'CAN high is pin 6 and CAN low is pin 14. Every 2008+ US car does OBD there.' },
+    { type: 'mc', q: 'What is **pin 16** for?',
+      options: ['CAN low', 'Chassis ground', 'Battery +12 V for the tool', 'Ignition switch signal'], answer: 2,
+      why: 'Pin 16 is battery power, normally live with the key off. That’s how a scan tool powers up, and why forgotten dongles can drain a battery.',
+      wrong: { 0: 'CAN low is pin 14.', 1: 'Chassis ground is pin 4 (signal ground is pin 5).' } },
+    { type: 'mc', q: 'A 1999 Chrysler uses ISO 9141-2. Which pin carries its data?',
+      options: ['Pin 2', 'Pin 6', 'Pin 7', 'Pin 16'], answer: 2,
+      why: 'ISO 9141-2 (and KWP2000) use the K-line on pin 7, with an optional L-line on pin 15.',
+      wrong: { 0: 'Pin 2 is J1850 bus +.', 1: 'Pin 6 is CAN high.' } },
+    { type: 'mc', q: 'On a Ford with a Smart Data Link Connector, what are pins 6 and 14 actually connected to?',
+      options: ['Directly to the PCM’s powertrain bus', 'The gateway module, which relays requests to the modules behind it', 'Nothing; Ford uses only pins 3 and 11', 'The radio'], answer: 1,
+      why: 'In Ford’s SDLC design the gateway is built into the connector. A scan tool talks to the gateway, which forwards diagnostic requests and answers.' },
+  ],
+  cards: [
+    { id: 'can', front: 'OBD-II pins for CAN?', back: '**6** = CAN high, **14** = CAN low.' },
+    { id: 'power', front: 'OBD-II pins for power and ground?', back: '**16** = battery +12 V. **4** = chassis ground, **5** = signal ground.' },
+    { id: 'old', front: 'Pins for J1850 and K-line?', back: 'J1850: **2** (+) and **10** (−). K-line: **7** (L-line **15**).' },
+    { id: 'where', front: 'Where is the OBD-II port?', back: 'Driver’s area, usually under the dash on the driver’s side.' },
+    { id: 'sdlc', front: 'Ford SDLC?', back: 'Smart Data Link Connector: the gateway module built into the OBD port.' },
+  ],
+};

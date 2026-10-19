@@ -82,3 +82,78 @@ with Phase 4a; their specs below are final, so use them exactly as written.
   side-by-side bars per metric (2–6 items, 2–5 metrics). Missing values allowed (shown as "n/a").
 - `checklist` `{ title?, groups: [{ name: 'Engine', items: [{ check: 'What to look at', why: 'What it tells you' }] }] }`:
   tappable inspection checklist with a progress bar (not saved).
+
+## (new, Phase 5) Track 4 visuals
+Real Ford IDs/signals come from `src/core/can/ford.js` (community DBC, see CONTENT_GUIDE Phase 5 notes);
+signal names below are exact names from that file. "SIMULATED" data comes from `src/core/can/sim.js` scenarios
+(`idle`, `drive`, `blinker`, `steer`, `doors`, `pedal`, `brake`).
+
+### Networks & OBD
+- `network` `{ preset?: 'generic'|'ford', highlight?: '<moduleId>' }`: tappable map of ECUs on buses with a gateway
+  and the OBD port. `generic`: ECM, TCM, ABS, EPS, airbag (SRS), BCM, cluster, infotainment, telematics, gateway on
+  powertrain/chassis/body/infotainment buses. `ford`: module names seen on the main bus in the community DBC (PCM,
+  ABS_ESC, PSCM, IPMA_ADAS camera, GWM gateway, TCCM) plus typical Ford body/infotainment modules (BCM, IPC, APIM/SYNC,
+  TCU) behind the gateway, labeled "simplified; exact Bronco Sport wiring isn't public". Module ids: `ecm`, `tcm`,
+  `abs`, `eps`, `srs`, `bcm`, `ipc`, `info`, `tcu`, `gw`, `obd`, `cam`, `awd`.
+- `sensorloop` `{ loop: 'throttle'|'abs'|'fan' }`: animated sensor → ECU → actuator loop with live values
+  (pedal sensor → PCM → electronic throttle; wheel-speed sensors → ABS module → valves; coolant temp → PCM → fan).
+- `obdport` `{ highlight?: 'can'|'power'|'kline'|'j1850' }`: the 16-pin J1962 connector, tappable pins (2/10 J1850,
+  4 chassis ground, 5 signal ground, 6/14 CAN high/low, 7/15 K/L-line, 16 battery +12 V). Chips filter by protocol.
+- `pid` `{ pid?: '0C' }`: Mode 01 request/response builder. PIDs 04 load, 05 coolant, 0B MAP, 0C rpm, 0D speed,
+  0F intake temp, 10 MAF, 11 throttle, 2F fuel level, 46 ambient temp. Shows `7DF [02 01 0C …]` → `7E8 [04 41 0C A B …]`,
+  the SAE formula with A/B filled in, and a slider for the real value.
+- `dtc` `{ code?: 'P0301' }`: type a code → letter (P/C/B/U), generic vs manufacturer digit, subsystem, fault;
+  also shows the 2-byte encoding used in Mode 03 responses.
+
+### CAN
+- `busvolts` `{}`: CAN_H / CAN_L voltages for a few bits, dominant (≈3.5 V / 1.5 V) vs recessive (both ≈2.5 V),
+  "add noise" (both wires shift together; the difference survives) and "remove a terminator" (ringing) toggles.
+- `canframe` `{ id?: number, data?: 'hex', extended?: false }`: a real bit-level classic CAN frame: SOF, ID, RTR,
+  IDE, r0, DLC, data, CRC-15 (computed), CRC delimiter, ACK, EOF, with stuff bits marked. Tap a field to explain it.
+  Edit ID and data to see stuffing and CRC change. Defaults to `0x415` with a simulated speed.
+- `arbitration` `{ ids?: [number, number, number] }`: nodes start sending at once; bit by bit, a dominant 0
+  overwrites a recessive 1, losers drop out; lowest ID wins. User can change the IDs.
+- `bittiming` `{ bitrate?: 125000|250000|500000|1000000 }`: one bit split into sync / propagation / phase 1 /
+  phase 2 time quanta, sample point (e.g. 75–87.5%), bit time in µs, and a rough bus-length limit (rule of thumb).
+- `errors` `{}`: transmit/receive error counters (TEC/REC) with buttons (error, successful frame); states error-active
+  → error-passive (>127) → bus-off (TEC >255), and recovery.
+- `canfd` `{}`: classic CAN vs CAN FD frame: 8 vs up to 64 data bytes, bit-rate switch in the data phase,
+  payload efficiency bars.
+- `isotp` `{ example?: 'vin' }`: ISO-TP multi-frame transfer of a VIN (Mode 09 PID 02): single/first/flow-control/
+  consecutive frames, PCI bytes highlighted, reassembled text. Uses a made-up VIN with a valid check digit.
+- `uds` `{ highlight?: '22' }`: UDS service list (10, 11, 14, 19, 22, 27, 2E, 31, 34, 36, 37, 3E) each tagged READ /
+  CHANGES STATE / WRITES, example request/response for 0x22 F190 (VIN) and a negative response (0x7F + NRC).
+  Says plainly which ones the app's read-only mode will never send.
+
+### Decoding & reverse engineering
+- `bitfield` `{ signal?: '<Ford signal name>', data?: 'hex', custom?: { start, length, endian: 'big'|'little',
+  signed?, scale?, offset?, unit? }, editable?: true }`: 8×8 bit grid of a frame; highlights the signal's bits in
+  order MSB→LSB, shows raw binary → raw number → physical value. With `editable`, sliders for start/length and
+  an Intel/Motorola toggle. Default signal `Veh_V_ActlBrk`.
+- `scaling` `{ scale?: 0.01, offset?: 0, unit?: 'km/h', bits?: 16 }`: raw ↔ physical line, `physical = raw × scale +
+  offset`, with range and resolution readouts.
+- `twos` `{ bits?: 8 }`: number wheel showing the same bits as unsigned vs two's complement signed.
+- `checksum` `{ mode?: 'ford'|'mac' }`: `ford`: frames of 0x415 BrakeSysFeatures with the rolling counter and
+  openpilot's documented Ford checksum recomputed live; "tamper a byte" → receiver rejects. `mac`: the same idea with
+  a secret-key message authentication code + freshness counter (SecOC concept): a replayed or altered frame fails.
+- `candump` `{ scenario?: 'drive', ids?: [hex numbers], highlight?: true }`: scrolling SIMULATED candump view,
+  pause, filter by ID, bytes that just changed flash. Also a per-ID table (count, rate, last data) toggle.
+- `capdiff` `{ base?: 'idle', action?: 'blinker' }`: compares two SIMULATED captures: for each ID and byte, how often
+  it changed in each; bytes that change only in the action capture light up. Tap one to see its values.
+- `sigplot` `{ scenario: 'drive', id: number, start?: number, length?: number, endian?: 'big'|'little', editable?: true }`:
+  plots a chosen bit range of one ID over time. With the right bits the curve is smooth; with the wrong ones it's
+  noise or a sawtooth. Great for "find the speed signal".
+
+### Tuning
+- `ecumap` `{ map?: 'fuel'|'ignition'|'boost', editable?: true }`: rpm × load table as a heat map (ILLUSTRATIVE
+  numbers, not a real calibration), with interpolation between cells shown for a moving operating point; editing a
+  cell shows the trade-off (e.g. more timing → more torque until the knock margin runs out).
+- `parts` drawing `ecu` (ECU circuit board), parts: `connector`, `power`, `mcu`, `flash`, `ram`, `eeprom`, `hsm`,
+  `can-xcvr`, `adc`, `drivers`, `knock`.
+
+### Security
+- `attack` `{ highlight?: 'obd'|'telematics'|'wireless'|'infotainment'|'keyfob'|'tpms'|'can-wiring' }`: car-top map
+  of attack surfaces (remote vs physical), tap one for what it is, a landmark public case, and the defenses.
+- `fob` `{ mode?: 'rolling'|'relay' }`: `rolling`: fob counter vs car's acceptance window; a replayed old code is
+  rejected. `relay`: concept animation of a relay extending a keyless fob's range, and the countermeasures (motion-
+  sensing fobs, UWB distance bounding, PIN-to-drive). Concept only.

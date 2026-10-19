@@ -80,3 +80,65 @@ quiz answers, tap part ids, glossary links, facts and card ids). Fix anything it
 - **Car culture:** sport bikes are a first-class part of culture here, not an afterthought. Label opinions as
   opinions; verify dates, numbers and "firsts" with WebSearch; be honest about myths and about the law
   (emissions tampering, exhaust noise, lighting, street racing).
+
+## Phase 5 notes: Track 4 (computers, tuning, reverse engineering, security)
+The reader's main interest. He's headed into ECE/cybersecurity, so be precise and technical, but still
+metaphor first and short bullets. Extra step tags for this track: `code` (a Python exercise), `law`, `safety`.
+
+### Honesty rules specific to this track
+- **Ford signal data is community reverse-engineered.** `src/core/can/ford.js` is generated from openpilot's
+  `ford_lincoln_base_pt.dbc` (commaai/opendbc, MIT). openpilot lists the Bronco Sport 2021-24 as supported.
+  Every time a lesson shows a real Ford ID or signal, say it comes from the open-source openpilot project and
+  is community reverse-engineered, **not from Ford**. Don't claim these are definitely on his OBD port:
+  openpilot taps the bus at the camera behind the windshield, and on modern Fords the OBD port sits behind a
+  gateway module (GWM), so normal traffic may not be visible there. Say so where relevant.
+- **Simulated data is labeled simulated.** `src/core/can/sim.js` makes fake drives with the real message
+  layouts but made-up values, timing and rates. Use the words "simulated" or "made-up values".
+- **Read-only principle.** The app (Phase 7) will only ever read from a car. Explain write/flash/security-access
+  services (UDS 0x2E, 0x27, 0x34/0x36, 0x31) conceptually so he understands them, but never give procedures for
+  writing, flashing, bypassing security access, immobilizers, or emissions controls. Tuning is explained as
+  concepts and trade-offs plus the law, not how to do it.
+- **Security = theory, history, defense and ethics.** Landmark research (who, when, what it showed, how it was
+  fixed) is great. No step-by-step attack instructions, no tool walkthroughs for attacking cars, no code that
+  attacks anything. Always include the legal and ethical frame (authorization, coordinated disclosure, DMCA
+  §1201 security-research exemption, UN R155/R156) and verify every date, CVE or claim.
+- **Law:** be accurate and current (EPA tampering, CARB EO, Magnuson-Moss). Phase 4's `mods-02` and `law.*`
+  facts already cover tunes; link instead of repeating.
+
+### Python exercises (`code` steps)
+The reader is **between "new to Python" and "knows the basics"**. Each exercise practices ONE idea.
+```js
+{ tag: 'code', title: 'Parse a candump line',
+  body: ['One or two bullets of context (what and why).'],
+  code: {
+    id: 'decode-02-parse',               // MUST start with the lesson id, then a short slug
+    prompt: 'Finish `parse_line(line)` so it returns `(can_id, data_bytes)`.',
+    starter: 'def parse_line(line):\n    # 1. split on spaces\n    parts = line.split()\n    ___\n',
+    setup: '...optional python run before the reader\'s code (helpers, sample data)...',
+    files: { 'drive.log': 'sim:drive' }, // optional data files, see below
+    tests: [ { name: 'Reads the ID as a number', code: 'assert parse_line(L)[0] == 0x415, f"got {parse_line(L)[0]!r}"' } ],
+    hints: ['Gentle nudge', 'Bigger nudge', 'Nearly the answer'],
+    solution: 'def parse_line(line):\n    ...\n',
+  } }
+```
+- **Starter code**: mostly written, with comments, and `___` blanks (three underscores; the editor highlights
+  them and running them gives "There's still a ___ blank to fill in"). Early exercises: 1–3 blanks. Later ones
+  (decode-06, re-*) can leave a whole function body, but give the signature, a docstring and comments.
+- **Tests**: 2–5 plain-English `name`s ("Converts 0x0FA0 to 40.0 km/h"). Use `assert cond, f"got {value!r}"` so a
+  failure tells him what his code produced. Tests run in the same namespace as his code, after it. Don't depend
+  on print output. The answer must pass every test and **the starter must fail at least one**: the test suite
+  checks both by actually running Python.
+- **Hints**: 2–3, from nudge to near-answer. **solution**: clean, idiomatic, commented, beginner-readable.
+- Allowed: Python standard library only (no numpy). No `input()`, no `import js`/`pyodide`/`micropip`.
+- **Line length**: keep lines ≤ 40 characters where practical (phones show ~34 columns; longer lines scroll).
+- **Data files**: `files: { 'name.log': 'sim:<scenario>' }` writes a SIMULATED candump log into the working
+  directory (open it with `open('name.log')`). Add `?ids=415,204` to keep only some IDs (hex, no 0x).
+  Scenarios (src/core/can/sim.js): `idle` (10 s), `drive` (30 s: pull away, cruise ≈ 40 mph, brake to a stop),
+  `blinker` (left 2–6 s, right 8–11 s), `steer` (wheel to −180° then +180°), `doors` (driver 2–5 s,
+  passenger 6–8 s), `pedal` (accelerator pressed three times while parked), `brake` (brake pressed three times).
+  Line format: `(0.020000) can0 415#0FA0C04D00000000` (timestamp in seconds, interface, hex ID, `#`, hex data).
+  Values are deterministic, so tests may check exact results. Explore them with
+  `node -e "import('./src/core/can/sim.js').then(s=>console.log(s.simFile('sim:blinker?ids=83').slice(0,400)))"`.
+- Inline data is fine too: `files: { 'frames.txt': '415#0FA0...\n204#...\n' }` or a Python list in `setup`.
+- **Check your work:** `npx vitest run tests/exercises.test.js` runs every exercise for real (answer passes,
+  starter fails). Also run the content tests.

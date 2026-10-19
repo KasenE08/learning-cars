@@ -4,3 +4,4 @@ dev-dist/
 screenshots/
 .DS_Store
 *.log
+public/pyodide/

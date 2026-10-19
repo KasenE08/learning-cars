@@ -1,0 +1,55 @@
+/* Python exercises: editor + panel */
+.ed { --lh: 22px; --pad: 12px; }
+.ed__box { position: relative; border: 1px solid var(--line-2); border-radius: var(--r-md); background: #0d0f12; height: calc(var(--lines) * var(--lh) + var(--pad) * 2); min-height: 120px; overflow: hidden; }
+.ed__hl, .ed__ta { position: absolute; inset: 0; margin: 0; padding: var(--pad); font: 14px/var(--lh) var(--font-mono); tab-size: 4; white-space: pre; overflow: auto hidden; border: 0; letter-spacing: 0; }
+.ed__hl { color: var(--ink); pointer-events: none; overflow: hidden; }
+.ed__ta { color: transparent; background: transparent; caret-color: var(--orange); resize: none; outline: none; -webkit-text-fill-color: transparent; }
+.ed__ta::selection { background: rgba(255, 107, 26, 0.3); -webkit-text-fill-color: transparent; }
+.ed__box:focus-within { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255, 107, 26, 0.15); }
+.ed__err { position: absolute; left: 0; right: 0; top: calc(var(--pad) + var(--ln) * var(--lh)); height: var(--lh); background: rgba(255, 77, 61, 0.14); border-left: 3px solid var(--bad); pointer-events: none; }
+.tk-k { color: #ff8a45; } .tk-s { color: #a8d08d; } .tk-n { color: #ffc21a; } .tk-c { color: #6b6964; font-style: italic; }
+.tk-f { color: #7fb2e0; } .tk-b { color: #c9a3e8; } .tk-blank { color: var(--yellow-ink); background: var(--yellow); border-radius: 2px; }
+.ed__keys { display: none; gap: 6px; overflow-x: auto; padding: 8px 0 2px; scrollbar-width: none; }
+.ed__keys::-webkit-scrollbar { display: none; }
+.ed__keys button { flex: none; min-width: 38px; height: 36px; padding: 0 10px; border-radius: var(--r-sm); background: var(--steel-3); color: var(--ink); font: 600 14px var(--font-mono); }
+.ed__keys button:active { background: var(--steel-4); }
+@media (pointer: coarse) {
+  .ed { --lh: 24px; }
+  .ed__hl, .ed__ta { font-size: 16px; } /* 16px stops iOS zooming into the field */
+  .ed__keys { display: flex; }
+}
+
+.ex { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; padding: 14px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--steel-1); min-width: 0; }
+.ex__head { display: flex; align-items: center; justify-content: space-between; }
+.ex__badge { display: none; align-items: center; gap: 4px; font: 600 11px var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ok); }
+.ex__badge svg { width: 14px; height: 14px; }
+.ex.is-solved .ex__badge { display: inline-flex; }
+.ex.is-solved { border-color: rgba(79, 210, 127, 0.4); }
+.ex__prompt { color: var(--ink-2); }
+.ex__bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.ex__spacer { flex: 1; }
+.ex__small { height: 36px; padding: 0 12px; font-size: 13px; }
+.ex__state { margin: 0; font-size: 11px; color: var(--ink-3); }
+.ex__state[data-s="loading"] { color: var(--yellow); }
+.ex__state[data-s="error"] { color: var(--bad); }
+.ex__hint { margin: 0; padding: 10px 12px; border-left: 3px solid var(--yellow); background: rgba(255, 194, 26, 0.06); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.ex__hints { display: grid; gap: 8px; }
+.ex__hints:empty, .ex__tests:empty { display: none; }
+.ex__out { display: grid; gap: 6px; }
+.ex__console { margin: 0; padding: 10px 12px; max-height: 260px; overflow: auto; background: #08090b; border: 1px solid var(--line); border-radius: var(--r-sm); font: 13px/1.5 var(--font-mono); color: #cfd6dd; white-space: pre-wrap; word-break: break-word; }
+.ex__err { font-size: 12px; color: #ffb3aa; word-break: break-word; }
+.ex__checks { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; }
+.ex__checks li { display: flex; gap: 8px; align-items: flex-start; }
+.ex__checks .tick { flex: none; width: 18px; height: 18px; display: grid; place-items: center; border-radius: 3px; }
+.ex__checks .tick svg { width: 12px; height: 12px; }
+.ex__checks .is-ok .tick { background: rgba(79, 210, 127, 0.2); color: var(--ok); }
+.ex__checks .is-bad .tick { background: rgba(255, 77, 61, 0.2); color: var(--bad); }
+.step__code { min-width: 0; }
+.py-count { font-size: 12px; margin: 0 0 8px; }
+.py-rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.py-row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; color: var(--ink); text-decoration: none; }
+.py-row svg { width: 16px; height: 16px; flex: none; }
+.py-row .tick { width: 22px; height: 22px; flex: none; display: grid; place-items: center; border-radius: 3px; border: 1px solid var(--line-2); color: var(--ok); }
+.py-row.is-solved .tick { background: rgba(79, 210, 127, 0.15); border-color: rgba(79, 210, 127, 0.5); }
+.py-row__text { flex: 1; display: grid; gap: 2px; min-width: 0; }
+.py-row__text .mono { font-size: 11px; }

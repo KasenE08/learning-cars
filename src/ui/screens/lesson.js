@@ -17,7 +17,7 @@ import { lessonById, unitById, trackById, lessonCode, pathLessons } from '../../
 
 export const tab = 'course';
 
-const TAGS = { metaphor: 'Metaphor', how: 'How it works', see: 'See it', math: 'The math', bronco: 'On your Bronco', bikes: 'On the bikes', key: 'Key point', why: 'Why it matters' };
+const TAGS = { metaphor: 'Metaphor', how: 'How it works', see: 'See it', math: 'The math', bronco: 'On your Bronco', bikes: 'On the bikes', key: 'Key point', why: 'Why it matters', code: 'Try it in Python', law: 'The law', safety: 'Read-only rule' };
 
 function placeholder(view, l) {
   view.append(el(html`<div class="screen lesson">
@@ -56,6 +56,9 @@ function run(view, l, content) {
   const seed = Date.now() % 100000;
 
   const S = { phase: 'steps', i: 0, q: 0, answers: [], checked: false };
+  // deep link to a step: #/lesson/<id>?s=3
+  const sParam = Number(new URLSearchParams(location.hash.split('?')[1] || '').get('s'));
+  if (sParam >= 1 && sParam <= steps.length) S.i = sParam - 1;
   let disposeVisual = () => {};
   let current = null;
 
@@ -94,12 +97,14 @@ function run(view, l, content) {
     disposeVisual();
     const st = steps[S.i];
     const v = st.visual ? html`<div class="step__vis"></div>` : '';
+    const codeBox = st.code ? html`<div class="step__code"></div>` : '';
     const art = el(html`<article class="step">
       <span class="kicker kicker--accent step__tag">${TAGS[st.tag] || st.tag}</span>
       <h2 class="h2 step__title">${st.title}</h2>
       ${st.visualFirst ? v : ''}
       ${st.body?.length ? html`<ul class="bullets">${st.body.map((b) => html`<li>${rich(b)}</li>`)}</ul>` : ''}
       ${st.visualFirst ? '' : v}
+      ${codeBox}
       ${st.facts?.length ? factBlock(st.facts) : ''}
       ${st.note ? html`<p class="step__note">${rich(st.note)}</p>` : ''}
     </article>`);
@@ -109,6 +114,12 @@ function run(view, l, content) {
       mountVisual(art.querySelector('.step__vis'), st.visual).then((a) => { if (dead) a.destroy?.(); else api = a; });
       disposeVisual = () => { dead = true; api?.destroy?.(); };
     } else disposeVisual = () => {};
+    if (st.code) {
+      const prev = disposeVisual;
+      let ex = null, dead = false;
+      import('../code/exercise.js').then(({ mountExercise }) => { if (!dead) ex = mountExercise(art.querySelector('.step__code'), st.code); });
+      disposeVisual = () => { dead = true; prev(); ex?.destroy(); };
+    }
     count.textContent = `${S.i + 1}/${steps.length}`;
     back.disabled = S.i === 0;
     setNext(S.i === steps.length - 1 ? (quiz.length ? 'Quiz' : 'Finish') : 'Next');
@@ -210,7 +221,7 @@ function run(view, l, content) {
     if (Math.abs(dx) > 60 && Math.abs(dy) < 50) (dx < 0 ? forward : backward)();
   }, { passive: true });
   const onKey = (e) => {
-    if (e.target.closest?.('input')) return;
+    if (e.target.closest?.('input, textarea')) return;
     if (e.key === 'ArrowRight') forward();
     if (e.key === 'ArrowLeft') backward();
   };
