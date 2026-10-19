@@ -12,6 +12,7 @@ import './ui/styles/app.css';
 import './ui/styles/visuals.css';
 import './ui/styles/lesson.css';
 import './ui/styles/code.css';
+import './ui/styles/t4.css';
 
 import { start } from './router.js';
 import { registerServiceWorker } from './core/sw.js';
