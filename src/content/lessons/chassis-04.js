@@ -50,8 +50,6 @@ export default {
   quiz: [
     { type: 'order', q: 'Put the steering path in order, from your hands to the tire.', items: ['Steering wheel', 'Column', 'Pinion', 'Rack', 'Tie rod', 'Knuckle & wheel'],
       why: 'The column turns the pinion, the pinion slides the rack, the rack pushes the tie rods, and the tie rods swing the knuckles.' },
-    { type: 'num', q: 'Steering ratio **16:1**. You turn the steering wheel **480°**. How many degrees do the front tires turn?', answer: 30, tol: 0, unit: '°',
-      why: '480 ÷ 16 = **30°**.' },
     { type: 'mc', q: 'How does EPAS know how much to help?', options: ['A pressure sensor in the tires', 'A torque sensor in the column measures how hard you twist', 'It always gives the same help', 'A camera watches your hands'], answer: 1,
       why: 'The torque sensor measures driver effort; the module combines it with vehicle speed to command the motor.' },
     { type: 'tap', q: 'Tap the **steering** system.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'steering',

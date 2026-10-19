@@ -113,8 +113,6 @@ print(f"100 km/h = {speed:.1f} mph")
     { type: 'mc', q: 'What does `print(3000 / 60)` show?', options: ['`50`', '`50.0`', '`3000 / 60`', 'An error'], answer: 1,
       why: 'In Python 3, `/` always produces a float, even when it divides evenly. Use `//` if you want a whole number.',
       wrong: { 0: 'That’s what `3000 // 60` would show.', 2: 'Without quotes it’s math, not text, so Python calculates it.' } },
-    { type: 'num', q: 'What is `7 // 2` in Python?', answer: 3, tol: 0,
-      hint: '`//` divides and drops the remainder.', why: '7 ÷ 2 = 3.5; `//` keeps only the whole part, **3**. (`7 % 2` would give the remainder, 1.)' },
     { type: 'mc', q: 'What does `"40" + "1"` give?', options: ['`41`', '`"401"`', '`"41"`', 'An error'], answer: 1,
       why: 'Both are strings (in quotes), so `+` glues them together. Convert with `int()` first if you want arithmetic.' },
     { type: 'mc', q: 'Which line shows `rpm` inside text, like “3000 rpm”?', options: ['`print("{rpm} rpm")`', '`print(f"{rpm} rpm")`', '`print(rpm + " rpm")`', '`# print(rpm)`'], answer: 1,

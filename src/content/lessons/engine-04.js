@@ -39,11 +39,10 @@ export default {
       facts: ['ninja.engine', 'rs457.engine'] },
   ],
   quiz: [
-    { type: 'num', q: 'A 4-cylinder has an **8.0 cm** bore and **9.0 cm** stroke. Displacement in cc?', answer: 1809.6, tol: 6, unit: 'cc',
-      hint: 'π/4 × bore² × stroke × cylinders.', why: 'π/4 × 8.0² × 9.0 = 452.4 cc per cylinder × 4 = **1,810 cc** (≈1.8 L).' },
+    { type: 'mc', q: 'Which of these sets an engine’s displacement (the “CCs”)?', options: ['Bore, stroke, and the number of cylinders', 'Only the redline rpm', 'The size of the fuel tank', 'How much boost the turbo makes'], answer: 0,
+      why: 'Displacement = π/4 × bore² × stroke × cylinders — the total volume the pistons sweep. Bore is squared, so it counts double.' },
     { type: 'mc', q: 'You **double the bore** and keep the stroke. Displacement becomes…', options: ['The same', '2× bigger', '4× bigger', '8× bigger'], answer: 2,
       why: 'Bore is squared in the formula (it’s a circle’s area). 2² = 4.', wrong: { 1: 'That’s what doubling the stroke does. Bore is squared.' } },
-    { type: 'num', q: 'Convert **2.0 L** to cubic inches (1 ci = 16.39 cc).', answer: 122, tol: 1, unit: 'ci', why: '2,000 cc ÷ 16.39 = **122 ci**.' },
     { type: 'mc', q: 'What’s the Ninja 500’s actual displacement?', options: ['500 cc', '451 cc', '457 cc', '399 cc'], answer: 1,
       why: '70.0 × 58.6 mm twin = 451 cc. 457 is the RS 457; 399 was the older Ninja 400.' },
   ],

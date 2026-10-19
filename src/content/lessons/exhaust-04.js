@@ -50,8 +50,6 @@ export default {
       facts: ['bronco.engine', 'bronco.firingOrder'] },
   ],
   quiz: [
-    { type: 'num', q: 'A V8 at **6,000 rpm**: firing frequency in Hz?', answer: 400, tol: 0, unit: 'Hz',
-      hint: 'Hz = rpm ÷ 60 × cylinders ÷ 2', why: '6,000 ÷ 60 = 100 rev/s × 8 ÷ 2 = **400 Hz**.' },
     { type: 'order', q: 'At the same **3,000 rpm**, order from lowest to highest firing frequency.', items: ['Single', 'Parallel twin', 'Inline-4', 'V8'],
       why: '3,000 ÷ 60 = 50 rev/s. × cylinders ÷ 2: single 25 Hz, twin 50 Hz, I4 100 Hz, V8 200 Hz.' },
     { type: 'mc', q: 'A flat-plane and a cross-plane V8 at the same rpm have the same firing frequency. Why do they sound so different?', options: ['Different displacement', 'Pulse spacing in each bank’s pipe: even (flat-plane) vs uneven (cross-plane)', 'The flat-plane has more cylinders', 'Cross-planes always have turbos'], answer: 1,

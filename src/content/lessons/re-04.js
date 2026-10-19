@@ -141,8 +141,6 @@ for key in diff(idle, brake):
     { type: 'tap', q: 'Which part’s position does `BpedDrvAppl_D_Actl` report? Tap it.', visual: { type: 'parts', drawing: 'brakes' }, answer: 'pedal',
       why: '“Bped…DrvAppl” = brake pedal, driver applied. It reports whether the driver is pressing the pedal, not brake pressure at the wheels.',
       wrong: { master: 'The master cylinder makes the pressure; this signal is about the driver pressing the pedal.', caliper: 'That’s where the clamping happens, far downstream of the pedal switch.' } },
-    { type: 'num', q: 'A byte reads **0x10** in one frame and **0x20** in the next. How many bits flipped?', answer: 2, tol: 0,
-      hint: '0x10 ^ 0x20 = 0x30. Count the 1s in its binary form.', why: '0x10 = 0001 0000, 0x20 = 0010 0000. XOR = 0011 0000: **two** bits (5 and 4), one 2-bit field going from 1 to 2.' },
     { type: 'mc', q: 'Why might Ford encode “not braking / braking” as **1 and 2** instead of 0 and 1?',
       options: ['To save bandwidth', 'So stuck-at-0 or stuck-at-1 faults read as invalid values', 'Because CAN can’t send 0', 'It’s random'], answer: 1,
       why: 'With 1 and 2 as the valid states, 0 (all bits low) and 3 (all bits high) mean something is wrong. A safety-relevant signal shouldn’t look valid when a wire fails.' },

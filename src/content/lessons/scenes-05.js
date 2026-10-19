@@ -54,8 +54,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'Biggest structural difference between a full-size **Bronco** and your **Bronco Sport**?', options: ['The Sport has a bigger engine', 'Bronco: body-on-frame with a transfer case and low range. Sport: unibody with no low range', 'The Sport is rear-wheel drive', 'There is none'], answer: 1,
       why: 'Same name, different engineering: the full-size Bronco is a traditional body-on-frame 4x4; the Sport is an AWD-based unibody crossover with clever clutch hardware.' },
-    { type: 'num', q: 'The original Bronco ended after **1996**; the new one arrived as a **2021** model. How many years without a Bronco?', answer: 25, tol: 0, unit: 'years',
-      why: '2021 − 1996 = **25 years**. Coverage of the comeback called it a 25-year hiatus.' },
     { type: 'order', q: 'Put the Bronco history in order.', items: ['First Bronco', 'Full-size Bronco', 'Bronco II', 'Last original Bronco', 'Bronco Sport on sale'],
       why: '1966, 1978, 1984, 1996, then the 2021 model year.' },
     { type: 'tap', q: 'Rock Crawl mode clamps the rear clutches together. Which unit on your Bronco holds them?', visual: { type: 'parts', drawing: 'car-top' }, answer: 'rdu',

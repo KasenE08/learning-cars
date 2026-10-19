@@ -60,8 +60,6 @@ export default {
     { type: 'mc', q: 'Main advantage of a ball-bearing turbo over journal bearings?', options: ['Needs no oil', 'Less friction, so it spools faster', 'Handles hotter exhaust', 'Makes the turbo bigger'], answer: 1,
       why: 'Ball bearings cut friction, so the rotor speeds up sooner. They still need oil; journal bearings are cheaper and very durable.',
       wrong: { 0: 'Both types are lubricated by engine oil.' } },
-    { type: 'num', q: 'A turbo spins at **180,000 rpm**. How many revolutions per **second**?', answer: 3000, tol: 0, unit: 'rev/s',
-      why: '180,000 ÷ 60 = **3,000** revolutions every second.' },
     { type: 'mc', q: 'Why must a turbo’s oil drain flow freely?', options: ['Oil drains by gravity; if it backs up it pushes past the seals into the air and exhaust', 'It’s pressurized and could burst', 'The drain feeds the injectors', 'It cools the compressor wheel directly'], answer: 0,
       why: 'Oil leaves the center housing by gravity. Restrict it and the housing floods, oil gets past the ring seals, and you get smoke.' },
   ],

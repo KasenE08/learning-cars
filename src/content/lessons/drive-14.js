@@ -56,8 +56,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'Why shouldn’t a part-time 4x4 drive in 4H on dry pavement?', options: ['It uses too much fuel', 'Front and rear are locked together, but in turns they need different speeds, so the driveline binds', 'The transfer case overheats from speed', 'The front diff locks'], answer: 1,
       why: 'Locked front and rear driveshafts can’t make up the speed difference in turns. On loose ground tires slip it away; on dry pavement the strain builds up: bind, hop and parts damage.' },
-    { type: 'num', q: '1st gear is **4.0:1**, low range is **2.72:1** and the final drive is **4.10:1**. What’s the crawl ratio (x:1)?', answer: 44.6, tol: 0.1, unit: ':1',
-      hint: 'Multiply all three.', why: '4.0 × 2.72 × 4.10 = **44.6:1**. The engine turns 44.6 times for each turn of the wheels.' },
     { type: 'order', q: 'Order what happens when an on-demand AWD car’s front wheels slip.', items: ['Front wheels start to spin faster than the rears', 'Wheel-speed sensors report the difference', 'The AWD module commands the coupling', 'The clutch pack clamps', 'The rear wheels get torque'],
       why: 'Sense → decide → clamp → drive. Modern systems also preload the clutch before slip when they expect it (hard launches, low grip).' },
     { type: 'tap', q: 'Tap the part that makes your Bronco Sport front-drive-based AWD instead of a transfer-case 4x4: the **right-angle box that sends drive rearward**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'ptu',

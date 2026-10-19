@@ -50,8 +50,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'What separates **pre-ignition** from **detonation**?', options: ['Pre-ignition happens after the spark, at the edges', 'Pre-ignition lights the mixture before the spark; detonation is end gas self-igniting after it', 'They are the same thing', 'Detonation only happens in diesels'], answer: 1,
       why: 'Detonation: spark fires normally, then leftover end gas explodes. Pre-ignition: a hot spot or droplet lights the mixture before the spark even fires.' },
-    { type: 'num', q: 'A fuel has **RON 95** and **MON 85**. What would a US pump post (AKI)?', answer: 90, tol: 0, unit: 'AKI',
-      why: 'AKI = (95 + 85) ÷ 2 = **90**.' },
     { type: 'order', q: 'Order the knock-control loop.', items: ['Knock sensor picks up ringing', 'PCM matches it to the cylinder that just fired', 'PCM retards that cylinder’s spark', 'PCM slowly re-advances timing'],
       why: 'Listen, identify, retard, then creep back toward the best timing. It runs constantly.' },
     { type: 'mc', q: 'Why does retarding spark timing stop knock?', options: ['It adds fuel', 'Later spark means lower peak pressure and temperature, so the end gas doesn’t self-ignite', 'It raises octane', 'It cools the coolant'], answer: 1,

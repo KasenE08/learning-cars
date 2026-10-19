@@ -53,8 +53,6 @@ export default {
       facts: ['bronco.brakes', 'bronco.trans'] },
   ],
   quiz: [
-    { type: 'num', q: 'A Le Mans crew has three drivers. A drives **10 h**, B drives **8 h**. How many hours does C drive in the 24-hour race?', answer: 6, tol: 0, unit: 'h',
-      why: '24 − 10 − 8 = **6 h**, exactly the minimum each driver must do. All three are under the 14-hour maximum.' },
     { type: 'tap', q: 'Tap the part Jaguar’s 1953 winner used instead of a **brake drum**.', visual: { type: 'parts', drawing: 'brakes' }, answer: 'rotor',
       why: 'The disc (rotor) replaced the drum. Open to the air, it sheds heat better, so it fades less lap after lap.',
       wrong: { caliper: 'The caliper squeezes the disc. The big change was the disc itself replacing the drum.', pads: 'Pads press on the disc; the key change was the disc replacing the drum.' } },

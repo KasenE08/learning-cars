@@ -39,9 +39,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'What does a hot-wire MAF actually measure?', options: ['Air pressure in the manifold', 'The current needed to keep a heated wire hot in the airflow, which tracks air mass', 'Throttle angle', 'Exhaust oxygen'], answer: 1,
       why: 'More air mass flowing past carries away more heat; the current to hold the wire’s temperature is the signal.' },
-    { type: 'num', q: 'A **2.0 L** engine at **6,000 rpm**, 100% VE, air at 1.2 g/L. Air flow in **g/s**?', answer: 120, tol: 2, unit: 'g/s',
-      hint: 'It fills 2.0 L once every 2 revolutions.',
-      why: '6,000 ÷ 2 = 3,000 fills/min × 2.0 L = 6,000 L/min × 1.2 g/L = 7,200 g/min ÷ 60 = **120 g/s**.' },
     { type: 'mc', q: 'A cracked intake hose **after** the MAF lets air in. What happens?', options: ['Runs rich', 'Runs lean: the PCM fuels for less air than the engine is getting', 'Nothing: the MAP sensor ignores it', 'Boost goes up'], answer: 1,
       why: 'That air is unmetered. The PCM adds fuel only for the air the MAF counted, so the mixture goes lean.' },
     { type: 'tap', q: 'Tap the sensor that reads **manifold pressure**.', visual: { type: 'parts', drawing: 'intake' }, answer: 'map',

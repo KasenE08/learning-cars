@@ -64,8 +64,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'RS 457: **386 lb** curb, **47 hp**. Weight per horsepower (lb/hp)?', answer: 8.2, tol: 0.1, unit: 'lb/hp',
-      why: '386 ÷ 47 ≈ **8.2 lb/hp**. The Ninja: 377 ÷ 45 ≈ 8.4. A ~2% gap, smaller than differences in how weights are measured.' },
     { type: 'mc', q: 'Which bike has **traction control and ride modes**?', options: ['Ninja 500', 'RS 457', 'Both', 'Neither'], answer: 1,
       why: 'The RS 457 has ride-by-wire, 3 modes and 3-level TC + off. The Ninja 500 has neither TC nor modes.' },
     { type: 'mc', q: 'Which statement about their ABS is right?', options: ['Both have cornering ABS', 'Only the RS has cornering ABS', 'Both are dual-channel, neither is cornering', 'Neither has ABS'], answer: 2,

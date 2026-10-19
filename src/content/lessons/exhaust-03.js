@@ -37,8 +37,6 @@ export default {
       wrong: { muffler: 'The muffler quiets a broad range of frequencies, not one targeted band.', cat: 'The cat cleans up emissions. Any quieting it does is a side effect.' } },
     { type: 'mc', q: 'Which muffler uses a perforated pipe wrapped in packing?', options: ['Chambered', 'Turbo-style', 'Straight-through / absorptive', 'Resonator'], answer: 2,
       why: 'Absorptive mufflers soak up sound in fiberglass or steel-wool packing around a straight perforated pipe. Least restriction, most noise.' },
-    { type: 'num', q: 'Inline-4 at **2,400 rpm**: firing frequency in Hz?', answer: 80, tol: 0, unit: 'Hz',
-      hint: 'Hz = rpm ÷ 60 × cylinders ÷ 2', why: '2,400 ÷ 60 = 40 rev/s × 4 ÷ 2 = **80 Hz**.' },
     { type: 'mc', q: 'What is exhaust **drone**?', options: ['A whistle from the turbo', 'A steady cabin boom at cruise rpm when the pulse frequency hits a resonance', 'Pops on deceleration', 'A rattle from a loose heat shield'], answer: 1,
       why: 'Drone is resonance: at one steady rpm, the firing frequency matches the pipes or the cabin and the sound builds up.' },
   ],

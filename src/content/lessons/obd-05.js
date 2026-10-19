@@ -66,9 +66,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A Mode 03 answer contains `0x43`… then a code’s first byte **0x81**. Its top 2 bits pick the letter. What number (0–3) do they give?', answer: 2, tol: 0,
-      hint: '0x81 = 1000 0001. Shift right by 6.',
-      why: '`0x81 >> 6 = 0b10 = 2` → **B** (body). The code is B01xx.' },
     { type: 'mc', q: 'What does the **0** in P**0**301 tell you?',
       options: ['Cylinder 0', 'It’s a standard SAE code with the same meaning on every car', 'It’s a pending code', 'The fault is minor'], answer: 1,
       why: 'The first digit says who defined the code: 0 = SAE generic (same everywhere), 1 = manufacturer-specific.',

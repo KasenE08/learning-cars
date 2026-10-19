@@ -131,8 +131,6 @@ print(f"top speed {fastest:.2f} km/h")
       why: '`SG_ Veh_V_ActlBrk : 7|16@0+ (0.01,0) [0|655.35] "kph" TCCM,…` reads left to right in exactly this order.' },
     { type: 'mc', q: '`BO_ 1045 BrakeSysFeatures: 8 ABS_ESC`: what is `1045`?', options: ['The ID in decimal (0x415)', 'The ID in hex', 'The cycle time in ms', 'The number of signals'], answer: 0,
       why: 'DBC files write IDs in decimal. 1045 = 4 × 256 + 1 × 16 + 5 = `0x415`. The `8` is the length in bytes; `ABS_ESC` the sender.' },
-    { type: 'num', q: 'The DBC gives `0x415` a cycle time of **20 ms**. How many frames per second is that?', answer: 50, tol: 0, unit: 'per second',
-      why: '1,000 ms ÷ 20 ms = **50** frames per second. That’s why 30 s of simulated drive holds 1,500 speed frames.' },
     { type: 'mc', q: 'Where does the app’s Ford DBC data come from?', options: ['Ford’s official engineering documents', 'openpilot’s opendbc project, reverse-engineered by the community', 'The OBD-II standard', 'It was guessed for the simulator'], answer: 1,
       why: 'It’s generated from opendbc’s `ford_lincoln_base_pt.dbc` (MIT license). Treat it as community knowledge, not a Ford spec.' },
   ],

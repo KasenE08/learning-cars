@@ -50,8 +50,6 @@ export default {
       facts: ['bronco.suspension'] },
   ],
   quiz: [
-    { type: 'num', q: 'A **250 lb/in** spring is squashed **1.6 in** by a bump. How much force is it pushing back with?', answer: 400, tol: 0, unit: 'lb',
-      why: 'Force = rate × distance = 250 × 1.6 = **400 lb**.' },
     { type: 'mc', q: 'Which of these is **unsprung** mass?', options: ['The engine', 'The driver’s seat', 'A brake caliper', 'The roof'], answer: 2,
       why: 'Brake calipers bolt to the knuckle and move up and down with the wheel, below the springs. The other three ride on the springs.' },
     { type: 'mc', q: 'What does a damper’s force mainly depend on?', options: ['How far the wheel has moved', 'How fast the wheel is moving', 'The weight of the car', 'Tire pressure'], answer: 1,

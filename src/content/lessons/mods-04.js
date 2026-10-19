@@ -43,8 +43,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'Stock tire 28.5 in, new tire 30.0 in. The speedometer shows **65 mph**. Actual speed?', answer: 68.4, tol: 0.4, unit: 'mph',
-      hint: 'Actual = indicated × new ÷ old diameter.', why: '65 × 30.0 ÷ 28.5 ≈ **68.4 mph**. Each wheel turn now covers more ground than the speedometer thinks.' },
     { type: 'mc', q: 'What does a big brake kit mainly improve on a street car with good stock brakes?',
       options: ['Stopping distance in a single panic stop', 'Heat capacity and fade resistance over repeated hard stops', 'Tire grip', 'ABS speed'], answer: 1,
       why: 'If the stock brakes can already reach ABS, the tire limits a single stop. Bigger rotors and calipers help when heat builds up stop after stop.',

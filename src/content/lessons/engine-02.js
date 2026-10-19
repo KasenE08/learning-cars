@@ -50,8 +50,6 @@ export default {
     { type: 'mc', q: 'During which strokes are **both** valves closed?', options: ['Intake and exhaust', 'Compression and power', 'Only power', 'Exhaust and intake overlap'], answer: 1,
       why: 'The cylinder has to be sealed to squeeze the mixture (compression) and to let the burning gas push the piston (power).',
       wrong: { 2: 'Power, yes, but compression also needs both valves shut or the mixture would escape.', 3: 'Overlap is the opposite: both valves slightly open at once.' } },
-    { type: 'num', q: 'At **6,000 rpm**, how many times per **second** does one cylinder fire?', answer: 50, tol: 0, unit: 'per second',
-      hint: 'It fires once every 2 revolutions.', why: '6,000 rpm ÷ 2 = 3,000 fires per minute ÷ 60 = **50 per second**.' },
     { type: 'mc', q: 'Why does the spark fire before TDC instead of exactly at TDC?',
       options: ['To cool the piston', 'The flame takes time to spread, so peak pressure lands just after TDC', 'Because the exhaust valve is still open', 'It doesn’t. It always fires exactly at TDC'], answer: 1,
       why: 'Combustion isn’t instant. Firing early (spark advance) means the pressure peaks just after TDC, when it can push the piston down hardest.' },

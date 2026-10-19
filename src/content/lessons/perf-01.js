@@ -52,8 +52,8 @@ export default {
       facts: ['ninja.output', 'rs457.output'] },
   ],
   quiz: [
-    { type: 'num', q: 'An engine makes **300 lb-ft at 4,000 rpm**. How much horsepower is that?', answer: 228.5, tol: 1.5, unit: 'hp',
-      hint: 'hp = lb-ft × rpm ÷ 5252.', why: '300 × 4,000 ÷ 5252 = **228 hp**.' },
+    { type: 'mc', q: 'An engine’s horsepower is calculated from its torque and what else?', options: ['The rpm it’s spinning at', 'Its displacement', 'The vehicle’s weight', 'The boost pressure'], answer: 0,
+      why: 'hp = torque × rpm ÷ 5252. At 5,252 rpm the horsepower and lb-ft numbers are always equal; above it, hp keeps climbing as torque fades.' },
     { type: 'mc', q: 'On a dyno chart in **hp and lb-ft**, why do the two curves always cross at 5,252 rpm?',
       options: ['That’s where every engine makes peak power', 'Because hp = lb-ft × rpm ÷ 5252, so at 5,252 rpm the two numbers are equal', 'That’s the typical redline', 'Turbos reach full boost there'], answer: 1,
       why: 'It’s pure arithmetic: rpm ÷ 5252 = 1 at 5,252 rpm. Plot kW and N·m instead and the crossing moves to 9,549 rpm.',
@@ -61,8 +61,6 @@ export default {
     { type: 'mc', q: 'Two engines make the same torque, but one makes it at **twice the rpm**. The faster one makes…',
       options: ['The same power', 'Half the power', 'Twice the power', 'Four times the power'], answer: 2,
       why: 'Power = torque × rpm (÷ a constant). Double the rpm at the same torque = double the power.' },
-    { type: 'num', q: 'Convert the RS 457’s **35 kW** to US horsepower (1 hp = 0.746 kW).', answer: 46.9, tol: 0.3, unit: 'hp',
-      why: '35 ÷ 0.746 = **46.9 hp**. Aprilia’s “47.6 hp” is metric horsepower (PS), which is slightly smaller than a US hp.' },
   ],
   cards: [
     { id: 'tvsp', front: 'Torque vs horsepower in one line?', back: 'Torque = twisting force. Power = torque × rpm: how fast that twist does work.' },

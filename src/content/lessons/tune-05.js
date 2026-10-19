@@ -66,7 +66,7 @@ export default {
       options: ['Legal outside California', 'Legal if you return to stock before inspection', 'A defeat device under the federal Clean Air Act', 'Legal under Magnuson-Moss'], answer: 2,
       why: 'Federal law covers every state, and the label doesn’t change what the software does. Magnuson-Moss is warranty law and says nothing about emissions.',
       wrong: { 3: 'Magnuson-Moss only governs warranties. It doesn’t make anything emissions-legal.' } },
-    { type: 'num', q: 'Under EPA guidance used by state OBD inspections, how many readiness monitors may be “not ready” on a **2024** car for it to pass?', answer: 1, tol: 0,
+    { type: 'mc', q: 'Under EPA guidance used by state OBD inspections, how many readiness monitors may be “not ready” on a **2024** car for it to pass?', options: ['Zero', 'One', 'Two', 'Three'], answer: 1,
       why: 'Model year 2001 and newer: **one**. Since flashing usually clears codes and resets the monitors, a just-flashed car can be turned away until it’s driven enough.' },
     { type: 'mc', q: 'Your tuned Bronco’s infotainment screen dies under warranty. Under Magnuson-Moss, Ford…',
       options: ['Can refuse because the car is tuned', 'Must show the tune caused the screen failure to deny that repair', 'Must replace the engine too', 'Can void the whole warranty'], answer: 1,

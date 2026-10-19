@@ -129,10 +129,6 @@ print(ok, "of", len(frames), "OK")  # 1500
       } },
   ],
   quiz: [
-    { type: 'num', q: 'A 4-bit counter reads **15**. What should the next frame’s counter be?', answer: 0, tol: 0,
-      why: '4 bits hold 0–15, so after 15 it wraps to **0**.' },
-    { type: 'num', q: 'The checksum fields of a frame add up to `total = 3`. What is `~total & 0xFF`?', answer: 252, tol: 0,
-      why: '`255 − 3` = **252** (`0xFC`). That’s the checksum of a simulated standstill frame with counter 0: `0000C0FC…`.' },
     { type: 'mc', q: 'A receiver sees the same counter value in two frames in a row. What does that suggest?', options: ['The frame is fine', 'The sender is stuck or the frame was repeated', 'The bus is too fast', 'The checksum is wrong'], answer: 1,
       why: 'A healthy sender bumps the counter every frame. A repeat means stale data, whether from a fault or a replay.' },
     { type: 'mc', q: 'Does the Ford checksum stop an attacker from faking a `0x415` frame?', options: ['Yes, it’s encrypted', 'No: there’s no secret, anyone can compute it', 'Yes, only Ford knows the formula', 'Only if the counter is used too'], answer: 1,

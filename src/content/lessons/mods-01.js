@@ -58,8 +58,6 @@ export default {
       options: ['Turbos can’t use more air', 'The ECU holds a set boost target, so lower restriction mostly makes the turbo work a little less', 'Cold air contains less oxygen', 'Intakes only work above 7,000 rpm'], answer: 1,
       why: 'Boost is closed-loop: the ECU keeps manifold pressure at its target. The engine gets about the same air either way; the intake mostly changes sound and turbo effort.',
       wrong: { 2: 'Colder air is denser and holds more oxygen per liter. The point is that the ECU caps boost anyway.' } },
-    { type: 'num', q: 'K&N estimates **+7.8 hp** for its Bronco Sport intake. As a percent of the 2.0’s **250 hp**, that’s how much?', answer: 3.1, tol: 0.1, unit: '%',
-      hint: 'gain ÷ stock × 100', why: '7.8 ÷ 250 × 100 ≈ **3.1%**, and that’s the seller’s best-rpm estimate. Dyno runs on the same car can differ by a few percent on their own.' },
     { type: 'mc', q: 'Which exhaust change can make a real difference on a **tuned** turbo car, and is also the one most likely to be illegal?',
       options: ['Axle-back muffler', 'Downpipe', 'Exhaust tips', 'Resonator delete'], answer: 1,
       why: 'The downpipe sits right after the turbine, where lower back-pressure helps the turbo most. It usually contains the first cat, so changing it is emissions tampering unless the part has a CARB EO.' },

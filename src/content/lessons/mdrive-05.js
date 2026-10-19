@@ -49,8 +49,6 @@ export default {
       facts: ['ninja.gearRatios', 'ninja.sprockets', 'ninja.tires', 'rs457.sprockets', 'rs457.tires'] },
   ],
   quiz: [
-    { type: 'num', q: 'Ninja 500 with a **14/45** sprocket pair. New final drive ratio (rear ÷ front)?', answer: 3.214, tol: 0.005,
-      why: '45 ÷ 14 ≈ **3.214**, about 4.7% shorter than stock 3.071: quicker acceleration, more rpm on the highway.' },
     { type: 'mc', q: 'You fit a front sprocket with **one fewer tooth**. What changes?', options: ['Taller gearing, lower cruise rpm', 'Shorter gearing: quicker acceleration, higher cruise rpm', 'Nothing; only the rear sprocket matters', 'The chain size changes to 525'], answer: 1,
       why: 'Fewer front teeth raise rear ÷ front, so the engine turns more times per wheel turn: more torque at the wheel, more rpm at any speed.',
       wrong: { 2: 'The ratio is rear ÷ front, so both matter. One front tooth here is worth about three rear teeth.' } },

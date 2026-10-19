@@ -128,8 +128,6 @@ print(f"top speed {top_kph:.2f} km/h")
       facts: ['bronco.openpilotListing'] },
   ],
   quiz: [
-    { type: 'num', q: 'A wheel reads raw **4900** in the 0x217 field (0.01 rad/s/step). What angular speed is that?', answer: 49, tol: 0.1, unit: 'rad/s',
-      why: '4900 × 0.01 = **49 rad/s**. On a 0.362 m tire that’s ≈ 17.7 m/s ≈ 64 km/h.' },
     { type: 'mc', q: 'Why check your decoded wheel speed against the 0x415 speed signal?',
       options: ['To save bandwidth', 'Two independent signals agreeing is strong evidence the decode is right', 'Because 0x217 is fake', '0x415 is the only real one'], answer: 1,
       why: 'They come from different sensors/computation. If your hand-decode lands on the car’s own speed, your bits, scale and byte order are almost certainly correct.' },

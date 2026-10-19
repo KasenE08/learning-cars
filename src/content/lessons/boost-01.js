@@ -44,10 +44,6 @@ export default {
       facts: ['bronco.engine', 'bronco.output', 'bronco.peakBoost'] },
   ],
   quiz: [
-    { type: 'num', q: 'At sea level, a boost gauge reads **14.7 psi**. What is the pressure ratio?', answer: 2, tol: 0.05,
-      hint: 'Convert to absolute first: add 14.7.', why: '(14.7 + 14.7) ÷ 14.7 = **2.0**. Gauge pressure ignores the atmosphere that’s already there.' },
-    { type: 'num', q: 'Boost gauge reads **10 psi** at sea level. What’s the **absolute** manifold pressure?', answer: 24.7, tol: 0.2, unit: 'psi',
-      why: 'Absolute = gauge + atmosphere = 10 + 14.7 = **24.7 psi**.' },
     { type: 'mc', q: 'Why does more air mass mean more power?', options: ['Air itself burns', 'More air lets the engine burn more fuel at the right air-fuel ratio', 'Pressure pushes the piston down by itself', 'Air cools the engine so it revs higher'], answer: 1,
       why: 'Fuel needs oxygen to burn. The engine keeps fuel matched to the air it traps, so more air = more fuel burned = more energy released.',
       wrong: { 2: 'Boost pressure does help on the intake stroke, but the big gain is the extra fuel the extra air lets you burn.' } },

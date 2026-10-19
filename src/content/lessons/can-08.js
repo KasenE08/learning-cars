@@ -65,8 +65,6 @@ export default {
       wrong: { 1: 'LIN is polled by one master on a schedule, which is close, but FlexRay is the one built around fixed time slots on fast redundant channels.' } },
     { type: 'order', q: 'Order these from **slowest to fastest** typical bit rate.', items: ['LIN', 'MS-CAN', 'HS-CAN', 'FlexRay', '100BASE-T1'],
       why: '20 kbit/s → 125 kbit/s → 500 kbit/s → 10 Mbit/s → 100 Mbit/s.' },
-    { type: 'num', q: '100BASE-T1 runs at 100 Mbit/s. How many times faster is that than a **500 kbit/s** CAN bus?', answer: 200, tol: 0, unit: '×',
-      why: '100,000 kbit/s ÷ 500 kbit/s = **200×**.' },
   ],
   cards: [
     { id: 'lin', front: 'LIN in one line?', back: 'Single wire, up to 20 kbit/s, one master polls simple devices (switches, motors, sensors).' },

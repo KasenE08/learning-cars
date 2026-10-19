@@ -65,8 +65,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'Salvage vs rebuilt title?', options: ['Same thing', 'Salvage = total loss; rebuilt = repaired and passed state inspection', 'Rebuilt = new engine', 'Salvage = parts car only, rebuilt = stolen-recovered'], answer: 1,
       why: 'Salvage is the total-loss brand. After repair and inspection it becomes rebuilt (names vary by state). Both stay on the record.' },
-    { type: 'num', q: 'A car had **98,000 mi** at a 2023 inspection. Today the odometer shows **61,000 mi**. How many miles are missing?', answer: 37000, tol: 0, unit: 'mi',
-      why: '98,000 − 61,000 = **37,000 mi**. Mileage can’t go backward, so either a cluster was replaced (should be documented) or it was rolled back.' },
     { type: 'order', q: 'Order the life of a salvage car.', items: ['Major crash or flood', 'Insurer declares a total loss', 'Salvage title issued', 'Car is repaired', 'Passes state inspection', 'Rebuilt title issued'],
       why: 'Total loss → salvage brand → repair → inspection → rebuilt brand. Skipping states to drop the brand is title washing.' },
     { type: 'mc', q: 'The history report is clean. What next?', options: ['Buy it; it’s proven clean', 'Still get a pre-purchase inspection: reports only know what was reported', 'Ask the seller to swear', 'Skip the test drive'], answer: 1,

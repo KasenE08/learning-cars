@@ -42,8 +42,6 @@ export default {
       facts: ['ninja.brakes', 'rs457.brakes'] },
   ],
   quiz: [
-    { type: 'num', q: 'Hard stop at **1.0 g**. CG height **0.6 m**, wheelbase **1.5 m**, starting **50/50**. What % of total weight is on the front?', answer: 90, tol: 1, unit: '%',
-      hint: 'Fraction moved = a × h ÷ L (a in g).', why: '1.0 × 0.6 ÷ 1.5 = 0.40, so 40% moves forward: 50% + 40% = **90%** on the front.' },
     { type: 'tap', q: 'Tap the brake that does most of the stopping in a hard stop.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'front-brake',
       why: 'Weight transfer loads the front tire, so the front brake can use far more grip. The rear goes light and locks easily.',
       wrong: { 'rear-brake': 'The rear helps, but it goes light in a hard stop and locks easily.' } },

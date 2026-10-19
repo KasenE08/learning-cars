@@ -57,8 +57,6 @@ export default {
     { type: 'mc', q: 'What does a **brake** do inside an automatic?', options: ['Slows the wheels', 'Holds a planetary member still against the case', 'Connects the engine to the input shaft', 'Locks the torque converter'], answer: 1,
       why: 'Holding a member is half of the planetary recipe. Transmission “brakes” never touch the wheels.',
       wrong: { 3: 'That’s the converter’s lockup clutch, a different part.' } },
-    { type: 'num', q: 'Bronco 1st gear is **4.69**, final drive **3.81**. Overall 1st-gear ratio (x:1)?', answer: 17.87, tol: 0.05, unit: ':1',
-      why: '4.69 × 3.81 = **17.87:1**. The engine turns about 17.9 times for every turn of the wheels.' },
     { type: 'mc', q: 'During a clutch-to-clutch shift, the engine revs flare up between gears. Most likely?', options: ['Too much overlap (tie-up)', 'Too little overlap: offgoing released before the oncoming one held', 'The converter locked up', 'The stator freewheeled'], answer: 1,
       why: 'If neither clutch carries the load for an instant, the engine is briefly unloaded and races. Too much overlap does the opposite: a jolt.' },
     { type: 'tap', q: 'Tap the part where the valve body, clutch packs and planetary sets live.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'transmission',

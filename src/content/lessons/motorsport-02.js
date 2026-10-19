@@ -55,8 +55,6 @@ export default {
       facts: ['bronco.engine', 'bronco.4x4', 'bronco.rdu'] },
   ],
   quiz: [
-    { type: 'num', q: 'Three stages take **310 s**, **500 s** and **405 s**, plus a **10 s** penalty for checking in late. Total rally time in seconds?', answer: 1225, tol: 0, unit: 's',
-      why: '310 + 500 + 405 + 10 = **1,225 s** (20 min 25 s). Rallies are won on total time, penalties included.' },
     { type: 'mc', q: 'What does an **air restrictor** do to a Rally1 engine?', options: ['Cools the intake air', 'Caps the airflow, and so the maximum power', 'Raises boost pressure', 'Reduces turbo lag'], answer: 1,
       why: 'All air must pass through one fixed-size hole. Once it’s flowing as fast as it can through that hole, more boost can’t add more air. It’s a simple, cheap power cap.' },
     { type: 'order', q: 'Put these in order.', items: ['WRC begins', 'Audi quattro’s first WRC win', 'Group B banned', 'Rally1 hybrid introduced', 'Rally1 hybrid dropped'],

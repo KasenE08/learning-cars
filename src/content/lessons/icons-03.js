@@ -52,8 +52,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A four-stroke **five-cylinder** that fires evenly: degrees of crank rotation between firings?', answer: 144, tol: 0, unit: '°',
-      hint: 'One full cycle is 720°.', why: '720° ÷ 5 = **144°**. That odd interval is part of the five’s distinctive warble.' },
     { type: 'mc', q: 'BMW’s **S65** V8 is closely related to which engine?', options: ['The S54 inline-6', 'The S85 V10 from the M5', 'The AMG M156', 'Ferrari’s F136'], answer: 1,
       why: 'It’s essentially the S85 V10 with two cylinders removed, sharing its 92.0 × 75.2 mm bore and stroke.' },
     { type: 'mc', q: 'What does AMG’s “**one man, one engine**” mean?', options: ['Each car has one engine', 'One technician assembles each engine start to finish and signs it', 'Only one engine type is made', 'One engine per customer'], answer: 1,

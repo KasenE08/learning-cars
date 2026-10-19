@@ -51,8 +51,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'What does the **BRS** bit do in a CAN FD frame?', options: ['Marks the frame as extended-ID', 'Switches the data phase to a faster bit rate', 'Requests a remote frame', 'Resets the error counters'], answer: 1,
       why: 'Bit Rate Switch: after arbitration, the data phase (and CRC) runs at the faster data bit rate, then it switches back for ACK and EOF.' },
-    { type: 'num', q: 'How many microseconds do **512** data bits take at a **2 Mbit/s** data phase?', answer: 256, tol: 0, unit: 'µs',
-      hint: 'One bit at 2 Mbit/s = 0.5 µs.', why: '512 × 0.5 µs = **256 µs**, versus 1,024 µs at 500 kbit/s.' },
     { type: 'mc', q: 'A CAN FD frame has **DLC = 15**. How many data bytes?', options: ['15', '8', '48', '64'], answer: 3,
       why: 'In CAN FD, DLC 9–15 map to 12, 16, 20, 24, 32, 48, 64. 15 → **64**.',
       wrong: { 1: 'That’s what DLC 9–15 mean in *classic* CAN. In FD they map to longer lengths.' } },

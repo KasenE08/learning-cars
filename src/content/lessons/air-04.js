@@ -47,8 +47,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'An engine runs at **12.5:1**. What is lambda? (2 decimals)', answer: 0.85, tol: 0.01, unit: 'λ',
-      why: 'λ = 12.5 ÷ 14.7 = **0.85**. Below 1, so it’s rich.' },
     { type: 'order', q: 'Order from **richest** to **leanest**.', items: ['11.5:1', '12.5:1', '14.7:1', '16:1'],
       why: 'Lower AFR = less air per gram of fuel = richer. 14.7:1 is stoich; 16:1 is lean.' },
     { type: 'mc', q: 'Why do engines run **rich** at wide-open throttle?', options: ['To keep the catalytic converter happy', 'Extra fuel cools the charge and resists knock; best power is a bit rich anyway', 'Because the O2 sensor turns off', 'To lower fuel pressure'], answer: 1,

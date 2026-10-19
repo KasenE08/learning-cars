@@ -51,8 +51,6 @@ export default {
     { type: 'mc', q: 'You change one byte of a calibration and don’t update anything else. What might happen?',
       options: ['Nothing; ECUs don’t check', 'The checksum no longer matches and the ECU can reject it', 'The ECU fixes it automatically', 'Only the radio is affected'], answer: 1,
       why: 'ECUs check checksums (and on newer units, signatures) over their memory. A mismatch means the block isn’t trusted; tools recompute checksums for exactly this reason.' },
-    { type: 'num', q: 'A tune adds **+2°** of spark in a cell. On 87 octane, knock control pulls **3°** there. Net change vs stock, in degrees?', answer: -1, tol: 0, unit: '°',
-      why: '+2 − 3 = **−1°**: on the wrong fuel the tune ends up *less* advanced than stock there, and it got there by knocking first.' },
     { type: 'order', q: 'Put a log-based tuning loop in order.',
       items: ['Datalog a run on the current tune', 'Compare actual vs target (boost, spark, knock retard)', 'Change one table', 'Write the new calibration', 'Log the same run again'],
       why: 'Measure, compare, change one thing, apply, measure again: the hypothesis-test loop from the RE unit, applied to tables.' },

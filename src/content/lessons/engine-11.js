@@ -41,8 +41,6 @@ export default {
   quiz: [
     { type: 'order', q: 'Put your Bronco’s firing order in sequence, starting from cylinder 1.', items: ['Cylinder 1', 'Cylinder 3', 'Cylinder 4', 'Cylinder 2'],
       why: '1-3-4-2, the most common inline-4 firing order.' },
-    { type: 'num', q: 'In an inline-4, how many crank degrees between power strokes?', answer: 180, tol: 0, unit: '°',
-      why: '720° per cycle ÷ 4 cylinders = **180°**.' },
     { type: 'mc', q: 'What causes an inline-4’s secondary vibration?', options: ['Uneven firing', 'Pistons moving faster in the top half of the stroke than the bottom', 'A heavy flywheel', 'The timing chain'], answer: 1,
       why: 'Rod angle makes piston speed uneven between the top and bottom halves of the stroke. In an I4 these effects add up instead of cancelling.' },
     { type: 'mc', q: 'Balance shafts in an inline-4 spin at…', options: ['Half crank speed', 'Crank speed', 'Twice crank speed', 'Cam speed'], answer: 2,

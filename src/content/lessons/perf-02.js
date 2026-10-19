@@ -46,8 +46,6 @@ export default {
       options: ['B, it revs higher', 'A, more area under the curve', 'They’re the same: same peak', 'Can’t tell without torque'], answer: 1,
       why: 'Between shifts the engine sweeps a range of rpm. A makes near-peak power across far more of it, so the average power (area under the curve) is higher.',
       wrong: { 2: 'Peak is one point. You spend most of your time elsewhere on the curve.' } },
-    { type: 'num', q: 'A car rated **300 hp** at the crank makes **255 hp** on a chassis dyno. What % is drivetrain loss?', answer: 15, tol: 0.5, unit: '%',
-      why: '(300 − 255) ÷ 300 = 0.15 = **15%**.' },
     { type: 'order', q: 'On a chassis dyno, put the path of the Bronco’s rear-wheel power in order, engine first.',
       items: ['Crankshaft', '8-speed transmission', 'PTU', 'Driveshaft', 'Rear drive unit', 'Rear tires on the roller'],
       why: 'Every stage of gears, bearings and fluid takes a small bite. That’s why wheel hp is lower than the crank rating, and why AWD usually loses more than 2WD.' },

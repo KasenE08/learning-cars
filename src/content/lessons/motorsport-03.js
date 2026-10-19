@@ -45,9 +45,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'The Cup engine is **358 cubic inches**. How many liters? (1 ci = 16.387 cc)', answer: 5.87, tol: 0.03, unit: 'L',
-      hint: '358 × 16.387 = ? cc, then ÷ 1000',
-      why: '358 × 16.387 = 5,867 cc ≈ **5.87 L**. Sources quote 5.86 or 5.9 L; that’s just rounding.' },
     { type: 'mc', q: 'Why can two drafting cars go faster than one car alone?', options: ['The leader pulls the follower with a vacuum', 'Together they leave less total turbulent wake, so the pair has less total drag', 'The follower gets more engine power', 'Drafting only helps the leader'], answer: 1,
       why: 'The follower sits in low-pressure air (less drag), and it fills the leader’s wake (the leader loses less to the low pressure behind it). Both benefit.',
       wrong: { 3: 'Both cars benefit, though the follower usually gains more.' } },

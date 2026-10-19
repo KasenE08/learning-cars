@@ -71,9 +71,6 @@ export default {
       facts: ['bronco.obdProtocol', 'bronco.obdGateway'] },
   ],
   quiz: [
-    { type: 'num', q: 'A Mode 01 PID 0C answer has **A = 0x0B, B = 0xB8**. What’s the rpm?', answer: 750, tol: 0, unit: 'rpm',
-      hint: '0x0B = 11, 0xB8 = 184. rpm = (256 × A + B) ÷ 4.',
-      why: '`256 × 11 + 184 = 3000`, `÷ 4 = 750 rpm`, a warm idle.' },
     { type: 'order', q: 'Put the bytes of the engine’s answer `04 41 0C 1A F8` in order of meaning.',
       items: ['Length (4 bytes follow)', 'Response to mode 01 (0x41)', 'Which PID (0C = rpm)', 'Data byte A', 'Data byte B'],
       why: 'Length byte, then mode + 0x40, then the PID echoed back, then the data bytes A, B.' },

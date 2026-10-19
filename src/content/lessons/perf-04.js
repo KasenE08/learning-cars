@@ -35,8 +35,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A 3,000 lb car makes 200 hp. What is its weight-to-power ratio?', answer: 15, tol: 0, unit: 'lb/hp',
-      why: '3,000 ÷ 200 = **15 lb/hp**. Almost the same as your Bronco.' },
     { type: 'mc', q: 'Which change helps acceleration the most for the same pounds saved?',
       options: ['Lighter back seat', 'Lighter wheels and tires', 'Lighter roof rack', 'They’re all identical'], answer: 1,
       why: 'Wheels and tires are unsprung and rotating, so they have to be spun up as well as moved. Weight there counts nearly double.' },

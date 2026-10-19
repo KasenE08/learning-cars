@@ -69,9 +69,6 @@ export default {
       facts: ['bronco.engine', 'bronco.injection', 'bronco.turboType'] },
   ],
   quiz: [
-    { type: 'num', q: 'Aero drag rises with **speed squared**. If an F1 car goes from 150 to 300 km/h, drag is multiplied by…', answer: 4, tol: 0, unit: '×',
-      hint: '(300 ÷ 150)²',
-      why: 'Twice the speed → 2² = **4×** the drag. The power needed rises with speed cubed: 8×.' },
     { type: 'mc', q: 'F1 limits fuel by **energy flow**, not tank size. What does that push engineers to do?', options: ['Build bigger engines', 'Burn each unit of fuel more efficiently', 'Run richer mixtures', 'Remove the turbo'], answer: 1,
       why: 'If the fuel energy you can use per hour is capped, more power can only come from **efficiency**: better combustion, less wasted heat.',
       wrong: { 2: 'A richer mixture wastes fuel. With fuel capped, that means less power, not more.' } },

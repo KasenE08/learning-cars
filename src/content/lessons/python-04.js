@@ -118,10 +118,6 @@ for b in [0xC0, 0xC4, 0xC8]:
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'What is `0b1010` in decimal?', answer: 10, tol: 0,
-      why: 'Bits 3 and 1 are set: 8 + 2 = **10**.' },
-    { type: 'num', q: 'What is `(1 << 4) - 1`?', answer: 15, tol: 0,
-      why: '`1 << 4` is 16 (`0b10000`); minus 1 is **15** (`0b1111`): a mask of four ones.' },
     { type: 'mc', q: 'What is `0xC4 >> 2`?', options: ['`0x31` (49)', '`0x310` (784)', '`0x04` (4)', '`0xC4` (196)'], answer: 0,
       why: '`0xC4` = `11000100`; shifting right 2 drops the two low bits → `110001` = **49** (`0x31`).',
       wrong: { 1: 'That would be a left shift (`<< 2`).', 2: 'That’s `0xC4 & 0x0F` (the low nibble).' } },

@@ -56,7 +56,7 @@ export default {
     { type: 'order', q: 'Put these research milestones in time order.',
       items: ['Koscher et al.: control via the OBD port', 'Miller & Valasek: 2010 Ford Escape and Prius', 'Jeep Cherokee remote attack and recall', 'Keen Lab’s Tesla Model S research', 'RAV4 CAN-injection theft analysis'],
       why: '2010 → 2013 → 2015 → 2016 → 2023. The field moved from wired access to remote attacks, and later thieves adopted bus-level tricks.' },
-    { type: 'num', q: 'About how many **million** vehicles did Fiat Chrysler recall after the 2015 Jeep research?', answer: 1.4, tol: 0.1, unit: 'million',
+    { type: 'mc', q: 'About how many vehicles did Fiat Chrysler recall after the 2015 Jeep research?', options: ['140,000', '1.4 million', '14 million', '400,000'], answer: 1,
       why: 'About **1.4 million** US vehicles with certain Uconnect head units (one outlet said nearly 1.5 million). They got a USB software patch, and Sprint blocked the exposed network port.' },
     { type: 'mc', q: 'Why did the 2023 CAN-injection theft get around the RAV4’s smart-key cryptography?',
       options: ['The thieves cracked the fob’s encryption key', 'They sent fake “key is valid” messages on the CAN bus, which the receiving modules trusted', 'They relayed the fob signal from the owner’s house', 'They reprogrammed a new key through the OBD port'], answer: 1,

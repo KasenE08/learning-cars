@@ -48,9 +48,6 @@ export default {
       facts: ['bronco.brakes'] },
   ],
   quiz: [
-    { type: 'num', q: 'The booster pushes **250 lb** into a **0.5 in²** master cylinder piston. The caliper piston is **3 in²**. Clamp force at the caliper?', answer: 1500, tol: 0, unit: 'lb',
-      hint: 'First find line pressure (force ÷ area).',
-      why: '250 ÷ 0.5 = **500 psi**. 500 psi × 3 in² = **1,500 lb**.' },
     { type: 'order', q: 'Put the brake path in order, from your foot to the rotor.', items: ['Pedal', 'Booster', 'Master cylinder', 'Brake lines', 'Caliper', 'Pads'],
       why: 'The pedal lever pushes the booster, which pushes the master cylinder; pressure travels down the lines to the caliper, which squeezes the pads on the rotor. (The ABS unit sits in the lines.)' },
     { type: 'mc', q: 'A brake pedal feels **spongy**. The classic cause?', options: ['Too much brake fluid', 'Air (or vapor) in the lines', 'New pads', 'High tire pressure'], answer: 1,

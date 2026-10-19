@@ -55,8 +55,6 @@ export default {
     { type: 'mc', q: 'With the pedal **released** (up), the clutch is…', options: ['Disengaged: disc spins free', 'Engaged: the diaphragm spring clamps the disc', 'Half slipping all the time', 'Locked by hydraulic pressure'], answer: 1,
       why: 'The spring clamps by default. Pressing the pedal is what takes clamp force away.',
       wrong: { 3: 'Hydraulics only move the release bearing to **release** the clutch; the spring does the clamping.' } },
-    { type: 'num', q: 'Single-plate clutch: μ = 0.3, clamp force 10,000 N, mean radius 0.1 m. Torque capacity in N·m?', answer: 600, tol: 0, unit: 'N·m',
-      hint: 'A single plate has two friction faces.', why: '0.3 × 10,000 × 0.1 × **2 faces** = **600 N·m** (≈443 lb-ft).' },
     { type: 'tap', q: 'Tap the clutch on this bike.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'clutch',
       why: 'On these bikes the wet clutch sits on the right side of the engine, under a round cover. It links the crank to the gearbox and runs in engine oil.',
       wrong: { gearbox: 'The gearbox sits behind the clutch inside the same cases; the clutch is what connects the two.' } },

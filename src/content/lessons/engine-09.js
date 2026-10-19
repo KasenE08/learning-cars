@@ -40,8 +40,6 @@ export default {
       facts: ['bronco.timingDrive', 'bronco.vvt', 'bronco.firingOrder'] },
   ],
   quiz: [
-    { type: 'num', q: 'A crank sprocket has **22 teeth**. How many teeth must each cam sprocket have?', answer: 44, tol: 0, unit: 'teeth',
-      why: 'Cams turn at half crank speed on a four-stroke, so the cam sprocket needs twice the teeth: **44**.' },
     { type: 'mc', q: 'On an **interference** engine, a snapped timing belt usually means…', options: ['The engine just stalls, no damage', 'Pistons hit open valves → bent valves or worse', 'The car switches to a backup belt', 'Only the alternator stops'], answer: 1,
       why: 'The cams stop with some valves open while the crank keeps turning. Pistons rise into those valves.' },
     { type: 'mc', q: 'How does variable valve timing (VVT) usually shift the cam?', options: ['By changing the cam lobes’ shape', 'Oil-pressure phasers rotate the cam relative to its sprocket', 'By adding a second timing belt', 'By slipping the chain'], answer: 1,

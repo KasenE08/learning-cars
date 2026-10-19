@@ -53,8 +53,6 @@ export default {
       wrong: { 0: 'That’s the **assist** side, and it happens under drive torque, not back-torque.', 3: 'Ignition cuts are a quickshifter thing. A slipper is purely mechanical.' } },
     { type: 'mc', q: 'Why does an assist clutch have a lighter lever?', options: ['The cable is thinner', 'Drive torque adds clamp force through the ramps, so softer springs are enough', 'It uses hydraulics', 'It has fewer plates'], answer: 1,
       why: 'Ramps turn some of the drive torque into extra clamp force. The springs no longer have to provide it all, so they can be softer, and the lever pull drops.' },
-    { type: 'num', q: 'Ninja 500 at 5,000 rpm in 3rd (1.619). Downshift to 2nd (2.056) at the same speed. New rpm?', answer: 6350, tol: 15, unit: 'rpm',
-      hint: 'rpm × (new ratio ÷ old ratio).', why: '5,000 × 2.056 ÷ 1.619 ≈ **6,350 rpm**. That 1,350 rpm jump has to come from somewhere: the rear tire, the slipper, or your throttle blip.' },
   ],
   cards: [
     { id: 'slipper', front: 'What does a slipper clutch do?', back: 'Ramps lift the pressure plate under back-torque, so the clutch slips instead of hopping the rear tire.' },

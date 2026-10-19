@@ -43,10 +43,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'How long is one bit at **250 kbit/s**?', answer: 4, tol: 0, unit: 'µs',
-      hint: '1 ÷ 250,000 seconds', why: '1 ÷ 250,000 = 0.000004 s = **4 µs**. Halve the bit rate, double the bit time.' },
-    { type: 'num', q: 'At **500 kbit/s** with **16** time quanta per bit, how long is one quantum?', answer: 125, tol: 0, unit: 'ns',
-      why: 'Bit time 2 µs = 2,000 ns; 2,000 ÷ 16 = **125 ns**.' },
     { type: 'order', q: 'Put the parts of one CAN bit in order.', items: ['Sync segment', 'Propagation segment', 'Phase segment 1', 'Sample point', 'Phase segment 2'],
       why: 'Sync (edge expected) → propagation delay → phase 1 → the sample → phase 2, then the next bit’s sync.' },
     { type: 'mc', q: 'Why must a 1 Mbit/s bus be much shorter than a 125 kbit/s bus?', options: ['Faster signals lose voltage', 'Every node must see each bit (including arbitration) before the sample point, and a shorter bit leaves less time for the signal to cross the wire', 'Terminators only work on short buses', 'It doesn’t: length doesn’t matter'], answer: 1,

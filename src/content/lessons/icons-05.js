@@ -68,8 +68,6 @@ export default {
     { type: 'mc', q: 'What was the **Fireblade’s** big idea in 1992?', options: ['The most power in its class', 'Liter-class performance with near-600 weight', 'The first V-twin superbike', 'A supercharger'], answer: 1,
       why: 'Tadao Baba prioritized low weight (185 kg dry) over peak power, and that made it handle like a smaller bike.',
       wrong: { 0: 'Rivals had more power. The Blade won on weight and handling.' } },
-    { type: 'num', q: 'The 2009 R1 fires with gaps of 270°, 180°, 90° and 180°. What do they add up to?', answer: 720, tol: 0, unit: '°',
-      why: '270 + 180 + 90 + 180 = **720°**: one full four-stroke cycle, so every cylinder still fires once. Only the spacing is uneven.' },
     { type: 'tap', q: 'The Ducati 916 made one part famous by putting it on only one side of the wheel. Tap it.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'swingarm',
       why: 'The single-sided swingarm holds the rear wheel from one side, so the wheel can be removed quickly, and the wheel is fully on show.',
       wrong: { frame: 'The swingarm pivots off the frame, but the 916’s signature was the one-sided arm.', exhaust: 'The 916’s exhaust is also famous (under the seat), but the one-sided part is the swingarm.' } },

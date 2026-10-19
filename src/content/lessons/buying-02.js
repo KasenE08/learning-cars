@@ -44,9 +44,6 @@ export default {
       facts: ['bronco.vin'] },
   ],
   quiz: [
-    { type: 'num', q: 'A VIN’s 17 weighted products add up to **476**. What must the check digit be?', answer: 3, tol: 0,
-      hint: '476 ÷ 11 = 43 remainder ?',
-      why: '43 × 11 = 473, so the remainder is 476 − 473 = **3**. Position 9 must be 3, or the VIN has a typo (or is fake).' },
     { type: 'mc', q: 'A car’s 10th VIN character is **S** and its 7th is a letter. Model year?', options: ['1995', '2015', '2025', '2035'], answer: 2,
       why: 'S = 1995 or 2025. A letter in position 7 means the 2010–2039 cycle, so **2025**.',
       wrong: { 0: 'That would need a digit in position 7 (the 1980–2009 cycle).' } },

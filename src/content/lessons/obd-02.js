@@ -42,7 +42,7 @@ export default {
       facts: ['bronco.obdProtocol', 'bronco.obdGateway'] },
   ],
   quiz: [
-    { type: 'num', q: 'Which pin number is **CAN high** on the OBD-II port?', answer: 6, tol: 0,
+    { type: 'mc', q: 'Which pin number is **CAN high** on the OBD-II port?', options: ['Pin 4', 'Pin 6', 'Pin 14', 'Pin 16'], answer: 1,
       why: 'CAN high is pin 6 and CAN low is pin 14. Every 2008+ US car does OBD there.' },
     { type: 'mc', q: 'What is **pin 16** for?',
       options: ['CAN low', 'Chassis ground', 'Battery +12 V for the tool', 'Ignition switch signal'], answer: 2,

@@ -72,10 +72,8 @@ print(to_physical(14200, 0.1, -1600))
       facts: ['bronco.openpilotListing'] },
   ],
   quiz: [
-    { type: 'num', q: '`Veh_V_ActlBrk` raw value is **6,426**. What speed is that in km/h? (scale 0.01, offset 0)', answer: 64.26, tol: 0.01, unit: 'km/h',
-      why: '6,426 × 0.01 + 0 = **64.26 km/h** (about 39.9 mph), the top cruise speed in the simulated drive.' },
-    { type: 'num', q: '`StePinComp_An_Est` raw value is **17,800**. What angle? (scale 0.1, offset −1600)', answer: 180, tol: 0.1, unit: '°',
-      why: '17,800 × 0.1 = 1,780; 1,780 − 1,600 = **+180°**.' },
+    { type: 'mc', q: 'To turn a **raw** CAN value into a real measurement, you…', options: ['multiply by the scale, then add the offset', 'add the offset, then multiply by the scale', 'divide by the scale, then subtract the offset', 'ignore the offset and read the raw number'], answer: 0,
+      why: 'Physical = raw × scale + offset. For `Veh_V_ActlBrk` (scale 0.01, offset 0), raw 6,426 → 64.26 km/h.' },
     { type: 'mc', q: 'What is the **resolution** of `Veh_V_ActlBrk`?', options: ['1 km/h', '0.1 km/h', '0.01 km/h', '655.35 km/h'], answer: 2,
       why: 'Resolution is the size of one raw step, which is the scale: 0.01 km/h.',
       wrong: { 3: 'That’s the top of the range (65,535 × 0.01).' } },

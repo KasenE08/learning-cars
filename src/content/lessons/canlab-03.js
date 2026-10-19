@@ -61,8 +61,6 @@ export default {
     { type: 'mc', q: 'Why do counters and checksums not show up in a good baseline-vs-action diff?',
       options: ['They’re encrypted', 'They change in both captures, so the diff cancels them', 'They’re never on the bus at idle', 'The tool hides them'], answer: 1,
       why: 'They tick every frame regardless of what you do, so they move in the baseline too and the diff keeps only what changed *only* in the action.' },
-    { type: 'num', q: 'You press a button 3 times and a byte changes 3 times at matching moments, but a second byte changes 11 times unrelated to you. How many of those two bytes are your signal?', answer: 1, tol: 0,
-      why: 'Only the one that lines up with **every** press is your signal. The other is background chatter; repeating the action is what tells them apart.' },
   ],
   cards: [
     { id: 'loop', front: 'The five-step bench session?', back: 'Baseline → one action → compare → confirm (watch/plot) → write it down.' },

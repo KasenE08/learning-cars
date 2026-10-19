@@ -76,8 +76,6 @@ export default {
     { type: 'mc', q: 'The sender sees a **dominant** bit in the ACK slot. What does that tell it?', options: ['Every node received the frame', 'At least one node received a valid frame', 'The engine computer received it', 'There was an error'], answer: 1,
       why: 'Any receiver that got a valid frame drives the ACK slot dominant, and they all do it in the same bit. The sender can’t tell who or how many.',
       wrong: { 0: 'One ACK looks exactly like ten. CAN can’t tell the sender that *everyone* got it.', 2: 'Nothing in a CAN frame names a receiver.' } },
-    { type: 'num', q: 'Classic frame, 11-bit ID, **8 data bytes**: how many bits from SOF to the end of EOF, before stuffing?', answer: 108, tol: 0, unit: 'bits',
-      hint: '1 + 11 + 1 + 1 + 1 + 4 + 64 + 15 + 1 + 1 + 1 + 7', why: 'Header 19 + data 64 + CRC 15 + CRC delimiter, ACK slot, ACK delimiter 3 + EOF 7 = **108**. (111 with the 3-bit intermission, up to 135 with stuffing.)' },
     { type: 'mc', q: 'Why does CAN use **bit stuffing**?', options: ['To encrypt the data', 'To make frames longer on purpose', 'To guarantee edges for clock sync and keep 6-in-a-row free for error signals', 'To count how many nodes are on the bus'], answer: 2,
       why: 'Receivers have no clock wire, so they re-sync on edges; stuffing guarantees one at least every 6 bits. And because data can never contain 6 identical bits in the stuffed zone, an error flag of 6 dominant bits is unmistakable.' },
   ],

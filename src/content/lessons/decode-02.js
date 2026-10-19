@@ -81,10 +81,8 @@ print(extract_le(frame, 12, 12))  # 970
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'An Intel signal starts at bit **12** and is **12** bits long. What is its highest bit number?', answer: 23, tol: 0,
-      why: 'It covers bits 12, 13 … 12 + 12 − 1 = **23**.' },
-    { type: 'num', q: 'In DBC numbering, which bit number is **byte 3, bit 5**?', answer: 29, tol: 0,
-      why: 'byte × 8 + bit = 3 × 8 + 5 = **29**.' },
+    { type: 'mc', q: 'In the DBC’s bit numbering, how do you get a bit’s number from its byte and bit position?', options: ['byte × 8 + bit', 'byte + bit', 'byte × 10 + bit', 'bit × 8 + byte'], answer: 0,
+      why: 'Each byte is 8 bits, so byte 3, bit 5 is 3 × 8 + 5 = bit 29.' },
     { type: 'mc', q: 'For an Intel signal, what does the DBC start bit point to?', options: ['The signal’s most significant bit', 'The signal’s least significant bit', 'Always bit 0 of a byte', 'The first byte only'], answer: 1,
       why: 'Intel (little-endian) start bit = LSB; the signal grows upward from there. Motorola is different (next lesson).' },
     { type: 'order', q: 'Order the steps to decode an Intel signal to a physical value.',

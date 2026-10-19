@@ -48,10 +48,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A **15-tooth** gear drives a **42-tooth** gear. What’s the ratio (x:1)?', answer: 2.8, tol: 0.01, unit: ':1',
-      why: 'Driven ÷ driving = 42 ÷ 15 = **2.8:1**. The output turns 2.8× slower with 2.8× the torque.' },
-    { type: 'num', q: '3-shaft box: head pair is 20 → 30 teeth, 1st gear pair is 14 → 35 teeth. Overall 1st-gear ratio?', answer: 3.75, tol: 0.01, unit: ':1',
-      hint: 'Multiply the two stages.', why: 'Head pair 30/20 = 1.5; 1st pair 35/14 = 2.5; total **1.5 × 2.5 = 3.75:1**.' },
     { type: 'mc', q: 'In a constant-mesh gearbox, what actually changes when you select a gear?', options: ['Gears slide into mesh with each other', 'A sleeve locks one freewheeling gear to its shaft', 'The clutch disc changes size', 'Oil pressure switches gear pairs'], answer: 1,
       why: 'All gears are always meshed. Selecting a gear slides a synchro sleeve to lock that gear to its shaft.',
       wrong: { 0: 'That’s the old “crash box” design. Modern forward gears never slide into mesh.' } },

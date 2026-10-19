@@ -45,8 +45,6 @@ export default {
       facts: ['ninja.geometry', 'rs457.geometry'] },
   ],
   quiz: [
-    { type: 'num', q: 'Front wheel radius **300 mm**, rake **24°**, fork offset **30 mm**. Trail in mm? (sin 24° ≈ 0.407, cos 24° ≈ 0.914)', answer: 101, tol: 2, unit: 'mm',
-      hint: 'trail = (R·sin rake − offset) ÷ cos rake', why: '(300 × 0.407 − 30) ÷ 0.914 = (122.1 − 30) ÷ 0.914 ≈ **101 mm**.' },
     { type: 'mc', q: 'A builder adds more **fork offset** and changes nothing else. Trail…', options: ['Increases', 'Decreases', 'Stays the same', 'Becomes negative right away'], answer: 1,
       why: 'Offset moves the contact patch forward toward where the steering axis hits the ground, so trail shrinks and steering gets lighter.' },
     { type: 'mc', q: 'Why does the steering get lighter when the fork dives under braking?', options: ['The tire gets narrower', 'Dive makes rake steeper, which cuts trail', 'Brakes push the bars', 'Wheelbase gets longer'], answer: 1,

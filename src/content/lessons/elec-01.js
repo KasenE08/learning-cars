@@ -57,8 +57,6 @@ export default {
     { type: 'tap', q: 'Tap the **ground** connection.', visual: { type: 'parts', drawing: 'charging' }, answer: 'ground',
       why: 'The ground strap joins battery negative to the body and engine, which act as the return half of every circuit.',
       wrong: { battery: 'That’s the battery itself. The ground is the return path back to its negative post.' } },
-    { type: 'num', q: 'A fuel pump draws **6 A** from **12 V**. What is its resistance in **Ω**?', answer: 2, tol: 0, unit: 'Ω',
-      hint: 'V = I · R', why: '`R = V / I = 12 / 6 = 2 Ω`. Its power is `12 × 6 = 72 W`.' },
     { type: 'order', q: 'Order these **rested** battery voltages from **full** to **flat**.',
       items: ['12.7 V', '12.4 V', '12.2 V', '12.0 V', '11.8 V'],
       why: 'Roughly 100 %, 75 %, 50 %, 25 %, flat. The whole range is under 1 V.' },

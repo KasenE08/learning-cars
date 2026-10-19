@@ -61,8 +61,6 @@ export default {
       facts: ['bronco.clearance'] },
   ],
   quiz: [
-    { type: 'num', q: 'How tall is a **245/65R17** tire, in inches? (1 in = 25.4 mm)', answer: 29.5, tol: 0.1, unit: 'in',
-      hint: 'Diameter = rim + 2 × (width × aspect ÷ 25.4).', why: 'Sidewall = 245 × 0.65 = 159 mm = 6.27 in. 17 + 2 × 6.27 ≈ **29.5 in**, about an inch taller than your stock 28.5 in.' },
     { type: 'tap', q: 'Rock Crawl mode clamps the clutches in which unit to send drive to both rear wheels? Tap it.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'rdu',
       why: 'The twin-clutch rear drive unit clamps both clutch packs hard for the rear diff lock. That’s factory traction you’d otherwise have to add.',
       wrong: { ptu: 'The PTU turns drive toward the rear driveshaft; it doesn’t split torque between the rear wheels.' } },

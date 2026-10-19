@@ -56,9 +56,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'Car A: RT **0.080**, ET **12.40**. Car B: RT **0.020**, ET **12.47**. By how many seconds does the winner reach the finish first? (Use RT + ET.)', answer: 0.01, tol: 0.001, unit: 's',
-      hint: 'A: 12.480. B: 12.490.',
-      why: 'A: 0.080 + 12.40 = 12.480. B: 0.020 + 12.47 = 12.490. **A wins by 0.010 s** despite the worse reaction time, because its car was quicker.' },
     { type: 'mc', q: 'A racer’s reaction time shows **−0.012**. What happened?', options: ['Perfect launch', 'Red light: they left before the green and lose', 'They were 0.012 s late', 'Timing error'], answer: 1,
       why: 'Negative means they broke the beam before the green came on. That’s a red light: they lose (unless the other lane also fouls worse).' },
     { type: 'mc', q: 'Which is **not** a core drift judging criterion?', options: ['Line', 'Angle', 'Style', 'Lap time'], answer: 3,

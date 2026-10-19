@@ -85,7 +85,7 @@ export default {
       wrong: { fork: 'The fork turns inside the steering head, but the VIN is on the frame itself.', tank: 'The tank is removable; VINs go on the frame so they stay with the bike.' } },
     { type: 'mc', q: 'Only the **left** side has scuffed bar end, lever and slider; frame and forks look fine. Most likely?', options: ['High-speed crash', 'A tip-over or low-speed drop on the left', 'Stunting', 'Track use'], answer: 1,
       why: 'One-sided, cosmetic scrapes usually mean it fell over. Still check the bars are square and the lever works, but this is often fine.' },
-    { type: 'num', q: 'A tire’s DOT code ends in **1219**. What year was it made?', answer: 2019, tol: 0,
+    { type: 'mc', q: 'A tire’s DOT code ends in **1219**. What year was it made?', options: ['2012', '2019', '1219', '2021'], answer: 1,
       why: 'Week 12 of **2019**. In late 2026 that tire is 7+ years old: past many makers’ suggested limit, whatever the tread looks like.' },
     { type: 'mc', q: 'The rear sprocket teeth are **hooked** like waves. What does that mean?', options: ['Normal for new sprockets', 'Chain and sprockets are worn and should be replaced together', 'Only the chain needs lube', 'The bike has a slipper clutch'], answer: 1,
       why: 'Hooked teeth = worn sprockets. A new chain on worn sprockets (or the reverse) wears out fast, so they’re replaced as a set.' },

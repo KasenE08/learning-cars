@@ -53,8 +53,6 @@ export default {
       why: 'Lever → shift shaft and pawl → drum rotates → its grooves move the fork pins → the sliding gear’s dogs engage the neighboring free gear.' },
     { type: 'mc', q: 'Where is neutral on your bikes?', options: ['Below 1st', 'Half a click between 1st and 2nd', 'Above 6th', 'Between 3rd and 4th'], answer: 1,
       why: 'Street bikes use 1-N-2-3-4-5-6: one down, five up, with neutral a half-step above 1st.' },
-    { type: 'num', q: 'Ninja 500: 2nd = 2.056, 3rd = 1.619. Shift 2 → 3 at **10,000 rpm**. New rpm?', answer: 7875, tol: 15, unit: 'rpm',
-      hint: 'rpm × (new ratio ÷ old ratio).', why: '10,000 × 1.619 ÷ 2.056 ≈ **7,875 rpm**. Road speed stays the same, so the engine slows by the ratio of the ratios.' },
     { type: 'tap', q: 'Tap the part your left foot works to change gear.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'quickshifter',
       why: 'The shift lever at the left footpeg turns the shift shaft and drum. On a bike with a quickshifter, its sensor sits in this linkage too.',
       wrong: { gearbox: 'That’s where the gears and drum live. You reach them through the shift lever at the left peg.', 'rear-brake': 'The rear brake pedal is on the **right** side, worked by your right foot.' } },

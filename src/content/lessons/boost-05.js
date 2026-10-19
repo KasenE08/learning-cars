@@ -51,8 +51,6 @@ export default {
     { type: 'tap', q: 'Tap the intercooler.', visual: { type: 'parts', drawing: 'intake' }, answer: 'intercooler',
       why: 'It sits between the compressor and the throttle, cooling the air the turbo just heated.',
       wrong: { compressor: 'That’s the turbo’s compressor, which heats the air. The intercooler comes right after it.', filter: 'The filter is before the turbo, at outside pressure.' } },
-    { type: 'num', q: 'Air enters the intercooler at **300 °F** and leaves at **120 °F**. Outside air is **80 °F**. Effectiveness, in %?', answer: 81.8, tol: 1, unit: '%',
-      hint: '(in − out) ÷ (in − ambient).', why: '(300 − 120) ÷ (300 − 80) = 180 ÷ 220 ≈ **82%**.' },
     { type: 'mc', q: 'Main advantage of an **air-to-water** intercooler?', options: ['No moving parts', 'Compact, so it can sit close to the engine with short pipes', 'Never heat-soaks', 'Raises boost by itself'], answer: 1,
       why: 'A water-cooled core can be small and mounted near or in the intake manifold, cutting pipe volume. It needs a pump and its own radiator, and it can still heat-soak.' },
     { type: 'mc', q: 'After 20 minutes in traffic you floor it and the car feels flat. Most likely intercooler reason?', options: ['Pressure drop', 'Heat soak: the core is hot, so intake air is hot and the ECU pulls timing', 'Too much airflow', 'The intercooler is frozen'], answer: 1,

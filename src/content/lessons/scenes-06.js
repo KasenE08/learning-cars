@@ -59,8 +59,6 @@ export default {
       facts: ['ninja.lineage', 'rs457.madeIn', 'ninja.output', 'rs457.output'] },
   ],
   quiz: [
-    { type: 'num', q: 'NHTSA 2022: motorcyclists died at **26.16** per 100 million miles vs **1.20** for passenger-car occupants. About how many times higher? (nearest whole number)', answer: 22, tol: 0.5, unit: '×',
-      why: '26.16 ÷ 1.20 ≈ **21.8**, about 22×. Per registered vehicle the gap is smaller (about 5×), because bikes ride fewer miles.' },
     { type: 'mc', q: 'Key difference between **MotoGP** and **World Superbike** bikes?', options: ['MotoGP bikes are slower', 'MotoGP bikes are prototypes; WorldSBK bikes are based on road bikes you can buy', 'WorldSBK uses two-strokes', 'There is no difference'], answer: 1,
       why: 'MotoGP is a prototype series. WorldSBK starts from production bikes like the ZX-10R, so racing success there directly sells road bikes.' },
     { type: 'order', q: 'Put these in order, oldest first.', items: ['GPZ900R (first Ninja)', 'CBR900RR Fireblade', 'Yamaha R1', 'ZX-10R', 'Ninja 500'],

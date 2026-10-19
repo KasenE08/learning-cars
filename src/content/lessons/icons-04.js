@@ -49,8 +49,6 @@ export default {
       facts: ['bronco.mounting', 'bronco.trans', 'bronco.ptu'] },
   ],
   quiz: [
-    { type: 'num', q: 'The Model T fell from **$850** to about **$300**. Roughly what percent price cut is that? (nearest whole percent)', answer: 65, tol: 1, unit: '%',
-      hint: '(850 − 300) ÷ 850', why: '550 ÷ 850 ≈ **65%**. Mass production made the car affordable to the people building it.' },
     { type: 'mc', q: 'What was the **Mini’s** big packaging idea?', options: ['Rear engine, air-cooled', 'Transverse engine driving the front wheels, gearbox in the sump', 'All-aluminum body', 'A V8 in a small car'], answer: 1,
       why: 'Turning the engine sideways and tucking the gearbox under it left most of the car’s length for people. Most small cars still use transverse front drive.',
       wrong: { 0: 'That’s the Beetle.' } },

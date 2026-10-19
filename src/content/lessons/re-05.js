@@ -122,8 +122,6 @@ for t, d in pedal[::25]:
     { type: 'mc', q: 'A 4-bit field reads 3, 4, 5, 6 … 15, 0, 1 in consecutive frames while the car sits still. It’s a…',
       options: ['Signal', 'Rolling counter', 'Checksum', 'Constant'], answer: 1,
       why: '+1 per frame and wrapping at 2⁴ − 1 = 15, regardless of what the car does: the textbook counter.' },
-    { type: 'num', q: 'Byte 0’s low two bits are **01** and byte 1 is **0x90**. With a 10-bit signal (byte 0 bits on top), what’s the raw value?', answer: 400, tol: 0,
-      hint: '01 shifted left 8 = 256. Add 0x90.', why: '`(0b01 << 8) | 0x90` = 256 + 144 = **400**. × 0.1 % = 40%.' },
     { type: 'mc', q: 'Bytes 3–4 of 0x204 also rise when you press the pedal. Why aren’t they the pedal?',
       options: ['They’re a checksum', 'They’re engine rpm: correlated, but lagging and a different shape', 'They’re a counter', 'They’re a constant'], answer: 1,
       why: 'Pressing the pedal while parked revs the engine, so rpm moves too. The pedal signal sits flat at 25/40/15%; rpm ramps and settles. Correlated is not the same as identical.' },

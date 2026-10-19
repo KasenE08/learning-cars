@@ -52,8 +52,6 @@ export default {
     { type: 'mc', q: 'Which twin has its **secondary** (2× crank speed) forces cancel?', options: ['360°', '180°', '270°', 'All of them'], answer: 2,
       why: 'At 270° the second-order forces of the two pistons are out of phase and cancel. A 180° twin has both pistons at dead center together, so its secondary forces add.',
       wrong: { 1: 'A 180° twin cancels the primary forces, but its secondary forces add up like an inline-4’s.' } },
-    { type: 'num', q: 'RS 457 at **6,000 rpm**. Total power strokes per second for both cylinders?', answer: 100, tol: 0, unit: 'per second',
-      hint: 'Each cylinder fires once every 2 revolutions.', why: '6,000 ÷ 2 ÷ 60 = 50 per cylinder × 2 cylinders = **100 per second**. Crank angle changes the spacing, not the count.' },
     { type: 'order', q: 'Order these twins by the **shortest** firing gap, shortest first.', items: ['180° parallel twin (180°)', '270° parallel twin (270°)', '360° parallel twin (360°)'],
       why: 'Shortest gaps: 180° twin 180°/540°, 270° twin 270°/450°, 360° twin 360°/360° (even).' },
     { type: 'tap', q: 'Tap the part whose crankpin layout sets a twin’s firing rhythm.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'crank',

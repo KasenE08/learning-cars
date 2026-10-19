@@ -52,8 +52,6 @@ export default {
       wrong: { turbine: 'That’s the wheel being bypassed, not the bypass.' } },
     { type: 'mc', q: 'What does the wastegate actuator’s **spring** decide?', options: ['Maximum boost', 'The lowest boost at which the gate opens (base boost)', 'Turbo shaft speed at idle', 'How fast the BOV opens'], answer: 1,
       why: 'Boost pressure must beat the spring to open the gate, so the spring sets the floor. Electronic control can only hold the gate shut longer, raising boost above that.' },
-    { type: 'num', q: 'A wastegate spring is **8 psi**. The boost solenoid makes the actuator see only **half** the real boost. At what real boost does the gate start opening?', answer: 16, tol: 0, unit: 'psi',
-      hint: 'The actuator needs to see 8 psi.', why: 'Seen = real ÷ 2. The gate opens when seen = 8 psi, so real = **16 psi**. That’s how a solenoid raises boost above spring pressure.' },
     { type: 'mc', q: 'A hose to the wastegate actuator splits so the gate never opens. What should a modern ECU do?', options: ['Nothing; boost just rises', 'Detect overboost and cut power (throttle, boost), setting a code', 'Open the blow-off valve permanently', 'Raise the rev limiter'], answer: 1,
       why: 'Overboost protection watches boost pressure. Past the limit, the ECU pulls power to protect the engine and logs a code like P0234.' },
     { type: 'mc', q: 'One extra trick an **electronic** wastegate can do?', options: ['Make boost without exhaust', 'Open wide at cruise to cut back-pressure and save fuel', 'Replace the intercooler', 'Spin the turbo with a motor'], answer: 1,

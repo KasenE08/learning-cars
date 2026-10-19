@@ -125,8 +125,6 @@ print(count_over(rpms, 2500))  # 4
   quiz: [
     { type: 'mc', q: 'With `rpms = [700, 800, 900]`, what is `rpms[1]`?', options: ['700', '800', '900', 'IndexError'], answer: 1,
       why: 'Positions start at 0: `rpms[0]` is 700, `rpms[1]` is 800.' },
-    { type: 'num', q: 'What is `len([702, 798, 2754, 3082])`?', answer: 4, tol: 0,
-      why: '`len` counts the items: four readings.' },
     { type: 'order', q: 'Put the lines of `average` in working order.',
       items: ['`def average(readings):`', '`total = 0`', '`for r in readings:`', '`total = total + r`', '`return total / len(readings)`'],
       why: 'Define the function, start the total at 0, loop, add each reading inside the loop, then return after the loop has finished.' },

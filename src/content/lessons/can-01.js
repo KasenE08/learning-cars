@@ -58,8 +58,6 @@ export default {
     { type: 'mc', q: 'What is **multiplexing** in a car network?', options: ['Giving every signal its own wire', 'Many signals taking turns on one shared channel', 'Running two engines on one computer', 'Splitting one wire into many'], answer: 1,
       why: 'Multiplexing means sharing one channel among many signals. CAN does it by letting modules take turns sending short frames on one pair of wires.',
       wrong: { 0: 'That’s the point-to-point wiring CAN replaced.' } },
-    { type: 'num', q: 'Wiring **6** modules so each has a direct link to every other one: how many links?', answer: 15, tol: 0, unit: 'links',
-      hint: 'n × (n − 1) ÷ 2', why: '6 × 5 ÷ 2 = **15** links. With CAN it’s one shared pair, however many modules you add.' },
     { type: 'order', q: 'Put these CAN milestones in order.', items: ['Bosch starts developing CAN', 'Presented at the SAE Congress in Detroit', 'First production car (Mercedes S-Class W140)', 'ISO 11898 standard', 'Required for US OBD-II', 'CAN FD introduced'],
       why: '1983 development → 1986 SAE presentation → 1991 W140 → 1993 ISO 11898 → 2008 model-year OBD requirement → 2012 CAN FD.' },
     { type: 'mc', q: 'A CAN frame’s ID tells receivers…', options: ['Which module sent it', 'Which module it’s addressed to', 'What the message is (and its priority)', 'How long the wire is'], answer: 2,

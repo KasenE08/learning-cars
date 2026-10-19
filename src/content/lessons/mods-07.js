@@ -64,8 +64,6 @@ export default {
     { type: 'order', q: 'Put a clutchless quickshifter upshift in order.',
       items: ['Rider presses the shifter; the sensor detects load', 'ECU cuts ignition/fuel for a few tens of milliseconds', 'Drive torque drops, the gear dogs unload and disengage', 'Next gear’s dogs engage', 'Ignition and fuel return; drive resumes'],
       why: 'The quickshifter doesn’t move gears itself. It briefly removes engine torque so the loaded dogs can slide apart, then the shift completes and power returns.' },
-    { type: 'num', q: 'Ninja 500 goes from **14 to 15** teeth up front (rear stays 43). At the same rpm and gear, how much faster does it go, in percent?', answer: 7.1, tol: 0.2, unit: '%',
-      hint: 'Speed scales with front ÷ rear teeth.', why: '15 ÷ 14 = 1.071 → **+7.1%** road speed per rpm (final ratio 3.07 → 2.87).' },
     { type: 'mc', q: 'Akrapovič’s own dyno shows **+0.4 hp** for its Ninja 500 slip-on. What are you mostly buying?',
       options: ['A big power gain', 'Sound, looks and weight savings', 'Better fuel economy', 'A legal way to delete the cat'], answer: 1,
       why: '0.4 hp is inside normal dyno run-to-run variation. The maker is honest about it: it’s a sound-and-weight part.' },

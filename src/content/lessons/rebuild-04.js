@@ -68,8 +68,6 @@ export default {
     { type: 'tap', q: 'Tap the gear whose position is set **first** in a ring-and-pinion setup.', visual: { type: 'parts', drawing: 'rdu' }, answer: 'pinion',
       why: 'Pinion depth is the reference everything else is measured from. Then preload, then the ring gear’s position (backlash), then the contact pattern.',
       wrong: { ring: 'That’s the ring gear. Its side-to-side position (backlash) is set after the pinion.' } },
-    { type: 'num', q: 'A clutch friction plate measures **2.75 mm**; the service limit is **2.8 mm**. How far under the limit is it, in mm?', answer: 0.05, tol: 0.001, unit: 'mm',
-      why: '2.8 − 2.75 = **0.05 mm** under: replace it. (Example numbers, not a real spec.)' },
   ],
   cards: [
     { id: 'synchro', front: 'Grinding on a quick shift points to?', back: 'A worn synchro (blocker) ring for that gear.' },

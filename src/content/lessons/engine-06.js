@@ -47,8 +47,6 @@ export default {
       facts: ['bronco.trans'] },
   ],
   quiz: [
-    { type: 'num', q: 'A crank has a **41.55 mm** throw. What’s the stroke?', answer: 83.1, tol: 0.05, unit: 'mm',
-      why: 'Stroke = 2 × throw = **83.1 mm**. That’s exactly your Bronco’s stroke.' },
     { type: 'mc', q: 'What keeps a running crank journal from touching its bearing?', options: ['Ball bearings', 'A pressurized film of oil', 'Magnetic repulsion', 'Teflon coating'], answer: 1,
       why: 'Plain bearings hydroplane on an oil film pumped into the gap. No oil pressure = metal contact = destroyed bearing.' },
     { type: 'mc', q: 'Why does the rod’s big end split into a rod and a cap?', options: ['To save weight', 'So it can be bolted around the crankpin', 'For cooling', 'To let oil drain'], answer: 1,

@@ -36,16 +36,12 @@ export default {
       facts: ['bronco.compression', 'ninja.compression', 'rs457.compression'] },
   ],
   quiz: [
-    { type: 'num', q: 'Swept volume **500 cc**, clearance volume **50 cc**. Compression ratio? (enter the first number, e.g. 9 for 9:1)', answer: 11, tol: 0.05, unit: ': 1',
-      why: '(500 + 50) ÷ 50 = **11:1**. A common mistake is 500 ÷ 50 = 10. Don’t forget to add the clearance volume.' },
     { type: 'mc', q: 'What limits how high compression can go on a gasoline engine?', options: ['The spark plug’s voltage', 'Knock (the mixture self-igniting)', 'The size of the fuel tank', 'Valve spring strength'], answer: 1,
       why: 'Squeeze too much and the end gas self-ignites before the flame front: knock. Higher octane and good chamber design raise the limit.' },
     { type: 'mc', q: 'Why do turbocharged gas engines usually have lower compression ratios?', options: ['Turbos need lighter pistons', 'Boost already raises cylinder pressure, so lower CR keeps knock in check', 'To make more noise', 'Lower CR makes more power by itself'], answer: 1,
       why: 'Boost + high static compression = very high pressure and heat = knock. Turbo engines trade some compression for boost.' },
     { type: 'mc', q: 'Higher octane fuel means…', options: ['More energy per gallon', 'More resistance to knock', 'Cleaner exhaust', 'Faster burning'], answer: 1,
       why: 'Octane rating is knock resistance. It only helps if the engine is designed or tuned to use it.' },
-    { type: 'num', q: 'Your Bronco: **499.7 cc** swept per cylinder at **10.0:1**. Clearance volume?', answer: 55.5, tol: 0.3, unit: 'cc',
-      hint: 'CR − 1 = swept ÷ clearance.', why: 'Clearance = swept ÷ (CR − 1) = 499.7 ÷ 9 = **55.5 cc**.' },
   ],
   cards: [
     { id: 'cr', front: 'Compression ratio formula?', back: '(swept + clearance) ÷ clearance.' },

@@ -61,8 +61,6 @@ export default {
     { type: 'mc', q: 'Why might a CAN sniffer on the Bronco Sport’s OBD port see little or no normal broadcast traffic?', options: ['The port has no CAN pins', 'The OBD port connects to a gateway that decides what crosses, and normal traffic may not be forwarded', 'CAN only works when the car is moving', 'Ford encrypts all CAN traffic'], answer: 1,
       why: 'On these Fords the port is wired to the gateway (Ford’s SDLC). Diagnostic requests get answered, but internal broadcast traffic isn’t necessarily passed through.',
       wrong: { 3: 'Nothing here shows Ford encrypting CAN traffic. The limit is the gateway, not encryption.' } },
-    { type: 'num', q: 'Classic Ford HS-CAN runs up to 500 kbit/s and MS-CAN up to 125 kbit/s. How many times faster is HS-CAN?', answer: 4, tol: 0, unit: '×',
-      why: '500 ÷ 125 = **4×**.' },
     { type: 'order', q: 'Follow a turn-signal status from the body side to the camera.', items: ['Body module sets the lamp state on its bus', 'Gateway (GWM) receives it', 'GWM re-sends it on the main bus as 0x3B3', 'Camera (IPMA) reads it'],
       why: 'Messages don’t hop buses by themselves: the gateway receives on one bus and transmits on the other. The DBC lists GWM as the sender of 0x3B3, and IPMA_ADAS among its receivers.' },
   ],

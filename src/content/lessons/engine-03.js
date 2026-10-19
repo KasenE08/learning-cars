@@ -46,8 +46,6 @@ export default {
       wrong: { 0: 'That’s the bore.', 2: 'Rod length affects geometry, but stroke comes from the crank throw.' } },
     { type: 'mc', q: 'Which engine is the most **oversquare**?', options: ['Bore 87.5 mm, stroke 83.1 mm', 'Bore 70.0 mm, stroke 58.6 mm', 'Bore 86 mm, stroke 86 mm', 'Bore 82 mm, stroke 94 mm'], answer: 1,
       why: '70.0 ÷ 58.6 ≈ 1.19 is the biggest bore-to-stroke ratio here. That’s the Ninja 500. 86 × 86 is square; 82 × 94 is undersquare.' },
-    { type: 'num', q: 'Mean piston speed of your Bronco (83.1 mm stroke) at **5,500 rpm**, in m/s? (2 × stroke × rpm ÷ 60)', answer: 15.2, tol: 0.3, unit: 'm/s',
-      hint: '83.1 mm = 0.0831 m.', why: '2 × 0.0831 m × 5,500 ÷ 60 = **15.2 m/s**. The piston averages about 34 mph while stopping and reversing twice every revolution.' },
     { type: 'tap', q: 'Tap the **water jacket**.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'jacket',
       why: 'The water jackets are the coolant passages cast into the block around the cylinders.' },
     { type: 'mc', q: 'Why do aluminum blocks usually have liners or a coated bore?', options: ['To make them lighter', 'Aluminum is too soft for rings to rub on all day', 'For better fuel economy', 'Because aluminum can’t be cast'], answer: 1,

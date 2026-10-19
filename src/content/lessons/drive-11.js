@@ -44,10 +44,6 @@ export default {
       facts: ['bronco.finalDrive', 'bronco.rdu'] },
   ],
   quiz: [
-    { type: 'num', q: 'A ring gear has **41 teeth** and its pinion has **11**. What’s the final drive ratio (x:1)?', answer: 3.73, tol: 0.01, unit: ':1',
-      why: '41 ÷ 11 = **3.73:1**. The pinion turns 3.73 times for each turn of the ring gear (and the wheels).' },
-    { type: 'num', q: 'The carrier spins at **300 rpm** and the left wheel is **stopped**. How fast is the right wheel spinning?', answer: 600, tol: 0, unit: 'rpm',
-      hint: 'Carrier speed = average of the two wheels.', why: '(0 + R) ÷ 2 = 300, so R = **600 rpm**. That’s the classic one-wheel-spinning picture.' },
     { type: 'mc', q: 'One drive wheel is on ice, the other on dry pavement. With an open diff, the dry wheel gets…', options: ['All the torque', 'Twice the torque of the icy wheel', 'The same tiny torque as the icy wheel', 'No torque because the diff locks'], answer: 2,
       why: 'An open diff always splits torque equally. The icy wheel can only hold a tiny torque, so that’s all the dry wheel gets too.',
       wrong: { 0: 'That’s what most people expect. An open diff does the opposite: it sends equal torque, limited by the weakest wheel.' } },

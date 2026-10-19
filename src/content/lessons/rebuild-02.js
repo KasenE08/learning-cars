@@ -50,8 +50,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A bore measures **87.56 mm** at the top of ring travel and **87.52 mm** at the bottom. Taper in mm?', answer: 0.04, tol: 0.001, unit: 'mm',
-      why: 'Taper = top − bottom = 87.56 − 87.52 = **0.04 mm** (about 1.6 thou). The top wears more.' },
     { type: 'mc', q: 'Which tool reads bearing oil clearance by **crushing** a plastic thread?', options: ['Micrometer', 'Bore gauge', 'Plastigage', 'Feeler gauge'], answer: 2,
       why: 'Plastigage squashes in the gap; you compare its width to a printed scale. Micrometer + bore gauge is the more precise way.' },
     { type: 'tap', q: 'Tap the ring whose **end gap** is the classic clearance check.', visual: { type: 'parts', drawing: 'piston' }, answer: 'top-ring',
@@ -60,8 +58,6 @@ export default {
     { type: 'mc', q: 'A bore is worn past its limit. The usual fix?', options: ['Hone it and reuse the old piston', 'Bore it oversize and fit oversize pistons', 'Grind the crank undersize', 'Mill the head'], answer: 1,
       why: 'Boring cuts the cylinder round and bigger; oversize pistons fill it. Honing alone can’t remove that much.',
       wrong: { 2: 'Crank grinding fixes worn journals, not cylinder bores.' } },
-    { type: 'num', q: 'How many mm is **0.002 in**? (1 in = 25.4 mm)', answer: 0.0508, tol: 0.0005, unit: 'mm',
-      why: '0.002 × 25.4 = **0.051 mm**, about 51 microns: a typical bearing oil clearance.' },
   ],
   cards: [
     { id: 'thou', front: 'One thou in mm?', back: '0.001 in = 0.0254 mm (25.4 µm). Paper ≈ 4 thou.' },

@@ -46,8 +46,6 @@ export default {
       why: 'Some combustion gas always gets past the rings. PCV routes it back to the intake to be burned.' },
     { type: 'mc', q: 'Why do piston rings have an **end gap**?', options: ['So oil can drain through it', 'Room to expand with heat without jamming against each other', 'To lower compression on purpose', 'To make installation optional'], answer: 1,
       why: 'Rings get very hot and expand. Without a gap the ends would butt together and the ring could scuff or break.' },
-    { type: 'num', q: 'At **4,500 rpm**, how many times per second does a piston change direction?', answer: 150, tol: 0, unit: 'per second',
-      why: '4,500 ÷ 60 = 75 revolutions per second × 2 reversals = **150**.' },
   ],
   cards: [
     { id: 'rings', front: 'Jobs of the three piston rings?', back: 'Top: seal compression. Second: backup seal + scrape oil. Oil ring: scrape oil off the wall.' },

@@ -153,8 +153,6 @@ LAMP_ID = 0x3B3
     { type: 'mc', q: 'During the left signal, 0x83 byte 0 stays **0x10** while 0x3B3 byte 6 flips **0x00 ↔ 0x40**. Which is the lamp?',
       options: ['0x83: it changed first', '0x3B3: it blinks like the lamp does', 'Both are the lever', 'Neither; lamps aren’t on CAN'], answer: 1,
       why: 'The lever is held steadily; the lamp flashes. A byte that copies the flashing pattern is the lamp state; the steady one is the switch position.' },
-    { type: 'num', q: 'In the simulation the lamp is on for 333 ms, then off for 333 ms. How many flashes per second is that?', answer: 1.5, tol: 0.05, unit: 'per second',
-      why: 'One on/off cycle = 666 ms. 1 ÷ 0.666 s ≈ **1.5 flashes per second** (about 90 a minute).' },
   ],
   cards: [
     { id: 'rule', front: 'The suspect-byte rule?', back: 'Constant during the quiet window, different during the action.' },

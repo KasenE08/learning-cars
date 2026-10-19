@@ -47,8 +47,6 @@ export default {
       facts: ['ninja.redline', 'rs457.redline', 'ninja.vs400', 'ninja.boreStroke', 'rs457.boreStroke'] },
   ],
   quiz: [
-    { type: 'num', q: 'RS 457: stroke 61.1 mm, peak power at 9,400 rpm. Mean piston speed in m/s (one decimal)?', answer: 19.1, tol: 0.1, unit: 'm/s',
-      hint: '2 × stroke (in meters) × rpm ÷ 60.', why: '2 × 0.0611 × 9,400 ÷ 60 ≈ **19.1 m/s**. A bit higher than the Ninja’s 17.6 m/s at its peak: longer stroke, higher rpm.' },
     { type: 'mc', q: 'Why does a small naturally aspirated engine need high rpm to make big power?', options: ['High rpm burns more octane', 'Torque per liter is nearly fixed without boost, so power has to come from rpm', 'Bikes have no flywheel', 'Chains only work at high rpm'], answer: 1,
       why: 'Without forced induction an engine can’t fill its cylinders much more than once per cycle. Power = torque × rpm, so rpm is the lever left.' },
     { type: 'order', q: 'Order by specific output, **lowest** hp per liter first.', items: ['Ninja 500 (≈99 hp/L)', 'RS 457 (≈103 hp/L)', 'Bronco Sport 2.0 turbo (≈125 hp/L)', 'Liter superbike (≈200 hp/L)'],

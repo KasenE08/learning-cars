@@ -37,8 +37,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'Rough rule: a tire carries **360 lb** at **36 psi**. About how big is the contact patch in square inches?', answer: 10, tol: 0.5, unit: 'in²',
-      hint: 'area ≈ load ÷ pressure', why: '360 ÷ 36 = **10 in²**. Real tires differ a bit because the carcass carries some load itself.' },
     { type: 'mc', q: 'Why are bike tires round in cross-section?', options: ['Less rolling resistance', 'So the tire keeps a usable patch on the road as the bike leans', 'To look sporty', 'So they wear evenly'], answer: 1,
       why: 'A flat tread would ride up on its edge when leaned. A round profile rolls onto the shoulder and keeps grip.' },
     { type: 'mc', q: 'What does a dual-compound tire put in the **center**?', options: ['Softer rubber for grip', 'Harder rubber for wear', 'Steel cords only', 'Nothing; it’s hollow'], answer: 1,

@@ -43,8 +43,6 @@ export default {
       facts: ['rs457.modes', 'rs457.electronics', 'rs457.qsUpDown', 'ninja.electronics', 'ninja.throttle'] },
   ],
   quiz: [
-    { type: 'num', q: 'A soft map opens the throttle **0.6 ×** grip position at small openings. You twist to **50%**. Throttle opening in %?', answer: 30, tol: 0, unit: '%',
-      why: '0.6 × 50 = **30%**. With a cable it would be 50%. That gap is what “softer throttle response” means.' },
     { type: 'order', q: 'Order the ride-by-wire signal chain.', items: ['Rider twists grip', 'Grip sensor sends two signals', 'ECU applies the throttle map', 'Throttle motor moves the plates', 'Throttle position sensor confirms'],
       why: 'Request → sensing → decision → actuation → feedback. The double signals and feedback catch faults.' },
     { type: 'tap', q: 'Tap the computer that runs the ride modes.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'ecu',

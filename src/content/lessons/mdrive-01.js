@@ -49,8 +49,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'Why does a bike clutch use many plates instead of one big disc?', options: ['Oil only works on small plates', 'Many friction faces give enough torque capacity in a small diameter', 'It makes the lever heavier on purpose', 'To add a gear ratio'], answer: 1,
       why: 'Torque capacity scales with the number of faces. Stacking plates multiplies capacity without a big disc that wouldn’t fit in a narrow engine.' },
-    { type: 'num', q: 'Wet clutch: μ 0.1, clamp 2,500 N, mean radius 0.05 m, **6 friction plates**. Torque capacity in N·m?', answer: 150, tol: 0, unit: 'N·m',
-      hint: 'Each friction plate has two faces.', why: '6 plates × 2 = 12 faces. 0.1 × 2,500 × 0.05 × 12 = **150 N·m**.' },
     { type: 'order', q: 'Order what happens when you pull the clutch lever.', items: ['Lever pulls the cable', 'Release arm turns on the engine case', 'Pushrod moves the pressure plate against the springs', 'Clamp force on the stack drops', 'Plates slip, then turn freely'],
       why: 'Cable → release arm → pushrod → pressure plate moves against the springs → clamp force drops and the stack slips.' },
     { type: 'mc', q: 'Which plates turn with the **engine**?', options: ['Steel plates (splined to the hub)', 'Friction plates (tabbed to the basket)', 'Both, all the time', 'Neither: the pressure plate does'], answer: 1,

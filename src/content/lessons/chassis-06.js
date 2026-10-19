@@ -55,8 +55,6 @@ export default {
     { type: 'tap', q: 'Tap the part that **squeezes** the pads onto the rotor.', visual: { type: 'parts', drawing: 'brakes' }, answer: 'caliper',
       why: 'Hydraulic pressure pushes the caliper’s piston(s), which press the pads onto both faces of the rotor.',
       wrong: { pads: 'The pads are what get squeezed. The caliper does the squeezing.', rotor: 'The rotor is the spinning disc being clamped.' } },
-    { type: 'num', q: 'You brake from **twice** the speed. How many times more energy must the brakes turn into heat?', answer: 4, tol: 0, unit: '×',
-      why: 'KE = ½mv². Doubling v multiplies v² by **4**.' },
     { type: 'mc', q: 'What sets a **floating** caliper apart from a fixed one?', options: ['It has pistons on both sides', 'Pistons on the inner side only; the caliper slides to pull the outer pad in', 'It floats in brake fluid', 'It only works on drums'], answer: 1,
       why: 'Floating calipers are cheaper and compact. Fixed calipers bolt solid with opposed pistons on both sides.',
       wrong: { 0: 'That’s a fixed (opposed-piston) caliper.' } },

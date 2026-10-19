@@ -56,8 +56,6 @@ export default {
       why: 'The locked stator redirects returning oil so it helps the impeller. Remove it and you have a fluid coupling: torque out = torque in.' },
     { type: 'mc', q: 'At highway cruise with the lockup clutch **applied**, the converter’s slip is…', options: ['About 50%', 'About 10%', 'Zero (or a tiny controlled amount)', 'At its maximum'], answer: 2,
       why: 'Lockup mechanically clamps the turbine to the housing, so engine and input shaft turn together. Some units hold a small controlled slip for smoothness.' },
-    { type: 'num', q: 'Engine makes **200 lb-ft** and the converter is multiplying **1.8:1**. Torque at the turbine, in lb-ft?', answer: 360, tol: 0, unit: 'lb-ft',
-      why: '200 × 1.8 = **360 lb-ft**, but only while the turbine spins much slower than the engine, i.e. pulling away.' },
     { type: 'mc', q: 'A higher-stall (“looser”) converter mainly gives…', options: ['Better fuel economy', 'Harder launches from higher rpm', 'Lower transmission temperatures', 'A higher top speed'], answer: 1,
       why: 'Higher stall lets the engine reach its torque band before the car moves. The trade-off is more slip and heat.' },
   ],

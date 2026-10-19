@@ -45,8 +45,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'A sender sees **no dominant bit** in the ACK slot. Which error is that?', options: ['Bit error', 'Stuff error', 'CRC error', 'ACK error'], answer: 3,
       why: 'No receiver drove the ACK slot dominant, so nobody got a valid frame: an ACK error. A common cause is being the only node on the bus.' },
-    { type: 'num', q: 'A node’s TEC starts at 0 and every transmission fails (+8 each). After how many failed attempts is it **error-passive** (TEC > 127)?', answer: 16, tol: 0, unit: 'attempts',
-      why: '16 × 8 = **128**, the first value above 127. Bus-off (> 255) would take 32.' },
     { type: 'order', q: 'Order the error states from healthy to removed.', items: ['Error-active', 'Error-passive', 'Bus-off'],
       why: 'Counters ≤ 127: error-active. Either > 127: error-passive. TEC > 255: bus-off.' },
     { type: 'mc', q: 'Why is an active error flag **6 dominant bits**?', options: ['It spells “error” in binary', 'Six equal bits break the stuffing rule, so every node is guaranteed to see an error and discard the frame', 'It gives the sender time to cool down', 'It sets everyone’s TEC to 6'], answer: 1,

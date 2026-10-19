@@ -122,8 +122,6 @@ print(sg_line(SPEED))
     { type: 'order', q: 'Order the fields of `SG_ Veh_V_ActlBrk : 7|16@0+ (0.01,0) [0|655.35] "kph" GWM`.',
       items: ['name', 'start|length', '@byteorder+sign', '(scale,offset)', '[min|max]', '"unit"', 'receivers'],
       why: 'That’s the exact left-to-right order of a DBC signal line.' },
-    { type: 'num', q: 'A 16-bit unsigned signal with scale 0.01 and offset 0 has what **maximum** physical value? (to 2 decimals)', answer: 655.35, tol: 0.01, unit: 'kph',
-      hint: 'Biggest raw for 16 bits is 2¹⁶ − 1 = 65535.', why: '65535 × 0.01 + 0 = **655.35**. That’s the `[0|655.35]` range in the line.' },
     { type: 'mc', q: 'Your confirmed frames disagree with the community DBC’s label. What’s the right call?',
       options: ['The DBC is official, so trust it', 'Trust the frames you confirmed; the DBC is community-made and can be wrong, incomplete or for another model', 'Delete your finding', 'Assume your car is broken'], answer: 1,
       why: 'opendbc is reverse-engineered and shared across models. A signal can be mislabeled or simply not sent on your truck. Confirmed frames win.' },

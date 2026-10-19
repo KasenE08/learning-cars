@@ -47,8 +47,6 @@ export default {
       facts: ['rs457.modes', 'rs457.abs', 'ninja.electronics'] },
   ],
   quiz: [
-    { type: 'num', q: 'Front wheel reads **50 km/h**, rear reads **54 km/h**. Rear slip in %?', answer: 8, tol: 0.2, unit: '%',
-      hint: 'Slip ≈ (rear − front) ÷ front', why: '(54 − 50) ÷ 50 = 0.08 = **8%**.' },
     { type: 'mc', q: 'Why does lean angle complicate bike traction control?', options: ['Wheel sensors stop working when leaned', 'Leaned tires roll on smaller radii (the rear more), and have less grip left for drive', 'The engine makes more power leaned over', 'The chain gets loose'], answer: 1,
       why: 'Speed comparison gets skewed by the changing rolling radius, and the safe slip limit drops. An IMU solves both by measuring lean.' },
     { type: 'order', q: 'Order TC interventions from **gentlest** to **strongest** (typical).', items: ['Retard ignition timing', 'Cut spark to some cylinders', 'Cut fuel', 'Close the throttle hard'],

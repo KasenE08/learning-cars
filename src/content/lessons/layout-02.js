@@ -44,8 +44,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'Using the rule of thumb (shared crankpins), what bank angle gives a **V10** even firing?', answer: 72, tol: 0, unit: '°',
-      why: '720° ÷ 10 cylinders = **72°**. Engines that use a different angle offset their crankpins to compensate.' },
     { type: 'mc', q: 'What makes a cross-plane V8 **burble**?', options: ['It fires unevenly overall', 'Each bank’s pulses are unevenly spaced, even though overall firing is even', 'The flat crank', 'Its secondary shake'], answer: 1,
       why: 'Overall it fires every 90°, but two cylinders on the same bank fire close together, then there’s a gap. Each bank’s pipe gets an uneven beat.',
       wrong: { 0: 'Overall the firing is even: every 90°. The unevenness is per bank.', 2: 'The flat-plane crank is the other V8, the one that screams.' } },

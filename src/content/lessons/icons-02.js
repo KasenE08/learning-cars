@@ -66,8 +66,6 @@ export default {
     { type: 'mc', q: 'Main packaging advantage of a pushrod (OHV) V8?', options: ['Higher redline', 'Narrow, compact heads because the cam is in the block', 'Four valves per cylinder', 'No timing drive needed'], answer: 1,
       why: 'With one cam in the block, the heads carry only valves and rockers, so the engine is small for its displacement. The cost is a heavier valvetrain and lower revs.',
       wrong: { 0: 'The opposite: the heavier valvetrain usually limits rpm.' } },
-    { type: 'num', q: 'The Hemi was **426 cu in**. In liters? (1 cu in ≈ 16.39 cc; two decimals)', answer: 6.98, tol: 0.02, unit: 'L',
-      hint: '426 × 16.39 cc ÷ 1000', why: '426 × 16.39 ≈ 6,982 cc ≈ **6.98 L**, which is why it’s called a 7.0 L.' },
     { type: 'order', q: 'Order these engines’ debuts, oldest first.', items: ['Ford flathead V8', 'Chevy small-block', '426 Hemi (race)', 'GM LS1', 'Ford Coyote'],
       why: '1932, 1955, 1964, 1997, 2011.' },
     { type: 'mc', q: 'Why is the **LS swap** so popular?', options: ['LS engines are rare and exotic', 'Compact, plentiful, cheap, takes power well, and huge aftermarket support', 'It’s required for registration', 'They are flat-plane V8s'], answer: 1,

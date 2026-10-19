@@ -53,8 +53,6 @@ export default {
       facts: ['law.epaEnforcement'] },
   ],
   quiz: [
-    { type: 'num', q: 'Your Bronco makes **277 lb-ft at 3,000 rpm**. What horsepower is that at that rpm? (hp = lb-ft × rpm ÷ 5252)', answer: 158.2, tol: 0.5, unit: 'hp',
-      why: '277 × 3,000 ÷ 5,252 = **158 hp**. Peak power (250 hp) comes later, at 5,500 rpm, where torque is lower but rpm is much higher.' },
     { type: 'mc', q: 'A listing says **“280 whp.”** Compared with the brochure number, that figure is…', options: ['Measured at the crank, so higher', 'Measured at the wheels, after drivetrain losses, so lower', 'Exactly the same', 'Only for electric cars'], answer: 1,
       why: 'whp = wheel horsepower on a chassis dyno. The gearbox, driveshafts and diffs eat some power, so whp is lower than crank hp for the same engine.' },
     { type: 'mc', q: 'A beige minivan that runs 11-second quarter miles is a…', options: ['Ricer', 'Sleeper', 'Garage queen', 'Dyno queen'], answer: 1,

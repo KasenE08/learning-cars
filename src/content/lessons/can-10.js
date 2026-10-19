@@ -68,8 +68,6 @@ export default {
       facts: ['ford.openpilotDiag'] },
   ],
   quiz: [
-    { type: 'num', q: 'A first frame starts `10 14 …`. How many bytes is the full message (decimal)?', answer: 20, tol: 0, unit: 'bytes',
-      hint: 'Length = low nibble of byte 0, then byte 1: 0x014.', why: '0x014 = 1 × 16 + 4 = **20** bytes: `49 02 01` plus 17 VIN characters.' },
     { type: 'mc', q: 'You send UDS `22 F1 90`. What is the first byte of a **positive** response?', options: ['0x22', '0x62', '0x7F', '0xF1'], answer: 1,
       why: 'Positive response = service ID + 0x40: 0x22 + 0x40 = **0x62**. Then the DID (F1 90) and the data.',
       wrong: { 2: '0x7F starts a *negative* response.' } },

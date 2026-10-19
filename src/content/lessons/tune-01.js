@@ -49,8 +49,6 @@ export default {
       wrong: { ram: 'RAM is wiped at power-off; it only holds live values.', eeprom: 'EEPROM holds small learned values (adaptations), not the main tables.' } },
     { type: 'tap', q: 'Tap the block that turns sensor voltages into numbers.', visual: { type: 'parts', drawing: 'ecu' }, answer: 'adc',
       why: 'The analog-to-digital converter samples a voltage (say, from the MAP sensor) and outputs an integer the code scales into kPa or °C.' },
-    { type: 'num', q: 'A 12-bit ADC (0–4,095) with a 5.0 V reference reads a 2.0 V sensor. What number does it output? (Round.)', answer: 1638, tol: 1,
-      hint: 'raw = volts ÷ reference × 4,095', why: '2.0 ÷ 5.0 × 4,095 = **1,638**. The code then applies the sensor’s scale, just like a CAN signal’s raw × scale + offset.' },
     { type: 'mc', q: 'What survives a battery disconnect?',
       options: ['RAM live values', 'Flash and EEPROM contents', 'Nothing at all', 'Only RAM'], answer: 1,
       why: 'Flash (program + calibration) and EEPROM (learned values) are non-volatile. Some learned values are kept in RAM on purpose and do reset, which is why a car can drive oddly after a battery change until it relearns.' },

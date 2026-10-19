@@ -42,8 +42,6 @@ export default {
       facts: ['bronco.engine', 'bronco.mounting', 'bronco.trans', 'bronco.firingOrder'] },
   ],
   quiz: [
-    { type: 'num', q: 'An inline-6 fires evenly. How many crank degrees between power strokes?', answer: 120, tol: 0, unit: '°',
-      why: '720° per cycle ÷ 6 cylinders = **120°**. Power strokes overlap, which is part of why I6s feel so smooth.' },
     { type: 'order', q: 'Order these inline engines from the **longest** gap between power strokes to the shortest.', items: ['Inline-3', 'Inline-4', 'Inline-6'],
       why: '720° ÷ cylinders: I3 = 240°, I4 = 180°, I6 = 120°. More cylinders = more frequent, overlapping pulses.' },
     { type: 'mc', q: 'Which shaking does an inline-4 **not** cancel on its own?', options: ['Primary forces', 'Secondary forces at 2× crank speed', 'Firing pulses', 'None, it’s perfectly balanced'], answer: 1,

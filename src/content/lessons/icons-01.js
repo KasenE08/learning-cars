@@ -57,8 +57,6 @@ export default {
       facts: ['bronco.output', 'bronco.displacement'] },
   ],
   quiz: [
-    { type: 'num', q: 'US-spec F20C: **240 hp** from **2.0 L**. Specific output in hp per liter?', answer: 120, tol: 0, unit: 'hp/L',
-      why: '240 ÷ 2.0 = **120 hp/L**. The Japanese 250 PS version is close to 124 hp/L.' },
     { type: 'mc', q: 'Why were the R32 GT-R and the Supra Turbo both rated exactly **280 PS** in Japan?', options: ['Same engine', 'The gentlemen’s agreement capped advertised power', 'Japanese law limited displacement', 'Both had limiters at 180 km/h'], answer: 1,
       why: 'Carmakers agreed to advertise no more than 280 PS from 1989. Different engines, same printed number.' },
     { type: 'mc', q: 'The rotary engine’s best-known weak point?', options: ['Timing belt', 'Apex seal wear', 'Pushrods', 'Balance shafts'], answer: 1,

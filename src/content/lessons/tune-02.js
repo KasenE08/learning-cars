@@ -107,8 +107,6 @@ print(lookup(RPM, SPARK, 2500))
       facts: ['bronco.turboType', 'bronco.wastegate', 'bronco.peakBoost', 'bronco.fuel'] },
   ],
   quiz: [
-    { type: 'num', q: 'Spark is **20°** at 3,000 rpm and **24°** at 4,000 rpm. Interpolated value at **3,750 rpm**?', answer: 23, tol: 0.01, unit: '°',
-      hint: 'frac = (3750 − 3000) ÷ 1000', why: 'frac = 0.75 → 20 + 0.75 × 4 = **23°**.' },
     { type: 'order', q: 'Put knock control in order.',
       items: ['Knock sensor picks up ringing after a cylinder fires', 'ECU flags knock on that cylinder', 'Spark on that cylinder is retarded a few degrees', 'Advance creeps back while it stays quiet', 'ECU learns a correction for next time'],
       why: 'Hear it, pin it to a cylinder, retard, recover slowly, learn. The retard is fast and the recovery slow, so the engine spends little time knocking.' },

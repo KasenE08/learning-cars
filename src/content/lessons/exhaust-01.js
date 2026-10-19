@@ -43,8 +43,6 @@ export default {
     { type: 'tap', q: 'Tap the part that collects exhaust from every cylinder.', visual: { type: 'parts', drawing: 'exhaust' }, answer: 'manifold',
       why: 'The exhaust manifold (or header) bolts to the head and gathers every exhaust port into one pipe.',
       wrong: { turbine: 'The turbine comes right after the manifold on a turbo engine; it doesn’t collect from the ports.', muffler: 'The muffler is near the back. It quiets the sound.' } },
-    { type: 'num', q: 'An inline-4 at **3,000 rpm**: how many exhaust pulses per **second** leave the engine in total?', answer: 100, tol: 0, unit: 'per second',
-      hint: 'An I4 fires twice per crank revolution.', why: '3,000 ÷ 60 = 50 rev/s × 2 pulses per rev = **100 pulses per second**.' },
     { type: 'mc', q: 'What is scavenging?', options: ['Cleaning carbon out of the exhaust', 'A low-pressure wave helping pull exhaust out of a cylinder during valve overlap', 'Adding back-pressure for torque', 'Recycling exhaust into the intake'], answer: 1,
       why: 'A pulse’s low-pressure dip, timed to arrive during overlap, helps empty the next cylinder and draw in fresh charge.',
       wrong: { 3: 'That’s EGR (exhaust gas recirculation), a different system.' } },

@@ -73,7 +73,7 @@ export default {
   quiz: [
     { type: 'mc', q: 'Which series races **production-based** bikes you can buy?', options: ['MotoGP', 'WorldSBK', 'Moto2', 'None'], answer: 1,
       why: 'WorldSBK bikes start as homologated road models. MotoGP bikes are prototypes; Moto2 uses a spec engine in prototype chassis.' },
-    { type: 'num', q: 'How many consecutive WorldSBK titles did Jonathan Rea win with Kawasaki?', answer: 6, tol: 0,
+    { type: 'mc', q: 'How many consecutive WorldSBK titles did Jonathan Rea win with Kawasaki?', options: ['Three', 'Five', 'Six', 'Eight'], answer: 2,
       why: '**Six**, from 2015 to 2020: ZX-10R in 2015–16, ZX-10RR from 2017.' },
     { type: 'order', q: 'Order MotoGP’s four-stroke displacement limits by era.', items: ['990 cc', '800 cc', '1,000 cc', '850 cc'],
       why: '990 cc (2002) → 800 cc (2007) → 1,000 cc (2012) → 850 cc (2027).' },

@@ -42,8 +42,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: '14 m/s (≈31 mph) on a **20 m** radius turn. Ideal lean angle in degrees? (g = 9.81)', answer: 45, tol: 1, unit: '°',
-      hint: 'tan θ = v² ÷ (g·r)', why: '14² = 196, and 9.81 × 20 = 196.2. tan θ ≈ 1.0, so **θ ≈ 45°**, which also means ~1 g sideways.' },
     { type: 'order', q: 'Put a right turn by countersteering in order.', items: ['Press the right handlebar forward', 'Front wheel briefly steers left', 'Contact patches move out from under the bike', 'Bike rolls into a right lean', 'Wheel steers right and the bike turns right'],
       why: 'Steering the tires away from the turn tips the bike toward it; once leaned, the front settles into steering the direction of the turn.' },
     { type: 'mc', q: 'Same curve, speed **doubles**. The value of tan θ…', options: ['Stays the same', 'Doubles', 'Quadruples', 'Halves'], answer: 2,

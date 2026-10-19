@@ -52,8 +52,6 @@ export default {
     { type: 'tap', q: 'Tap the **CAN transceiver**: the chip that turns logic bits into CAN_H/CAN_L voltages.', visual: { type: 'parts', drawing: 'ecu' }, answer: 'can-xcvr',
       why: 'The transceiver sits between the bus wires (via the connector) and the microcontroller’s CAN controller.',
       wrong: { mcu: 'That’s the microcontroller. Its built-in CAN controller makes the bits, but it can’t drive the bus wires directly.', connector: 'The connector carries the wires in; the transceiver is the chip right behind it.' } },
-    { type: 'num', q: 'Two **120 Ω** terminators sit at the ends of a bus. What resistance do you see between CAN_H and CAN_L?', answer: 60, tol: 0, unit: 'Ω',
-      hint: 'Two equal resistors in parallel: R ÷ 2.', why: '120 × 120 ÷ (120 + 120) = **60 Ω**. 120 Ω would mean one terminator is missing.' },
     { type: 'mc', q: 'A noise spike lifts **both** CAN_H and CAN_L by 1 V during a dominant bit. What does the receiver read?', options: ['Recessive, because CAN_L went up', 'Dominant, because the difference is still ≈2 V', 'An undefined value', 'Nothing: the bus shuts down'], answer: 1,
       why: 'The receiver only looks at CAN_H − CAN_L. Noise that hits both wires equally cancels out, which is the whole idea of differential signaling.' },
     { type: 'mc', q: 'Node A sends **recessive** and node B sends **dominant** in the same bit. The bus reads…', options: ['Recessive', 'Dominant', 'Half way', 'An error, always'], answer: 1,

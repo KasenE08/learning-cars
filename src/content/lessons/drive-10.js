@@ -53,8 +53,6 @@ export default {
     { type: 'tap', q: 'Tap the **driveshaft**.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'driveshaft',
       why: 'The driveshaft is the long shaft running front-to-back from the PTU to the rear drive unit.',
       wrong: { axles: 'Those are the halfshafts: short shafts from a differential out to each wheel.' } },
-    { type: 'num', q: 'A single U-joint runs at **20°**. At its slowest point, the output turns at what **percent** of input speed?', answer: 94, tol: 0.3, unit: '%',
-      hint: 'Slowest = input × cos θ.', why: 'cos 20° ≈ 0.940, so the output dips to about **94%** of input speed (and peaks near 106%) twice per turn.' },
     { type: 'mc', q: 'How do you cancel a U-joint’s speed wobble?', options: ['Use a longer shaft', 'Two U-joints with equal angles and the yokes in phase', 'Add more grease', 'Run the shaft slower'], answer: 1,
       why: 'The second joint speeds up exactly where the first slows down, but only if their angles match and their yokes are lined up.' },
     { type: 'mc', q: 'Why do front-drive cars use CV joints at the wheel end?', options: ['They’re cheaper than U-joints', 'Steering angles are big, and CV joints stay smooth at any angle', 'They don’t need grease', 'They make the car lighter'], answer: 1,

@@ -52,8 +52,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A truck has a **GVWR of 6,000 lb** and weighs **4,800 lb** on the scale. What is its payload?', answer: 1200, tol: 0, unit: 'lb',
-      why: 'Payload = GVWR − actual weight = 6,000 − 4,800 = **1,200 lb**, and that includes passengers and tongue weight.' },
     { type: 'mc', q: 'A footnote says “ratings achieved with premium fuel.” On regular 87 you should expect…', options: ['Exactly the same power', 'Slightly less power as the computer retards timing', 'Engine damage', 'More power'], answer: 1,
       why: 'Lower octane = more knock risk, so the knock sensor and computer pull spark advance. The engine is designed for it; it just makes a bit less.',
       wrong: { 2: 'If the manual allows 87 as the minimum, the engine protects itself by retarding timing.' } },

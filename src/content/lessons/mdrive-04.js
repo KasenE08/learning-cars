@@ -45,8 +45,6 @@ export default {
     { type: 'mc', q: 'What does a quickshifter do on an **upshift**?', options: ['Pulls the clutch for you', 'Briefly cuts ignition and/or fuel so the dogs unload', 'Opens the throttle wider', 'Changes the final drive'], answer: 1,
       why: 'No clutch is touched. A short cut drops drive torque to near zero, so the dogs slide out and the next gear drops in.',
       wrong: { 2: 'Opening the throttle is the **downshift** (auto-blip) half, and only when you’re off the gas.' } },
-    { type: 'num', q: 'At **9,000 rpm**, how many crank revolutions happen during a **40 ms** cut?', answer: 6, tol: 0, unit: 'revolutions',
-      hint: 'rpm ÷ 60 = revolutions per second.', why: '9,000 ÷ 60 = 150 rev/s × 0.040 s = **6 revolutions**.' },
     { type: 'mc', q: 'Why does an auto-blip downshift rely on ride-by-wire?', options: ['It needs a heavier clutch', 'The ECU must open the throttle by itself', 'Cables can’t carry a quickshifter signal', 'It doesn’t; any bike can blip'], answer: 1,
       why: 'To blip, the ECU has to open the throttle while your hand has it closed. With ride-by-wire, the throttle is an ECU-driven motor, so that’s simple.' },
   ],

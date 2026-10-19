@@ -62,8 +62,6 @@ export default {
     { type: 'mc', q: 'Why doesn’t a motorcycle need a differential?', options: ['Chains are flexible enough to absorb it', 'Only one wheel is driven, so there’s nothing to split', 'The slipper clutch does the job', 'Bikes never turn sharply enough'], answer: 1,
       why: 'A differential lets two driven wheels on one axle turn at different speeds in a corner. A bike drives a single rear wheel.',
       wrong: { 2: 'A slipper clutch only slips under engine-braking torque. It has nothing to do with cornering speed differences.' } },
-    { type: 'num', q: 'Ninja 500: 377 lb curb, ≈45 hp. Pounds per horsepower (one decimal)?', answer: 8.4, tol: 0.1, unit: 'lb/hp',
-      why: '377 ÷ 45 = **8.4 lb/hp**, vs about 14.8 for the Bronco Sport. Lower is quicker, before you add the rider.' },
     { type: 'tap', q: 'Tap the part that holds the 6-speed gears.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'gearbox',
       why: 'The gearbox sits behind the crank inside the same engine cases (unit construction). Its output shaft carries the front sprocket.',
       wrong: { clutch: 'Close: the clutch is right next to it, under the round cover on the right, and feeds the gearbox input shaft.', engine: 'The cylinders and crank. The gearbox lives in the same cases, just behind the crank.' } },

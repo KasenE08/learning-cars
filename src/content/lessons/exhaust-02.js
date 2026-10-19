@@ -61,7 +61,7 @@ export default {
     { type: 'mc', q: 'Which pollutant does **rhodium** mainly deal with?', options: ['CO', 'HC', 'NOx', 'CO₂'], answer: 2,
       why: 'Rhodium drives the reduction reaction: pulling oxygen off NOx so it leaves as N₂. Platinum and palladium mostly handle oxidation of CO and HC.',
       wrong: { 3: 'CO₂ is what the cat produces. It isn’t treated.' } },
-    { type: 'num', q: 'Stoichiometric air-fuel ratio for gasoline, by mass? (__ : 1)', answer: 14.7, tol: 0.05, unit: ': 1',
+    { type: 'mc', q: 'Stoichiometric air-fuel ratio for gasoline, by mass?', options: ['12.5 : 1', '14.7 : 1', '9.0 : 1', '17.0 : 1'], answer: 1,
       why: '**14.7 kg of air per 1 kg of gasoline** burns all the fuel with no oxygen left over. That’s where a three-way cat works on all three pollutants.' },
     { type: 'mc', q: 'What usually makes a car set **P0420**?', options: ['Upstream sensor reads lean', 'Downstream O2 signal starts mirroring the upstream one', 'Exhaust too loud', 'Turbo overboost'], answer: 1,
       why: 'A healthy cat smooths out oxygen swings. When the downstream sensor looks like the upstream one, the PCM decides the cat’s efficiency is below threshold.' },

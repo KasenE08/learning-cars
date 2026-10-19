@@ -50,9 +50,6 @@ export default {
       facts: ['bronco.tires', 'bronco.clearance'] },
   ],
   quiz: [
-    { type: 'num', q: 'Your standard **225/65R17**: overall diameter in **inches**? (25.4 mm per inch)', answer: 28.5, tol: 0.1, unit: 'in',
-      hint: 'Two sidewalls (width × aspect) plus the rim.',
-      why: '2 × (225 × 0.65) = 292.5 mm. Rim: 17 × 25.4 = 431.8 mm. Total 724.3 mm ÷ 25.4 = **28.5 in**.' },
     { type: 'order', q: 'Put the fields of **235/65R17 104T** in printed order.', items: ['Width (235)', 'Aspect ratio (65)', 'Construction (R)', 'Rim diameter (17)', 'Load index (104)', 'Speed rating (T)'],
       why: 'Width / aspect, construction, rim size, then the service description: load index and speed rating.' },
     { type: 'mc', q: 'In 235/**65**R17, what does 65 mean?', options: ['Sidewall height is 65 mm', 'Sidewall height is 65% of the tread width', 'Max pressure is 65 psi', 'Rated for 65 mph'], answer: 1,

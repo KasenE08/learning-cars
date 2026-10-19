@@ -49,8 +49,6 @@ export default {
     { type: 'mc', q: 'You go from 50 mph to **100 mph**. The power needed to beat air drag becomes…', options: ['2×', '4×', '8×', '16×'], answer: 2,
       why: 'Drag force rises with v² (×4) and power = force × speed (another ×2). Together: v³ = **×8**.',
       wrong: { 1: 'That’s the drag force. Power also multiplies by speed, so ×8.' } },
-    { type: 'num', q: 'A car has **Cd 0.30** and **A 2.2 m²**. What is its CdA in m²?', answer: 0.66, tol: 0.005, unit: 'm²',
-      why: '0.30 × 2.2 = **0.66 m²**. A boxy SUV at Cd 0.40 × 2.8 m² is 1.12 m²: almost twice the drag at the same speed.' },
     { type: 'mc', q: 'What does a rear wing that makes downforce cost you?', options: ['Nothing', 'Extra drag (lower top speed, more fuel)', 'Less grip', 'Engine power'], answer: 1,
       why: 'Turning air downward takes energy. Downforce adds grip in corners but adds drag on the straights.' },
     { type: 'order', q: 'Order these from **least** to **most** aero drag at 70 mph (illustrative CdA).',

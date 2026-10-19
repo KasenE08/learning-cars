@@ -40,8 +40,6 @@ export default {
       facts: ['bronco.rearLock', 'bronco.lockSpeed'] },
   ],
   quiz: [
-    { type: 'num', q: 'Rear axle locked. The right wheel is **in the air**. The diff receives **400 lb-ft**. About how much goes to the **left** wheel?', answer: 400, tol: 0, unit: 'lb-ft',
-      why: 'A locked axle forces both wheels to turn together. The airborne wheel can’t take any torque, so the grounded one gets **all 400 lb-ft**. An open diff would give it almost nothing.' },
     { type: 'mc', q: 'When should you engage a selectable locker?', options: ['On the highway for stability', 'Before a low-speed obstacle on loose or uneven ground', 'Only after you’re stuck', 'In every tight parking-lot turn'], answer: 1,
       why: 'Lock early, at low speed, on loose ground where tires can slip a little in turns. Waiting until a wheel is spinning in a hole often means you’ve already dug in.' },
     { type: 'mc', q: 'Why is a locked axle bad on dry pavement?', options: ['It uses more fuel than AWD', 'The wheels can’t turn at different speeds, so tires scrub and the car pushes straight', 'It disables the brakes', 'It makes the engine overheat'], answer: 1,

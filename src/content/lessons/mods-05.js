@@ -65,8 +65,6 @@ export default {
       options: ['Always: it has more energy', 'Never', 'When the engine has knock control and was holding back timing on lower octane (often turbo engines)', 'Only in carbureted engines'], answer: 2,
       why: 'Octane is knock resistance. It only helps when the ECU can use it to run more spark advance, as Ford’s 2.3 Bronco ratings (275 hp on 87, 300 on premium) show.',
       wrong: { 0: 'Premium has about the same energy as regular. The difference is resistance to knock.' } },
-    { type: 'num', q: 'Drag force goes with speed squared. How many times more drag at **75 mph** than at **60 mph**?', answer: 1.56, tol: 0.02, unit: '×',
-      hint: '(75 ÷ 60)²', why: '(75 ÷ 60)² = 1.25² ≈ **1.56×**. The power needed rises even faster: 1.25³ ≈ 1.95×.' },
     { type: 'mc', q: 'An open cone filter in the engine bay can make **less** power than the stock airbox because…',
       options: ['Cone filters block airflow', 'It breathes hot engine-bay air; the ECU pulls timing for the higher intake temperature', 'It confuses the knock sensor', 'It lowers boost on purpose'], answer: 1,
       why: 'Hotter air is less dense and more knock-prone, so the ECU retards spark. The stock box usually breathes cooler outside air.' },

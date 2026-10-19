@@ -53,8 +53,6 @@ export default {
     { type: 'mc', q: 'Which of these is **JDM** in the strict sense?', options: ['A US-market Acura Integra Type R', 'A Honda Integra Type R sold new in Japan', 'Any Honda', 'A Civic with a Japanese body kit'], answer: 1,
       why: 'JDM means built to be sold new in Japan. The Acura is a US-market car made by a Japanese company: USDM.',
       wrong: { 0: 'Japanese brand, but built for the US market. That’s USDM.', 3: 'That’s the slang meaning (Japanese style), not the strict one.' } },
-    { type: 'num', q: 'An R34 GT-R was built in **March 1999**. Under the NHTSA 25-year rule, in what year does it become eligible?', answer: 2024, tol: 0,
-      hint: 'Manufacture date + 25 years.', why: '1999 + 25 = **2024** (March 2024, if counted by month). EPA’s 21-year exemption had already passed.' },
     { type: 'mc', q: 'What was the **gentlemen’s agreement**?', options: ['A speed limit on Japanese highways', 'Carmakers agreeing to advertise no more than 280 PS (276 hp)', 'A ban on turbochargers', 'A US import quota'], answer: 1,
       why: 'From 1989 to about 2004–05, Japanese makers capped their advertised power at 280 PS to avoid a horsepower war.' },
     { type: 'order', q: 'Put these in order of debut, oldest first.', items: ['R32 Skyline GT-R', 'Honda NSX', 'A80 Supra (US)', 'Honda S2000'],

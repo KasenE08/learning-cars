@@ -52,10 +52,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'Overall ratio in the Bronco’s **8th gear** (0.62) with the **3.81** final drive?', answer: 2.36, tol: 0.01, unit: ':1',
-      why: '0.62 × 3.81 = **2.36:1**. The engine turns 2.36 times per wheel turn.' },
-    { type: 'num', q: 'Roughly what rpm at **70 mph** if you make **35.9 mph per 1,000 rpm**?', answer: 1950, tol: 30, unit: 'rpm',
-      hint: 'rpm = speed ÷ (mph per 1,000) × 1,000.', why: '70 ÷ 35.9 × 1,000 ≈ **1,950 rpm** with the torque converter locked.' },
     { type: 'mc', q: 'Why does 1st gear make so much more pulling force than 8th?',
       options: ['The engine makes more torque in 1st', 'The overall ratio multiplies engine torque by ~17.9 instead of ~2.4', 'The turbo boosts more in 1st', 'The tires grip better at low speed'], answer: 1,
       why: 'The engine’s torque is the same; the gears multiply it. You pay for it with low road speed per rpm.',

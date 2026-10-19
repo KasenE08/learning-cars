@@ -47,8 +47,6 @@ export default {
       facts: ['bronco.rdu'] },
   ],
   quiz: [
-    { type: 'num', q: 'One wheel can hold **50 lb-ft** before spinning. With a **3:1** torque bias ratio, what’s the most torque (lb-ft) the other wheel can get?', answer: 150, tol: 0, unit: 'lb-ft',
-      why: 'TBR × slipping-wheel torque = 3 × 50 = **150 lb-ft**. An open diff (1:1) would give only 50.' },
     { type: 'mc', q: 'One rear wheel is **in the air**. Which diff still sends drive to the wheel on the ground?', options: ['Open diff', 'Torsen (helical gear) with no brake drag', 'Clutch-type LSD with preload', 'None of them'], answer: 2,
       why: 'Preloaded clutch plates drag even with zero torque on the lifted side, so the grounded wheel gets at least the preload torque. A Torsen multiplies zero by its TBR: still zero.',
       wrong: { 1: 'A Torsen’s bias is a multiple of the lifted wheel’s torque, and that’s zero.' } },

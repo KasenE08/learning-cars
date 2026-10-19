@@ -60,8 +60,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'Why did advertised horsepower drop so sharply for **1972**?', options: ['Engines got smaller overnight', 'Ratings switched from gross to SAE net, which counts accessories and full exhaust', 'Turbos were banned', 'Fuel got more octane'], answer: 1,
       why: 'Part of the drop was on paper: SAE net measures the engine as installed. Real cuts (lower compression, emissions gear) came too.' },
-    { type: 'num', q: 'Pontiac expected to sell **5,000** GTOs in 1964; buyers ordered **32,450**. About how many times the forecast is that? (one decimal)', answer: 6.5, tol: 0.1, unit: '×',
-      why: '32,450 ÷ 5,000 ≈ **6.5×**. That surprise is why every rival rushed out its own muscle car.' },
     { type: 'order', q: 'Put these in order, oldest first.', items: ['Ford flathead V8', 'Chevy small-block', 'Pontiac GTO', 'Oil embargo', 'Dodge Challenger Hellcat'],
       why: 'Flathead 1932, small-block 1955, GTO 1964, oil embargo 1973, Hellcat 2015.' },
     { type: 'tap', q: 'From 1975, new US cars needed one part that made unleaded fuel mandatory. Tap it.', visual: { type: 'parts', drawing: 'exhaust' }, answer: 'cat',

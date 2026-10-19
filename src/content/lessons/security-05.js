@@ -69,7 +69,7 @@ export default {
     { type: 'order', q: 'Put coordinated disclosure in order.',
       items: ['Find the issue on a car you’re authorized to test', 'Report it privately through the maker’s disclosure program', 'Maker builds and ships a fix', 'Publish so others can learn'],
       why: 'Owners are protected while the fix is made; then everyone learns from the write-up.' },
-    { type: 'num', q: 'Every how many **years** must the DMCA §1201 exemptions be renewed?', answer: 3, tol: 0, unit: 'years',
+    { type: 'mc', q: 'Every how many years must the DMCA §1201 exemptions be renewed?', options: ['Every year', 'Every 3 years', 'Every 5 years', 'Every 10 years'], answer: 1,
       why: 'The Copyright Office runs a **triennial** rulemaking. The current exemptions took effect Oct 28, 2024 and last until Oct 28, 2027.' },
     { type: 'mc', q: 'What does UN R155 require of a carmaker?',
       options: ['A paid bug bounty', 'A certified cybersecurity management system plus cybersecurity approval of each vehicle type', 'Encryption of every CAN message', 'Removing the OBD port'], answer: 1,

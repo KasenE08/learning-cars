@@ -39,8 +39,6 @@ export default {
   quiz: [
     { type: 'mc', q: 'What changes a CVT’s ratio?', options: ['Sliding gears into mesh', 'Pulley halves moving closer or farther apart', 'A torque converter locking up', 'Swapping belts'], answer: 1,
       why: 'Squeezing a pulley’s cones together pushes the belt to a bigger diameter; spreading them lets it sink. One pulley grows while the other shrinks.' },
-    { type: 'num', q: 'The belt rides at **60 mm** radius on the drive pulley and **150 mm** on the driven pulley. What’s the ratio (x:1)?', answer: 2.5, tol: 0.01, unit: ':1',
-      hint: 'Ratio = driven ÷ drive.', why: '150 ÷ 60 = **2.5:1**. A small drive pulley and a big driven pulley is “low gear.”' },
     { type: 'mc', q: 'Why does a CVT “drone” when you floor it?', options: ['The belt is slipping', 'It holds the engine at one high rpm while speed rises', 'It’s stuck in first gear', 'The torque converter is broken'], answer: 1,
       why: 'Instead of rpm rising and falling through gears, the CVT parks the engine near peak power and just changes ratio. Efficient, but the steady high note sounds odd.' },
     { type: 'order', q: 'Order the power path in a typical CVT car.', items: ['Engine', 'Torque converter (launch device)', 'Drive pulley', 'Steel belt or chain', 'Driven pulley', 'Final drive and wheels'],

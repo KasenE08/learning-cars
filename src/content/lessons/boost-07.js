@@ -46,8 +46,6 @@ export default {
       wrong: { 2: 'Roots blowers are known for strong boost from very low rpm.' } },
     { type: 'mc', q: 'Which supercharger gives the **weakest** low-rpm boost?', options: ['Roots', 'Twin-screw', 'Centrifugal', 'They’re all identical'], answer: 2,
       why: 'A centrifugal impeller’s boost rises steeply with speed, so it’s soft at low rpm and strong near redline, much like a turbo compressor.' },
-    { type: 'num', q: 'Crank pulley **8 in**, blower pulley **3.2 in**. Engine at **5,000 rpm**. Blower rpm?', answer: 12500, tol: 0, unit: 'rpm',
-      hint: 'Ratio = crank ÷ blower pulley.', why: '8 ÷ 3.2 = 2.5. 5,000 × 2.5 = **12,500 rpm**.' },
     { type: 'mc', q: 'Why do most new gas engines use turbos rather than superchargers?', options: ['Turbos have no lag', 'Turbos reuse exhaust energy, so they cost less crank power and fuel', 'Superchargers can’t make boost', 'Turbos don’t heat the air'], answer: 1,
       why: 'A supercharger’s power comes straight off the crank (parasitic loss). A turbo harvests energy that would leave as hot exhaust anyway, which helps fuel economy.',
       wrong: { 0: 'Turbos do have lag. Superchargers are the instant-response option.' } },

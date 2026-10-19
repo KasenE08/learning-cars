@@ -52,8 +52,6 @@ export default {
     { type: 'mc', q: '**0x204** and **0x415** start in the same bit. Which wins?', options: ['0x204', '0x415', 'Neither: both frames are destroyed', 'Whichever module is closer'], answer: 0,
       why: 'Lower ID = higher priority. 0x204 = `010…`, 0x415 = `100…`: on the very first bit 0x204 sends dominant 0 and 0x415 sends recessive 1, so 0x415 drops out.',
       wrong: { 2: 'That’s Ethernet-style collision. CAN arbitration is non-destructive: the winner’s frame is untouched.' } },
-    { type: 'num', q: '**0x07E** vs **0x3B3**: on which bit (counting the first ID bit as 1) does 0x3B3 drop out?', answer: 2, tol: 0, unit: 'bit',
-      hint: 'Write both as 11-bit binary: 000 0111 1110 and 011 1011 0011.', why: 'Bit 1: both 0. Bit 2: 0x07E sends 0, 0x3B3 sends 1 → 0x3B3 reads a dominant 0 and drops out on bit **2**.' },
     { type: 'order', q: 'Rank these IDs from highest to lowest **priority**.', items: ['0x07E', '0x204', '0x3B3', '0x415'],
       why: 'Lower ID wins arbitration: 0x07E < 0x204 < 0x3B3 < 0x415.' },
     { type: 'mc', q: 'A node sends a recessive bit during the ID but reads dominant. What does it do?', options: ['Sends an error frame', 'Stops sending, keeps receiving, and retries when the bus is free', 'Sends louder', 'Goes bus-off'], answer: 1,

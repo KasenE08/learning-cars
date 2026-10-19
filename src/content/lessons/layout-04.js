@@ -52,8 +52,6 @@ export default {
       ] },
   ],
   quiz: [
-    { type: 'num', q: 'A 270° twin’s first firing gap is 270°. What is the second gap, in crank degrees?', answer: 450, tol: 0, unit: '°',
-      why: 'Both cylinders fire once per 720° cycle: 720° − 270° = **450°**. Same rhythm as a 90° V-twin.' },
     { type: 'mc', q: 'Which of your two bikes has the 270° crank?', options: ['Ninja 500', 'RS 457', 'Both', 'Neither'], answer: 1,
       why: 'The RS 457 uses a 270° crank. The Ninja 500 uses a 180° crank. Both are parallel twins with a balance shaft.' },
     { type: 'order', q: 'Order from the **longest** gap between power strokes to the shortest (even-firing versions).', items: ['Single', 'Inline-3', 'Inline-4', 'Inline-6', 'V8'],

@@ -55,8 +55,6 @@ export default {
       why: 'The pump pushes coolant through the jacket, where it picks up heat; the open thermostat lets it into the radiator, which hands the heat to the air.' },
     { type: 'mc', q: 'Why do bike makers specify JASO MA/MA2 oil?', options: ['It’s thicker for the chain', 'The oil also bathes the wet clutch, and friction modifiers in some car oils can make it slip', 'It contains coolant', 'It’s required for ram air'], answer: 1,
       why: 'Engine, gearbox and clutch share one oil. JASO MA limits the friction modifiers that would cut clutch grip.' },
-    { type: 'num', q: 'Ram air at **50 m/s** (≈112 mph), ρ = 1.2 kg/m³. Dynamic pressure in Pa?', answer: 1500, tol: 0, unit: 'Pa',
-      hint: 'q = ½ × ρ × v².', why: '½ × 1.2 × 50² = 0.6 × 2,500 = **1,500 Pa**, about 1.5% of atmospheric pressure. Small, and it only grows with speed squared.' },
     { type: 'tap', q: 'Tap the box that filters and calms the intake air.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'airbox',
       why: 'The airbox sits under the tank, between the intake ducts and the throttle bodies.',
       wrong: { tank: 'That’s the fuel tank. The airbox hides underneath it.', throttle: 'The throttle bodies come right after the airbox; they meter the air, they don’t filter it.' } },

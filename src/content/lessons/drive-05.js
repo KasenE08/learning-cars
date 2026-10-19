@@ -53,8 +53,6 @@ export default {
       facts: ['bronco.transModel', 'bronco.transClutches', 'bronco.gearRatios'] },
   ],
   quiz: [
-    { type: 'num', q: 'Sun **24** teeth, ring **72**. Sun is the input, ring is held, carrier is the output. Ratio (x:1)?', answer: 4, tol: 0.01, unit: ':1',
-      hint: '1 + R/S', why: '1 + 72/24 = 1 + 3 = **4:1**. The carrier turns once for every 4 sun turns.' },
     { type: 'mc', q: 'You hold the **carrier** and drive the sun. The ring…', options: ['Stays still', 'Turns faster, same direction', 'Turns backward: reverse', 'Turns at 1:1'], answer: 2,
       why: 'With the carrier fixed, the planets are just idlers between sun and ring: one mesh in, internal mesh out, and the ring spins the opposite way.' },
     { type: 'mc', q: 'How do you get **direct drive (1:1)** from a planetary set?', options: ['Hold the sun', 'Hold the ring', 'Lock any two members together', 'Release everything'], answer: 2,

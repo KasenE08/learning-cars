@@ -38,8 +38,6 @@ export default {
     { type: 'mc', q: 'Where did the classic WRX/STI rumble really come from?', options: ['The boxer layout fires unevenly', 'Unequal-length exhaust headers', 'The turbo', 'A cross-plane crank'], answer: 1,
       why: 'A flat-4 fires evenly. Unequal-length headers made pulses arrive at the collector off-beat. Equal-length headers on newer engines mostly removed the rumble.',
       wrong: { 0: 'A flat-4 fires every 180°, perfectly evenly.' } },
-    { type: 'num', q: 'A Porsche flat-6 fires evenly. How many degrees between power strokes?', answer: 120, tol: 0, unit: '°',
-      why: '720° ÷ 6 = **120°**, just like an inline-6.' },
     { type: 'order', q: 'Order these from **lowest** to **tallest** engine, typical layouts with the same cylinder count.', items: ['Boxer (flat)', 'V', 'Inline (upright)'],
       why: 'A boxer lies flat; a V stands its banks at an angle (lower than upright); an upright inline is the tallest. Real engines vary, but this is the general trend.' },
   ],

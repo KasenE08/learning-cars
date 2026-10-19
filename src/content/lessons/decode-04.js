@@ -78,10 +78,6 @@ print(to_signed(0x7F, 8))   # 127
       facts: ['bronco.openpilotListing'] },
   ],
   quiz: [
-    { type: 'num', q: 'An **8-bit signed** signal has raw `0xFE` (254). What value is that?', answer: -2, tol: 0,
-      why: '254 ≥ 128, so it’s negative: 254 − 256 = **−2**.' },
-    { type: 'num', q: '`VehYaw_W_Actl` raw = **33,500**. Yaw rate in rad/s? (scale 0.0002, offset −6.5)', answer: 0.2, tol: 0.001, unit: 'rad/s',
-      why: '33,500 × 0.0002 = 6.7; 6.7 − 6.5 = **0.2 rad/s** (about 11.5°/s).' },
     { type: 'mc', q: 'In `SG_ X : 0|8@1- (1,0)`, what does the `-` mean?', options: ['Negative scale', 'Signed (two’s complement)', 'Motorola byte order', 'The signal is unused'], answer: 1,
       why: 'After the byte-order digit, `+` means unsigned and `-` means signed. `@1` is Intel; `@0` would be Motorola.' },
     { type: 'order', q: 'Order the steps to decode a **signed** signal.',

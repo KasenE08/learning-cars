@@ -52,8 +52,6 @@ export default {
     { type: 'mc', q: 'Why does a tune add far more power to a turbo engine than to a naturally aspirated one?',
       options: ['Turbo ECUs are faster computers', 'Boost pressure is set by the ECU, so software can make the engine take in more air', 'NA engines have no spark timing', 'Turbo engines have more cylinders'], answer: 1,
       why: 'An NA engine’s air intake is fixed by displacement, rpm and volumetric efficiency. A turbo engine’s air depends on boost, which the ECU decides.' },
-    { type: 'num', q: 'Vivid’s Bronco Sport went from **186 whp to 222 whp**. What’s the gain in percent?', answer: 19.4, tol: 0.3, unit: '%',
-      hint: '(new − old) ÷ old × 100', why: '(222 − 186) ÷ 186 = 36 ÷ 186 ≈ **19.4%**. Compare that with ≈3% claimed for an intake.' },
     { type: 'mc', q: 'A shop sells an “off-road use only” tune that disables an emissions monitor. On a car you drive on the street, it is…',
       options: ['Legal if you don’t live in California', 'Legal if a shop installs it', 'A defeat device, illegal under the federal Clean Air Act', 'Legal until your next inspection'], answer: 2,
       why: 'The Clean Air Act prohibits making, selling or installing parts that defeat emission controls on road vehicles, in every state. The label doesn’t change what it does.' },

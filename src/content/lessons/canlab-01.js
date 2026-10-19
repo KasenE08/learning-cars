@@ -57,8 +57,6 @@ export default {
     { type: 'order', q: 'Order the `Ignition_Status` states from least to most awake.',
       items: ['Off (1)', 'Accessory (2)', 'Run (4)', 'Start (8)'],
       why: 'Off: bus asleep. Accessory: body modules only. Run: everything. Start: cranking, a brief state that drops back to Run once the engine fires.' },
-    { type: 'num', q: 'The DBC says `0x217` is sent every **10 ms**. How many frames of it per second?', answer: 100, tol: 0, unit: 'per second',
-      why: '1,000 ms ÷ 10 ms = **100** frames per second, from that one ID alone.' },
     { type: 'tap', q: 'When a module’s bus goes to sleep, which chip drops into a low-power standby but can still notice a wake-up on the wires? Tap it.',
       visual: { type: 'parts', drawing: 'ecu' }, answer: 'can-xcvr',
       why: 'The CAN transceiver sits between the wires and the processor. In standby it draws very little current and wakes the module on bus activity (or, with partial networking, only on chosen frames).',
