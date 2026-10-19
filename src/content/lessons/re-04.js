@@ -124,7 +124,7 @@ for key in diff(idle, brake):
       visual: { type: 'bitfield', signal: 'BpedDrvAppl_D_Actl', data: '2000000000000000' },
       body: [
         '**0x165 byte 0, bits 5–4** = `BpedDrvAppl_D_Actl`, a 2-bit state: **1 = Driver_Not_Braking, 2 = Driver_Braking**. 0 and 3 are “Not_Allowed”.',
-        'Why not just 0/1? A wire stuck low reads 0, stuck high reads 3: **both are invalid**, so a fault can’t pass for a real “not braking”.',
+        'Why not just 0/1? A likely reason: a field stuck all-low reads 0 and stuck all-high reads 3, and **both are invalid**, so a fault can’t pass for a real “not braking”.',
         '**0x3C3 byte 1, bit 0** = `StopLghtOn_B_Stat`: the brake lamps are lit. Driver input vs lamp output again, like the turn signal.',
         'Signal names and value tables: community DBC (openpilot), not Ford. The captures are simulated.',
       ] },
