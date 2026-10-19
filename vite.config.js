@@ -43,6 +43,7 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         navigateFallback: `${BASE}index.html`,
         cleanupOutdatedCaches: true,
+        clientsClaim: true, // first install controls the page right away, so Pyodide gets cached on the first run
       },
     }),
   ],

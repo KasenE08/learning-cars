@@ -11,9 +11,28 @@ const setState = (s, extra) => { state = s; listeners.forEach((fn) => fn(s, extr
 export const pyState = () => state;
 export function onPyState(fn) { listeners.add(fn); return () => listeners.delete(fn); }
 
+/** On a first visit the service worker may still be taking control. A worker created before that
+ *  bypasses it, and Pyodide wouldn't be cached for offline use, so wait briefly for control. */
+async function swReady() {
+  const sw = navigator.serviceWorker;
+  if (!import.meta.env.PROD || !sw || sw.controller) return;
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  await Promise.race([sw.ready, wait(6000)]);
+  if (!sw.controller) await Promise.race([new Promise((r) => sw.addEventListener('controllerchange', r, { once: true })), wait(2000)]);
+}
+
+let spawning = null;
 function spawn() {
-  worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
   setState('loading');
+  spawning = swReady().then(() => {
+    worker = new Worker(new URL('./worker.js', import.meta.url), { type: 'module' });
+    attach();
+    worker.postMessage({ type: 'boot', base: BASE });
+  });
+  return spawning;
+}
+
+function attach() {
   worker.onmessage = (e) => {
     const m = e.data;
     if (m.type === 'ready') { setState('ready', m.version); return; }
@@ -25,11 +44,10 @@ function spawn() {
     else if (m.type === 'result') { pending.delete(m.id); p.done(m); }
   };
   worker.onerror = () => setState('error', 'Python worker crashed.');
-  worker.postMessage({ type: 'boot', base: BASE });
 }
 
 /** Start downloading Python early (e.g. when an exercise scrolls into view). */
-export function warmUp() { if (!worker) spawn(); }
+export function warmUp() { if (!worker && !spawning) spawn(); }
 
 async function resolveFiles(files = {}) {
   const out = {};
@@ -46,7 +64,8 @@ async function resolveFiles(files = {}) {
  * { ok, ran, error, tests, timeout?, bootFailed? }.
  */
 export async function runPython({ code, setup, files, tests }, { onOut, timeoutMs = 8000 } = {}) {
-  if (!worker) spawn();
+  if (!worker && !spawning) spawn();
+  await spawning;
   const exercise = { code, setup, tests, files: await resolveFiles(files) };
   const id = ++seq;
   return new Promise((resolve) => {
@@ -58,6 +77,7 @@ export async function runPython({ code, setup, files, tests }, { onOut, timeoutM
           pending.delete(id);
           worker.terminate();
           worker = null;
+          spawning = null;
           setState('idle');
           resolve({ ok: false, timeout: true, tests: [] });
         }, timeoutMs);

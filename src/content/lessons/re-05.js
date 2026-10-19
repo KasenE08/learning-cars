@@ -6,7 +6,8 @@ const SETUP = `def parse_line(line):
     id_hex, data_hex = frame.split("#")
     t = float(ts.strip("()"))
     cid = int(id_hex, 16)
-    return t, cid, bytes.fromhex(data_hex)
+    data = bytes.fromhex(data_hex)
+    return t, cid, data
 
 frames = [parse_line(l)
           for l in open("pedal.log")]
@@ -128,7 +129,7 @@ for t, d in pedal[::25]:
       why: 'Pressing the pedal while parked revs the engine, so rpm moves too. The pedal signal sits flat at 25/40/15%; rpm ramps and settles. Correlated is not the same as identical.' },
     { type: 'mc', q: 'What do rolling counters and checksums protect against?',
       options: ['Attackers forging frames', 'Stale, repeated or corrupted frames', 'Eavesdropping', 'Bus overload'], answer: 1,
-      why: 'Anyone who knows the formula (it’s in public code) can compute a valid checksum. They’re integrity checks against faults, not security. Authenticated messages (SecOC) are the security answer.' },
+      why: 'Anyone who knows the formula (it’s in public code) can compute a valid checksum. They’re integrity checks against faults, not security. Authenticated messages ([[secoc|SecOC]]) are the security answer.' },
   ],
   cards: [
     { id: 'four', front: 'Four kinds of fields in a periodic message?', back: 'Constants/quality flags, rolling counter, checksum, and the signal(s).' },

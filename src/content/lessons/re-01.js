@@ -38,9 +38,9 @@ export default {
     { tag: 'law', title: 'The rules you play by',
       body: [
         '**Your own car only.** Never connect to someone else’s car or a shared fleet without written permission.',
-        '**Read-only.** Even “just listening” isn’t silent: a normal CAN controller sends an ACK bit for every frame it hears. [[listen-only-mode]] keeps the adapter fully passive.',
+        '**Read-only.** Even “just listening” isn’t silent: a normal CAN controller sends an [[ack-slot|ACK bit]] for every frame it hears. [[listen-only-mode]] keeps the adapter fully passive.',
         '**Never transmit on a car that’s moving.** A stray frame can confuse modules that control brakes, steering or the engine.',
-        'US copyright law (DMCA §1201) has a vehicle repair/modification exemption, but it doesn’t make breaking EPA or safety rules legal. The Security unit covers the details.',
+        'US copyright law ([[dmca-1201|DMCA §1201]]) has a vehicle repair/modification exemption, but it doesn’t make breaking EPA or safety rules legal. The Security unit covers the details.',
         'This app’s real-car link (Phase 7) will be **read-only**: it will never send a write or flash command.',
       ],
       facts: ['law.dmcaVehicle'] },

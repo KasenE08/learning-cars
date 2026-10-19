@@ -1,7 +1,7 @@
 // Glossary for units `re` (Reverse Engineering) and `tune` (ECU Tuning).
 // Reuses: ecu, ecu-tune, can-bus, signal, dbc-file, candump, checksum, rolling-counter, quality-flag, gateway,
 // readiness-monitor, knock, knock-sensor, timing-retard, closed-loop, fuel-trim, octane, stage-tune, defeat-device,
-// carb-eo, magnuson-moss, lspi, twin-scroll, wastegate, pwm.
+// carb-eo, magnuson-moss, lspi, twin-scroll, wastegate, pwm, and from can.js bus-load, can-transceiver, uds, security-access.
 export default [
   // ---------- Reverse engineering ----------
   { id: 'reverse-engineering', term: 'Reverse engineering', aka: ['RE'], lessons: ['re-01'],
@@ -28,8 +28,6 @@ export default [
     def: 'A CAN message sent on a fixed timer (e.g. every 20 ms) whether or not its values changed, so receivers can detect a silent sender.' },
   { id: 'event-message', term: 'Event message', aka: ['On-change message', 'Event-driven message'], lessons: ['re-02'],
     def: 'A message sent only when something happens or is requested (e.g. a diagnostic reply), so it has no steady rate.' },
-  { id: 'bus-load', term: 'Bus load', aka: ['Bus utilization'], lessons: ['re-02'],
-    def: 'The share of a bus’s capacity in use: bits sent per second ÷ bit rate. A full 8-byte standard CAN frame is about 111–135 bits.' },
   { id: 'diffing', term: 'Diffing captures', aka: ['Capture diff', 'Differential analysis'], lessons: ['re-04'],
     def: 'Comparing a baseline capture with an action capture to list the bytes (and bits) that change only when you do the action.' },
   { id: 'correlated-signal', term: 'Correlated signal', lessons: ['re-05'],

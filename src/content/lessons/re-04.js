@@ -6,7 +6,8 @@ const SETUP = `def parse_line(line):
     id_hex, data_hex = frame.split("#")
     t = float(ts.strip("()"))
     cid = int(id_hex, 16)
-    return t, cid, bytes.fromhex(data_hex)
+    data = bytes.fromhex(data_hex)
+    return t, cid, data
 
 def byte_values(path):
     """{(can_id, byte_index): set of
@@ -15,8 +16,9 @@ def byte_values(path):
     for line in open(path):
         t, cid, data = parse_line(line)
         for i, b in enumerate(data):
-            vals.setdefault((cid, i), set())
-            vals[(cid, i)].add(b)
+            key = (cid, i)
+            vals.setdefault(key, set())
+            vals[key].add(b)
     return vals
 
 idle = byte_values("idle.log")

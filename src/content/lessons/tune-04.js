@@ -16,7 +16,7 @@ export default {
     { tag: 'see', title: 'The diagnostic doorway', visualFirst: true,
       visual: { type: 'uds', highlight: '34' },
       body: [
-        'Over the OBD port, flashing uses **UDS** diagnostic services (ISO 14229). Conceptually: switch to a **programming session** (0x10), prove you’re allowed (**security access**, 0x27), then **download** (0x34 request, 0x36 transfer blocks, 0x37 finish), with **routines** (0x31) for jobs like erase and check.',
+        'Over the OBD port, flashing uses [[uds|UDS]] diagnostic services (ISO 14229). Conceptually: switch to a **programming session** (0x10), prove you’re allowed ([[security-access|security access]], 0x27), then **download** (0x34 request, 0x36 transfer blocks, 0x37 finish), with **routines** (0x31) for jobs like erase and check.',
         'Those services **write** to the car. This app’s read-only mode will never send them; it reads with services like 0x22 and OBD PIDs only.',
         'No procedures here: the point is to know what the doorway is and why it’s guarded.',
       ] },
@@ -24,7 +24,7 @@ export default {
       body: [
         '[[bench-flash|Bench flashing]]: the ECU is removed and powered on a desk, and a tool talks to it through its connector or debug/boot pins instead of through the car.',
         'Used to recover a unit a failed flash left unresponsive, or for ECUs that won’t accept a tune over OBD.',
-        'Tool makers report Bosch tightened its MG1/MD1 security around mid-2020, closing older bench-mode routes. Locking this door is exactly what the **HSM** (security module) and secure boot are for.',
+        'Tool makers report Bosch tightened its MG1/MD1 security around mid-2020, closing older bench-mode routes. Locking this door is exactly what the **[[hsm|HSM]]** (security module) and [[secure-boot|secure boot]] are for.',
       ] },
     { tag: 'how', title: 'Handheld tuners',
       body: [

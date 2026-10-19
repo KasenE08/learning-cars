@@ -6,7 +6,8 @@ const PARSE = `def parse_line(line):
     id_hex, data_hex = frame.split("#")
     t = float(ts.strip("()"))
     cid = int(id_hex, 16)
-    return t, cid, bytes.fromhex(data_hex)
+    data = bytes.fromhex(data_hex)
+    return t, cid, data
 `;
 
 export default {
@@ -33,7 +34,7 @@ export default {
     { tag: 'math', title: 'How busy is the bus?',
       body: [
         '[[bus-load]] = bits on the wire per second ÷ bit rate.',
-        'One classic frame with an 11-bit ID and 8 data bytes is **111 bits** (108 + 3-bit gap between frames) before stuff bits, up to ≈135 with them.',
+        'One classic frame with an 11-bit ID and 8 data bytes is **111 bits** (108 + 3-bit gap between frames) before [[bit-stuffing|stuff bits]], up to ≈135 with them.',
         'The simulated drive: **9,452 frames in 30 s** ≈ 315 frames/s × ≈111–135 bits ≈ 35–43 kbit/s. On a 500 kbit/s bus that’s about **7–9%**.',
         'A real car carries many more IDs than our 10, so real loads are far higher. Designers keep headroom so high-priority frames never wait too long.',
       ] },
@@ -84,7 +85,8 @@ for line in open("drive.log"):
     t, can_id, data = parse_line(line)
     last_t = t
     # tally so far (0 if new) + 1
-    counts[can_id] = counts.get(can_id, 0) + 1
+    n = counts.get(can_id, 0)
+    counts[can_id] = n + 1
 
 rates = {}
 for can_id, n in counts.items():

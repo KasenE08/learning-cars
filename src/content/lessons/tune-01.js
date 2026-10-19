@@ -18,14 +18,14 @@ export default {
         '**[[adc]]**: most sensors send a voltage (often in a 0–5 V range): MAP, throttle position, coolant [[thermistor]]. The ADC turns each into a number the code can use.',
         '**Timing inputs**: crank and cam position sensors send pulse trains; dedicated timer hardware measures them to the fraction of a degree, because spark and injection are scheduled by crank angle.',
         '**Knock input**: the piezo [[knock-sensor]] signal is filtered and only listened to in a crank-angle window after each cylinder fires. Knock rings at several kHz; one sensor maker quotes a typical window of **6–12 kHz**, varying by engine.',
-        '**Network**: the **CAN transceiver** chip converts the controller’s logic-level bits to and from the CAN_H / CAN_L wire voltages.',
+        '**Network**: the [[can-transceiver|CAN transceiver]] chip converts the controller’s logic-level bits to and from the CAN_H / CAN_L wire voltages.',
       ] },
     { tag: 'how', title: 'The brain and its memories',
       body: [
         '**[[mcu]]**: a 32-bit automotive microcontroller, often multi-core, running a real-time OS. Fuel and spark for every cylinder every cycle: at 6,000 rpm a 4-cylinder fires 200 times a second.',
         '**[[flash-memory]]**: the program **and** the [[calibration]] (all the tables and limits). This is what a tune rewrites.',
         '**RAM**: live values (rpm, load, trims), gone at power-off. **[[eeprom]]** (or flash pretending to be one): small learned data kept across restarts, like adaptive fuel and knock values.',
-        '**HSM** (hardware security module): a walled-off core that holds keys and does crypto. Chipmaker Infineon lists immobilizer, tuning protection and secure on-board communication as its jobs.',
+        '**[[hsm|HSM]]** (hardware security module): a walled-off core that holds keys and does crypto. Chipmaker Infineon lists immobilizer, tuning protection and secure on-board communication as its jobs.',
       ] },
     { tag: 'how', title: 'Outputs: the muscle',
       body: [
