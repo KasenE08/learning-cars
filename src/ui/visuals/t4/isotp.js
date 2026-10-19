@@ -32,7 +32,7 @@ export function mount(host) {
     <p class="itp__note"></p>
     <div class="bf__line"><small>reassembled</small><span class="mono itp__buf"></span></div>
     <div class="bf__line"><small>as text</small><span class="mono itp__txt"></span></div>
-    <div class="cks__bar"><button type="button" class="btn btn--primary ex__small" data-next>Next frame</button><button type="button" class="btn btn--ghost ex__small" data-reset>Restart</button></div>
+    <div class="cks__bar"><button type="button" class="btn btn--primary ex__small" data-fnext>Next frame</button><button type="button" class="btn btn--ghost ex__small" data-reset>Restart</button></div>
     <p class="vis__note">A made-up VIN with a valid check digit. A CAN frame holds only 8 bytes, so ISO-TP splits longer messages: the first byte of each frame (the PCI) says what kind of frame it is.</p>
   </figure>`);
   host.append(wrap);
@@ -46,9 +46,9 @@ export function mount(host) {
     wrap.querySelector('.itp__buf').textContent = got.length ? got.map(h2).join(' ') : '–';
     const vin = got.slice(3).map((c) => String.fromCharCode(c)).join('');
     wrap.querySelector('.itp__txt').innerHTML = got.length > 3 ? `49 02 01 = reply to 09 02, 1 item · VIN: <b>${vin}</b>${vin.length === 17 ? ' ✓ 17 characters' : '…'}` : '–';
-    wrap.querySelector('[data-next]').disabled = S.k >= list.length - 1;
+    wrap.querySelector('[data-fnext]').disabled = S.k >= list.length - 1;
   }
-  wrap.querySelector('[data-next]').onclick = () => { if (S.k < list.length - 1) { S.k++; draw(); } };
+  wrap.querySelector('[data-fnext]').onclick = () => { if (S.k < list.length - 1) { S.k++; draw(); } };
   wrap.querySelector('[data-reset]').onclick = () => { S.k = 0; draw(); };
   draw();
   return { destroy() {} };
