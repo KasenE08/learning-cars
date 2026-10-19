@@ -48,7 +48,7 @@ export default {
     { tag: 'bronco', title: 'Your Bronco Sport is a network',
       body: [
         'In the open-source openpilot project’s Ford [[dbc-file|DBC]] (community reverse-engineered, **not from Ford**), message **0x415** `BrakeSysFeatures` comes from the `ABS_ESC` module and carries vehicle speed, `Veh_V_ActlBrk`.',
-        'The same file lists about ten modules as receivers of that one signal, including the engine computer (`PCM`), steering (`PSCM`), camera (`IPMA_ADAS`), AWD (`TCCM`) and the gateway (`GWM`).',
+        'The same file (it covers many Ford and Lincoln models) lists about ten modules as receivers of that one signal, including the engine computer (`PCM`), steering (`PSCM`), camera (`IPMA_ADAS`), AWD (`TCCM`) and the gateway (`GWM`).',
         'One frame on the wire, many listeners. That’s the whole point of CAN.',
         '~~Which buses reach your OBD port is a separate question (a gateway sits in between). See “How Ford organizes its networks”.~~',
       ],

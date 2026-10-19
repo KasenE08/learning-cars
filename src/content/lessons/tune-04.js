@@ -1,0 +1,68 @@
+// Flashing & tuning tools
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A phone update you can’t interrupt',
+      body: [
+        'A phone OS update warns: “keep it plugged in, don’t turn it off”. Lose power halfway and it may not boot.',
+        'Phones survive that thanks to a tiny **recovery program** that never gets overwritten.',
+        '[[flashing|Flashing]] an ECU is the same job with the same risk, and the same safety net: the [[bootloader]].',
+      ] },
+    { tag: 'how', title: 'What flashing means',
+      body: [
+        'Flashing = erasing and rewriting the ECU’s [[flash-memory]]: the calibration, sometimes the whole program.',
+        'Dealers do it all the time for software updates and recalls, with Ford’s own diagnostic software. Tuners use the same doorway.',
+        'The application can’t safely rewrite itself while running the engine, so the **bootloader** (a small protected program) takes over during programming, checks the new image and only then lets it run.',
+      ] },
+    { tag: 'see', title: 'The diagnostic doorway', visualFirst: true,
+      visual: { type: 'uds', highlight: '34' },
+      body: [
+        'Over the OBD port, flashing uses **UDS** diagnostic services (ISO 14229). Conceptually: switch to a **programming session** (0x10), prove you’re allowed (**security access**, 0x27), then **download** (0x34 request, 0x36 transfer blocks, 0x37 finish), with **routines** (0x31) for jobs like erase and check.',
+        'Those services **write** to the car. This app’s read-only mode will never send them; it reads with services like 0x22 and OBD PIDs only.',
+        'No procedures here: the point is to know what the doorway is and why it’s guarded.',
+      ] },
+    { tag: 'how', title: 'Bench and boot mode',
+      body: [
+        '[[bench-flash|Bench flashing]]: the ECU is removed and powered on a desk, and a tool talks to it through its connector or debug/boot pins instead of through the car.',
+        'Used to recover a unit a failed flash left unresponsive, or for ECUs that won’t accept a tune over OBD.',
+        'Tool makers report Bosch tightened its MG1/MD1 security around mid-2020, closing older bench-mode routes. Locking this door is exactly what the **HSM** (security module) and secure boot are for.',
+      ] },
+    { tag: 'how', title: 'Handheld tuners',
+      body: [
+        'A [[handheld-tuner]] plugs into the OBD port, saves the stock calibration, writes a tune and doubles as a gauge and [[datalog|logger]].',
+        '**COBB Accessport**: “married” to one car at a time; an Uninstall option writes stock software back; logging, live gauges, read/clear codes. For the 2.0 Bronco Sport COBB lists CARB EO numbers.',
+        '**SCT** (e.g. the X4) is a Ford-focused handheld: preloaded tunes on some models, custom tunes loaded by SCT dealers.',
+        '“Back to stock” doesn’t mean invisible: dealers can often still tell a reflash happened (see [[ecu-tune|Tunes]]).',
+      ],
+      facts: ['bronco.cobbEo'] },
+    { tag: 'safety', title: 'How a flash goes wrong',
+      body: [
+        '**Power sag**: the battery dips mid-write (fans, lights, a weak battery) → a half-written image → no start. Tuning guides insist on a stable supply for this reason.',
+        '**Interrupted link**: cable bumped, laptop sleeps, phone app crashes.',
+        '**Wrong file**: a calibration for different hardware or a different software version. COBB warns that installing over anything but stock or COBB software may cause ECU/TCU failure.',
+        'Best case the bootloader accepts a retry; worst case the unit needs bench recovery or replacement. The car is undrivable either way.',
+        'This is why **this app will never write to a car**. Reading can’t brick anything.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What is the **bootloader**’s job during flashing?',
+      options: ['It makes the engine run richer', 'A small protected program that receives, checks and installs the new image', 'It encrypts CAN traffic', 'It’s the tuner’s laptop software'], answer: 1,
+      why: 'The engine program can’t rewrite itself while running, so the bootloader takes over, accepts the new image, verifies it and hands control back. It’s the part that should survive a failed flash.' },
+    { type: 'mc', q: 'Which of these UDS services only **reads**?',
+      options: ['0x34 RequestDownload', '0x36 TransferData', '0x22 ReadDataByIdentifier', '0x2E WriteDataByIdentifier'], answer: 2,
+      why: '0x22 reads a data value (like the VIN). 0x34/0x36 move a new image into the ECU and 0x2E writes a value: all three change the car.',
+      wrong: { 3: '“Write” is in the name: 0x2E changes a stored value.' } },
+    { type: 'mc', q: 'Why does battery voltage matter so much during a flash?',
+      options: ['Low voltage makes the flash faster', 'A dip mid-write can leave a half-written image the ECU can’t run', 'It doesn’t matter', 'High voltage is needed to unlock security'], answer: 1,
+      why: 'Erasing and writing flash takes time. If the ECU resets partway, the program may be incomplete or corrupt, and the car won’t start until it’s recovered.' },
+    { type: 'mc', q: 'What does **bench flashing** mean?',
+      options: ['Flashing at a dealer', 'Programming an ECU removed from the car and powered on a desk', 'Using a dyno', 'Flashing over Wi-Fi'], answer: 1,
+      why: 'On the bench a tool talks to the unit directly through its connector or boot/debug pins. It’s used for recovery and for units locked against OBD flashing.' },
+  ],
+  cards: [
+    { id: 'flash', front: 'What is flashing?', back: 'Erasing and rewriting an ECU’s flash memory (calibration and/or program).' },
+    { id: 'boot', front: 'What does the bootloader do?', back: 'Takes over during programming, receives and verifies the new image, and survives a failed flash.' },
+    { id: 'uds', front: 'UDS services involved in flashing (concept)?', back: 'Session 0x10, security access 0x27, download 0x34/0x36/0x37, routines 0x31. All change the car; the app never sends them.' },
+    { id: 'bench', front: 'Bench / boot-mode flashing?', back: 'ECU out of the car, programmed directly through its connector or boot pins: recovery or locked units.' },
+    { id: 'brick', front: 'Three ways a flash fails?', back: 'Power sag, interrupted link, wrong file for the hardware/software.' },
+  ],
+};

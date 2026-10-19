@@ -1,0 +1,67 @@
+// How tuners modify maps
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A cookbook with no index',
+      body: [
+        'Imagine a thick cookbook printed as one long block of numbers: no titles, no page numbers, no index.',
+        'Before you can change a recipe you need the **index**: “page 412, a 16 × 16 grid, grams of flour”. Then change it carefully, and fix the page’s **seal** so the kitchen doesn’t reject it.',
+        'That’s ECU tuning: the [[calibration]] is the cookbook, a **definition** is the index, and a [[checksum]] is the seal.',
+      ] },
+    { tag: 'how', title: 'Binary, definitions, tables',
+      body: [
+        'Read out of [[flash-memory]], a calibration is just bytes. Nothing in it says “this is the boost table”.',
+        'A [[map-definition]] says where each table lives, its size, its axes and its scaling, much like a [[dbc-file]] does for CAN signals.',
+        'Carmakers’ engineers work from their own description files (the ASAM “A2L” standard). Tuners usually don’t have those, so definitions are often **reverse-engineered**: the same hunt you did in the RE unit, but in memory instead of on a bus.',
+        'Commercial tuning tools sell their definitions as part of the product.',
+      ] },
+    { tag: 'see', title: 'Change a cell, see the trade-off', visualFirst: true,
+      visual: { type: 'ecumap', map: 'fuel', editable: true },
+      body: [
+        'Edit a fuel cell: leaner gives a little more power and efficiency but hotter exhaust; richer runs cooler and wastes fuel.',
+        'Every cell is a compromise the factory picked for **all** conditions, all fuels and 150,000 miles. **Illustrative numbers**.',
+        'Which tables a power tune touches (boost, spark, fuel, torque limits) is covered in [[ecu-tune|Tunes]]; here the question is *how*.',
+      ] },
+    { tag: 'how', title: 'Seals: checksums and signatures', visualFirst: true,
+      visual: { type: 'checksum', mode: 'ford' },
+      body: [
+        'Same idea as a CAN frame’s checksum, scaled up: the ECU checks its calibration against stored [[checksum|checksums]] and won’t trust a block that doesn’t match. Change one byte without updating the seal and the ECU can reject it.',
+        'So tuning tools **recompute checksums** after edits. Newer ECUs go further: they check a cryptographic **signature** at boot (secure boot), and only the maker’s key can make a valid one.',
+        'That’s why newer ECUs are much harder to tune, and why tool makers advertise “unlocks”. It’s a real security arms race; the Security unit looks at it from the defender’s side.',
+        'Over OBD the car also reports a **[[cal-id-cvn|calibration ID and CVN]]**, a fingerprint of its software. California’s Smog Check uses it to catch unapproved tunes.',
+      ],
+      facts: ['law.smogSoftware'] },
+    { tag: 'how', title: 'Logs: the tuner’s feedback loop',
+      body: [
+        'A tune is checked with a [[datalog]]: record rpm, load, boost actual vs target, spark, **knock retard**, fuel trims, lambda.',
+        'Knock retard in the log is the alarm: the engine is fighting the timing you asked for.',
+        'Change one table → flash → log the same pull → compare. It’s the RE loop again: hypothesis, test, confirm.',
+        '**Off-the-shelf (OTS)** tunes are one file for every car of a model. A **custom tune** is adjusted from logs of *your* car.',
+      ] },
+    { tag: 'why', title: 'Octane and “stages”',
+      body: [
+        '[[octane|Octane]] is knock resistance, not energy. Higher octane lets the engine keep more spark (and boost) before knock, so tunes come in **91 and 93 versions**.',
+        'Fill a 93 tune with 87 and [[knock-control]] has to pull lots of timing, if it can keep up. That’s the scenario that hurts engines.',
+        '“Stage 1 / 2 / 3” is **marketing**: no standard, each tuner defines its own ([[stage-tune]]). Ask what hardware and fuel the number assumes.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What does a tuning **definition** do?',
+      options: ['Encrypts the calibration', 'Says where each table is in the binary, its size, axes and scaling', 'Adds horsepower by itself', 'Replaces the bootloader'], answer: 1,
+      why: 'Without a definition the calibration is just bytes. The definition is the map of the memory, just as a DBC is the map of a CAN message.' },
+    { type: 'mc', q: 'You change one byte of a calibration and don’t update anything else. What might happen?',
+      options: ['Nothing; ECUs don’t check', 'The checksum no longer matches and the ECU can reject it', 'The ECU fixes it automatically', 'Only the radio is affected'], answer: 1,
+      why: 'ECUs check checksums (and on newer units, signatures) over their memory. A mismatch means the block isn’t trusted; tools recompute checksums for exactly this reason.' },
+    { type: 'num', q: 'A tune adds **+2°** of spark in a cell. On 87 octane, knock control pulls **3°** there. Net change vs stock, in degrees?', answer: -1, tol: 0, unit: '°',
+      why: '+2 − 3 = **−1°**: on the wrong fuel the tune ends up *less* advanced than stock there, and it got there by knocking first.' },
+    { type: 'order', q: 'Put a log-based tuning loop in order.',
+      items: ['Datalog a run on the current tune', 'Compare actual vs target (boost, spark, knock retard)', 'Change one table', 'Write the new calibration', 'Log the same run again'],
+      why: 'Measure, compare, change one thing, apply, measure again: the hypothesis-test loop from the RE unit, applied to tables.' },
+  ],
+  cards: [
+    { id: 'def', front: 'Calibration vs definition?', back: 'Calibration = the bytes (tables, limits) in flash. Definition = where each table is, size, axes, scaling.' },
+    { id: 'a2l', front: 'What’s an A2L file?', back: 'The ASAM standard description of an ECU’s tables that carmakers’ engineers use. Tuners usually don’t have it.' },
+    { id: 'seal', front: 'Why do tuning tools “correct checksums”?', back: 'The ECU checks its memory; a changed block with a stale checksum can be rejected.' },
+    { id: 'cvn', front: 'CAL ID and CVN?', back: 'The software ID and fingerprint an ECU reports over OBD. California Smog Check uses them to catch modified software.' },
+    { id: 'octane', front: 'Why are tunes octane-specific?', back: 'Higher octane resists knock, so the tune can keep more spark/boost. Wrong fuel = lots of knock retard.' },
+  ],
+};

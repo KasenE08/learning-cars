@@ -7,7 +7,7 @@ const RATES = {
   125000: { tq: 16, prop: 7, ps1: 6, ps2: 2, len: '≈ 500 m' },
   250000: { tq: 16, prop: 7, ps1: 6, ps2: 2, len: '≈ 250 m' },
   500000: { tq: 16, prop: 7, ps1: 6, ps2: 2, len: '≈ 100 m' },
-  1000000: { tq: 8, prop: 3, ps1: 3, ps2: 1, len: '≈ 40 m' },
+  1000000: { tq: 8, prop: 3, ps1: 3, ps2: 1, len: '≈ 25–40 m' },
 };
 
 export function mount(host, spec = {}) {

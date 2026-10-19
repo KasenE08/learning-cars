@@ -43,7 +43,7 @@ export default {
       ] },
     { tag: 'why', title: 'What priority does (and doesn’t) buy',
       body: [
-        'A high-priority frame waits at most for the frame already on the wire (≈ 270 µs at 500 kbit/s), then wins. Its delay is predictable.',
+        'The highest-priority frame normally waits at most for the frame already on the wire (≈ 270 µs at 500 kbit/s), then wins. Its delay is predictable.',
         'A low-priority frame can be delayed again and again on a busy bus. Designers keep bus load well below 100% so everyone gets through.',
         'A misbehaving node flooding ID 0x000 would win every arbitration and starve the bus. That’s a known weakness of plain CAN (more in the security unit).',
       ] },
