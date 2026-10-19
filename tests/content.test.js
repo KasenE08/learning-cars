@@ -7,7 +7,8 @@ import { grade } from '../src/core/quiz.js';
 
 const TAGS = ['metaphor', 'how', 'see', 'math', 'bronco', 'bikes', 'key', 'why'];
 const VISUALS = ['cylinder', 'parts', 'displacement', 'crank', 'valvetrain', 'timing', 'compression', 'exploded', 'awd',
-  'layout', 'diffturn', 'turbo', 'clutchengage', 'gearshift', 'planetary', 'torqueconv', 'dyno', 'gearing', 'suspension', 'tire', 'circuit', 'aero'];
+  'layout', 'diffturn', 'turbo', 'clutchengage', 'gearshift', 'planetary', 'torqueconv', 'dyno', 'gearing', 'suspension', 'tire', 'circuit', 'aero',
+  'lean', 'raketrail', 'slipper', 'quickshift', 'traction', 'timeline', 'compare', 'checklist'];
 const terms = new Set(glossary.map((g) => g.id));
 const files = readdirSync('src/content/lessons').filter((f) => f.endsWith('.js'));
 

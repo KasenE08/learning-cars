@@ -72,19 +72,19 @@ export const units = [
 
   // ---------------- Track 3: Car culture ----------------
   { id: 'scenes', track: 'culture', title: 'Scenes & Styles', phase: 4, lessons: [
-    L('JDM'), L('Euro'), L('American muscle'), L('Tuner culture'), L('Off-road & overland'),
+    L('JDM'), L('Euro'), L('American muscle'), L('Tuner culture'), L('Off-road & overland'), L('Sport bike culture', 6),
   ] },
   { id: 'motorsport', track: 'culture', title: 'Motorsport Basics', phase: 4, lessons: [
     L('Formula 1', 6), L('Rally'), L('NASCAR & ovals'), L('Endurance & GT racing'), L('Drifting & drag racing'), L('MotoGP & superbikes'),
   ] },
   { id: 'mods', track: 'culture', title: 'Mods: What Actually Works', phase: 4, lessons: [
-    L('Intakes & exhausts', 6), L('Tunes'), L('Suspension: coilovers, drops & lifts', 6), L('Wheels, tires & brakes'), L('Myths & snake oil', 6), L('Off-road mods'),
+    L('Intakes & exhausts', 6), L('Tunes'), L('Suspension: coilovers, drops & lifts', 6), L('Wheels, tires & brakes'), L('Myths & snake oil', 6), L('Off-road mods'), L('Bike mods: what actually works', 6),
   ] },
   { id: 'icons', track: 'culture', title: 'Iconic Engines & Cars', phase: 4, lessons: [
-    L('Legendary engines: Japan', 6), L('Legendary engines: USA', 6), L('Legendary engines: Europe', 6), L('Cars that changed everything', 6),
+    L('Legendary engines: Japan', 6), L('Legendary engines: USA', 6), L('Legendary engines: Europe', 6), L('Cars that changed everything', 6), L('Legendary sport bikes', 7),
   ] },
   { id: 'buying', track: 'culture', title: 'Buying & Jargon', phase: 4, lessons: [
-    L('Buying used: what to check', 7), L('Reading a VIN', 4), L('History reports & red flags'), L('Car jargon decoder', 6),
+    L('Buying used: what to check', 7), L('Reading a VIN', 4), L('History reports & red flags'), L('Car jargon decoder', 6), L('Buying a used sport bike', 7),
   ] },
 
   // ---------------- Track 4: Computers, tuning & reverse engineering ----------------
