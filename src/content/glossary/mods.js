@@ -55,7 +55,7 @@ export default [
   { id: 'full-system-exhaust', term: 'Full-system exhaust', aka: ['Full system'], lessons: ['mods-07'],
     def: 'Replaces headers, mid-pipe and muffler on a bike. Can add real power, but often removes the cat and needs an ECU remap to run right.' },
   { id: 'sprocket-swap', term: 'Sprocket swap', aka: ['Gearing change'], lessons: ['mods-07'],
-    def: 'Changing a chain-drive bike’s front or rear sprocket tooth count to change overall gearing. −1 front ≈ +3 rear in effect.' },
+    def: 'Changing a chain-drive bike’s front or rear sprocket tooth count to change overall gearing. With a ≈3:1 final drive, one tooth smaller in front ≈ three teeth bigger at the rear.' },
   { id: 'dba', term: 'dB(A)', aka: ['dBA', 'A-weighted decibels'], lessons: ['mods-07'],
     def: 'Sound level weighted to match human hearing. Logarithmic: +10 dB ≈ 10× the sound power and roughly “twice as loud” to the ear.' },
 ];
