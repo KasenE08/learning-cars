@@ -58,7 +58,7 @@ export default {
       facts: ['ninja.engine', 'ninja.output', 'ninja.weight', 'rs457.output', 'rs457.weight'] },
     { tag: 'why', title: 'What racing gave road bikes',
       body: [
-        '**Slipper clutches** and **quickshifters** were race parts first; now even small bikes use them (your Ninja 500 has an assist & slipper clutch).',
+        '**[[slipper-clutch|Slipper clutches]]** and **[[quickshifter|quickshifters]]** were race parts first; now even small bikes use them (your Ninja 500 has an assist & slipper clutch).',
         'Lean-sensitive traction control, [[cornering-abs]], [[wheelie-control]] and [[launch-control]] use an [[imu]] to know the bike’s lean and pitch, the same idea racing electronics pioneered.',
         'Your RS 457 has ride-by-wire and 3-level traction control (not lean-sensitive); the Ninja 500 has neither TC nor ride modes. More electronics isn’t automatically better for a new rider; it’s a trade-off.',
         'Winglets, from MotoGP aero, now appear on some road superbikes.',

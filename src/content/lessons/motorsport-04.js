@@ -36,6 +36,7 @@ export default {
         ] },
       body: [
         'Tap the years. Two of these became normal road-car tech: **disc brakes** and **dual-clutch gearboxes**.',
+        'Le Mans has always been a showroom: Ford’s 1966 win was famously aimed at beating Ferrari, and makers still race to sell road cars.',
       ] },
     { tag: 'why', title: 'From the track to your driveway', visualFirst: true,
       visual: { type: 'parts', drawing: 'brakes' },

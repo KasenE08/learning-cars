@@ -9,7 +9,7 @@ export default {
     { tag: 'how', title: 'Parts words',
       body: [
         '[[oem|OEM]]: the factory’s own part. [[aftermarket]]: made by someone else. **OEM+**: subtle mods that look factory.',
-        '**JDM**: Japanese Domestic Market, meaning cars or parts sold in Japan. Often misused online for *any* Japanese car.',
+        '**[[jdm|JDM]]**: Japanese Domestic Market, meaning cars or parts sold in Japan. Often misused online for *any* Japanese car.',
         '[[bolt-on|Bolt-ons]]: intake, exhaust and similar parts that don’t open the engine. A **tune** rewrites the engine computer’s maps.',
         '**“Stage 1 / 2 / 3”**: tuner marketing labels for packages of mods. **Not a standard**: one company’s Stage 2 is another’s Stage 1.',
       ] },
@@ -40,9 +40,9 @@ export default {
     { tag: 'how', title: 'Culture words',
       body: [
         '[[sleeper]]: looks ordinary, is secretly fast. [[daily-driver|Daily]]: the car you actually drive every day. **Beater**: cheap, worn, still useful. **Garage queen**: rarely driven, pampered.',
-        '**Slammed** / **stanced**: lowered a lot, often with aggressive wheel fitment.',
+        '**Slammed** / **[[stance|stanced]]**: lowered a lot, often with aggressive wheel fitment.',
         '[[ricer]]: an insult for racy-looking add-ons that add no speed. It has a racist origin, so plenty of people avoid it; you’ll still see it online.',
-        'Bike side: **ATGATT** = all the gear, all the time. **Squid** = insult for a reckless, underdressed rider.',
+        'Bike side: **[[atgatt|ATGATT]]** = all the gear, all the time. **[[squid|Squid]]** = insult for a reckless, underdressed rider.',
       ] },
     { tag: 'key', title: 'Words that mean “illegal”',
       body: [

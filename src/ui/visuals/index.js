@@ -27,7 +27,7 @@ const loaders = {
   slipper: () => import('./slipper.js'),
   quickshift: () => import('./quickshift.js'),
   traction: () => import('./traction.js'),
-  timeline: () => import('./timeline.js'),
+  timeline: () => import('./history.js'),
   compare: () => import('./compare.js'),
   checklist: () => import('./checklist.js'),
 };

@@ -30,3 +30,10 @@ describe('bike physics helpers', () => {
     expect(peakOn).toBeLessThan(100);
   });
 });
+
+describe('visual modules', () => {
+  it('shared animation controller is intact', async () => {
+    const m = await import('../src/ui/visuals/timeline.js');
+    expect(typeof m.timeline).toBe('function');
+  });
+});

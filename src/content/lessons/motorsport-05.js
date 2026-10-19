@@ -46,6 +46,7 @@ export default {
         ] },
       body: [
         'Tap the years: both sports moved from streets and parking lots to organized, sanctioned tracks.',
+        'Most rule changes on this list were about **safety** or **cost**, the same two forces that shape every series in this unit.',
       ] },
     { tag: 'key', title: 'Keep it off the street',
       body: [
