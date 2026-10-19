@@ -20,10 +20,10 @@ export default {
         'Carl Fogarty won World Superbike titles on the 916 family in 1994, 1995, 1998 and 1999 (Troy Corser added 1996). Often called the most beautiful bike ever made; that part is opinion.',
       ] },
     { tag: 'see', title: 'Yamaha R1 (1998) and the crossplane (2009)', visualFirst: true,
-      visual: { type: 'layout', layout: 'i4' },
+      visual: { type: 'layout', layout: 'i4x', pick: true },
       body: [
         '**1998 R1**: 998 cc, 150 PS, 177 kg dry. Its [[stacked-gearbox]] made the engine short, allowing a compact bike with a long swingarm.',
-        'The visual shows a normal inline-4: even firing every 180°. The **2009 R1** switched to a [[crossplane-i4]] crank from Yamaha’s YZR-M1 MotoGP bike: firing gaps of **270-180-90-180°**.',
+        'The **2009 R1** switched to a [[crossplane-i4]] crank from Yamaha’s YZR-M1 MotoGP bike: firing gaps of **270-180-90-180°** (shown above). Tap **Inline-4** to compare a normal flat crank firing every 180°.',
         'Why uneven? Yamaha’s reasoning: it removes the [[inertial-torque]] “noise” of the pistons, so the rider feels the combustion torque at the rear tire more clearly.',
       ] },
     { tag: 'how', title: 'Kawasaki ZX-10R (2004)',

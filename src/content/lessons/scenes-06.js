@@ -26,7 +26,7 @@ export default {
         { year: 2024, title: 'Ninja 500 and RS 457', note: 'Also the CBR600RR returns in Europe' },
       ] },
       body: [
-        'The [[supersport-600]] class boomed in the 1990s–2000s. By 2015 UK sales of 600s were reported at under a tenth of 2003 levels.',
+        'The [[supersport-600|600 supersport]] class boomed in the 1990s–2000s. By 2015 UK sales of 600s were reported at under a tenth of 2003 levels.',
         'Why it shrank: insurance, a 600 costing nearly as much to develop as a 1000, the 2008 crash, emissions rules, and riders preferring comfier, torquier bikes.',
       ] },
     { tag: 'how', title: 'Racing drives the culture',

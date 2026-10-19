@@ -34,7 +34,7 @@ with Phase 4a; their specs below are final, so use them exactly as written.
 - `brakes`: pedal, booster, master, lines, abs, caliper, rotor, pads, wheel-sensor
 
 ## (new) Interactive visuals
-- `layout` `{ layout: 'single'|'twin180'|'twin270'|'i4'|'i6'|'v6'|'v8'|'v8flat'|'boxer4'|'vtwin', pick?: boolean }`:
+- `layout` `{ layout: 'single'|'twin180'|'twin270'|'i4'|'i4x'|'i6'|'v6'|'v8'|'v8flat'|'boxer4'|'vtwin', pick?: boolean }`:
   front-view animation of the layout's pistons with firing flashes; readout of cylinders, bank angle, crank type,
   firing interval (°), and a one-line balance note. `pick: true` shows chips to switch layouts.
 - `diffturn` `{ diff: 'open'|'lsd'|'locked'|'twinclutch', pick?: boolean, scene?: 'turn'|'slip' }` (key is `diff`, not `type`):
