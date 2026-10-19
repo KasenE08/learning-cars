@@ -106,7 +106,7 @@ for t, d in pedal[::25]:
         '`ApedPos_Pc_ActlArb`: start bit 1, **10 bits**, Motorola order, **0.1 % per bit**. The trap was the byte boundary: 400 doesn’t fit in one byte.',
         'Byte 0 also holds `ApedPosPcActl_No_Cnt` (bits 5–2, the counter) and `ApedPosPcActl_D_Qf` (bits 7–6, always 3 = “OK”: the constant).',
         'Byte 5 changes every frame: `ApedPosPcActl_No_Cs`, the checksum.',
-        'Bytes 3–4 rose too: engine rpm (`EngAout_N_Actl`, 2 rpm per bit). A **correlated** signal moves with your action but lags and has a different shape. The pedal is flat on each plateau; rpm isn’t.',
+        'Bytes 3–4 rose too: engine rpm (`EngAout_N_Actl`, 2 rpm per bit). A [[correlated-signal]] moves with your action but lags and has a different shape. The pedal is flat on each plateau; rpm isn’t.',
         'From the community DBC (openpilot), not Ford; the capture is simulated.',
       ] },
     { tag: 'key', title: 'Confirm, then document',

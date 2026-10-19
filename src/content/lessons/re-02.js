@@ -15,7 +15,7 @@ export default {
       body: [
         'Some trains leave **every 10 minutes like clockwork**. Others only run **when something happens**: a special event, a charter.',
         'A car bus is the same. Most messages are [[periodic-message|periodic]]: sent on a fixed timer whether or not anything changed. A few are [[event-message|event-driven]].',
-        'Before decoding anything, a reverse engineer reads the timetable: which IDs, how often, how busy.',
+        '[[sniffing|Sniffing]] starts there: before decoding anything, read the timetable: which IDs, how often, how busy.',
       ] },
     { tag: 'how', title: 'Why most messages repeat',
       body: [
