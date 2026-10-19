@@ -1,0 +1,76 @@
+// Euro
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Three kitchens, one continent',
+      body: [
+        '**Germany** is the precision kitchen: everything measured, built to run flat out on the autobahn for hours.',
+        '**Italy** is the opera house kitchen: passion, sound and looks first; practicality is someone else’s job.',
+        '**Britain** is the shed: small teams, clever chassis, and the obsession with lightness.',
+        'Euro car culture is all three. They overlap, but the “accents” are real.',
+      ] },
+    { tag: 'how', title: 'Germany: engineered for speed',
+      body: [
+        'Big names: Porsche, BMW **M**, Mercedes-**AMG**, Audi **RS**, plus VW’s GTI.',
+        'Unrestricted autobahn sections shaped the priorities: high-speed stability, strong brakes, engines happy at sustained high rpm.',
+        'Racing rules made road legends: the **E30 M3** (1986) existed so BMW could [[homologation|homologate]] it for Group A touring cars, which meant building about 5,000 road cars.',
+        'The **Golf GTI** (1976, 110 PS, fuel-injected 1.6) invented the modern [[hot-hatch]]: fast fun in an everyday car.',
+      ] },
+    { tag: 'see', title: 'Italy: flat-plane screams', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8flat' },
+      body: [
+        'Ferrari, Lamborghini, Alfa Romeo, Maserati; on two wheels Ducati and Aprilia.',
+        'Ferrari’s mid-engine V8s use a [[flat-plane]] crank: even pulses per bank, very high revs, that high-pitched wail. The 458 Italia’s 4.5 L was designed to rev to **9,000 rpm**.',
+        'Values: sound, design and emotion. A beautiful car that needs care is seen as a fair trade.',
+      ] },
+    { tag: 'how', title: 'Britain: add lightness',
+      body: [
+        'Lotus founder Colin Chapman’s line **“simplify, then add lightness”** (widely attributed to him) sums up the British strand.',
+        'The **Mini** (1959): engine mounted sideways ([[transverse]]) with the gearbox in its sump, so most of a tiny car was cabin. A Mini Cooper S won the 1964 Monte Carlo Rally.',
+        'Also British: the Jaguar E-Type (1961), Land Rover, McLaren, Aston Martin, and much of the world’s race-car engineering.',
+      ] },
+    { tag: 'see', title: 'Euro milestones', visualFirst: true,
+      visual: { type: 'timeline', title: 'Euro landmarks', events: [
+        { year: 1959, title: 'Mini', note: 'Transverse engine, gearbox in the sump' },
+        { year: 1961, title: 'Jaguar E-Type' },
+        { year: 1963, title: 'Porsche 901 shown', note: 'Renamed 911 before sales began' },
+        { year: 1976, title: 'VW Golf GTI', note: 'The hot-hatch template' },
+        { year: 1986, title: 'BMW E30 M3', note: 'Road car built for racing homologation' },
+        { year: 2009, title: 'Ferrari 458 Italia', note: 'Last naturally aspirated mid-engine Ferrari V8' },
+      ] },
+      body: [
+        'Notice how often racing rules or road conditions, not marketing, created the icon.',
+        '“Euro-spec” works like “JDM”: built for European sale (different lights, bumpers, sometimes more power). The 25-year rule applies to those cars too.',
+      ] },
+    { tag: 'bikes', title: 'An Italian bike made in India',
+      body: [
+        'Aprilia is an Italian brand with deep racing roots, but the **RS 457** is built by Piaggio in India and styled after the RS 660.',
+        'That’s normal now: brand heritage, engineering and design can be in one country and the factory in another.',
+        'Same story the other way: your Bronco Sport is an American nameplate built in Mexico.',
+      ],
+      facts: ['rs457.madeIn', 'bronco.plant'] },
+    { tag: 'why', title: 'Honest takes on Euro stereotypes',
+      body: [
+        '**“Euro cars are unreliable.”** Too broad. Many are complex and parts and labor often cost more, so skipped maintenance hurts more. History matters more than the badge.',
+        '**“German = best handling.”** Opinion. Many Japanese and American cars match or beat them; it depends on the model and year.',
+        '~~Opinion: Euro enthusiasts tend to care about the drive and the details (“OEM+” builds) more than big power numbers.~~',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Why did BMW build the **E30 M3** road car?', options: ['To beat the Golf GTI on price', 'To homologate it for Group A touring-car racing', 'To meet US emissions rules', 'To test a V8'], answer: 1,
+      why: 'Group A rules required thousands of road cars before a model could race. The road car existed so the race car could.' },
+    { type: 'order', q: 'Order these Euro icons by debut, oldest first.', items: ['Mini', 'Jaguar E-Type', 'Porsche 901/911', 'VW Golf GTI', 'BMW E30 M3'],
+      why: 'Mini 1959, E-Type 1961, Porsche 901 shown in 1963, Golf GTI 1976, E30 M3 1986.' },
+    { type: 'mc', q: 'Why does a Ferrari V8 sound so different from an American V8?', options: ['More cylinders', 'A flat-plane crank gives each bank even pulses, and it revs much higher', 'It’s always turbocharged', 'A different firing frequency at the same rpm'], answer: 1,
+      why: 'Same eight cylinders, same firing frequency at a given rpm. The flat-plane crank evens out each bank’s pulses (wail vs burble), and it revs higher.',
+      wrong: { 3: 'At the same rpm, any V8 has the same firing frequency. The rhythm per bank is what changes.' } },
+    { type: 'tap', q: 'The Mini fit a big cabin into a tiny car by turning the engine sideways. On your Bronco, which part sits **between** a sideways engine and the rear driveshaft, turning drive 90°?', visual: { type: 'parts', drawing: 'car-top' }, answer: 'ptu',
+      why: 'Your Bronco Sport’s engine is transverse too, like the Mini’s. To send drive rearward, the power transfer unit (PTU) turns it 90° into the driveshaft.',
+      wrong: { transmission: 'The transmission sits right on the sideways engine. The PTU on its output turns drive toward the rear.', rdu: 'The rear drive unit is at the other end of the driveshaft.' } },
+  ],
+  cards: [
+    { id: 'strands', front: 'Three Euro strands in one line each?', back: 'German: autobahn precision. Italian: sound and design. British: lightweight chassis.' },
+    { id: 'm3', front: 'Why does the E30 M3 exist?', back: 'Homologation: BMW had to build road cars to race it in Group A.' },
+    { id: 'gti', front: 'Car that set the hot-hatch template?', back: 'VW Golf GTI, 1976: 110 PS fuel-injected 1.6 in a practical hatchback.' },
+    { id: 'mini', front: 'What made the 1959 Mini clever?', back: 'Transverse engine with the gearbox in the sump, so most of the car was cabin.' },
+  ],
+};

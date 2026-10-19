@@ -8,7 +8,7 @@ export default {
     value: 'K&N 63-2618 intake (2.0 L Bronco Sport/Maverick): “estimated” +7.82 hp @ 3,998 rpm, +10.18 lb-ft. aFe Momentum GT: “+16 hp / +18 lb-ft max gains”. Neither is CARB-legal in California',
     status: 'unconfirmed',
     sources: ['K&N product page 63-2618 (gain estimate + “not legal for sale or use in California”)', 'aFe Momentum GT listing (“not currently CARB exempt”)'],
-    note: 'Both are the sellers’ own numbers; no independent back-to-back dyno found. Owners on Bronco Sport Forum call stock-turbo intakes “mostly for noise”.',
+    note: 'Both are the sellers’ own numbers (the aFe listing’s exact engine fitment wasn’t confirmed); no independent back-to-back dyno found. Owners on Bronco Sport Forum call stock-turbo intakes “mostly for noise”.',
   },
   'bronco.catBack': {
     value: 'Borla S-Type cat-back (140882) for 2021–25 Bronco Sport 2.0 L: 2.5 in inlet, dual mufflers, dual 2.25 in tailpipes; install requires cutting the factory pipe; marketed as “drone-free”',

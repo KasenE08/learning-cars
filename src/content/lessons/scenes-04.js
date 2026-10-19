@@ -1,0 +1,70 @@
+// Tuner culture
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Skins vs a jailbreak',
+      body: [
+        'Think of a phone. A new case, wallpaper and LEDs change how it **looks**. Rooting it and changing the firmware changes what it **does**.',
+        'Tuner culture is both: some builds are all skin, some are all firmware, the best are both.',
+        'That split has a name in the scene: [[show-vs-go]].',
+      ] },
+    { tag: 'how', title: 'The import scene',
+      body: [
+        'In the 1990s US, cheap, light Japanese cars (Civic, Integra, Eclipse, 240SX, Supra) met a growing aftermarket of [[bolt-on]] parts.',
+        'Front-drive Hondas were cheap and easy to swap engines into; turbo cars responded hugely to more boost. Drag strips and car shows were the stage.',
+        'A **May 1998 Vibe article, “Racer X”**, about New York street racer Rafael Estevez and his quest for a sub-10-second Civic, became **The Fast and the Furious (2001)**.',
+        'The film made the scene mainstream overnight: neon, big wings, vinyl graphics, and nitrous jokes. ~~Many of its looks aged… memorably.~~',
+      ] },
+    { tag: 'see', title: 'Tuner timeline', visualFirst: true,
+      visual: { type: 'timeline', title: 'Tuner culture', events: [
+        { year: 1995, title: 'Initial D manga starts', note: 'Touge, AE86, drifting go global' },
+        { year: 1998, title: '“Racer X” in Vibe', note: 'The article behind the movie' },
+        { year: 2001, title: 'The Fast and the Furious', note: 'Also the first D1 Grand Prix season' },
+        { year: 2006, title: 'Tokyo Drift', note: 'Brings drifting to a mainstream US audience' },
+        { year: 2014, title: 'First R32 GT-Rs legal to import', note: '25-year rule' },
+      ] },
+      body: [
+        '[[drifting]] grew out of Japanese mountain roads into pro series like D1 Grand Prix, whose first event ran in late 2000 as the start of its 2001 season.',
+        'Later waves: the 25-year rule bringing real [[jdm]] cars in, and social media making build style as important as lap times.',
+      ] },
+    { tag: 'see', title: 'Why turbo cars rule tuning', visualFirst: true,
+      visual: { type: 'turbo', bov: true },
+      body: [
+        'On a turbo engine, boost is set by the wastegate control, which is mostly **software**. A tune can raise it; a non-turbo engine has no such easy dial.',
+        'Snap the throttle shut: that **pssh** is the [[blow-off-valve]] venting, a scene sound effect. Your Bronco’s valve recirculates the air back to the turbo inlet instead, so it stays quiet.',
+        'More boost needs more fuel, cooler air and stronger parts. Tunes that ignore that break engines.',
+      ],
+      facts: ['bronco.turboType', 'bronco.bypassValve'] },
+    { tag: 'how', title: 'Stance: the look',
+      body: [
+        '[[stance]]: very low ride height, wheels pushed out flush with the fenders, often with heavy negative [[camber]] (Japan’s extreme “oni-kyan” style) or air suspension (“bagged”).',
+        'Roots mix Japanese VIP/lowered-car styles and US “hellaflush” builds of the late 2000s; the exact origin stories are murky.',
+        'Honest: it’s an **aesthetic, not a performance mod**. Big camber shrinks the tire’s [[contact-patch]] in a straight line and eats the inner tread; very low cars bottom out and break parts.',
+        '[[sleeper]] is the opposite: looks stock, is fast. [[ricer]] is the insult for show parts pretending to be go.',
+      ] },
+    { tag: 'why', title: 'The law and the honest take',
+      body: [
+        '**Street racing is illegal** and has killed drivers and bystanders. Track days and the drag strip exist for a reason.',
+        '**Emissions:** removing or disabling emissions parts on a road car, including “off-road only” tunes ([[defeat-device|defeat devices]]) and cat deletes, is [[emissions-tampering]] under federal law.',
+        '**Noise and lights:** loud exhausts, underglow and colored lights are limited by state law; the rules vary.',
+        '~~Opinion: the best builds are often the quiet ones, a well-tuned car with good tires, brakes and seat time.~~',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'What inspired **The Fast and the Furious (2001)**?', options: ['A Japanese manga', 'A 1998 Vibe magazine article about New York street racing', 'A NASCAR documentary', 'A video game'], answer: 1,
+      why: 'Ken Li’s “Racer X” (Vibe, May 1998) followed street racer Rafael Estevez; the studio bought the film rights.' },
+    { type: 'mc', q: 'Which mod is mostly **show**, not go?', options: ['Bigger brakes', 'Lighter wheels with stickier tires', 'Extreme negative camber for flush fitment', 'An intercooler upgrade'], answer: 2,
+      why: 'Extreme camber is an aesthetic: in a straight line it shrinks the contact patch and wears tires. The others change braking, grip or power.' },
+    { type: 'tap', q: 'On a turbo car, which part gets told to stay **closed longer** when a tune raises boost?', visual: { type: 'parts', drawing: 'exhaust' }, answer: 'wastegate',
+      why: 'The wastegate bypasses exhaust around the turbine to limit boost. Keep it shut longer and the turbo spins faster: more boost.',
+      wrong: { turbine: 'The turbine is what spins; the wastegate decides how much exhaust it gets.', cat: 'The cat cleans exhaust; it doesn’t control boost.' } },
+    { type: 'order', q: 'Order these, oldest first.', items: ['Initial D manga starts', '“Racer X” article', 'The Fast and the Furious', 'Tokyo Drift'],
+      why: 'Initial D 1995, Racer X 1998, The Fast and the Furious 2001, Tokyo Drift 2006.' },
+  ],
+  cards: [
+    { id: 'showgo', front: 'Show vs go?', back: 'Show = looks (paint, kits, wheels). Go = performance (power, suspension, brakes, weight).' },
+    { id: 'ff', front: 'Where did The Fast and the Furious come from?', back: '“Racer X,” a May 1998 Vibe article about NYC street racer Rafael Estevez.' },
+    { id: 'stance', front: 'Is stance a performance mod?', back: 'No. Low ride height and heavy camber are an aesthetic; they cost grip, tires and parts.' },
+    { id: 'turbo', front: 'Why are turbo cars popular to tune?', back: 'Boost is controlled by the wastegate, mostly in software, so a tune can raise it.' },
+    { id: 'law', front: '“Off-road only” tune on a road car?', back: 'Still emissions tampering under federal law.' },
+  ],
+};

@@ -1,0 +1,72 @@
+// Parallel twins & crank angles
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Your bicycle pedals are a 180° crank',
+      body: [
+        'On a bicycle, one pedal is **down while the other is up**: a 180° crank. Put both pedals together and you’d have a 360° crank (and a very bouncy ride).',
+        'A [[parallel-twin]] is two pistons on one crank, and the [[crank-angle]] between their crankpins sets the rhythm, the shake and the sound.',
+        'Your shortlist covers both modern answers: **Ninja 500 = 180°**, **RS 457 = 270°**.',
+      ] },
+    { tag: 'see', title: '180°: balanced up-and-down, but it rocks', visualFirst: true,
+      visual: { type: 'layout', layout: 'twin180' },
+      body: [
+        'Firing gaps **180°, then 540°** ([[firing-interval]]). Uneven: bang-bang … pause.',
+        'One piston goes up as the other goes down, so the **primary forces cancel** as a net force. But they act at two points along the crank, so the engine **rocks** end to end (a [[rocking-couple]]).',
+        'Both pistons hit their dead centers **at the same instant** (one at TDC, one at BDC). Their 2× crank-speed **secondary** forces add up, like an inline-4’s. That’s the high-rpm buzz.',
+      ] },
+    { tag: 'see', title: '270°: the V-twin rhythm in one head', visualFirst: true,
+      visual: { type: 'layout', layout: 'twin270' },
+      body: [
+        'Firing gaps **270°, then 450°**: exactly a 90° [[v-twin]]’s beat.',
+        'The trade flips: the **secondary forces cancel**, but the primary forces don’t fully cancel, so it needs crank counterweights and a [[balance-shaft]] to stay smooth.',
+        'When one piston stops at TDC, the other is moving near its fastest. That spreads out the [[inertial-torque]] from speeding up and slowing the pistons.',
+      ] },
+    { tag: 'how', title: 'How a balance shaft fights the shake',
+      body: [
+        'A weighted shaft, **gear-driven from the crank**, spinning at crank speed. Its offset weights make a force that opposes the engine’s leftover primary shake.',
+        'One crank-speed shaft can cancel a rocking couple or primary shake, but **not** 2× secondary shake. That needs shafts spinning at twice crank speed (as some inline-4s use).',
+        'Cost: a bit of weight, friction and complexity. Benefit: mirrors you can see through and hands that don’t go numb.',
+        '~~The old 360° twin (classic British twins) fires evenly every 360° but shakes like a big single: both pistons go up together.~~',
+      ] },
+    { tag: 'math', title: 'How many bangs per second?',
+      body: [
+        'Each cylinder fires once every **2 revolutions**: power strokes per second per cylinder = rpm ÷ 2 ÷ 60.',
+        'At **9,000 rpm** (Ninja 500 peak power): 9,000 ÷ 2 ÷ 60 = **75** per cylinder, **150** per second for the twin.',
+        'The crank angle doesn’t change that count, only the **spacing**: 180° twins bunch them (180/540), 270° twins space them 270/450. Same notes, different groove.',
+      ] },
+    { tag: 'why', title: 'Does 270° really feel better?',
+      body: [
+        '**What’s solid:** the different spacing changes the sound and how the power pulses feel at the bar and the seat.',
+        '**What’s argued:** makers and many riders say the 270° spacing gives the rear tire a moment to “recover” between pulses and makes throttle feel more connected. Others say a rider can’t feel a difference in grip on a 47 hp bike. Treat it as **opinion**, not physics you can count on.',
+        '**What’s preference:** some riders love the 180° twin’s smooth, revvy rush; others want the 270° thump. Ride both if you can.',
+      ] },
+    { tag: 'bikes', title: 'Ninja 500 vs RS 457',
+      body: [
+        '**Ninja 500**: 180° crank with a balancer shaft. Even, eager, higher-pitched (reviewers mention some buzz high in the revs).',
+        '**RS 457**: 270° crank with a balance shaft, the same idea as Aprilia’s bigger RS 660. Lumpier, V-twin-like beat.',
+        'Neither maker’s spec sheet details its balancer design; the crank angles come from independent reviews that agree.',
+      ],
+      facts: ['ninja.crankAngle', 'rs457.crankAngle'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Which twin has its **secondary** (2× crank speed) forces cancel?', options: ['360°', '180°', '270°', 'All of them'], answer: 2,
+      why: 'At 270° the second-order forces of the two pistons are out of phase and cancel. A 180° twin has both pistons at dead center together, so its secondary forces add.',
+      wrong: { 1: 'A 180° twin cancels the primary forces, but its secondary forces add up like an inline-4’s.' } },
+    { type: 'num', q: 'RS 457 at **6,000 rpm**. Total power strokes per second for both cylinders?', answer: 100, tol: 0, unit: 'per second',
+      hint: 'Each cylinder fires once every 2 revolutions.', why: '6,000 ÷ 2 ÷ 60 = 50 per cylinder × 2 cylinders = **100 per second**. Crank angle changes the spacing, not the count.' },
+    { type: 'order', q: 'Order these twins by the **shortest** firing gap, shortest first.', items: ['180° parallel twin (180°)', '270° parallel twin (270°)', '360° parallel twin (360°)'],
+      why: 'Shortest gaps: 180° twin 180°/540°, 270° twin 270°/450°, 360° twin 360°/360° (even).' },
+    { type: 'tap', q: 'Tap the part whose crankpin layout sets a twin’s firing rhythm.', visual: { type: 'parts', drawing: 'engine-section' }, answer: 'crank',
+      why: 'The crankshaft’s pin spacing (180° or 270°) decides when each piston reaches TDC, and so when each cylinder can fire.',
+      wrong: { camshaft: 'The cam is timed to the crank. It follows the crank’s rhythm; it doesn’t set it.', rod: 'The rods just link pistons to the crankpins. The pin angle is in the crank itself.' } },
+    { type: 'mc', q: 'Why can’t one crank-speed balance shaft cure a 180° twin’s high-rpm buzz?', options: ['It spins the wrong direction', 'The buzz is secondary shake at 2× crank speed', 'Balance shafts only work on singles', 'It can; the buzz is from the exhaust'], answer: 1,
+      why: 'A crank-speed shaft can only oppose crank-speed (primary) forces and couples. Secondary shake repeats twice per revolution, so it slips past.' },
+  ],
+  cards: [
+    { id: 'pedals', front: 'Bicycle pedals are what kind of crank?', back: 'A 180° crank: one up while the other is down, like the Ninja 500.' },
+    { id: 'b180', front: '180° twin: what cancels, what remains?', back: 'Primary forces cancel; a rocking couple and the secondary forces remain.' },
+    { id: 'b270', front: '270° twin: what cancels, what remains?', back: 'Secondary forces cancel; primary shake + rocking remain → counterweights and a balance shaft.' },
+    { id: 'count', front: 'Power strokes per second for a twin?', back: 'rpm ÷ 2 ÷ 60 × 2 cylinders (rpm ÷ 60). Crank angle changes only the spacing.' },
+    { id: 'traction', front: 'Does a 270° crank improve traction?', back: 'Debated. Makers and riders claim it; it’s opinion, not settled physics.' },
+  ],
+};
