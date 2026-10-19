@@ -107,6 +107,9 @@ export const units = [
   { id: 're', track: 'tech', title: 'Reverse Engineering', phase: 5, lessons: [
     L('The RE mindset & setup'), L('Sniffing traffic'), L('Change one thing at a time', 6), L('Diffing captures', 6), L('Finding counters, checksums & constants', 6),
   ] },
+  { id: 'canlab', track: 'tech', title: 'CAN Lab: The Simulated Bronco', phase: 6, lessons: [
+    L('Meet the bench'), L('Record, export, import'), L('A reverse-engineering session', 7), L('Write your own DBC line', 6), L('Analyze a capture in Python', 7),
+  ] },
   { id: 'tune', track: 'tech', title: 'ECU Tuning', phase: 5, lessons: [
     L("What's inside an ECU"), L('Maps: fuel, timing, boost', 7), L('How tuners modify maps', 6), L('Flashing & tuning tools'), L('Risks: engines, warranty & the law', 7),
   ] },
@@ -120,5 +123,5 @@ export const units = [
 export const path = [
   'engine', 'layout', 'scenes', 'air', 'boost', 'exhaust', 'cool', 'mengine',
   'network', 'elec', 'obd', 'drive', 'mdrive', 'motorsport', 'chassis', 'mchassis',
-  'melec', 'perf', 'mods', 'can', 'python', 'decode', 're', 'icons', 'tune', 'security', 'buying', 'rebuild',
+  'melec', 'perf', 'mods', 'can', 'python', 'decode', 're', 'canlab', 'icons', 'tune', 'security', 'buying', 'rebuild',
 ];

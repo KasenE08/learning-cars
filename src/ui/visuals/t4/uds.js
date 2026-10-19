@@ -27,7 +27,7 @@ export function mount(host, spec = {}) {
       <div><small>positive</small> 62 F1 90 33 46 4D … <span class="muted">(22 + 0x40 = 62, then the data)</span></div>
       <div><small>negative</small> 7F 22 31 <span class="muted">(7F = “no”, service 22, NRC 31 = request out of range)</span></div>
     </div>
-    <p class="vis__note">This app’s live-car mode (Phase 7) is read-only: it will only ever ask for data (like OBD-II modes 01, 03 and 09 or UDS read services) and never send writes, resets, routines, security access or flashing services.</p>
+    <p class="vis__note">The app’s live-car mode (Lab → Connect a car) is read-only: it will only ever ask for data (like OBD-II modes 01, 03 and 09 or UDS read services) and never send writes, resets, routines, security access or flashing services.</p>
   </figure>`);
   host.append(wrap);
   function draw() {

@@ -12,6 +12,13 @@ const WHEEL_RPM_PER_KPH = 1e6 / 60 / (Math.PI * TIRE_IN * 25.4);    // ≈ 7.33 
 // How often each message is sent (ms). Plausible guesses for the simulator, not measured values.
 export const PERIOD_MS = { 0x7e: 20, 0x91: 20, 0x202: 20, 0x204: 20, 0x415: 20, 0x165: 50, 0x176: 50, 0x83: 100, 0x3b3: 100, 0x3c3: 200 };
 
+// Full mode (Phase 6 bench): more messages, and the DBC's own GenMsgCycleTime where it lists one.
+// The original 10-message mode above stays unchanged because Phase 5 exercises depend on it.
+const GUESS_MS = { 0x4c: 500, 0x83: 100, 0x91: 20, 0x156: 100, 0x3b3: 100, 0x3c3: 200, 0x202: 20, 0x217: 10 };
+export const PERIOD_FULL = Object.fromEntries(MESSAGES.map((m) => [m.id, m.cycleMs || GUESS_MS[m.id] || 100]));
+const BODY_IDS = new Set([0x4c, 0x83, 0x178, 0x3b3, 0x3c3]); // still talk with ignition in Accessory
+const TIRE_R = (TIRE_IN * 0.0254) / 2, TRACK = 1.58, WHEELBASE = 2.67, STEER_RATIO = 17.7; // wheelbase & steer ratio: openpilot CarSpecs
+
 /** Small seeded PRNG (mulberry32). */
 export function rng(seed = 1) {
   let a = seed >>> 0;
@@ -38,11 +45,12 @@ export function fordChecksum(bytes, msg, fields) {
 const GEAR_LEVER = { P: 0, R: 1, N: 2, D: 3 };
 
 /** A simulated car. Set car.inputs, call step(dtMs) → frames due in that time. */
-export function createCar({ seed = 7 } = {}) {
-  const rand = rng(seed);
-  const inputs = { pedal: 0, brake: false, steer: 0, turn: 0, lever: 'P', doors: { drv: 0, psg: 0, rl: 0, rr: 0, tgate: 0 }, headlights: 0, ignition: 4, parkBrake: false };
-  const st = { t: 0, kph: 0, rpm: IDLE, gear: 0, yaw: 0, counters: {}, due: {}, blinkT: 0 };
-  for (const id of Object.keys(PERIOD_MS)) st.due[id] = Number(id) % 7; // stagger start times
+export function createCar({ seed = 7, full = false } = {}) {
+  const rand = rng(seed), rand2 = rng(seed * 31 + 1);
+  const PERIODS = full ? PERIOD_FULL : PERIOD_MS;
+  const inputs = { pedal: 0, brake: false, steer: 0, turn: 0, lever: 'P', doors: { drv: 0, psg: 0, rl: 0, rr: 0, tgate: 0 }, headlights: 0, ignition: 4, parkBrake: false, wipers: 0, belt: 1, highBeam: 0 };
+  const st = { t: 0, kph: 0, rpm: IDLE, gear: 0, yaw: 0, counters: {}, due: {}, blinkT: 0, engine: true, crank: 0, coolant: 24, oil: 22, ambient: 21, steerPrev: 0, steerRate: 0, map: -60, wheels: [0, 0, 0, 0] };
+  for (const id of Object.keys(PERIODS)) st.due[id] = Number(id) % 7; // stagger start times
 
   function physics(dt) {
     const s = dt / 1000;
@@ -66,12 +74,48 @@ export function createCar({ seed = 7 } = {}) {
     st.rpm += (Math.min(6200, target) - st.rpm) * Math.min(1, s * 6);
     st.yaw = (st.kph / 3.6) * Math.tan((inputs.steer / 15.6) * Math.PI / 180) / 2.67; // bicycle model, rad/s
     st.blinkT += dt;
+    if (full) fullPhysics(s);
+  }
+
+  function fullPhysics(s) {
+    // ignition: 1 Off, 2 Accessory, 4 Run, 8 Start (Ford's Ignition_Status values)
+    if (inputs.ignition === 8) { st.crank += s; st.engine = false; st.rpm = 220; if (st.crank > 0.8) { inputs.ignition = 4; st.engine = true; st.crank = 0; st.rpm = 1100; } }
+    if (inputs.ignition === 1 || inputs.ignition === 2) { st.engine = false; st.rpm = 0; }
+    if (!st.engine) { st.rpm = inputs.ignition === 8 ? st.rpm : 0; st.kph = Math.max(0, st.kph - 2 * s); }
+    const v = st.kph / 3.6, ang = (inputs.steer / STEER_RATIO) * Math.PI / 180;
+    st.yaw = v * Math.tan(ang) / WHEELBASE;
+    // per-wheel speeds: in a turn the outside wheels travel farther (track width ≈ 1.58 m, illustrative)
+    const k = (TRACK / 2) * (Math.tan(ang) / WHEELBASE), w = v / TIRE_R;
+    st.wheels = [w * (1 + k), w * (1 - k), w * (1 + k * 0.95), w * (1 - k * 0.95)].map((x) => Math.max(0, x)); // FL, FR, RL, RR (right turn = +steer)
+    st.steerRate = (inputs.steer - st.steerPrev) / Math.max(s, 1e-3); st.steerPrev = inputs.steer;
+    // warm-up (sped up so you can watch it), fan holds ≈ 95 °C
+    if (st.engine) { st.coolant += s * (1.4 + inputs.pedal * 0.02) * Math.max(0, 1 - (st.coolant - 20) / 80); st.oil += (st.coolant - 6 - st.oil) * s * 0.08; }
+    else { st.coolant += (st.ambient - st.coolant) * s * 0.002; st.oil += (st.ambient - st.oil) * s * 0.002; }
+    st.coolant = Math.min(97, st.coolant);
+    // manifold pressure (appears to be gauge kPa in the DBC: offset allows negatives): vacuum at idle, boost under load
+    const load = inputs.pedal / 100, boost = st.rpm > 1800 ? load * Math.min(1, (st.rpm - 1800) / 1500) * 110 : 0;
+    const target = st.engine ? -62 + load * 60 + boost : 0;
+    st.map += (target - st.map) * Math.min(1, s * 4);
   }
 
   const lampOn = () => Math.floor(st.blinkT / 333) % 2 === 0; // ~1.5 Hz flash
 
   function values(id) {
     const noise = (a) => (rand() - 0.5) * 2 * a;
+    if (full) {
+      const n2 = (a) => (rand2() - 0.5) * 2 * a;
+      switch (id) {
+        case 0x4c: return { FirstRowBuckleDriver: inputs.belt ? 1 : 2, FirstRowBucklePsngr: 2 };
+        case 0x82: return { SteeringColumnTorque: Math.max(-7.9, Math.min(7.8, st.steerRate * 0.012 + n2(0.06))), EPAS_Failure: 0 };
+        case 0x156: return { EngClnt_Te_Actl: st.coolant, EngOil_Te_Actl: st.oil, EngClntTe_D_Qf: 3 };
+        case 0x178: return { AirAmb_Te_Actl: st.ambient + n2(0.1), AirAmb_P_Actl: 1010, AirAmbTe_D_Qf: 3 };
+        case 0x217: return { WhlFl_W_Meas: st.wheels[0], WhlFr_W_Meas: st.wheels[1], WhlRl_W_Meas: st.wheels[2], WhlRr_W_Meas: st.wheels[3] };
+        case 0x43e: return { EngMnfld_P_Actl: st.map + n2(0.4), BattULoChrg_U_Cmd: st.engine ? 14.2 : 12.6 };
+        case 0x83: return { TurnLghtSwtch_D_Stat: inputs.turn, WiprFront_D_Stat: inputs.wipers, HeadLghtHiFlash_D_Stat: inputs.highBeam };
+        case 0x176: return { TrnRng_D_Rq: GEAR_LEVER[inputs.lever], GearPos_D_Actl: inputs.lever === 'R' ? 14 : st.gear, GearLvr_D_ActlDrv: GEAR_LEVER[inputs.lever] };
+        default: break;
+      }
+    }
     switch (id) {
       case 0x7e: return { StePinComp_An_Est: inputs.steer + noise(0.05), StePinCompAnEst_D_Qf: 3 };
       case 0x83: return { TurnLghtSwtch_D_Stat: inputs.turn, WiprFront_D_Stat: 0, HeadLghtHiFlash_D_Stat: 0 };
@@ -116,10 +160,11 @@ export function createCar({ seed = 7 } = {}) {
       const tick = Math.min(10, end - st.t);
       physics(tick);
       st.t += tick;
-      for (const [k, p] of Object.entries(PERIOD_MS)) {
+      for (const [k, p] of Object.entries(PERIODS)) {
         const id = Number(k);
         while (st.due[k] <= st.t) {
-          frames.push({ t: st.due[k] / 1000, id, data: build(id) });
+          const awake = !full || inputs.ignition === 4 || inputs.ignition === 8 || (inputs.ignition === 2 && BODY_IDS.has(id));
+          if (awake) frames.push({ t: st.due[k] / 1000, id, data: build(id) });
           st.due[k] += p;
         }
       }
@@ -151,10 +196,10 @@ const interp = (pts, t) => {
 };
 
 /** Run a named scenario → frames [{ t, id, data }]. Optional ids filter. */
-export function runScenario(name, { seed = 7, ids = null } = {}) {
+export function runScenario(name, { seed = 7, ids = null, full = false } = {}) {
   const sc = SCENARIOS[name];
   if (!sc) throw new Error(`Unknown scenario ${name}`);
-  const car = createCar({ seed });
+  const car = createCar({ seed, full });
   const frames = [];
   let k = 0;
   for (let t = 0; t < sc.seconds * 1000; t += 10) {
@@ -169,10 +214,12 @@ export function runScenario(name, { seed = 7, ids = null } = {}) {
 export const candumpLine = (f, iface = 'can0') => `(${f.t.toFixed(6)}) ${iface} ${f.id.toString(16).toUpperCase().padStart(3, '0')}#${toHex(f.data)}`;
 export const candumpText = (frames) => frames.map((f) => candumpLine(f)).join('\n') + '\n';
 
-/** "sim:drive" or "sim:drive?ids=415,204" → candump text. Used by exercise data files. */
+/** "sim:drive", "sim:drive?ids=415,204", "sim:drive?full" or "sim:drive?full&ids=217" → candump text.
+ *  `full` = the Phase 6 bench car (more messages, DBC send rates). Used by exercise data files. */
 export function simFile(ref) {
-  const m = /^sim:(\w+)(?:\?ids=([0-9a-fA-F,]+))?$/.exec(ref);
+  const m = /^sim:(\w+)(?:\?(.*))?$/.exec(ref);
   if (!m) throw new Error(`Bad sim file reference ${ref}`);
-  const ids = m[2] ? m[2].split(',').map((h) => parseInt(h, 16)) : null;
-  return candumpText(runScenario(m[1], { ids }));
+  const q = new URLSearchParams(m[2] || '');
+  const ids = q.get('ids') ? q.get('ids').split(',').map((h) => parseInt(h, 16)) : null;
+  return candumpText(runScenario(m[1], { ids, full: q.has('full') }));
 }

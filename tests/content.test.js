@@ -10,7 +10,7 @@ const TAGS = ['metaphor', 'how', 'see', 'math', 'bronco', 'bikes', 'key', 'why',
 const VISUALS = ['cylinder', 'parts', 'displacement', 'crank', 'valvetrain', 'timing', 'compression', 'exploded', 'awd',
   'layout', 'diffturn', 'turbo', 'clutchengage', 'gearshift', 'planetary', 'torqueconv', 'dyno', 'gearing', 'suspension', 'tire', 'circuit', 'aero',
   'lean', 'raketrail', 'slipper', 'quickshift', 'traction', 'timeline', 'compare', 'checklist',
-  'network', 'sensorloop', 'obdport', 'pid', 'dtc', 'busvolts', 'canframe', 'arbitration', 'bittiming', 'errors', 'canfd', 'isotp', 'uds', 'bitfield', 'scaling', 'twos', 'checksum', 'candump', 'capdiff', 'sigplot', 'ecumap', 'attack', 'fob'];
+  'network', 'sensorloop', 'obdport', 'pid', 'dtc', 'busvolts', 'canframe', 'arbitration', 'bittiming', 'errors', 'canfd', 'isotp', 'uds', 'bitfield', 'scaling', 'twos', 'checksum', 'candump', 'capdiff', 'sigplot', 'ecumap', 'attack', 'fob', 'canbench'];
 const terms = new Set(glossary.map((g) => g.id));
 const files = readdirSync('src/content/lessons').filter((f) => f.endsWith('.js'));
 

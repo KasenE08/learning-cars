@@ -142,3 +142,21 @@ The reader is **between "new to Python" and "knows the basics"**. Each exercise 
 - Inline data is fine too: `files: { 'frames.txt': '415#0FA0...\n204#...\n' }` or a Python list in `setup`.
 - **Check your work:** `npx vitest run tests/exercises.test.js` runs every exercise for real (answer passes,
   starter fails). Also run the content tests.
+
+## Phase 6 notes: CAN Lab unit (`canlab`)
+- The **CAN bench** (`#/lab/can`, code in `src/ui/can/bench.js`) drives `createCar({ full: true })` from
+  `src/core/can/sim.js`: 16 real Ford message layouts from the community DBC (`src/core/can/ford.js`, includes
+  `cycleMs` from the DBC's GenMsgCycleTime) with made-up values. Extra full-mode messages: 0x04C seatbelts,
+  0x082 steering torque, 0x156 coolant/oil temp, 0x178 ambient temp/pressure, 0x217 four wheel speeds (rad/s),
+  0x43E manifold pressure + charging-voltage command; plus wipers/high-beam in 0x83 and GearLvr in 0x176.
+  Ignition Off silences the bus; Accessory keeps only body messages (0x04C, 0x083, 0x178, 0x3B3, 0x3C3).
+  Temperatures warm up faster than reality (so you can watch); say so if you mention it.
+- **Challenges** (`src/content/challenges.js`): ids `turn-id`, `turn-values`, `lamp`, `brake`, `door`, `speed`, `rpm`,
+  `steer`, `gear`, `counter`, `wheels`. Link one with `[Try the lamp challenge](#/lab/can?c=lamp)` (in-app links:
+  `[label](#/...)` work in any lesson text). Don't give away challenge answers in lessons: teach the method.
+- **Capture formats**: candump `-l` (`(1700000000.123456) can0 415#0FA0C04D00000000`) and SavvyCAN native CSV
+  (`Time Stamp,ID,Extended,Dir,Bus,LEN,D1..D8`, microsecond timestamps, 8-digit hex ID), from SavvyCAN's
+  framefileio.cpp. Saved captures appear in the Python bench as files (`open("blinker-test.log")`).
+- **Exercise data for full-mode logs**: `files: { 'drive.log': 'sim:drive?full' }` (also `?full&ids=217,415`).
+  Scenarios are the same seven (`idle`, `drive`, `blinker`, `steer`, `doors`, `pedal`, `brake`); plain `sim:drive`
+  stays the Phase 5 10-message car, so earlier exercises don't change.
