@@ -1,0 +1,65 @@
+// Reading a VIN
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A serial number with a built-in typo detector',
+      body: [
+        'A [[vin|VIN]] is like a credit-card number: it identifies one specific vehicle, and in North America one character is a **checksum** that catches typos and lazy fakes.',
+        'If you’re into cybersecurity, this is your first car “protocol”: fixed-length fields, each with a meaning.',
+      ] },
+    { tag: 'how', title: '17 characters, five fields',
+      body: [
+        'Standard since the **1981** model year for cars and bikes. Letters **I, O and Q are never used** (too easy to confuse with 1 and 0).',
+        '**1–3** [[wmi|WMI]]: maker and region. **4–8** [[vds|VDS]]: the maker’s codes for model, body, engine. **9** [[check-digit]]. **10** [[model-year-code|model year]]. **11** plant. **12–17** serial number.',
+        'Where to find it: base of the windshield (driver’s side), driver door jamb sticker, title and registration. On most motorcycles it’s stamped on the **[[steering-head]]** (the frame’s neck).',
+      ] },
+    { tag: 'see', title: 'The model-year code', visualFirst: true,
+      visual: { type: 'timeline', title: 'VIN position 10',
+        events: [
+          { year: 1981, title: 'B', note: '17-character VINs become standard (1980 was A).' },
+          { year: 2000, title: 'Y', note: 'Last letter before switching to digits.' },
+          { year: 2001, title: '1', note: 'Digits 1–9 cover 2001–2009.' },
+          { year: 2010, title: 'A', note: 'The letters start over. Position 7 tells the cycles apart (below).' },
+          { year: 2018, title: 'J', note: 'I is skipped, so H (2017) → J.' },
+          { year: 2024, title: 'R', note: 'O and Q skipped: N (2022) → P (2023) → R (2024).' },
+          { year: 2026, title: 'T' },
+        ] },
+      body: [
+        'The year code skips **I, O, Q, U, Z and 0**, so the sequence repeats every 30 years.',
+        'For cars and light trucks (≤10,000 lb): if position **7 is a digit**, the year is 1980–2009; if it’s a **letter**, 2010–2039.',
+      ] },
+    { tag: 'math', title: 'Computing the check digit',
+      body: [
+        '**1. Transliterate** letters to numbers: A–H = 1–8, J–N = 1–5, P = 7, R = 9, S–Z = 2–9. Digits stay as they are.',
+        '**2. Multiply** each position by its weight: `8 7 6 5 4 3 2 10 0 9 8 7 6 5 4 3 2` (position 9 gets 0).',
+        '**3. Add** the 17 products, divide by **11**, keep the remainder. Remainder 0–9 = the check digit; **10 = X**.',
+        'Textbook example `1M8GDM9AXKP042788`: products 8+28+48+35+16+12+18+10+0+18+56+0+24+10+28+24+16 = **351**. 351 = 31 × 11 + **10**, so the check digit is **X**. Position 9 is X ✓.',
+      ],
+      note: 'Weights and letter values are from the US VIN standard (49 CFR 565). Europe doesn’t require a check digit.' },
+    { tag: 'bronco', title: 'Decode your Bronco',
+      body: [
+        'Your VIN should start **3FM**: **3** = Mexico, **FM** = Ford multipurpose vehicle. Bronco Sports are built in Hermosillo.',
+        '10th character for a 2024 model year: **R**. Position 7 will be a letter (2010–2039 cycle).',
+        'Positions 4–8 encode the model and engine in Ford’s own scheme; NHTSA’s free VIN decoder translates them.',
+      ],
+      facts: ['bronco.vin'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'A VIN’s 17 weighted products add up to **476**. What must the check digit be?', answer: 3, tol: 0,
+      hint: '476 ÷ 11 = 43 remainder ?',
+      why: '43 × 11 = 473, so the remainder is 476 − 473 = **3**. Position 9 must be 3, or the VIN has a typo (or is fake).' },
+    { type: 'mc', q: 'A car’s 10th VIN character is **S** and its 7th is a letter. Model year?', options: ['1995', '2015', '2025', '2035'], answer: 2,
+      why: 'S = 1995 or 2025. A letter in position 7 means the 2010–2039 cycle, so **2025**.',
+      wrong: { 0: 'That would need a digit in position 7 (the 1980–2009 cycle).' } },
+    { type: 'order', q: 'Put the VIN fields in order, left to right.', items: ['WMI (maker)', 'VDS (model, body, engine)', 'Check digit', 'Model year', 'Plant', 'Serial number'],
+      why: 'Positions 1–3, 4–8, 9, 10, 11, 12–17.' },
+    { type: 'mc', q: 'Why does no VIN contain the letters **I, O or Q**?', options: ['They’re reserved for Japan', 'They look too much like 1 and 0', 'They mean “invalid”', 'Only European cars use them'], answer: 1,
+      why: 'To prevent misreading, the standard leaves them out entirely.' },
+  ],
+  cards: [
+    { id: 'fields', front: 'VIN fields by position?', back: '1–3 WMI · 4–8 VDS · 9 check digit · 10 model year · 11 plant · 12–17 serial.' },
+    { id: 'check', front: 'How is the VIN check digit computed?', back: 'Letters → numbers, × weights 8765432 10 0 98765432, sum, mod 11. Remainder 10 = X.' },
+    { id: 'year', front: 'Model-year codes 2024 / 2025 / 2026?', back: 'R / S / T. (I, O, Q, U, Z, 0 are skipped.)' },
+    { id: 'pos7', front: 'How do you tell 1995 from 2025 (both S)?', back: 'Cars/light trucks: position 7 is a digit → 1980–2009; a letter → 2010–2039.' },
+    { id: 'bronco-vin', front: 'What does 3FM mean on your Bronco’s VIN?', back: '3 = Mexico, FM = Ford multipurpose vehicle.' },
+  ],
+};
