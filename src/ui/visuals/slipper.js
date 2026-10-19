@@ -13,14 +13,14 @@ export function slipperTrace(t, slipper) {
   const s = t - T_SHIFT;
   if (!slipper) {
     // Clutch locked: the rear wheel must spin the engine up from 6000 to 8500 rpm almost instantly.
-    const spike = 150 * Math.exp(-s / 0.18);
+    const spike = 110 * Math.exp(-s / 0.18);
     const hop = spike > 30 ? 35 * Math.sin(s * 2 * Math.PI * 9) * Math.exp(-s / 0.35) : 0;
     const rpm = 6000 + 2500 * (1 - Math.exp(-s / 0.08));
     return { force: Math.max(0, 40 + spike + hop), rpm, slip: false };
   }
   // Slipper: ramps lift the pressure plate once back-torque passes a threshold, so the clutch slips.
   const cap = 70;
-  const want = 40 + 150 * Math.exp(-s / 0.18);
+  const want = 40 + 110 * Math.exp(-s / 0.18);
   const rpm = 6000 + 2500 * (1 - Math.exp(-s / 0.35));
   return { force: Math.min(cap, want), rpm, slip: want > cap };
 }
@@ -52,7 +52,7 @@ export function mount(host) {
     svg.innerHTML = `
       <rect x="${X0}" y="${Y1}" width="${X1 - X0}" height="${py(100) - Y1}" fill="#ff4d3d" opacity="0.08"/>
       <line x1="${X0}" x2="${X1}" y1="${py(100)}" y2="${py(100)}" stroke="#ff4d3d" stroke-dasharray="5 4"/>
-      <text x="${X1}" y="${py(100) + 13}" text-anchor="end" class="awd-sub" style="fill:#ff4d3d">tire grip limit (above = skid / hop)</text>
+      <text x="${X1}" y="${py(100) + 13}" text-anchor="end" class="awd-sub" style="fill:#ff4d3d">grip limit</text>
       <line x1="${X0}" x2="${X1}" y1="${Y0}" y2="${Y0}" stroke="#5b6470"/>
       <line x1="${X0}" x2="${X0}" y1="${Y0}" y2="${Y1}" stroke="#5b6470"/>
       <text x="${X0 - 6}" y="${py(0) + 4}" text-anchor="end" class="awd-sub">0</text>
