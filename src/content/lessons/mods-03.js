@@ -1,0 +1,67 @@
+// Suspension: coilovers, drops & lifts
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Insoles, custom boots, platform shoes',
+      body: [
+        '[[lowering-springs|Lowering springs]] are like cutting down your insoles: cheap, a bit lower, but the shoe wasn’t designed for it.',
+        '[[coilover|Coilovers]] are custom adjustable boots: great if they’re well made and well fitted, painful if they’re cheap.',
+        'Lifts are platform shoes: taller, a better view over rocks, and a lot easier to roll an ankle.',
+        'In every case the **geometry** the engineers chose moves. That’s the real cost.',
+      ] },
+    { tag: 'see', title: 'Springs and dampers are a pair', visualFirst: true,
+      visual: { type: 'suspension', view: 'damper' },
+      body: [
+        'Try too soft and too stiff. The [[spring-rate]] holds the car up; the [[damper]] controls how fast it moves.',
+        'Stock dampers are valved for stock springs. Stiffer lowering springs on them = **under-damped**: bouncy over dips, floaty after bumps.',
+        'Shorter springs also use up travel, so the suspension hits its [[bump-stop|bump stops]] sooner: crashy ride and sudden grip changes mid-corner.',
+      ] },
+    { tag: 'how', title: 'Springs vs coilovers',
+      body: [
+        '**Lowering springs**: cheapest drop, fixed height, stock dampers. Fine for looks, compromised for handling.',
+        '**Coilovers**: matched spring + damper, threaded height adjustment, often adjustable [[compression-rebound|rebound/compression]]. Good ones beat stock on track; cheap ones often ride worse than stock and wear out fast.',
+        'Height adjustable does **not** mean “set it as low as it goes”. Every drop costs travel.',
+      ] },
+    { tag: 'see', title: 'What lowering does to the angles', visualFirst: true,
+      visual: { type: 'suspension', view: 'align' },
+      body: [
+        '**Camber**: on a strut car, lowering tilts the tops of the tires in (more negative). Slide camber and watch the inner-edge wear warning.',
+        '**[[bump-steer]]**: the [[tie-rod]] and [[control-arm]] now swing on mismatched arcs, so the wheel steers itself over bumps.',
+        '**[[roll-center]]**: on a [[macpherson-strut]] car it can drop faster than the center of gravity, so the body may roll **more**. Fixes (roll-center kits, camber plates) cost money; an alignment is the minimum.',
+      ] },
+    { tag: 'how', title: 'Lifting a crossover',
+      body: [
+        'A [[spacer-lift]] or [[leveling-kit]] raises the body on the same springs and dampers. Cheapest way to fit bigger tires.',
+        'On an [[independent-suspension|independent]] AWD crossover the front diff sits on the body, so lifting the body steepens the [[halfshaft]] angles. Steeper [[cv-joint]] angles mean more heat, wear, torn [[cv-boot|boots]] and vibration.',
+        'Higher center of gravity → more body roll and weight transfer, more rollover risk. Camber and toe move too: realign after any lift.',
+      ] },
+    { tag: 'bronco', title: 'Your Badlands is already “lifted”',
+      body: [
+        'Ford Performance’s **M-18000-BSL “Lift Kit – Badlands”** fits **non-Badlands** Bronco Sports only. It raises them 0.8 in (20 mm) front and 1.2 in (30 mm) rear to Badlands-style suspension. On your truck it would do nothing.',
+        'Aftermarket for Badlands: e.g., Zone Offroad’s 1 in **front-only** strut spacer (maker says it clears 245/65R17 tires and avoids “extreme CV angles”; owners expect shorter CV life anyway).',
+        'Ford’s own next step was the 2025+ **Sasquatch** package: about 0.5 in more height plus 29 in tires and position-sensitive dampers. Not offered for 2024.',
+      ],
+      facts: ['bronco.liftKit', 'bronco.levelKit', 'bronco.sasquatch', 'bronco.suspension'] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'You fit stiffer lowering springs on the stock dampers. The most likely result?',
+      options: ['Perfect damping, since springs and dampers are independent', 'Under-damped bounce and more bump-stop contact', 'More suspension travel', 'Less negative camber'], answer: 1,
+      why: 'The stock dampers were valved for softer springs, so they can’t control the stiffer ones well. The shorter springs also use up travel, so the bump stops come in sooner.',
+      wrong: { 3: 'On a strut car, lowering usually adds negative camber.' } },
+    { type: 'tap', q: 'On a lifted AWD crossover, which parts’ joint angles get steeper and wear faster? Tap them.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'axles',
+      why: 'The front diff and rear drive unit are body-mounted. Lift the body and the halfshafts (axles) run at steeper angles, working the CV joints and boots harder.',
+      wrong: { driveshaft: 'The center driveshaft angle changes little; the halfshafts to the wheels take the hit.', 'susp-front': 'The suspension moves, but it’s the CV axles whose operating angles become the problem.' } },
+    { type: 'mc', q: 'Would Ford Performance’s M-18000-BSL lift kit raise **your** 2024 Badlands?',
+      options: ['Yes, by 20 mm front and 30 mm rear', 'Yes, by 1 in all around', 'No: it brings non-Badlands trims up to Badlands-style suspension', 'No: it only fits 2025 models'], answer: 2,
+      why: 'Ford lists it as compatible with all non-Badlands Bronco Sports (2021–25). It installs the Badlands-style suspension your truck already has.' },
+    { type: 'mc', q: 'What is **bump steer**?',
+      options: ['Steering kickback from a pothole through the wheel', 'The wheel steering itself as the suspension moves up and down', 'Steering that gets lighter at speed', 'The car pulling toward the crown of the road'], answer: 1,
+      why: 'If the tie rod and control arm swing on different arcs, suspension travel changes toe, so the wheel steers itself. Lowering or lifting moves those arcs apart.' },
+  ],
+  cards: [
+    { id: 'springs', front: 'Lowering springs: main downside?', back: 'Stock dampers aren’t valved for them; less travel → bump stops; geometry moves.' },
+    { id: 'coilover', front: 'What is a coilover?', back: 'Damper with the spring around it; threaded height adjust, often adjustable damping. Quality varies hugely.' },
+    { id: 'lower-geo', front: 'Three geometry effects of lowering a strut car?', back: 'More negative camber, more bump steer, lower roll center (can mean more roll).' },
+    { id: 'lift-cv', front: 'Why are lifts hard on AWD crossovers?', back: 'Body-mounted diffs → steeper halfshaft/CV angles → heat, wear, torn boots.' },
+    { id: 'bsl', front: 'Ford’s Bronco Sport “Badlands” lift kit?', back: 'M-18000-BSL: for non-Badlands trims, +20 mm front / +30 mm rear to Badlands-style height.' },
+  ],
+};

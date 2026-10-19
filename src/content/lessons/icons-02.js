@@ -1,0 +1,83 @@
+// Legendary engines: USA
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'The claw hammer',
+      body: [
+        'A claw hammer hasn’t changed much in a century, because it’s simple, cheap and almost impossible to break.',
+        'The American pushrod V8 is that hammer: one cam in the block, two valves per cylinder, lots of displacement.',
+        'Fancier engines exist. Few are as compact, cheap and easy to make powerful.',
+      ] },
+    { tag: 'how', title: 'Ford flathead (1932): V8s for everyone',
+      body: [
+        'Ford’s 1932 Model 18 put a V8 in a **reasonably priced** car for the first time: 221 cu in (3.6 L), 65 hp.',
+        'A [[flathead]] has its valves in the block beside the pistons; the head is just a flat lid. Simple, but it breathes poorly.',
+        'Cheap and everywhere, it became the backbone of postwar [[hot-rod|hot rodding]]. US production ran to 1953.',
+      ] },
+    { tag: 'how', title: 'Small-block Chevy and the LS',
+      body: [
+        '**1955**: Chevrolet’s [[small-block]], 265 cu in (4.3 L), led by Ed Cole. Compact, light, [[ohv]] pushrods. It grew to 400 cu in by 1970.',
+        'GM built its **100-millionth** small-block in November 2011 (GM’s count includes a V6 derived from it).',
+        '**LS1** (1997 C5 Corvette): an aluminum 5.7 L redesign, 345 hp. The LS family (4.8–7.0 L) is cheap, compact and plentiful: the king of the [[ls-swap]].',
+        'The Gen V **LT1** replaced it in the 2014 Corvette.',
+      ] },
+    { tag: 'see', title: 'Why pushrods stay compact', visualFirst: true,
+      visual: { type: 'layout', layout: 'v8' },
+      body: [
+        'One camshaft sits in the block, in the V between the banks. Pushrods run up to rockers that open the valves.',
+        'No cams in the heads = **narrow, short heads**, so a big-displacement V8 fits where an overhead-cam V8 of the same size might not.',
+        'The trade-off: heavier valvetrain, so lower redlines than overhead-cam engines. Torque comes from displacement instead.',
+      ] },
+    { tag: 'how', title: 'Chrysler’s Hemi',
+      body: [
+        'A [[hemi]] chamber is a half-dome with big valves on opposite sides. Good breathing, at the cost of a wide, heavy head.',
+        '**1951** FirePower: Chrysler’s first Hemi V8. **1964**: the 426 race Hemi dominated the Daytona 500, and NASCAR made Chrysler sell it to the public.',
+        '**1966 Street Hemi**: 425 hp (gross), 490 lb-ft; only about 11,000 were built for the public through 1971.',
+        '**2003** 5.7 L Hemi (Ram truck), 345 hp, with two spark plugs per cylinder. Its supercharged 6.2 L cousin is the 707 hp Hellcat.',
+      ] },
+    { tag: 'how', title: 'Ford: Coyote and EcoBoost',
+      body: [
+        '**Coyote** 5.0 L (2011 Mustang GT, 412 hp): Ford went the other way, with four overhead cams, 32 valves and [[ti-vct]] on both cams.',
+        '**EcoBoost** started with a 3.5 L twin-turbo V6 (2010 Taurus SHO and Flex, 365 hp): turbo + [[direct-injection]] + smaller displacement.',
+        'Your Bronco’s 2.0 L is part of that family. The idea: a small engine that makes big-engine power only when you ask for boost.',
+      ],
+      facts: ['bronco.engine', 'bronco.injection'] },
+    { tag: 'bronco', title: 'Ninety years of American power', visualFirst: true,
+      visual: { type: 'compare', title: 'Rated power at launch', metrics: [
+        { key: 'hp', label: 'Power', unit: 'hp' },
+        { key: 'l', label: 'Displacement', unit: 'L' },
+      ], items: [
+        { name: 'Ford flathead V8', note: '1932', values: { hp: 65, l: 3.6 } },
+        { name: 'Chevy 265 small-block', note: '1955', values: { hp: 162, l: 4.3 } },
+        { name: '426 Street Hemi', note: '1966, gross rating', values: { hp: 425, l: 7.0 } },
+        { name: 'GM LS1', note: '1997', values: { hp: 345, l: 5.7 } },
+        { name: 'Ford Coyote', note: '2011', values: { hp: 412, l: 5.0 } },
+        { name: 'Your 2.0 EcoBoost', note: 'Ford rating; some list 245 hp', values: { hp: 250, l: 2.0 } },
+      ] },
+      body: [
+        'Your 2.0 L four makes nearly **4×** the 1932 flathead’s power from about half the displacement.',
+        'The Street Hemi’s 425 hp is a [[gross-hp]] number; on today’s SAE net basis it would read lower.',
+      ],
+      facts: ['bronco.output', 'bronco.displacement'] },
+  ],
+  quiz: [
+    { type: 'tap', q: 'The Hemi is named after the shape of one space. Tap it.', visual: { type: 'parts', drawing: 'head' }, answer: 'chamber',
+      why: 'Hemi = hemispherical combustion chamber: a half-dome roof that leaves room for big valves on opposite sides.',
+      wrong: { 'intake-port': 'The ports lead air to the valves; the name comes from the chamber shape.', 'exhaust-valve': 'Valve size and angle follow from the chamber shape.' } },
+    { type: 'mc', q: 'Main packaging advantage of a pushrod (OHV) V8?', options: ['Higher redline', 'Narrow, compact heads because the cam is in the block', 'Four valves per cylinder', 'No timing drive needed'], answer: 1,
+      why: 'With one cam in the block, the heads carry only valves and rockers, so the engine is small for its displacement. The cost is a heavier valvetrain and lower revs.',
+      wrong: { 0: 'The opposite: the heavier valvetrain usually limits rpm.' } },
+    { type: 'num', q: 'The Hemi was **426 cu in**. In liters? (1 cu in ≈ 16.39 cc; two decimals)', answer: 6.98, tol: 0.02, unit: 'L',
+      hint: '426 × 16.39 cc ÷ 1000', why: '426 × 16.39 ≈ 6,982 cc ≈ **6.98 L**, which is why it’s called a 7.0 L.' },
+    { type: 'order', q: 'Order these engines’ debuts, oldest first.', items: ['Ford flathead V8', 'Chevy small-block', '426 Hemi (race)', 'GM LS1', 'Ford Coyote'],
+      why: '1932, 1955, 1964, 1997, 2011.' },
+    { type: 'mc', q: 'Why is the **LS swap** so popular?', options: ['LS engines are rare and exotic', 'Compact, plentiful, cheap, takes power well, and huge aftermarket support', 'It’s required for registration', 'They are flat-plane V8s'], answer: 1,
+      why: 'Junkyards and trucks are full of LS engines, they’re small for a V8, and there’s a part for everything.' },
+  ],
+  cards: [
+    { id: 'flathead', front: 'Ford flathead V8 (1932)?', back: 'First V8 in a reasonably priced car: 221 cu in, 65 hp. Side valves. Hot-rod backbone.' },
+    { id: 'sbc', front: 'Chevy small-block?', back: '1955, 265 cu in pushrod V8 (Ed Cole). 100 million built by 2011. LS1 (1997) is its aluminum descendant.' },
+    { id: 'hemi', front: 'What makes a Hemi a Hemi?', back: 'Hemispherical combustion chamber with big valves on opposite sides.' },
+    { id: 'ohv', front: 'Pushrod V8 trade-off?', back: 'Compact, cheap, torquey; heavier valvetrain → lower redline.' },
+    { id: 'coyote', front: 'Coyote vs LS in one line?', back: 'Coyote: DOHC 32-valve 5.0 with Ti-VCT. LS: pushrod, 2 valves per cylinder, one cam in the block.' },
+  ],
+};

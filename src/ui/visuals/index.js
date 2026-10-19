@@ -22,6 +22,14 @@ const loaders = {
   tire: () => import('./tire.js'),
   circuit: () => import('./circuit.js'),
   aero: () => import('./aero.js'),
+  lean: () => import('./lean.js'),
+  raketrail: () => import('./raketrail.js'),
+  slipper: () => import('./slipper.js'),
+  quickshift: () => import('./quickshift.js'),
+  traction: () => import('./traction.js'),
+  timeline: () => import('./history.js'),
+  compare: () => import('./compare.js'),
+  checklist: () => import('./checklist.js'),
 };
 
 export const visualTypes = Object.keys(loaders);

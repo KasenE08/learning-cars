@@ -1,0 +1,73 @@
+// Bike cooling, oiling & airboxes
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Same trip, smaller backpack',
+      body: [
+        'A road trip and a backpacking trip need the same things: water, food, air to breathe. The backpacker just packs them **smaller and lighter**.',
+        'Your bikes have the same support systems as the Bronco (cooling, oiling, intake), packed around a 450 cc engine with no hood to hide under.',
+        'A few things change for real, though: **one oil for everything**, no cabin heater, and air that comes in at road speed.',
+      ] },
+    { tag: 'see', title: 'The cooling loop, bike edition', visualFirst: true,
+      visual: { type: 'parts', drawing: 'cooling' },
+      body: [
+        'Same loop as a car: [[water-pump]] → water jacket → [[thermostat]] → [[radiator]] → back to the pump.',
+        '**Bikes skip the heater core**: there’s no cabin. Ignore that box in the drawing.',
+        'The radiator sits behind the front wheel; an electric fan runs in slow traffic and blows the hot air back toward your legs.',
+      ] },
+    { tag: 'how', title: 'Liquid vs air cooling',
+      body: [
+        '[[air-cooled]] engines use fins on the cylinders and head. Simple and light, but temperatures swing more, so clearances and compression stay conservative.',
+        'Liquid cooling holds the engine at a steadier temperature. That allows tighter tolerances, higher [[compression-ratio|compression]] (Ninja 500: 11.3:1) and easier emissions control.',
+        'The water jacket also **muffles mechanical noise**, which matters for noise rules.',
+        'Both your bikes are liquid-cooled; air-cooled engines live on in cruisers, retro and small bikes.',
+      ] },
+    { tag: 'see', title: 'One oil, three jobs', visualFirst: true,
+      visual: { type: 'parts', drawing: 'oil' },
+      body: [
+        'The Ninja 500 is **wet sump** ([[dry-sump|wet vs dry sump]]): oil lives in the pan; a pump sends it through the filter to the bearings and the head. ~~Ignore the turbo feed on this car drawing.~~',
+        'Bike twist: the **gearbox and wet clutch** share that oil. Gear teeth shear it (thinning it over time) and the clutch needs it to grip.',
+        'Some car oils carry friction modifiers that can make a wet clutch **slip**. Bike makers spec oils that meet [[jaso-ma]].',
+      ] },
+    { tag: 'how', title: 'The airbox',
+      body: [
+        'Path: intake snorkel → [[airbox]] → [[air-filter]] → throttle bodies → ports. On your bikes it’s tucked **under the fuel tank**.',
+        'The box’s volume calms the pulsing flow so each throttle body draws from a steady supply. Its size and snorkel length tune **intake noise and torque**.',
+        'It also keeps water and grit out. Pulling it off for “more air” usually just upsets the fueling, and intake noise is part of what makes a bike pass noise tests.',
+      ] },
+    { tag: 'math', title: 'Ram air: how much can speed help?',
+      body: [
+        '[[ram-air]] points the intake into the wind. Extra pressure available = dynamic pressure `q = ½ × ρ × v²` (air ρ ≈ 1.2 kg/m³).',
+        '**60 mph** (26.8 m/s): ½ × 1.2 × 26.8² ≈ **430 Pa**, about **0.4%** of atmospheric pressure (101,325 Pa).',
+        '**150 mph** (67 m/s): ≈ **2,700 Pa**, about **2.7%**. Ducts lose some of it, so real gains are a few percent at very high speed.',
+        'Kawasaki’s 2025 ZX-10R claims 203 PS, or **213 PS with ram air** (≈5%, at superbike speeds). I couldn’t confirm a ram-air system on either of your bikes.',
+      ],
+      facts: ['bikes.zx10rRamAir'] },
+    { tag: 'bikes', title: 'Your two bikes',
+      body: [
+        '**Ninja 500**: liquid-cooled; forced lubrication, wet sump, one oil for engine, gearbox and clutch.',
+        '**RS 457**: liquid-cooled, wet clutch in the engine cases. The spec sheets I could reach don’t describe its oil system, so wet sump is likely but **not confirmed**.',
+        'Both breathe through an airbox under the tank. For oil type and capacity, the owner’s manual is the source of truth.',
+      ],
+      facts: ['ninja.engine', 'ninja.lube', 'ninja.compression', 'rs457.engine'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Order the coolant’s path once the engine is warm.', items: ['Water pump', 'Water jacket in the block and head', 'Thermostat (open)', 'Radiator', 'Back to the water pump'],
+      why: 'The pump pushes coolant through the jacket, where it picks up heat; the open thermostat lets it into the radiator, which hands the heat to the air.' },
+    { type: 'mc', q: 'Why do bike makers specify JASO MA/MA2 oil?', options: ['It’s thicker for the chain', 'The oil also bathes the wet clutch, and friction modifiers in some car oils can make it slip', 'It contains coolant', 'It’s required for ram air'], answer: 1,
+      why: 'Engine, gearbox and clutch share one oil. JASO MA limits the friction modifiers that would cut clutch grip.' },
+    { type: 'num', q: 'Ram air at **50 m/s** (≈112 mph), ρ = 1.2 kg/m³. Dynamic pressure in Pa?', answer: 1500, tol: 0, unit: 'Pa',
+      hint: 'q = ½ × ρ × v².', why: '½ × 1.2 × 50² = 0.6 × 2,500 = **1,500 Pa**, about 1.5% of atmospheric pressure. Small, and it only grows with speed squared.' },
+    { type: 'tap', q: 'Tap the box that filters and calms the intake air.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'airbox',
+      why: 'The airbox sits under the tank, between the intake ducts and the throttle bodies.',
+      wrong: { tank: 'That’s the fuel tank. The airbox hides underneath it.', throttle: 'The throttle bodies come right after the airbox; they meter the air, they don’t filter it.' } },
+    { type: 'mc', q: 'Which part from a car cooling system doesn’t exist on your bikes?', options: ['Thermostat', 'Water pump', 'Heater core', 'Radiator'], answer: 2,
+      why: 'The heater core warms a car’s cabin with engine heat. A bike has no cabin, so it skips it.' },
+  ],
+  cards: [
+    { id: 'heater', front: 'What cooling part do bikes skip?', back: 'The heater core: no cabin to heat.' },
+    { id: 'liquid', front: 'Why liquid cooling instead of fins?', back: 'Steadier temperature → tighter tolerances, higher compression, easier emissions, quieter.' },
+    { id: 'oneoil', front: 'What shares the engine oil on your bikes?', back: 'Engine, gearbox and wet clutch. That’s why bike oil must meet JASO MA/MA2.' },
+    { id: 'airbox', front: 'What does an airbox do?', back: 'Filters intake air, calms the pulses for the throttle bodies, tunes intake noise/torque, keeps water out.' },
+    { id: 'ram', front: 'How big is the ram-air effect?', back: 'q = ½ρv²: ≈0.4% at 60 mph, ≈2.7% at 150 mph (before duct losses).' },
+  ],
+};

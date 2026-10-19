@@ -71,3 +71,12 @@ back = the answer in one or two lines. Unique `id` within the lesson.
 ## Check your work
 `npx vitest run tests/content.test.js tests/course.test.js` must pass (it checks tags, step counts, visuals,
 quiz answers, tap part ids, glossary links, facts and card ids). Fix anything it reports.
+
+## Phase 4b notes
+- **Motorcycles:** the reader took the MSF Basic RiderCourse and drives daily. Build on MSF concepts (countersteering,
+  braking, throttle control) instead of re-teaching basics, but stay theory: explain *why*, never give riding drills
+  or "try this on the street". Be honest about safety (gear, training, track days as the place for limits).
+  Ninja 500 and RS 457 are the running examples; compare them only with verified numbers (facts files).
+- **Car culture:** sport bikes are a first-class part of culture here, not an afterthought. Label opinions as
+  opinions; verify dates, numbers and "firsts" with WebSearch; be honest about myths and about the law
+  (emissions tampering, exhaust noise, lighting, street racing).

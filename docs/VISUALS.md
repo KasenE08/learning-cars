@@ -34,7 +34,7 @@ with Phase 4a; their specs below are final, so use them exactly as written.
 - `brakes`: pedal, booster, master, lines, abs, caliper, rotor, pads, wheel-sensor
 
 ## (new) Interactive visuals
-- `layout` `{ layout: 'single'|'twin180'|'twin270'|'i4'|'i6'|'v6'|'v8'|'v8flat'|'boxer4'|'vtwin', pick?: boolean }`:
+- `layout` `{ layout: 'single'|'twin180'|'twin270'|'i4'|'i4x'|'i6'|'v6'|'v8'|'v8flat'|'boxer4'|'vtwin', pick?: boolean }`:
   front-view animation of the layout's pistons with firing flashes; readout of cylinders, bank angle, crank type,
   firing interval (°), and a one-line balance note. `pick: true` shows chips to switch layouts.
 - `diffturn` `{ diff: 'open'|'lsd'|'locked'|'twinclutch', pick?: boolean, scene?: 'turn'|'slip' }` (key is `diff`, not `type`):
@@ -60,3 +60,25 @@ with Phase 4a; their specs below are final, so use them exactly as written.
 - `circuit` `{ view: 'fuse'|'relay' }`: battery → fuse → switch → load; overload to blow the fuse; relay view shows
   a small control current switching a big load current.
 - `aero` `{}`: drag = ½ρ·Cd·A·v²; sliders for Cd, frontal area and speed; drag force and power needed to push through air.
+
+## (new, Phase 4b) Motorcycle visuals
+- `lean` `{}`: speed + turn-radius sliders → required lean angle (tan θ = v² ÷ (g·r)), front view of a bike leaning,
+  a grip-limit marker, and a "Countersteer" button that plays the sequence: push right bar → front wheel steers left
+  for an instant → bike falls right → turns right.
+- `raketrail` `{ preset?: 'ninja' }`: side view of a front end; rake, fork offset and wheel radius sliders → trail
+  (trail = (R·sin rake − offset) ÷ cos rake). Ninja preset = Kawasaki's 24.5° / 92 mm.
+- `slipper` `{}`: aggressive downshift; engine-braking torque spike → rear wheel hop/chatter without a slipper clutch,
+  controlled slip with one (ramps lift the pressure plate). Toggle slipper on/off.
+- `quickshift` `{}`: timeline of an upshift with clutch vs quickshifter: sensor trigger, ignition/fuel cut (tens of ms),
+  dogs disengage/re-engage, drive torque trace. Also shows an auto-blip downshift (bi-directional).
+- `traction` `{}`: bike traction control: throttle, grip (dry/wet/gravel) and lean sliders → rear slip %, TC level 1–3 /
+  off cutting torque; shows why lean angle changes the allowed slip (lean-sensitive TC needs an IMU).
+- `gearing` also accepts a custom vehicle: `{ type: 'gearing', label, ratios: [...], primary?: n, front?: teeth, rear?: teeth,
+  final?: n, tire: inches, redline }`. For bikes: overall = primary × gear × (rear ÷ front). Only use numbers you verified.
+
+## (new, Phase 4b) Culture visuals (all data comes from your spec, so it must be verified)
+- `timeline` `{ title?, events: [{ year: 1989, title: 'Short title', note?: 'one line' }] }`: tappable horizontal timeline.
+- `compare` `{ title?, metrics: [{ key: 'hp', label: 'Power', unit: 'hp' }], items: [{ name: 'Car or bike', note?, values: { hp: 276 } }] }`:
+  side-by-side bars per metric (2–6 items, 2–5 metrics). Missing values allowed (shown as "n/a").
+- `checklist` `{ title?, groups: [{ name: 'Engine', items: [{ check: 'What to look at', why: 'What it tells you' }] }] }`:
+  tappable inspection checklist with a progress bar (not saved).

@@ -11,8 +11,18 @@ export const PRESETS = {
 
 export const mphPer1000 = (overall, tireIn) => (1000 * Math.PI * tireIn * 60) / (overall * 63360);
 
+/** A custom vehicle from the lesson spec (e.g. a bike): overall = primary × gear × (rear ÷ front). */
+function fromSpec(spec) {
+  if (!spec.ratios) return null;
+  const final = spec.final ?? (spec.primary ?? 1) * (spec.rear && spec.front ? spec.rear / spec.front : 1);
+  return { label: spec.label || 'Custom', ratios: [...spec.ratios], final, tire: spec.tire ?? 24.5, redline: spec.redline ?? 10000 };
+}
+
 export function mount(host, spec = {}) {
-  let P = { ...PRESETS[spec.preset || 'generic'], ratios: [...PRESETS[spec.preset || 'generic'].ratios] };
+  const custom = fromSpec(spec);
+  if (custom) PRESETS.custom = custom;
+  const start = custom ? 'custom' : spec.preset || 'generic';
+  let P = { ...PRESETS[start], ratios: [...PRESETS[start].ratios] };
   let speed = 65;
   const wrap = el(html`<figure class="vis" data-noswipe><svg viewBox="0 0 360 200" class="d" role="img" aria-label="Speed in each gear"></svg><div class="gr__tbl"></div><div class="ctl"></div>
     <p class="vis__note">mph per 1,000 rpm = 1,000 × π × tire diameter (in) × 60 ÷ (overall ratio × 63,360). Overall ratio = gear × final drive. Bronco preset: Ford’s published ratios; redline ≈6,500 rpm is approximate.</p></figure>`);
@@ -37,10 +47,10 @@ export function mount(host, spec = {}) {
   };
   const ctl = wrap.querySelector('.ctl');
   ctl.append(
-    chips(Object.entries(PRESETS).map(([value, p]) => ({ value, label: p.label })), { value: spec.preset || 'generic', onPick(v) { P = { ...PRESETS[v], ratios: [...PRESETS[v].ratios] }; fd.set(P.final); tire.set(P.tire); draw(); } }).el,
+    chips(Object.entries(PRESETS).map(([value, p]) => ({ value, label: p.label })), { value: start, onPick(v) { P = { ...PRESETS[v], ratios: [...PRESETS[v].ratios] }; fd.set(P.final); tire.set(P.tire); draw(); } }).el,
   );
-  const fd = slider({ label: 'Final drive', min: 2.5, max: 5, step: 0.01, value: P.final, fmt: (v) => `${v.toFixed(2)}:1`, onInput(v) { P.final = v; draw(); } });
-  const tire = slider({ label: 'Tire dia.', min: 22, max: 35, step: 0.1, value: P.tire, fmt: (v) => `${v.toFixed(1)} in`, onInput(v) { P.tire = v; draw(); } });
+  const fd = slider({ label: 'Final drive', min: custom ? 4 : 2.5, max: custom ? 12 : 5, step: 0.01, value: P.final, fmt: (v) => `${v.toFixed(2)}:1`, onInput(v) { P.final = v; draw(); } });
+  const tire = slider({ label: 'Tire dia.', min: custom ? 20 : 22, max: 35, step: 0.1, value: P.tire, fmt: (v) => `${v.toFixed(1)} in`, onInput(v) { P.tire = v; draw(); } });
   const sp = slider({ label: 'Speed', min: 10, max: 120, step: 1, value: speed, fmt: (v) => `${v} mph (${Math.round(v * 1.609)} km/h)`, onInput(v) { speed = v; draw(); } });
   ctl.append(fd.el, tire.el, sp.el);
   draw();

@@ -1,0 +1,65 @@
+// Bike chassis + brakes/electronics facts (units mchassis, melec). Last checked: Oct 2026.
+// Network access was limited to web search summaries, so official PDFs were cross-checked through
+// several independent listings where possible; anything resting on one source is marked.
+
+const S = {
+  kawiUS: 'Kawasaki USA 2026 Ninja 500 / Ninja 500 SE ABS spec pages',
+  kawiAU: 'Kawasaki Australia official Ninja 500 spec page',
+  kawiIN: 'Kawasaki India Ninja 500 spec page',
+  mcom: 'Motorcycle.com spec database (Ninja 500)',
+  motorcyclist: 'Motorcyclist: Aprilia RS 457 review (“Everything you need to know”)',
+  ultimate: 'Ultimate Motorcycling RS 457 review',
+  revzilla: 'RevZilla Common Tread RS 457 track review / first look',
+  teambhp: 'Team-BHP RS 457 track review',
+  autocarIN: 'Autocar India RS 457 review',
+  dealers: 'US dealer spec listings (Autotrader, several)',
+  rideapart: 'RideApart 2024 Ninja 500 review',
+  bennetts: 'Bennetts BikeSocial Ninja 500 review',
+};
+
+export default {
+  // ---------- Kawasaki Ninja 500 ----------
+  'ninja.geometry': { value: 'Rake 24.5° · trail 92 mm (3.6 in) · wheelbase 1,375 mm (54.1 in)', status: 'conflicting',
+    sources: [S.kawiAU, S.kawiIN, S.kawiUS, S.mcom],
+    note: 'Kawasaki USA lists rake as 24.7° (trail 3.6 in); Kawasaki Australia/India list 24.5° / 92 mm. Wheelbase agrees (1,374–1,375 mm).' },
+  'ninja.seat': { value: 'Seat height 785 mm (30.9 in)', status: 'confirmed', sources: [S.kawiUS, S.mcom] },
+  'ninja.tires': { value: '110/70R17 front · 150/60R17 rear (Dunlop Sportmax GPR-300, 54H / 66H)', status: 'confirmed',
+    sources: [S.kawiIN, S.dealers], note: 'Sizes are on Kawasaki’s sheet; the tire model and load/speed codes come from US dealer listings.' },
+  'ninja.suspension': { value: '41 mm conventional telescopic fork, 120 mm (4.7 in) travel, no adjustment · bottom-link Uni-Trak gas shock with adjustable preload, 130 mm (5.1 in) travel', status: 'confirmed',
+    sources: [S.kawiAU, S.mcom, 'Kawasaki Latin America spec page'],
+    note: 'One Kawasaki regional page words the rear as “horizontal back-link”; the Australian sheet says bottom-link Uni-Trak.' },
+  'ninja.brakes': { value: 'Front: single 310 mm disc, 2-piston (Nissin) caliper · rear: 220 mm disc, 2-piston caliper', status: 'confirmed',
+    sources: [S.kawiAU, S.bennetts, 'Motoplanete spec page'] },
+  'ninja.abs': { value: 'Dual-channel ABS, not switchable, not cornering (no IMU). US: ABS is a model option; a non-ABS Ninja 500 is also sold', status: 'confirmed',
+    sources: [S.rideapart, S.kawiUS, 'BikeWale road test'] },
+  'ninja.electronics': { value: 'No traction control and no ride modes', status: 'confirmed',
+    sources: [S.rideapart, 'SlashGear 2025 Ninja 500 review', 'BikeWale road test'] },
+  'ninja.throttle': { value: 'Cable-operated throttle (not ride-by-wire)', status: 'unconfirmed',
+    sources: ['Motion Pro cable throttle kit listed for 2024–26 Ninja 500', 'Kawasaki spec sheets list no ride-by-wire'],
+    note: 'Inferred: no source states it outright.' },
+  'ninja.price': { value: '2026 US base MSRP: $5,399 non-ABS · ≈$5,799–5,999 ABS · $6,499 SE ABS (+ destination)', status: 'conflicting',
+    sources: [S.kawiUS, 'J.D. Power', S.mcom],
+    note: 'Kawasaki’s own pages show both $5,799 and $5,999 for the ABS model. Check current pricing; dealers add destination and fees.' },
+
+  // ---------- Aprilia RS 457 ----------
+  'rs457.geometry': { value: 'Rake 24.1° · trail ≈102 mm (4.0 in) · wheelbase ≈1,350 mm (53.1 in)', status: 'confirmed',
+    sources: [S.motorcyclist, S.ultimate, S.revzilla, S.dealers],
+    note: 'US sources give trail as 4.0 in and wheelbase as 53.1–53.2 in; the mm values are conversions. Aprilia’s own metric sheet wasn’t reachable.' },
+  'rs457.seat': { value: 'Seat height 800 mm (31.5 in)', status: 'confirmed', sources: [S.motorcyclist, S.dealers],
+    note: 'RevZilla lists 31.4 in.' },
+  'rs457.tires': { value: '110/70R17 front · 150/60R17 rear', status: 'confirmed', sources: [S.dealers, '1000PS spec database'],
+    note: '2026 listings print ZR17 instead of R17; same size.' },
+  'rs457.suspension': { value: '41 mm upside-down fork, 120 mm travel, preload-adjustable · monoshock, preload-adjustable, 130 mm travel. No damping adjusters', status: 'confirmed',
+    sources: [S.autocarIN, '1000PS spec database', 'MCNews Australia review'] },
+  'rs457.brakes': { value: 'Front: single 320 mm disc, radial-mount 4-piston caliper (ByBre, Brembo’s budget brand) · rear: 220 mm disc, single-piston caliper', status: 'confirmed',
+    sources: ['1000PS spec database', S.revzilla] },
+  'rs457.abs': { value: 'Dual-channel ABS, not cornering (no IMU). Most sources: rear ABS can be switched off for track use', status: 'conflicting',
+    sources: [S.teambhp, 'Motoplanete spec page', 'Total Motorcycle guide', S.motorcyclist],
+    note: 'Motorcyclist’s US review calls the ABS fixed/always on; Team-BHP and others describe a front-only (rear off) setting. May differ by market.' },
+  'rs457.modes': { value: '3 ride modes (Rain, Eco, Sport) via ride-by-wire; traction control 3 levels + off', status: 'confirmed',
+    sources: [S.revzilla, 'Bikesales Australia review', 'Total Motorcycle guide'],
+    note: 'Reviewers disagree on what the modes change: some say throttle response and TC only (peak power kept), one reports power heavily cut low in the revs in Rain.' },
+  'rs457.price': { value: 'US base MSRP ≈$6,799–6,899 (+ destination)', status: 'conflicting',
+    sources: [S.motorcyclist, 'J.D. Power', 'MotoHunt 2026 listing ($6,849)'],
+    note: 'Sources disagree by model year and listing. Check current pricing.' },
+};

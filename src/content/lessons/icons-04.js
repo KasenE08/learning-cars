@@ -1,0 +1,72 @@
+// Cars that changed everything
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'The iPhone moment',
+      body: [
+        'Some products don’t just sell well; they make every competitor redesign theirs. The first iPhone did that to phones.',
+        'A few cars did it to cars: they changed **how cars are built**, **how they’re packaged**, or **what people expect** from them.',
+        'Each one here solved a problem so well that “the normal car” afterward looked like it.',
+      ] },
+    { tag: 'how', title: 'Ford Model T: cars for everyone',
+      body: [
+        '**1908**: launched at $850. Simple, tough, easy to fix.',
+        '**1913**: Ford’s [[moving-assembly-line]] at Highland Park cut build time from about 12 hours to about 1.5. The price later fell under $300.',
+        'More than **15 million** were built by 1927. In a 1999 poll of experts it was voted the most influential car of the 20th century.',
+      ] },
+    { tag: 'how', title: 'Beetle and Mini: packaging',
+      body: [
+        '**VW Beetle**: rear-mounted [[air-cooled]] flat-four, cheap and famously durable. The last original rolled out of Puebla, Mexico, on July 30, 2003: car number **21,529,464**.',
+        '**Mini** (1959, Alec Issigonis): engine mounted sideways ([[transverse]]) driving the front wheels, gearbox inside the oil sump. A tiny car with room for four.',
+        'Transverse engine + front-wheel drive is now the default layout for most small and mid-size cars. The Mini was voted second in that 1999 poll.',
+      ] },
+    { tag: 'how', title: 'Expectations: GTI, Miata, NSX',
+      body: [
+        '**Golf GTI** (1976): proof a cheap, practical hatchback could be a sports car. The [[hot-hatch]] was born.',
+        '**Mazda MX-5 Miata** (Chicago Auto Show, Feb 1989): revived the light, simple, affordable roadster. Guinness-recognized as the best-selling two-seat sports car; one million built by April 2016.',
+        '**Honda NSX** (1990): an aluminum [[monocoque]] mid-engine supercar you could drive every day, with input from Ayrton Senna in testing. It forced exotic makers to take reliability seriously (a common opinion).',
+        '~~One-liner: the Toyota Prius (1997) was the first mass-produced hybrid.~~',
+      ] },
+    { tag: 'see', title: 'A century of game-changers', visualFirst: true,
+      visual: { type: 'timeline', title: 'Cars that changed everything', events: [
+        { year: 1908, title: 'Ford Model T' },
+        { year: 1913, title: 'Moving assembly line', note: 'Highland Park, Michigan' },
+        { year: 1959, title: 'Mini', note: 'Transverse engine, front-wheel drive' },
+        { year: 1964, title: 'Ford Mustang', note: 'Created the pony car' },
+        { year: 1976, title: 'VW Golf GTI', note: 'The hot hatch' },
+        { year: 1989, title: 'Mazda MX-5 Miata' },
+        { year: 1990, title: 'Honda NSX', note: 'Aluminum everyday supercar' },
+        { year: 2003, title: 'Last original Beetle', note: '21,529,464 built' },
+      ] },
+      body: [
+        'Notice the three kinds of change: **manufacturing** (Model T), **packaging** (Beetle, Mini), and **expectations** (GTI, Miata, NSX).',
+      ] },
+    { tag: 'bronco', title: 'The Mini’s layout lives in your Bronco',
+      body: [
+        'Your Bronco Sport’s engine sits **sideways**, exactly the Mini’s idea, on a platform shared with the front-drive-based Escape.',
+        'Unlike the Mini, the gearbox is a separate 8-speed beside the engine, and a PTU sends drive to the rear for 4x4.',
+        'Assembly lines, unibody construction and transverse packaging: three game-changers built into one compact SUV.',
+      ],
+      facts: ['bronco.mounting', 'bronco.trans', 'bronco.ptu'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'The Model T fell from **$850** to about **$300**. Roughly what percent price cut is that? (nearest whole percent)', answer: 65, tol: 1, unit: '%',
+      hint: '(850 − 300) ÷ 850', why: '550 ÷ 850 ≈ **65%**. Mass production made the car affordable to the people building it.' },
+    { type: 'mc', q: 'What was the **Mini’s** big packaging idea?', options: ['Rear engine, air-cooled', 'Transverse engine driving the front wheels, gearbox in the sump', 'All-aluminum body', 'A V8 in a small car'], answer: 1,
+      why: 'Turning the engine sideways and tucking the gearbox under it left most of the car’s length for people. Most small cars still use transverse front drive.',
+      wrong: { 0: 'That’s the Beetle.' } },
+    { type: 'tap', q: 'In the Mini the gearbox sat in the engine’s sump. Where is the gearbox in your Bronco? Tap it.', visual: { type: 'parts', drawing: 'car-top' }, answer: 'transmission',
+      why: 'Your 8-speed automatic bolts to the side of the transverse engine; the PTU on its output sends drive to the rear.',
+      wrong: { ptu: 'The PTU is on the transmission’s output; it turns drive 90° toward the rear.', engine: 'The engine feeds the transmission beside it.' } },
+    { type: 'order', q: 'Order these game-changers, oldest first.', items: ['Ford Model T', 'Mini', 'VW Golf GTI', 'Mazda MX-5 Miata', 'Honda NSX'],
+      why: '1908, 1959, 1976, 1989, 1990.' },
+    { type: 'mc', q: 'Why was the **Honda NSX** a game-changer?', options: ['First car with a V8', 'An aluminum mid-engine supercar that was reliable enough to drive every day', 'First hatchback', 'First hybrid'], answer: 1,
+      why: 'Its aluminum structure and Honda engineering made supercar performance livable, raising the bar for exotic makers.' },
+  ],
+  cards: [
+    { id: 'model-t', front: 'What did the Model T change?', back: 'Manufacturing: the 1913 moving assembly line made cars cheap. 15 million by 1927.' },
+    { id: 'mini', front: 'What did the Mini change?', back: 'Packaging: transverse engine + front-wheel drive, now the default for small cars.' },
+    { id: 'beetle', front: 'Original Beetle production total and end?', back: '21,529,464 cars; last built July 30, 2003, in Puebla, Mexico.' },
+    { id: 'miata', front: 'What did the Miata change?', back: 'Revived the cheap, light roadster (1989); best-selling two-seat sports car.' },
+    { id: 'nsx', front: 'What did the NSX change?', back: 'Aluminum, reliable, daily-usable supercar (1990).' },
+  ],
+};

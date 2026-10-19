@@ -1,0 +1,73 @@
+// Chain drive & sprockets
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Your bicycle, scaled up',
+      body: [
+        'A bicycle chain links a front sprocket to a rear one. Small front + big rear = easy hill climbing, low top speed.',
+        'Your bikes do exactly that: a small **front sprocket** on the gearbox output, a big **rear sprocket** on the wheel, and a chain between them.',
+        'The difference: it carries about 45 hp instead of your legs’ 0.3 hp, so the parts are beefier and need regular care.',
+      ] },
+    { tag: 'how', title: 'Chain and sprockets',
+      body: [
+        'A chain is links of **inner and outer plates** joined by **pins**; each pin turns inside a bushing and a **roller** that meets the sprocket teeth.',
+        'Street bikes use a [[sealed-chain]]: rubber O- or X-rings trap grease inside each pin. The outside still needs cleaning and lube.',
+        'The front [[sprocket]] (countershaft sprocket) sits on the gearbox output shaft; the rear bolts to the wheel hub, usually with rubber **cush-drive** blocks to soften shocks.',
+        'Chains are light, cheap and very efficient, and the ratio is easy to change. The cost: they stretch, wear and get dirty. Some bikes use belts or shafts instead.',
+      ] },
+    { tag: 'math', title: 'Three reductions, multiplied',
+      body: [
+        '[[final-drive]] on a chain bike = **rear teeth ÷ front teeth**. Ninja 500: 43 ÷ 14 = **3.071**.',
+        '[[overall-ratio]] = [[primary-drive|primary]] × gear × final. Ninja in 6th: 2.029 × 1.037 × 3.071 ≈ **6.46**; in 1st: ≈ **18.3**.',
+        'Rear tire 150/60R17 ≈ 24.1 in (612 mm) tall. In 6th that’s ≈ **11.1 mph per 1,000 rpm**, so **65 mph ≈ 5,900 rpm**.',
+      ] },
+    { tag: 'see', title: 'Play with the Ninja’s gearing', visualFirst: true,
+      visual: { type: 'gearing', label: 'Ninja 500 (stock 14/43)', ratios: [2.929, 2.056, 1.619, 1.333, 1.154, 1.037], primary: 2.029, front: 14, rear: 43, tire: 24.1, redline: 11000 },
+      body: [
+        'Kawasaki’s published gear, primary and final ratios. The “final drive” slider here is **primary × sprockets** (2.029 × 3.071 ≈ 6.23).',
+        'Redline is set to 11,000 rpm; published figures disagree (≈11,000–11,700). Real top speed is limited by drag long before 6th gear runs out.',
+        'I couldn’t verify the RS 457’s gear ratios, so it isn’t shown.',
+      ] },
+    { tag: 'how', title: 'Changing teeth',
+      body: [
+        '**Shorter** gearing (bigger rear or smaller front): quicker acceleration, more rpm at cruise. **Taller**: the reverse.',
+        'One front tooth counts about as much as **three rear teeth** here: 14/43 → 13/43 is +7.7%; 14/43 → 14/44 is only +2.3%.',
+        'Fewer front teeth also wrap the chain around a tighter circle: more wear and more chain “polygon” bumpiness.',
+      ] },
+    { tag: 'how', title: 'Chain sizes and care (theory)',
+      body: [
+        '[[chain-pitch|520 / 525 / 530]]: the **5** means 5/8 in pitch; **20 / 25 / 30** = roller width of 1/4, 5/16, 3/8 in. Wider is stronger and heavier. Your bikes use **520**.',
+        '[[chain-slack|Slack]] is deliberate: as the swingarm swings, the distance between sprockets changes. Too tight strains the chain, bearings and shaft.',
+        'Wear in the pins and bushings makes the chain “stretch,” and a stretched chain wears the sprockets into [[hooked-sprocket|hooked teeth]]. That’s why they’re usually replaced **as a set**.',
+        '~~Adjustment and tension specs are in your owner’s manual; this course stays theory.~~',
+      ] },
+    { tag: 'bikes', title: 'Your two bikes',
+      body: [
+        '**Ninja 500**: 14/43 sprockets, 520 chain, final 3.071, primary 2.029. Same rear tire size as the RS 457 (150/60R17).',
+        '**RS 457**: retailer listings say **15/43** and 520 chain (final ≈ 2.87), but I couldn’t confirm that with Aprilia, and its primary and gear ratios aren’t published anywhere I could find.',
+        'A smaller final drive alone doesn’t mean taller overall gearing: without the primary and gear ratios, you can’t compare the two bikes’ gearing honestly.',
+      ],
+      facts: ['ninja.gearRatios', 'ninja.sprockets', 'ninja.tires', 'rs457.sprockets', 'rs457.tires'] },
+  ],
+  quiz: [
+    { type: 'num', q: 'Ninja 500 with a **14/45** sprocket pair. New final drive ratio (rear ÷ front)?', answer: 3.214, tol: 0.005,
+      why: '45 ÷ 14 ≈ **3.214**, about 4.7% shorter than stock 3.071: quicker acceleration, more rpm on the highway.' },
+    { type: 'mc', q: 'You fit a front sprocket with **one fewer tooth**. What changes?', options: ['Taller gearing, lower cruise rpm', 'Shorter gearing: quicker acceleration, higher cruise rpm', 'Nothing; only the rear sprocket matters', 'The chain size changes to 525'], answer: 1,
+      why: 'Fewer front teeth raise rear ÷ front, so the engine turns more times per wheel turn: more torque at the wheel, more rpm at any speed.',
+      wrong: { 2: 'The ratio is rear ÷ front, so both matter. One front tooth here is worth about three rear teeth.' } },
+    { type: 'order', q: 'Order these chain sizes from **narrowest** to **widest** rollers.', items: ['520 (1/4 in)', '525 (5/16 in)', '530 (3/8 in)'],
+      why: 'All three share the 5/8 in pitch (the “5”). The last two digits give roller width in 80ths of an inch: 20, 25, 30.' },
+    { type: 'tap', q: 'Tap the final drive.', visual: { type: 'parts', drawing: 'moto-side' }, answer: 'chain',
+      why: 'Chain and sprockets carry power from the gearbox output to the rear wheel. Their tooth counts set the final drive ratio.',
+      wrong: { swingarm: 'The swingarm holds the rear wheel and carries the chain along its side, but it doesn’t transmit drive.', gearbox: 'The gearbox comes before the final drive; the front sprocket sits on its output shaft.' } },
+    { type: 'mc', q: 'Why does a bike chain need some slack?', options: ['So it can be removed without tools', 'The sprocket distance changes as the swingarm moves', 'Slack makes the gearing taller', 'To let the slipper clutch work'], answer: 1,
+      why: 'The swingarm pivot and the front sprocket aren’t in the same spot, so the chain path length changes through the suspension’s travel. A chain that is too tight can be strained hard.' },
+  ],
+  cards: [
+    { id: 'final', front: 'Chain final drive ratio?', back: 'Rear teeth ÷ front teeth. Ninja 500: 43 ÷ 14 = 3.071.' },
+    { id: 'overall', front: 'Overall ratio on a bike?', back: 'Primary × gear × final. Ninja 6th: 2.029 × 1.037 × 3.071 ≈ 6.46.' },
+    { id: 'tooth', front: 'Front tooth vs rear tooth?', back: 'With a ~3:1 final drive, one front tooth ≈ three rear teeth.' },
+    { id: '520', front: 'What does “520” mean?', back: '5/8 in pitch (5), 1/4 in roller width (20/80 in). 525 = 5/16 in, 530 = 3/8 in.' },
+    { id: 'set', front: 'Why replace chain and sprockets together?', back: 'A stretched chain hooks the sprocket teeth, and worn sprockets wear a new chain fast.' },
+    { id: 'cruise', front: 'Ninja 500 rpm at 65 mph in 6th?', back: '≈5,900 rpm (≈11.1 mph per 1,000 rpm, stock gearing).' },
+  ],
+};
