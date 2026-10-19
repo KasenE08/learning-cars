@@ -70,11 +70,11 @@ print(raw)  # 4000
         starter: `LINE = "(0.020000) can0 415#0FA0C04D00000000"
 
 def parse_line(line):
-    # → ['(0.020000)', 'can0', '415#0F…']
+    # → ['(0.020000)', 'can0', '415#…']
     parts = line.split()
     frame = parts[2]
     # '415#0FA0…' → '415' and '0FA0…'
-    id_text, data_text = frame.split("#")
+    id_hex, data_hex = frame.split("#")
     # hex text → int
     can_id = ___
     # hex text → bytes
@@ -92,16 +92,16 @@ print(parse_line(LINE))
         hints: [
           'You already wrote the ID part last exercise: hex text → int needs base 16.',
           'For the data: `bytes.fromhex(...)` turns hex text into bytes.',
-          '`can_id = int(id_text, 16)` and `data = bytes.fromhex(data_text)`',
+          '`can_id = int(id_hex, 16)` and `data = bytes.fromhex(data_hex)`',
         ],
         solution: `LINE = "(0.020000) can0 415#0FA0C04D00000000"
 
 def parse_line(line):
     parts = line.split()
     frame = parts[2]
-    id_text, data_text = frame.split("#")
-    can_id = int(id_text, 16)
-    data = bytes.fromhex(data_text)
+    id_hex, data_hex = frame.split("#")
+    can_id = int(id_hex, 16)
+    data = bytes.fromhex(data_hex)
     return can_id, data
 
 print(parse_line(LINE))
@@ -109,8 +109,8 @@ print(parse_line(LINE))
       } },
     { tag: 'key', title: 'Two conversions to remember',
       body: [
-        '**ID:** `int(id_text, 16)` → one number you can compare: `if can_id == 0x415:`.',
-        '**Data:** `bytes.fromhex(data_text)` → 8 small ints (0–255) you can index: `data[0]`, `data[1]`…',
+        '**ID:** `int(id_hex, 16)` → one number you can compare: `if can_id == 0x415:`.',
+        '**Data:** `bytes.fromhex(data_hex)` → 8 small ints (0–255) you can index: `data[0]`, `data[1]`…',
         'Next: signals don’t always fill whole bytes, so you need to reach inside a byte for single bits.',
       ] },
   ],

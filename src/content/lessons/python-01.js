@@ -24,7 +24,7 @@ export default {
       ] },
     { tag: 'how', title: 'Text and f-strings',
       body: [
-        'Text is a **string**: anything in quotes, `"can0"` or `\'415\'`. `"40" + "1"` is `"401"` (glued, not added).',
+        'Text is a [[string]]: anything in quotes, `"can0"` or `\'415\'`. `"40" + "1"` is `"401"` (glued, not added).',
         'An [[f-string]] drops values into text: `f"{rpm} rpm"` → `"3000 rpm"`.',
         'Format inside the braces: `f"{39.929:.1f}"` → `"39.9"` (one decimal). `f"{4000:04X}"` → `"0FA0"` (hex, 4 digits; next lessons).',
         'Text that looks like a number is still text: `"4000"` and `4000` are different things until you convert with `int()`.',

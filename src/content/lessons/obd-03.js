@@ -1,0 +1,73 @@
+// OBD-II protocols
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Same questions, five languages',
+      body: [
+        'In 1996 every car had to answer the same questions (“what’s your rpm?”), but carmakers could pick the **language on the wire**.',
+        'So there were five: Ford spoke one, GM another, most European and Asian cars a third. A scan tool had to be multilingual and guess first.',
+        'From 2008, everyone in the US speaks one language: **CAN**.',
+      ] },
+    { tag: 'see', title: 'Five protocols side by side', visualFirst: true,
+      visual: { type: 'compare', title: 'OBD-II protocols: top data rate', metrics: [{ key: 'rate', label: 'Data rate', unit: 'kbit/s' }],
+        items: [
+          { name: 'SAE J1850 VPW', note: 'mostly GM; 1 wire, pin 2', values: { rate: 10.4 } },
+          { name: 'SAE J1850 PWM', note: 'mostly Ford; 2 wires, pins 2 + 10', values: { rate: 41.6 } },
+          { name: 'ISO 9141-2', note: 'K-line, pin 7 (L-line 15)', values: { rate: 10.4 } },
+          { name: 'ISO 14230-4 (KWP2000)', note: 'K-line, pin 7', values: { rate: 10.4 } },
+          { name: 'ISO 15765-4 (CAN)', note: 'pins 6 + 14; 250 or 500 kbit/s', values: { rate: 500 } },
+        ] },
+      body: [
+        'Same OBD questions and answers ([[sae-j1979]]) ride on all five. Only the wiring, voltages, timing and framing differ.',
+        'CAN at 500 kbit/s is about **12×** faster than the quickest older one.',
+      ] },
+    { tag: 'how', title: 'J1850: the American pair',
+      body: [
+        '[[j1850|J1850 PWM]]: **41.6 kbit/s**, two wires driven as a differential pair (pins 2 and 10). Mostly Ford.',
+        '**J1850 VPW**: **10.4 kbit/s**, one wire (pin 2). Bits are coded by how long each pulse lasts. Mostly GM.',
+        'Both were early in-car networks, not just diagnostic links. Both disappeared from new cars once CAN took over.',
+      ] },
+    { tag: 'see', title: 'The K-line: slow serial', visualFirst: true,
+      visual: { type: 'obdport', highlight: 'kline' },
+      body: [
+        '[[k-line|ISO 9141-2]]: a single wire on **pin 7** at **10.4 kbaud**, much like an old serial port. The optional L-line (pin 15) only helps wake the ECU.',
+        'Waking an ECU the original way takes about 2 seconds: an address byte sent at just 5 bits per second.',
+        '[[kwp2000]] (ISO 14230) uses the same wire, adds a much faster wake-up and more services. Common on 1996–2000s Chrysler, European and Asian cars.',
+      ] },
+    { tag: 'how', title: 'CAN wins: ISO 15765-4',
+      body: [
+        '[[iso-15765]] runs OBD over [[can-bus]] on **pins 6 and 14**, at **250 or 500 kbit/s**, with **11-bit or 29-bit** IDs. That’s four allowed combinations.',
+        'Allowed from the 2003 model year, **required on every new US light vehicle from 2008**.',
+        'Why CAN: far faster, already used inside cars, two-wire differential signaling that shrugs off noise. A request/response bigger than one frame is split up by a transport layer (CAN unit).',
+        'A scan tool still tries protocols in turn until something answers. On a 2008+ car it finds CAN immediately.',
+      ],
+      facts: ['law.canMandate'] },
+    { tag: 'bronco', title: 'Old Ford, new Ford',
+      body: [
+        'A 1996–early-2000s Ford would usually answer on J1850 PWM (pins 2 and 10).',
+        'Your 2024 Bronco Sport: **CAN, ISO 15765-4**, pins 6 and 14. Fords commonly use 11-bit IDs at 500 kbit/s for this; not confirmed for your model specifically.',
+        'Behind the gateway, Ford runs several CAN networks of its own. That’s the CAN unit’s *How Ford organizes its networks*.',
+      ],
+      facts: ['bronco.obdProtocol'] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Order these OBD-II protocols from **slowest** to **fastest** top data rate.',
+      items: ['ISO 9141-2 (10.4 kbaud)', 'SAE J1850 PWM (41.6 kbit/s)', 'CAN at 250 kbit/s', 'CAN at 500 kbit/s'],
+      why: '10.4 → 41.6 → 250 → 500 kbit/s. CAN at 500 kbit/s is about 12× faster than J1850 PWM.' },
+    { type: 'num', q: 'ISO 9141-2 sends each byte as **10 bits** (start bit + 8 data bits + stop bit) at **10,400 bits/s**. At most how many bytes per second is that?', answer: 1040, tol: 0, unit: 'bytes/s',
+      hint: 'bytes/s = bits/s ÷ bits per byte.',
+      why: '`10,400 ÷ 10 = 1,040 bytes/s`. The start and stop bits are overhead: only 8 of every 10 bits are data.' },
+    { type: 'mc', q: 'Which protocol must a **2015** car sold in the US use for OBD-II?',
+      options: ['SAE J1850 PWM', 'ISO 9141-2', 'KWP2000', 'ISO 15765-4 (CAN)'], answer: 3,
+      why: 'From the 2008 model year, CAN (ISO 15765-4) is required for OBD on new US light vehicles.' },
+    { type: 'mc', q: 'What stays the **same** across all five OBD-II protocols?',
+      options: ['The pins used', 'The bit rate', 'The OBD questions and answers (services, PIDs, code format)', 'The voltage levels'], answer: 2,
+      why: 'The protocols are just different “wires and timing”. The OBD messages on top (SAE J1979: modes, PIDs, DTC format) are the same.' },
+  ],
+  cards: [
+    { id: 'five', front: 'The five OBD-II protocols?', back: 'J1850 PWM, J1850 VPW, ISO 9141-2, ISO 14230 (KWP2000), ISO 15765-4 (CAN).' },
+    { id: 'can2008', front: 'When did CAN become required for OBD in the US?', back: '**2008** model year (allowed from 2003).' },
+    { id: 'pwm', front: 'J1850 PWM: speed, pins, who?', back: '41.6 kbit/s, pins 2 + 10, mostly Ford.' },
+    { id: 'kline', front: 'K-line protocols: speed and pin?', back: 'ISO 9141-2 and KWP2000: 10.4 kbaud on pin 7 (L-line 15).' },
+    { id: 'canopts', front: 'ISO 15765-4: speeds and ID sizes?', back: '250 or 500 kbit/s; 11-bit or 29-bit IDs.' },
+  ],
+};
