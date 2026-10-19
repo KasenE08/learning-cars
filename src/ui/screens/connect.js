@@ -112,7 +112,7 @@ export function render(view) {
     const codesEl = body.querySelector('.cx__codes');
     codesEl.innerHTML = `<span class="kicker">Trouble codes</span>
       ${readiness?.milOn ? '<p class="cx__mil on">⚠ Check-engine light is ON</p>' : '<p class="cx__mil">Check-engine light off</p>'}
-      ${dtcs.length ? `<div class="cx__dtcs">${dtcs.map((d) => `<a class="cx__dtc" href="#/vis/dtc?${encodeURIComponent(JSON.stringify({ code: d }))}">${d}</a>`).join('')}</div>` : '<p class="muted">No stored codes.</p>'}
+      ${dtcs.length ? `<div class="cx__dtcs">${dtcs.map((d) => `<span class="cx__dtc">${d}</span>`).join('')}<a class="cx__how" href="#/lesson/obd-05">How to read these →</a></div>` : '<p class="muted">No stored codes.</p>'}
       ${pending.length ? `<p class="muted" style="margin-top:6px">Pending: ${pending.join(', ')}</p>` : ''}
       <button class="btn btn--ghost ex__small" data-rescan>Re-scan</button>`;
     codesEl.querySelector('[data-rescan]').addEventListener('click', async () => {

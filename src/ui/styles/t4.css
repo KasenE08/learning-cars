@@ -298,3 +298,6 @@
 .cx__mon { margin-top: 14px; }
 .cx__mon summary { cursor: pointer; font-size: 13px; color: var(--ink-3); }
 .cx__mon pre { margin: 8px 0 0; max-height: 220px; overflow: auto; background: #050607; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 10px; font: 12px/1.5 var(--font-mono); color: #9fd3a8; white-space: pre-wrap; }
+.cx__dtcs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.cx__how { font-size: 12px; color: var(--ink-3); text-decoration: none; margin-left: 4px; }
+.cx__how:hover { color: var(--ink); }
