@@ -1,0 +1,86 @@
+// Rules, ethics & disclosure
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'Locksmith or burglar?',
+      body: [
+        'A locksmith who studies how locks fail is a respected pro. Someone who opens a neighbor’s door with the same skill is a burglar.',
+        'The knowledge is identical. The difference is **permission**, and what you do with what you find.',
+      ] },
+    { tag: 'law', title: 'Rule 1: authorization',
+      body: [
+        'Research only **your own car**, or one whose owner gave you written permission. Not a friend’s car “just to look,” not a rental, never a stranger’s.',
+        'Accessing someone else’s computers without authorization is a federal crime in the US (the Computer Fraud and Abuse Act), and a car is full of computers. Servers and apps count too.',
+        'Never on public roads: anything that could affect brakes, steering or throttle belongs on a lab bench or private property, with the car not moving.',
+        'And no [[emissions-tampering]]: research permission doesn’t override the Clean Air Act.',
+      ],
+      facts: ['law.epaEnforcement'] },
+    { tag: 'law', title: 'DMCA §1201 and the research exemption',
+      body: [
+        '[[dmca-1201]] bans getting around technical locks on copyrighted software, and ECU firmware is copyrighted software.',
+        'Since **2015** the Copyright Office has granted an exemption for **good-faith security research**, including car software (for cars it took effect a year later). 2018 widened it beyond a list of device types.',
+        'It’s renewed every **3 years**; the current one runs **Oct 28, 2024 → Oct 28, 2027**. Conditions: a lawfully acquired device, research done solely in good faith, and no breaking other laws (like the CFAA).',
+        'It’s a narrow shield against one law, not general permission.',
+      ],
+      facts: ['law.dmca1201'] },
+    { tag: 'how', title: 'Found something? Coordinated disclosure',
+      body: [
+        '[[coordinated-disclosure]]: report privately to the maker, give them time to fix it (90 days is a common norm), then publish so others learn. Every case in lesson 2 worked this way.',
+        'A **VDP** (vulnerability disclosure program) is the official channel and rules. A [[bug-bounty]] adds payment. Published bugs get a [[cve]] ID.',
+        'Ford: a coordinated disclosure program on HackerOne, reportedly with **no cash bounties**, and vehicles listed in scope. The live policy couldn’t be checked; read it before reporting.',
+        'Don’t publish working exploit details before a fix, and don’t demand payment for silence: that’s extortion, not research.',
+      ],
+      facts: ['law.fordVdp'] },
+    { tag: 'law', title: 'UN R155 / R156: security becomes law',
+      body: [
+        '[[un-r155]]: the maker must run a certified **cybersecurity management system** (CSMS) and get each vehicle type approved. EU: new types from **July 2022**, all new vehicles from **July 2024**.',
+        '[[un-r156]]: a **software update management system** (SUMS): updates must be planned, secured and recorded. EU dates are staged; sources disagree on exactly when it covered all new cars.',
+        'The US doesn’t use these UN rules. NHTSA’s cybersecurity best practices (updated 2022) are guidance, not law. Global makers like Ford build to R155 anyway to sell in Europe.',
+      ],
+      facts: ['law.unR155'] },
+    { tag: 'see', title: 'Before you touch any car network', visualFirst: true,
+      visual: { type: 'checklist', title: 'Ethics checklist', groups: [
+        { name: 'Permission', items: [
+          { check: 'Is it my car, or do I have the owner’s written OK?', why: 'Without authorization, “research” is unauthorized access.' },
+          { check: 'Is the car parked, off public roads?', why: 'Anything near brakes, steering or throttle can hurt people.' },
+        ] },
+        { name: 'Read, don’t write', items: [
+          { check: 'Am I only reading data?', why: 'This app’s rule: never write, flash or send security access.' },
+          { check: 'Does anything touch immobilizers or emissions?', why: 'Stop. That’s theft tooling or Clean Air Act tampering.' },
+        ] },
+        { name: 'If I find a bug', items: [
+          { check: 'Report privately through the maker’s VDP first', why: 'Owners stay safe while it gets fixed.' },
+          { check: 'Wait for a fix before publishing details', why: 'Publishing early hands the bug to thieves.' },
+        ] },
+      ] },
+      body: ['Tap each item. If any answer is “no” or “not sure,” stop and ask a teacher, mentor or the maker first.'] },
+    { tag: 'why', title: 'It’s a real career',
+      body: [
+        'Carmakers and suppliers hire **product security engineers** to do TARAs, pen-test their own cars, run vehicle security operations centers and meet R155. ECE plus security is exactly the mix.',
+        'The **DEF CON Car Hacking Village** (since 2015, co-founded by Robert Leale and Craig Smith) runs talks and hands-on, authorized challenges on donated hardware.',
+        '**Auto-ISAC** (formed Aug 2015) is where automakers share threat information. University labs like UW’s and UCSD’s, which started this field, still publish.',
+        'Skills to build now: C and embedded systems, networking, cryptography basics, and the CAN and Python skills in this track.',
+      ] },
+  ],
+  quiz: [
+    { type: 'mc', q: 'Which of these is clearly within the rules?',
+      options: ['Reading live data from your own parked car with a read-only tool', 'Testing a friend’s keyless entry while they’re at school', 'Sending CAN messages to a rental car to see what happens', 'Publishing a working exploit for a new car before telling the maker'], answer: 0,
+      why: 'Your own car, read-only, parked: that’s authorized and safe. The others lack permission or skip coordinated disclosure.',
+      wrong: { 1: 'No permission from the owner = unauthorized, even for a friend.', 3: 'Publishing before a fix hands the bug to thieves. Report privately first.' } },
+    { type: 'order', q: 'Put coordinated disclosure in order.',
+      items: ['Find the issue on a car you’re authorized to test', 'Report it privately through the maker’s disclosure program', 'Maker builds and ships a fix', 'Publish so others can learn'],
+      why: 'Owners are protected while the fix is made; then everyone learns from the write-up.' },
+    { type: 'num', q: 'Every how many **years** must the DMCA §1201 exemptions be renewed?', answer: 3, tol: 0, unit: 'years',
+      why: 'The Copyright Office runs a **triennial** rulemaking. The current exemptions took effect Oct 28, 2024 and last until Oct 28, 2027.' },
+    { type: 'mc', q: 'What does UN R155 require of a carmaker?',
+      options: ['A paid bug bounty', 'A certified cybersecurity management system plus cybersecurity approval of each vehicle type', 'Encryption of every CAN message', 'Removing the OBD port'], answer: 1,
+      why: 'R155 is about the maker’s process (CSMS) and type approval. It doesn’t dictate a specific technology. R156 covers software updates.',
+      wrong: { 2: 'R155 doesn’t mandate a specific technical measure like encrypting every frame.' } },
+  ],
+  cards: [
+    { id: 'auth', front: 'Rule 1 of car security research?', back: 'Authorization: your own car or written permission, parked, off public roads.' },
+    { id: 'dmca', front: 'DMCA §1201 security-research exemption?', back: 'Since 2015, renewed every 3 years (now to Oct 2027). Lawfully acquired device, good faith, no other laws broken.' },
+    { id: 'cvd', front: 'Coordinated disclosure in one line?', back: 'Report privately, give the maker time to fix, then publish.' },
+    { id: 'r155', front: 'R155 vs R156?', back: 'R155: cybersecurity management system (CSMS). R156: software update management system (SUMS).' },
+    { id: 'vdpbb', front: 'VDP vs bug bounty?', back: 'VDP: official channel and rules for reports. Bug bounty: a VDP that also pays.' },
+  ],
+};

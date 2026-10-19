@@ -1,0 +1,92 @@
+// Anatomy of a frame
+export default {
+  steps: [
+    { tag: 'metaphor', title: 'A very strict envelope',
+      body: [
+        'A [[can-frame]] is a letter with a fixed layout: a **whistle** to get attention, a **subject line**, a “**number of pages**” box, the **letter**, a **tamper seal**, a “**got it**” stamp anyone can press, and a moment of **silence** at the end.',
+        'Every module knows the layout by heart, so it can check each part as the bits fly past.',
+      ] },
+    { tag: 'see', title: 'A real frame, bit by bit', visualFirst: true,
+      visual: { type: 'canframe' },
+      body: [
+        'This is ID **0x415** with a simulated speed. Tap each field; edit the ID or data and watch the stuff bits and CRC change.',
+        'Stuff bits (marked) aren’t data: the sender adds them and receivers strip them out.',
+      ] },
+    { tag: 'how', title: 'The front: who goes first, and how much',
+      body: [
+        '[[sof|SOF]]: one dominant bit. Its edge lines up every node’s clock.',
+        '**ID** ([[arbitration-id]]): 11 bits (standard) or 29 bits ([[extended-id]]). Lower = higher priority.',
+        '[[rtr|RTR]]: 0 = data frame (what you’ll nearly always see), 1 = remote request. **IDE**: 0 = 11-bit ID, 1 = 29-bit ID. **r0**: reserved.',
+        '[[dlc|DLC]]: 4 bits, the number of data bytes, 0–8.',
+      ] },
+    { tag: 'how', title: 'The back: data, seal, “got it”, silence',
+      body: [
+        '**Data**: 0–8 bytes. Their meaning (which bits are speed, which are a counter) isn’t in the frame; it’s in a [[dbc-file|DBC]] or the designers’ heads.',
+        '[[crc|CRC]]: a 15-bit check computed over everything from SOF to the end of the data, then a recessive delimiter bit.',
+        '[[ack-slot|ACK slot]]: the sender sends recessive; **every** receiver that got a valid frame drives it dominant. It proves *someone* got it, not who.',
+        'ACK delimiter, then [[eof|EOF]]: 7 recessive bits. Then 3 bits of intermission before the next frame.',
+      ] },
+    { tag: 'how', title: 'Bit stuffing',
+      body: [
+        'There’s no clock wire, so receivers re-sync on **edges**. A long run of identical bits has no edges.',
+        'Rule: after **5 identical bits** in a row, the sender inserts **one opposite bit**. Receivers count and remove it ([[bit-stuffing]]).',
+        'The stuff bit itself counts toward the next run: `00000` + stuff `1` + `1111` is already five 1s, so another stuff `0` goes in.',
+        'Stuffing covers SOF through the CRC. The fixed-shape tail (delimiters, ACK, EOF) is never stuffed, so **6 equal bits in a row** in the stuffed zone can only mean an error.',
+      ] },
+    { tag: 'code', title: 'Count the stuff bits',
+      body: [
+        'Write the counter a CAN controller runs in hardware. `bits` is a string like `"0000011111"`.',
+        'Track the current run. When it hits 5, count a stuff bit, and remember the stuff bit is the opposite value and starts a new run of 1.',
+      ],
+      code: {
+        id: 'can-03-stuff',
+        prompt: 'Finish `count_stuff_bits(bits)` so it returns how many stuff bits CAN would insert.',
+        starter: 'def count_stuff_bits(bits):\n    """How many stuff bits CAN adds."""\n    count = 0\n    last = bits[0]  # value of the run\n    run = 1         # length of the run\n    for b in bits[1:]:\n        if b == last:\n            run += 1\n        else:\n            last = b\n            run = 1\n        if run == ___:\n            count += 1\n            # The stuff bit is the opposite\n            # value and starts a new run\n            last = ___\n            run = 1\n    return count\n',
+        tests: [
+          { name: 'No stuffing for 01010101', code: 'r = count_stuff_bits("01010101")\nassert r == 0, f"got {r!r}"' },
+          { name: 'One stuff bit after 00000', code: 'r = count_stuff_bits("00000")\nassert r == 1, f"got {r!r}"' },
+          { name: 'Ten 0s need 2 stuff bits', code: 'r = count_stuff_bits("0" * 10)\nassert r == 2, f"got {r!r}"' },
+          { name: 'The stuff bit counts toward the next run (0000011111 → 2)', code: 'r = count_stuff_bits("0000011111")\nassert r == 2, f"got {r!r}"' },
+          { name: 'SOF + ID 0x07E needs 2 stuff bits', code: 'r = count_stuff_bits("000001111110")\nassert r == 2, f"got {r!r}"' },
+        ],
+        hints: [
+          'Stuffing happens after 5 identical bits.',
+          'The stuff bit is the opposite of `last`: if `last` is "0" it’s "1", and the other way round.',
+          '`if run == 5:` and `last = \'1\' if last == \'0\' else \'0\'`',
+        ],
+        solution: 'def count_stuff_bits(bits):\n    """How many stuff bits CAN adds."""\n    count = 0\n    last = bits[0]  # value of the run\n    run = 1         # length of the run\n    for b in bits[1:]:\n        if b == last:\n            run += 1\n        else:\n            last = b\n            run = 1\n        if run == 5:\n            count += 1\n            # The stuff bit is the opposite\n            # value and starts a new run\n            last = \'1\' if last == \'0\' else \'0\'\n            run = 1\n    return count\n',
+      } },
+    { tag: 'math', title: 'How long is one frame?',
+      body: [
+        '11-bit ID, 8 data bytes: SOF 1 + ID 11 + RTR 1 + IDE 1 + r0 1 + DLC 4 + data 64 + CRC 15 + 3 single bits (CRC delimiter, ACK, ACK delimiter) + EOF 7 = **108 bits**.',
+        'Add 3 bits of intermission = **111**. Worst-case stuffing adds up to **24** more = **135** bits (Vector and Linux kernel figures agree).',
+        'At 500 kbit/s one bit takes 2 µs, so a full frame takes about **222–270 µs**.',
+        'Only 64 of those ~111 bits are data: roughly **58%** efficiency at best. CAN FD attacks exactly that.',
+      ] },
+    { tag: 'bronco', title: 'Speed in a Ford frame',
+      body: [
+        'In openpilot’s community Ford DBC (reverse-engineered, **not from Ford**), **0x415** `BrakeSysFeatures` from `ABS_ESC` has DLC **8**.',
+        'Its signal `Veh_V_ActlBrk` is 16 bits with a scale of **0.01 km/h** per count: raw `0x0FA0` = 4,000 → **40.00 km/h** (≈ 24.9 mph).',
+        'The same frame also carries a 4-bit [[rolling-counter]] and an 8-bit [[checksum]]: an extra seal on top of the CRC, checked by the receiving modules.',
+      ] },
+  ],
+  quiz: [
+    { type: 'order', q: 'Put the fields of a classic CAN frame in order.', items: ['SOF', 'Identifier', 'RTR, IDE, r0', 'DLC', 'Data', 'CRC', 'ACK', 'EOF'],
+      why: 'Start bit → ID (arbitration) → control bits → length → data → CRC seal → ACK slot → 7 recessive EOF bits.' },
+    { type: 'mc', q: 'The sender sees a **dominant** bit in the ACK slot. What does that tell it?', options: ['Every node received the frame', 'At least one node received a valid frame', 'The engine computer received it', 'There was an error'], answer: 1,
+      why: 'Any receiver that got a valid frame drives the ACK slot dominant, and they all do it in the same bit. The sender can’t tell who or how many.',
+      wrong: { 0: 'One ACK looks exactly like ten. CAN can’t tell the sender that *everyone* got it.', 2: 'Nothing in a CAN frame names a receiver.' } },
+    { type: 'num', q: 'Classic frame, 11-bit ID, **8 data bytes**: how many bits from SOF to the end of EOF, before stuffing?', answer: 108, tol: 0, unit: 'bits',
+      hint: '1 + 11 + 1 + 1 + 1 + 4 + 64 + 15 + 1 + 1 + 1 + 7', why: 'Header 19 + data 64 + CRC 15 + CRC delimiter, ACK slot, ACK delimiter 3 + EOF 7 = **108**. (111 with the 3-bit intermission, up to 135 with stuffing.)' },
+    { type: 'mc', q: 'Why does CAN use **bit stuffing**?', options: ['To encrypt the data', 'To make frames longer on purpose', 'To guarantee edges for clock sync and keep 6-in-a-row free for error signals', 'To count how many nodes are on the bus'], answer: 2,
+      why: 'Receivers have no clock wire, so they re-sync on edges; stuffing guarantees one at least every 6 bits. And because data can never contain 6 identical bits in the stuffed zone, an error flag of 6 dominant bits is unmistakable.' },
+  ],
+  cards: [
+    { id: 'fields', front: 'Fields of a classic CAN frame, in order?', back: 'SOF, ID, RTR, IDE, r0, DLC, data (0–8 bytes), CRC-15 + delimiter, ACK + delimiter, EOF (7 bits).' },
+    { id: 'ack', front: 'What does a dominant ACK slot mean?', back: 'At least one receiver got a valid frame. Not who, not how many.' },
+    { id: 'stuff', front: 'The bit-stuffing rule?', back: 'After 5 identical bits, insert 1 opposite bit (it counts toward the next run). Applies from SOF to the end of the CRC.' },
+    { id: 'len', front: 'Bits in an 8-byte standard frame?', back: '108 (111 with intermission); up to 135 with worst-case stuffing.' },
+    { id: 'ide', front: 'What do RTR and IDE mean when they are 0?', back: 'RTR 0 = data frame (not a remote request). IDE 0 = standard 11-bit ID.' },
+    { id: 'meaning', front: 'Where is the meaning of a frame’s data bytes defined?', back: 'Not in the frame. In a DBC file or the manufacturer’s internal specs.' },
+  ],
+};
