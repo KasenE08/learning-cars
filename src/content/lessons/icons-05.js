@@ -43,7 +43,7 @@ export default {
     { tag: 'see', title: 'Legends side by side', visualFirst: true,
       visual: { type: 'compare', title: 'Claimed figures at launch', metrics: [
         { key: 'ps', label: 'Power', unit: 'PS' },
-        { key: 'kg', label: 'Dry weight', unit: 'kg' },
+        { key: 'kg', label: 'Dry weight', unit: 'kg', lower: true },
       ], items: [
         { name: 'CBR900RR', note: '1992', values: { ps: 124, kg: 185 } },
         { name: 'Ducati 916', note: '1994; ≈85 kW claimed, weight sources vary', values: { ps: 116 } },
@@ -60,7 +60,7 @@ export default {
       body: [
         '**Kawasaki**: Ninja 250R in the US from 1986 → Ninja 300 (2013) → Ninja 400 (2018) → **Ninja 500** (2024). Same Ninja name as the ZX-10R, same green racing image.',
         '**Aprilia**: the **RS 250** (1994) was a road replica of the 250 cc Grand Prix bikes Max Biaggi won titles on, using a modified Suzuki RGV250 two-stroke V-twin.',
-        'The **RS 457** carries the RS badge into the A2-class sport twins as a modern four-stroke. “Spiritual successor” is fan talk, not shared engineering.',
+        'The **RS 457** carries the RS badge into today’s small-twin class (sized for Europe’s A2 license) as a modern four-stroke. “Spiritual successor” is fan talk, not shared engineering.',
       ],
       facts: ['ninja.lineage', 'rs457.madeIn', 'ninja.weight', 'rs457.weight'] },
   ],
