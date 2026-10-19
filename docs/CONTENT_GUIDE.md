@@ -136,7 +136,7 @@ The reader is **between "new to Python" and "knows the basics"**. Each exercise 
   Scenarios (src/core/can/sim.js): `idle` (10 s), `drive` (30 s: pull away, cruise ≈ 40 mph, brake to a stop),
   `blinker` (left 2–6 s, right 8–11 s), `steer` (wheel to −180° then +180°), `doors` (driver 2–5 s,
   passenger 6–8 s), `pedal` (accelerator pressed three times while parked), `brake` (brake pressed three times).
-  Line format: `(0.020000) can0 415#0FA0C0FC00000000` (timestamp in seconds, interface, hex ID, `#`, hex data).
+  Line format: `(0.020000) can0 415#0FA0C04D00000000` (timestamp in seconds, interface, hex ID, `#`, hex data).
   Values are deterministic, so tests may check exact results. Explore them with
   `node -e "import('./src/core/can/sim.js').then(s=>console.log(s.simFile('sim:blinker?ids=83').slice(0,400)))"`.
 - Inline data is fine too: `files: { 'frames.txt': '415#0FA0...\n204#...\n' }` or a Python list in `setup`.
