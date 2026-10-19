@@ -208,7 +208,7 @@
 .bn__filter { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); flex: 1; min-width: 140px; }
 .bn__filter input { flex: 1; min-width: 0; font-size: 16px; padding: 4px 8px; background: #0d0f12; color: var(--ink); border: 1px solid var(--line-2); border-radius: 3px; text-transform: uppercase; }
 .bn__screen { height: 330px; overflow: auto; cursor: pointer; }
-.bn--compact .bn__screen { height: 230px; }
+.bn--compact .bn__screen { height: auto; min-height: 110px; max-height: 230px; }
 .bn__selids { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
 .bn__selids .pchip { height: 26px; padding: 0 8px; font-size: 11px; }
 .bn__dec { display: grid; gap: 4px; color: var(--ink); font-size: 12px; }
