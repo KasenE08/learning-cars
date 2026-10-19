@@ -1,5 +1,6 @@
 // Tiny inline markup for lesson text:
 //   **bold**   `mono`   [[glossary-id]]   [[glossary-id|shown text]]   ~~note~~ (muted aside)
+//   [label](#/lab/can?c=turn-id)  (links inside the app only)
 import { esc, raw } from './dom.js';
 import { glossary } from '../content/glossary.js';
 
@@ -12,6 +13,7 @@ export function rich(src) {
     const text = label || g?.term || id;
     return g ? `<a class="gl" href="#/glossary/${id}" data-gloss="${id}">${text}</a>` : text;
   });
+  s = s.replace(/\[([^\]]+)\]\((#\/[\w/?=&;.-]*)\)/g, '<a class="applink" href="$2">$1</a>');
   s = s.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
   s = s.replace(/`(.+?)`/g, '<code>$1</code>');
   s = s.replace(/~~(.+?)~~/g, '<span class="aside">$1</span>');

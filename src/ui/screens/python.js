@@ -5,6 +5,7 @@ import { pageHead } from '../components/parts.js';
 import { lessonsOfTrack, lessonCode } from '../../core/course.js';
 import { loadLesson, hasContent } from '../../core/lessons.js';
 import { getProgress } from '../../core/store.js';
+import { listCaptures, fileNameOf } from '../../core/captures.js';
 
 export const tab = 'lab';
 
@@ -29,11 +30,19 @@ export function render(view) {
   const screen = el(html`<div class="screen">
     <a class="backlink" href="#/lab">${icons.back}Lab</a>
     ${pageHead('Lab', 'Python bench', 'Python running inside the app (Pyodide). The first run downloads it once (≈ 13 MB); after that it works offline.')}
-    <section class="section"><div class="py-scratch"></div></section>
+    <section class="section"><p class="py-files muted"></p><div class="py-scratch"></div></section>
     <section class="section"><h2 class="h4">Exercises</h2><div class="py-list"><p class="muted">Loading…</p></div></section>
   </div>`);
   view.append(screen);
-  import('../code/exercise.js').then(({ mountExercise }) => { if (alive) ex = mountExercise(screen.querySelector('.py-scratch'), SCRATCH); });
+  // Captures recorded on the CAN bench show up here as files you can open().
+  Promise.all([import('../code/exercise.js'), listCaptures()]).then(([{ mountExercise }, caps]) => {
+    if (!alive) return;
+    const files = { ...SCRATCH.files };
+    for (const c of caps) files[fileNameOf(c)] = c.text;
+    const names = Object.keys(files);
+    screen.querySelector('.py-files').innerHTML = `Files you can <code>open()</code>: ${names.map((n) => `<code>${n.replace(/</g, '&lt;')}</code>`).join(' ')}${caps.length ? '' : ' · Record captures on the <a href="#/lab/can">CAN bench</a> and they appear here.'}`;
+    ex = mountExercise(screen.querySelector('.py-scratch'), { ...SCRATCH, files });
+  });
 
   (async () => {
     const lessons = lessonsOfTrack('tech').filter((l) => hasContent(l.id));

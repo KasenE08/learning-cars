@@ -7,6 +7,7 @@ const routes = [
   { re: /^\/lesson\/([a-z]+-\d{2})$/, name: 'lesson', keys: ['id'] },
   { re: /^\/lab$/, name: 'lab' },
   { re: /^\/lab\/python$/, name: 'python' },
+  { re: /^\/lab\/can$/, name: 'canbench' },
   { re: /^\/review$/, name: 'review' },
   { re: /^\/glossary(?:\/([\w-]+))?$/, name: 'glossary', keys: ['term'] },
   { re: /^\/progress$/, name: 'progress' },

@@ -54,6 +54,7 @@ const loaders = {
   ecumap: () => import('./t4/ecumap.js'),
   attack: () => import('./t4/attack.js'),
   fob: () => import('./t4/fob.js'),
+  canbench: () => import('./t4/canbench.js'),
 };
 
 export const visualTypes = Object.keys(loaders);

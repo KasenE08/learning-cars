@@ -157,3 +157,9 @@ signal names below are exact names from that file. "SIMULATED" data comes from `
 - `fob` `{ mode?: 'rolling'|'relay' }`: `rolling`: fob counter vs car's acceptance window; a replayed old code is
   rejected. `relay`: concept animation of a relay extending a keyless fob's range, and the countermeasures (motion-
   sensing fobs, UWB distance bounding, PIN-to-drive). Concept only.
+
+## (new, Phase 6) CAN bench
+- `canbench` `{ controls?: ['pedals','steer','shifter','turn','lights','wipers','doors','belt','parkbrake','ignition'], view?: 'log'|'table'|'decode', ids?: [numbers], names?: boolean }`:
+  a compact live SIMULATED car + bus view inside a lesson (no recorder). Default controls: pedals, shifter, turn.
+  Use `ids` to filter the view to the messages the step is about; `names: true` shows DBC message names.
+  The full bench (recording, export .log / SavvyCAN CSV, import, compare captures, 11 challenges) is at `#/lab/can`.
