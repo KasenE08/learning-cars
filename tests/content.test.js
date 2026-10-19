@@ -4,11 +4,13 @@ import { lessonById } from '../src/core/course.js';
 import { glossary } from '../src/content/glossary.js';
 import { facts } from '../src/content/vehicles.js';
 import { grade } from '../src/core/quiz.js';
+import { signalByName } from '../src/core/can/ford.js';
 
-const TAGS = ['metaphor', 'how', 'see', 'math', 'bronco', 'bikes', 'key', 'why'];
+const TAGS = ['metaphor', 'how', 'see', 'math', 'bronco', 'bikes', 'key', 'why', 'code', 'law', 'safety'];
 const VISUALS = ['cylinder', 'parts', 'displacement', 'crank', 'valvetrain', 'timing', 'compression', 'exploded', 'awd',
   'layout', 'diffturn', 'turbo', 'clutchengage', 'gearshift', 'planetary', 'torqueconv', 'dyno', 'gearing', 'suspension', 'tire', 'circuit', 'aero',
-  'lean', 'raketrail', 'slipper', 'quickshift', 'traction', 'timeline', 'compare', 'checklist'];
+  'lean', 'raketrail', 'slipper', 'quickshift', 'traction', 'timeline', 'compare', 'checklist',
+  'network', 'sensorloop', 'obdport', 'pid', 'dtc', 'busvolts', 'canframe', 'arbitration', 'bittiming', 'errors', 'canfd', 'isotp', 'uds', 'bitfield', 'scaling', 'twos', 'checksum', 'candump', 'capdiff', 'sigplot', 'ecumap', 'attack', 'fob'];
 const terms = new Set(glossary.map((g) => g.id));
 const files = readdirSync('src/content/lessons').filter((f) => f.endsWith('.js'));
 
@@ -22,8 +24,9 @@ const PLANNED = {
   oil: ['sump', 'pickup', 'pump', 'filter', 'gallery', 'mains', 'rods', 'cams', 'turbo-feed', 'piston-jets', 'pressure-sensor'],
   charging: ['alternator', 'belt', 'battery', 'starter', 'fuse-box', 'ground', 'loads', 'pcm'],
   brakes: ['pedal', 'booster', 'master', 'lines', 'abs', 'caliper', 'rotor', 'pads', 'wheel-sensor'],
+  ecu: ['connector', 'power', 'mcu', 'flash', 'ram', 'eeprom', 'hsm', 'can-xcvr', 'adc', 'drivers', 'knock'],
 };
-const drawings = {};
+const drawings = { ...PLANNED };
 for (const f of readdirSync('src/ui/visuals/drawings')) {
   const d = f.replace('.js', '');
   const mod = await import(`../src/ui/visuals/drawings/${f}`);
@@ -53,6 +56,8 @@ describe.each(files)('lesson %s', async (file) => {
         if (s.visual.type === 'parts') expect(drawings[s.visual.drawing]).toBeTruthy();
       }
       for (const f of s.facts || []) expect(facts[f], f).toBeTruthy();
+      expect(!!s.code, `${s.title}: code steps use tag 'code' and vice versa`).toBe(s.tag === 'code');
+      if (s.visual?.signal) expect(signalByName(s.visual.signal), s.visual.signal).toBeTruthy();
     }
   });
   it('has at least one visual (every concept gets a picture)', () => {

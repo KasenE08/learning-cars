@@ -6,6 +6,7 @@ const routes = [
   { re: /^\/course(?:\/(path|tracks))?$/, name: 'course', keys: ['view'] },
   { re: /^\/lesson\/([a-z]+-\d{2})$/, name: 'lesson', keys: ['id'] },
   { re: /^\/lab$/, name: 'lab' },
+  { re: /^\/lab\/python$/, name: 'python' },
   { re: /^\/review$/, name: 'review' },
   { re: /^\/glossary(?:\/([\w-]+))?$/, name: 'glossary', keys: ['term'] },
   { re: /^\/progress$/, name: 'progress' },
